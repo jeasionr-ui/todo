@@ -1,9 +1,9 @@
-// 在现有文件中添加以下内容
 export default {
-  // 在 common 对象中添加
+  // 通用
   common: {
     home: '首页',
     back: '返回',
+    filter: '筛选',
     save: '保存',
     cancel: '取消',
     edit: '编辑',
@@ -20,6 +20,19 @@ export default {
     no: '否',
     appDescription: '免费开源的 Tailwind CSS 管理后台模板',
     welcome: '欢迎回来',
+    // 新增内容
+    apply: '应用',
+    add: '添加',
+    create: '创建',
+    update: '更新',
+    next: '下一步',
+    previous: '上一步',
+    sort: '排序',
+    clear: '清空',
+    reset: '重置',
+    error: '操作失败',
+    warning: '警告',
+    info: '提示',
   },
 
   auth: {
@@ -56,6 +69,7 @@ export default {
     invalidCredentials: '邮箱或密码不正确',
     loginFailed: '登录失败，请稍后再试',
   },
+
   user: {
     profile: '个人资料',
     settings: '账号设置',
@@ -83,6 +97,7 @@ export default {
     resetPasswordFailed: '重置密码失败，请稍后再试',
     resetPasswordSuccess: '密码重置成功，请使用新密码登录',
   },
+
   menu: {
     dashboard: '仪表盘',
     tasks: '任务管理',
@@ -96,7 +111,7 @@ export default {
     permissionManagement: '权限管理',
     toast: '消息提示',
   },
-  
+
   toast: {
     success: '成功',
     error: '错误',
@@ -145,7 +160,7 @@ export default {
     connected: '已关联',
     notConnected: '未关联',
   },
-  // 添加通知相关的翻译
+
   notification: {
     title: '通知',
     viewAll: '查看所有通知',
@@ -156,7 +171,7 @@ export default {
     offline: '离线',
     user: '用户',
   },
-  // 添加任务相关的翻译
+
   task: {
     title: '任务管理',
     all: '所有任务',
@@ -217,5 +232,477 @@ export default {
     export: '导出任务',
     deleteSuccess: '任务删除成功',
     deleteFailed: '任务删除失败',
+  },
+
+  // 习惯相关 - 保留原有内容，增加新内容
+  habits: {
+    title: '习惯养成',
+    all: '所有习惯',
+    create: '创建习惯',
+    create_title: '创建新习惯',
+    edit: '编辑习惯',
+    delete: '删除习惯',
+    view: '查看详情',
+    check_success: '打卡成功',
+    uncheck_success: '撤销打卡',
+    confirmDelete: '确定要删除此习惯吗？',
+    nameRequired: '习惯名称不能为空',
+    createHabit: '创建习惯',
+    editHabit: '编辑习惯',
+    detail: '习惯详情',
+    name: '习惯名称',
+    description: '习惯描述',
+    category: '分类',
+    frequencyDesc: '频率',
+    startDate: '开始日期',
+    endDate: '结束日期',
+    reminderTime: '提醒时间',
+    reminderType: '提醒类型',
+    reminderLocation: '提醒位置',
+    color: '颜色',
+    icon: '图标',
+    tags: '标签',
+    addTag: '添加标签',
+    complete: '打卡',
+    completed: '已打卡',
+    archive: '归档',
+    unarchive: '取消归档',
+    showArchived: '显示已归档',
+    hideArchived: '隐藏已归档',
+
+    // 新增内容
+    habits: '习惯列表',
+    myHabits: '我的习惯',
+    habitName: '习惯名称',
+    habitDescription: '习惯描述',
+    isArchived: '已归档',
+    createdAt: '创建时间',
+    updatedAt: '更新时间',
+
+    // 统计数据
+    streakCount: '当前连续',
+    longestStreak: '最长连续',
+    totalCompletions: '总完成次数',
+    completionHistory: '完成历史',
+    lastCompletedAt: '上次完成时间',
+
+    // 状态
+    incomplete: '未完成',
+    inProgress: '进行中',
+    paused: '已暂停',
+    archived: '已归档',
+
+    // 操作
+    markAsCompleted: '标记为完成',
+    markAsIncomplete: '标记为未完成',
+    addNote: '添加备注',
+    viewHistory: '查看历史',
+    archiveHabit: '归档习惯',
+    unarchiveHabit: '取消归档',
+    deleteHabit: '删除习惯',
+
+    // 创建/编辑
+    habitCreated: '习惯创建成功',
+    habitUpdated: '习惯更新成功',
+    habitDeleted: '习惯删除成功',
+
+    // 表单验证
+    nameMinLength: '习惯名称至少需要2个字符',
+    nameMaxLength: '习惯名称不能超过50个字符',
+    descriptionMaxLength: '描述不能超过200个字符',
+    categoryRequired: '请选择分类',
+    frequencyRequired: '请选择频率',
+    startDateRequired: '请选择开始日期',
+    invalidDateRange: '结束日期不能早于开始日期',
+
+    // 提示信息
+    noHabitsFound: '暂无习惯记录',
+    noCompletionHistory: '暂无完成记录',
+    habitCompletedToday: '今日已完成',
+    habitNotCompletedToday: '今日未完成',
+    streakBroken: '连续记录已中断',
+    newRecord: '创造新记录！',
+
+    stats: {
+      current_streak: '当前连续',
+      longest_streak: '最长连续',
+      total: '总计完成',
+      completion_rate: '完成率',
+      last_completed: '最近完成',
+    },
+
+    categories: {
+      health: '健康',
+      fitness: '健身',
+      study: '学习',
+      work: '工作',
+      lifestyle: '生活方式',
+      hobby: '爱好',
+      social: '社交',
+      personal: '个人发展',
+      finance: '财务',
+      mindfulness: '正念',
+      creativity: '创意',
+      other: '其他',
+    },
+
+    frequency: {
+      daily: '每日',
+      weekly: '每周',
+      monthly: '每月',
+      custom: '自定义',
+    },
+
+    filter: {
+      title: '筛选',
+      category: '分类',
+      frequency: '频率',
+      all_categories: '所有分类',
+      all_frequencies: '所有频率',
+      show_archived: '显示已归档',
+      apply: '应用筛选',
+      reset: '重置筛选',
+    },
+
+    sort: {
+      title: '排序',
+      name_asc: '名称 (A-Z)',
+      name_desc: '名称 (Z-A)',
+      created_asc: '创建时间 (最早)',
+      created_desc: '创建时间 (最近)',
+      streak_asc: '连续次数 (最少)',
+      streak_desc: '连续次数 (最多)',
+    },
+
+    empty: {
+      title: '暂无习惯',
+      description: '创建您的第一个习惯，开始养成良好的生活方式',
+      create: '创建习惯',
+    },
+
+    // 表单相关
+    form: {
+      name: '习惯名称',
+      name_placeholder: '请输入习惯名称',
+      description: '习惯描述',
+      description_placeholder: '请输入习惯描述（可选）',
+      category: '分类',
+      frequency: '频率',
+      days_of_week: '每周的第几天',
+      days_of_month: '每月的第几天',
+      start_date: '开始日期',
+      start_date_placeholder: '选择开始日期',
+      end_date_placeholder: '选择结束日期',
+      end_date: '结束日期',
+      tags: '标签',
+      tags_placeholder: '添加标签',
+      reminder_type: '提醒类型',
+      reminder_time: '提醒时间',
+      reminder_time_placeholder: '选择提醒时间',
+      reminder_location: '提醒位置',
+      reminder_location_placeholder: '输入位置',
+      color: '颜色',
+      icon: '图标',
+      icon_placeholder: '选择图标',
+    },
+
+    // 提醒类型
+    reminder_types: {
+      none: '无提醒',
+      time: '时间提醒',
+      location: '位置提醒',
+    },
+  },
+
+  // 频率相关
+  frequency: {
+    daily: '每日',
+    weekly: '每周',
+    monthly: '每月',
+
+    // 周几
+    daysOfWeek: {
+      0: '周日',
+      1: '周一',
+      2: '周二',
+      3: '周三',
+      4: '周四',
+      5: '周五',
+      6: '周六',
+    },
+
+    // 频率描述
+    everyDay: '每天',
+    everyWeek: '每周',
+    everyMonth: '每月',
+    weekdays: '工作日',
+    weekends: '周末',
+
+    // 频率设置
+    selectDays: '选择日期',
+    selectWeekdays: '选择工作日',
+    selectDaysOfMonth: '选择每月的第几天',
+  },
+
+  // 分类
+  category: {
+    health: '健康',
+    fitness: '健身',
+    study: '学习',
+    work: '工作',
+    lifestyle: '生活方式',
+    hobby: '爱好',
+    social: '社交',
+    personal: '个人发展',
+    finance: '财务',
+    mindfulness: '正念',
+    creativity: '创意',
+    other: '其他',
+  },
+
+  // 提醒相关
+  reminder: {
+    time: '时间提醒',
+    location: '位置提醒',
+    noReminder: '无提醒',
+    setReminder: '设置提醒',
+    reminderSet: '提醒已设置',
+    reminderCanceled: '提醒已取消',
+    reminderTitle: '习惯提醒',
+    reminderMessage: '该完成你的习惯了：{habitName}',
+
+    // 时间表达
+    timeFormat: 'HH:mm',
+    dateFormat: 'YYYY年MM月DD日',
+    datetimeFormat: 'YYYY年MM月DD日 HH:mm',
+  },
+
+  // 统计页面
+  statistics: {
+    title: '统计',
+    overview: '概览',
+    todayStats: '今日统计',
+    weeklyStats: '本周统计',
+    monthlyStats: '本月统计',
+    yearlyStats: '今年统计',
+
+    // 统计指标
+    totalHabits: '总习惯数',
+    activeHabits: '活跃习惯',
+    completedToday: '今日完成',
+    completionRate: '完成率',
+    averageStreak: '平均连续',
+    bestStreak: '最佳连续',
+
+    // 图表
+    completionTrend: '完成趋势',
+    categoryDistribution: '分类分布',
+    weeklyPattern: '周完成模式',
+    monthlyProgress: '月度进展',
+
+    // 成就
+    achievements: '成就',
+    badges: '徽章',
+    milestones: '里程碑',
+  },
+
+  // 日历相关
+  calendar: {
+    today: '今天',
+    month: '月',
+    week: '周',
+    day: '日',
+    agenda: '日程',
+
+    // 月份
+    months: {
+      1: '一月',
+      2: '二月',
+      3: '三月',
+      4: '四月',
+      5: '五月',
+      6: '六月',
+      7: '七月',
+      8: '八月',
+      9: '九月',
+      10: '十月',
+      11: '十一月',
+      12: '十二月',
+    },
+
+    // 周几简称
+    weekdaysShort: ['日', '一', '二', '三', '四', '五', '六'],
+
+    // 导航
+    previousMonth: '上个月',
+    nextMonth: '下个月',
+    goToToday: '回到今天',
+  },
+
+  // 设置页面
+  settings: {
+    title: '设置',
+    general: '通用设置',
+    notifications: '通知设置',
+    appearance: '外观设置',
+    data: '数据管理',
+    about: '关于',
+
+    // 通用设置
+    language: '语言',
+    theme: '主题',
+    startOfWeek: '一周开始',
+    timeFormat: '时间格式',
+    dateFormat: '日期格式',
+
+    // 通知设置
+    enableNotifications: '启用通知',
+    dailyReminder: '每日提醒',
+    weeklyReport: '周报告',
+    achievementNotifications: '成就通知',
+
+    // 主题
+    light: '浅色模式',
+    dark: '深色模式',
+    system: '跟随系统',
+
+    // 数据管理
+    exportData: '导出数据',
+    importData: '导入数据',
+    clearData: '清空数据',
+    backup: '备份',
+    restore: '恢复',
+
+    // 确认对话框
+    confirmClearData: '确定要清空所有数据吗？此操作不可恢复。',
+    confirmDeleteHabit: '确定要删除这个习惯吗？',
+    dataCleared: '数据已清空',
+    dataExported: '数据导出成功',
+    dataImported: '数据导入成功',
+  },
+
+  // 错误信息
+  error: {
+    networkError: '网络连接错误',
+    serverError: '服务器错误',
+    unknownError: '未知错误',
+    validationError: '验证失败',
+    permissionDenied: '权限不足',
+    notFound: '未找到',
+    timeout: '请求超时',
+
+    // 具体错误
+    habitNotFound: '习惯不存在',
+    invalidDate: '无效日期',
+    invalidTime: '无效时间',
+    duplicateHabit: '习惯名称已存在',
+    cantDeleteCompletedHabit: '无法删除已有完成记录的习惯',
+  },
+
+  // 成功信息
+  success: {
+    habitCompleted: '习惯完成！',
+    streakIncreased: '连续记录增加了！',
+    habitCreated: '习惯创建成功',
+    habitUpdated: '习惯更新成功',
+    habitDeleted: '习惯删除成功',
+    reminderSet: '提醒设置成功',
+    dataExported: '数据导出成功',
+    settingsSaved: '设置保存成功',
+  },
+
+  // 时间相关
+  time: {
+    now: '现在',
+    today: '今天',
+    yesterday: '昨天',
+    tomorrow: '明天',
+    thisWeek: '本周',
+    thisMonth: '本月',
+    thisYear: '今年',
+
+    // 相对时间
+    minutesAgo: '{minutes} 分钟前',
+    hoursAgo: '{hours} 小时前',
+    daysAgo: '{days} 天前',
+    weeksAgo: '{weeks} 周前',
+    monthsAgo: '{months} 个月前',
+    yearsAgo: '{years} 年前',
+
+    // 持续时间
+    days: '{count} 天',
+    weeks: '{count} 周',
+    months: '{count} 个月',
+    years: '{count} 年',
+  },
+
+  // 单位
+  units: {
+    times: '次',
+    days: '天',
+    weeks: '周',
+    months: '月',
+    years: '年',
+    percent: '%',
+  },
+
+  // 空状态
+  empty: {
+    noHabits: '还没有创建任何习惯',
+    noCompletions: '还没有完成记录',
+    noReminders: '没有设置提醒',
+    noData: '暂无数据',
+    createFirstHabit: '创建你的第一个习惯',
+    startTracking: '开始追踪你的习惯',
+  },
+
+  // 导航
+  navigation: {
+    dashboard: '仪表板',
+    habits: '习惯',
+    calendar: '日历',
+    statistics: '统计',
+    settings: '设置',
+    profile: '个人资料',
+  },
+
+  // 按钮文本
+  buttons: {
+    getStarted: '开始使用',
+    learnMore: '了解更多',
+    tryAgain: '重试',
+    goHome: '返回首页',
+    viewDetails: '查看详情',
+    markComplete: '标记完成',
+    skip: '跳过',
+    done: '完成',
+    close: '关闭',
+  },
+
+  // 占位符文本
+  placeholders: {
+    searchHabits: '搜索习惯...',
+    habitName: '输入习惯名称',
+    habitDescription: '描述这个习惯...',
+    addTag: '添加标签',
+    selectCategory: '选择分类',
+    addNote: '添加备注...',
+    location: '输入地点',
+  },
+
+  // 标签
+  tags: {
+    morning: '晨间',
+    evening: '晚间',
+    weekend: '周末',
+    indoor: '室内',
+    outdoor: '户外',
+    quick: '快速',
+    challenge: '挑战',
+    relaxing: '放松',
+    social: '社交',
+    solo: '独自',
+    beginner: '初学者',
+    advanced: '高级',
   },
 }

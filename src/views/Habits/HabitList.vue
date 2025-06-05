@@ -323,7 +323,7 @@
       </div>
 
       <!-- 习惯对话框 -->
-      <HabitDialog v-if="showHabitDialog" :is-edit-mode="isEditMode" :habit="currentHabit"
+      <HabitDialog v-if="showHabitDialog" :is-edit-mode="isEditMode" :is-view-mode="isViewMode" :habit="currentHabit"
         @close="showHabitDialog = false" @save="saveHabit" @edit="switchToEditMode" />
 
       <!-- 删除确认对话框 -->
@@ -388,6 +388,7 @@ const activeHabitMenu = ref<string | null>(null)
 // 习惯对话框状态
 const showHabitDialog = ref(false)
 const isEditMode = ref(false)
+const isViewMode = ref(false)
 const currentHabit = ref<Partial<Habit>>({})
 
 // 根据搜索查询和筛选条件过滤习惯
@@ -472,26 +473,36 @@ const toggleHabitMenu = (habitId: string) => {
  */
 const openCreateHabitDialog = () => {
   isEditMode.value = false
+  isViewMode.value = false
   currentHabit.value = {
+    id: '',
     name: '',
     description: '',
     category: 'other',
     tags: [],
     frequency: {
       type: 'daily',
+      daysOfWeek: [],
+      daysOfMonth: []
     },
     startDate: new Date().toISOString().split('T')[0],
-    endDate: null,
-    reminderTime: null,
+    endDate: '',
+    reminderTime: '',
     reminderType: null,
     reminderLocation: '',
     color: '#4F46E5',
     icon: '📦',
     cronExpression: '0 0 * * *',
-    isArchived: false
+    isArchived: false,
+    createdAt: '',
+    updatedAt: '',
+    streakCount: 0,
+    longestStreak: 0,
+    totalCompletions: 0,
+    completionHistory: [],
+    lastCompletedAt: ''
   }
   showHabitDialog.value = true
-  // 关闭所有菜单
   activeHabitMenu.value = null
   showFilterMenu.value = false
 }
@@ -502,10 +513,9 @@ const openCreateHabitDialog = () => {
  */
 const openEditHabitDialog = (habit: Habit) => {
   isEditMode.value = true
-  // 深度复制习惯对象以进行编辑
+  isViewMode.value = false
   currentHabit.value = JSON.parse(JSON.stringify(habit))
   showHabitDialog.value = true
-  // 关闭习惯操作菜单
   activeHabitMenu.value = null
 }
 
@@ -514,11 +524,10 @@ const openEditHabitDialog = (habit: Habit) => {
  * @param habit 要查看的习惯
  */
 const viewHabitDetails = (habit: Habit) => {
-  // 使用对话框查看习惯详情
-  isEditMode.value = false // 设为非编辑模式但显示详情
+  isEditMode.value = false
+  isViewMode.value = true
   currentHabit.value = JSON.parse(JSON.stringify(habit))
   showHabitDialog.value = true
-  // 关闭习惯操作菜单
   activeHabitMenu.value = null
 }
 
@@ -553,7 +562,7 @@ const saveHabit = async (habit: Partial<Habit>) => {
  */
 const switchToEditMode = (habit: Habit) => {
   isEditMode.value = true
-  // 确保我们有一个干净的拷贝
+  isViewMode.value = false
   currentHabit.value = JSON.parse(JSON.stringify(habit))
 }
 

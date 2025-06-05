@@ -221,25 +221,40 @@
 │   ├── common/          # 通用组件
 │   ├── ecommerce/       # 电商相关组件
 │   ├── forms/           # 表单组件
+│   ├── habits/          # 习惯相关组件
 │   ├── layout/          # 布局组件
 │   ├── profile/         # 用户资料相关组件
 │   ├── tables/          # 表格组件
 │   └── ui/              # UI 元素组件
 ├── composables/         # 组合式函数
+│   ├── useFlatPickr.ts  # 日期选择器
+│   ├── useFormatters.ts # 格式化工具
 │   └── useSidebar.ts    # 侧边栏状态管理
+├── i18n/                # 国际化
+│   ├── index.ts         # 国际化配置
+│   └── locales/         # 语言文件
 ├── icons/               # 图标组件
 ├── router/              # 路由配置
 │   └── index.ts         # 路由定义
+├── services/            # 服务
+│   ├── habitService.ts  # 习惯服务
+│   ├── taskService.ts   # 任务服务
+│   ├── toastService.ts  # 提示服务
+│   ├── types/           # 类型定义
+│   └── userService.ts   # 用户服务
 ├── views/               # 页面视图
 │   ├── Auth/            # 认证相关页面
 │   ├── Chart/           # 图表页面
-│   ├── Ecommerce.vue    # 电商仪表盘（首页）
+│   ├── Dashboard.vue    # 仪表盘（首页）
 │   ├── Errors/          # 错误页面
 │   ├── Forms/           # 表单页面
+│   ├── Habits/          # 习惯管理页面
 │   ├── Others/          # 其他页面
 │   ├── Pages/           # 通用页面
 │   ├── Tables/          # 表格页面
-│   └── UiElements/      # UI 元素展示页面
+│   ├── Tasks/           # 任务管理页面
+│   ├── UiElements/      # UI 元素展示页面
+│   └── templates/       # 模板页面
 └── main.ts              # 应用入口文件
 ```
 

@@ -151,7 +151,7 @@ const router = createRouter({
         title: 'Signup',
       },
     },
-    
+
     // 添加用户管理相关路由
     {
       path: '/',
@@ -159,7 +159,7 @@ const router = createRouter({
       component: () => import('../views/Dashboard.vue'),
       meta: {
         title: 'Dashboard',
-        requiresAuth: true
+        requiresAuth: true,
       },
     },
     {
@@ -168,7 +168,7 @@ const router = createRouter({
       component: () => import('../views/Auth/SignIn.vue'),
       meta: {
         title: 'Sign In',
-        guest: true
+        guest: true,
       },
     },
     {
@@ -177,7 +177,7 @@ const router = createRouter({
       component: () => import('../views/Auth/SignUp.vue'),
       meta: {
         title: 'Sign Up',
-        guest: true
+        guest: true,
       },
     },
     {
@@ -186,7 +186,7 @@ const router = createRouter({
       component: () => import('../views/Auth/ForgotPassword.vue'),
       meta: {
         title: 'Forgot Password',
-        guest: true
+        guest: true,
       },
     },
     {
@@ -195,7 +195,7 @@ const router = createRouter({
       component: () => import('../views/Auth/ResetPassword.vue'),
       meta: {
         title: 'Reset Password',
-        guest: true
+        guest: true,
       },
     },
     {
@@ -204,7 +204,7 @@ const router = createRouter({
       component: () => import('../views/Auth/UserProfile.vue'),
       meta: {
         title: 'User Profile',
-        requiresAuth: true
+        requiresAuth: true,
       },
     },
     {
@@ -213,7 +213,7 @@ const router = createRouter({
       component: () => import('../views/Auth/UserSettings.vue'),
       meta: {
         title: 'User Settings',
-        requiresAuth: true
+        requiresAuth: true,
       },
     },
     {
@@ -222,11 +222,29 @@ const router = createRouter({
       component: () => import('../views/Auth/UserSecurity.vue'),
       meta: {
         title: 'User Security',
-        requiresAuth: true
+        requiresAuth: true,
       },
     },
 
+    {
+      path: '/tasks',
+      name: 'Tasks',
+      component: () => import('../views/Tasks/TaskList.vue'),
+      meta: {
+        title: 'Task Management',
+      },
+    },
 
+    {
+      path: '/habits',
+      name: 'Habits',
+      component: () => import('../views/Habits/HabitList.vue'),
+      meta: {
+        title: 'Habits Management',
+      },
+    },
+
+    
     {
       path: '/calendar',
       name: 'Calendar',
@@ -337,16 +355,6 @@ const router = createRouter({
       },
     },
 
-    // 在routes数组中添加
-    {
-      path: '/tasks',
-      name: 'Tasks',
-      component: () => import('../views/Tasks/TaskList.vue'),
-      meta: {
-        title: 'Task Management',
-      },
-    },
-
     {
       path: '/videos',
       name: 'Videos',
@@ -372,8 +380,6 @@ const router = createRouter({
         title: '404 Error',
       },
     },
-
-
   ],
 })
 
@@ -382,12 +388,12 @@ export default router
 router.beforeEach((to, from, next) => {
   // 设置页面标题
   document.title = `${to.meta.title || 'Todo App'} | Todo App`
-  
+
   // 检查是否需要认证
-  const requiresAuth = to.matched.some(record => record.meta.requiresAuth)
-  const isGuest = to.matched.some(record => record.meta.guest)
+  const requiresAuth = to.matched.some((record) => record.meta.requiresAuth)
+  const isGuest = to.matched.some((record) => record.meta.guest)
   const isAuthenticated = userService.getCurrentUser() !== null
-  
+
   if (requiresAuth && !isAuthenticated) {
     next('/signin')
   } else if (isGuest && isAuthenticated) {
