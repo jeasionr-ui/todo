@@ -3,7 +3,6 @@ import { getTodos, createTodo, updateTodo, deleteTodo } from '../../biz/todo/tod
 
 const router = express.Router();
 
-// 获取所有 todo
 router.get('/', async (req, res) => {
   try {
     const todos = await getTodos();
@@ -13,7 +12,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-// 新增 todo
 router.post('/', async (req, res) => {
   try {
     const todo = await createTodo(req.body);
@@ -23,7 +21,6 @@ router.post('/', async (req, res) => {
   }
 });
 
-// 更新 todo
 router.put('/:id', async (req, res) => {
   try {
     const todo = await updateTodo(req.params.id, req.body);
@@ -33,7 +30,6 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// 删除 todo
 router.delete('/:id', async (req, res) => {
   try {
     await deleteTodo(req.params.id);

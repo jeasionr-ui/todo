@@ -1,16 +1,13 @@
-import { mockNotifications } from './mockData'
+// TODO: 已废弃 mockData，需改为真实后端API，临时返回空数组/0，防止报错
 import type Notification from '@/services/types/NotificationType'
+
 /**
  * 获取所有通知
  * @returns 通知列表
  */
 export const getNotifications = (): Promise<Notification[]> => {
-  return new Promise((resolve) => {
-    // 模拟网络延迟
-    setTimeout(() => {
-      resolve(mockNotifications)
-    }, 300)
-  })
+  // TODO: 替换为真实API
+  return Promise.resolve([])
 }
 
 /**
@@ -18,27 +15,15 @@ export const getNotifications = (): Promise<Notification[]> => {
  * @returns 未读通知数量
  */
 export const getUnreadNotificationsCount = (): Promise<number> => {
-  return new Promise((resolve) => {
-    // 模拟网络延迟
-    setTimeout(() => {
-      // 这里可以根据实际需求修改逻辑
-      resolve(mockNotifications.length)
-    }, 200)
-  })
+  // TODO: 替换为真实API
+  return Promise.resolve(0)
 }
 
 /**
  * 标记通知为已读
- * @param id 通知ID
  * @returns 操作结果
  */
-export const markNotificationAsRead = (id: number): Promise<boolean> => {
-  return new Promise((resolve) => {
-    // 模拟网络延迟
-    setTimeout(() => {
-      // 这里可以根据实际需求修改逻辑
-      console.log(`标记通知 ${id} 为已读`)
-      resolve(true)
-    }, 200)
-  })
+export const markNotificationAsRead = (): Promise<boolean> => {
+  // TODO: 替换为真实API
+  return Promise.resolve(true)
 }
