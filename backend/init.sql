@@ -1,4 +1,9 @@
+-- 设置数据库字符集以支持emoji
+SET NAMES utf8mb4;
+SET CHARACTER SET utf8mb4;
+
 -- 用户表结构
+DROP TABLE IF EXISTS `user`;
 CREATE TABLE
   IF NOT EXISTS `user` (
     `id` VARCHAR(64) NOT NULL PRIMARY KEY COMMENT '用户唯一标识',
@@ -22,9 +27,10 @@ CREATE TABLE
     `status` ENUM ('active', 'inactive') DEFAULT 'active' COMMENT '用户状态（激活/禁用）',
     `socialAccounts` JSON COMMENT '用户第三方社交账号信息',
     `loginHistory` JSON COMMENT '用户登录历史记录'
-  );
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- 文件表结构
+DROP TABLE IF EXISTS `file`;
 CREATE TABLE
   IF NOT EXISTS `file` (
     `id` VARCHAR(64) NOT NULL PRIMARY KEY COMMENT '文件唯一标识',
@@ -37,9 +43,10 @@ CREATE TABLE
     `uploadedAt` DATETIME NOT NULL COMMENT '文件上传时间',
     `hash` VARCHAR(128) COMMENT '文件哈希值，用于去重',
     `status` ENUM ('active', 'deleted') DEFAULT 'active' COMMENT '文件状态'
-  );
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- 任务表结构
+DROP TABLE IF EXISTS `task`;
 CREATE TABLE
   IF NOT EXISTS `task` (
     `id` VARCHAR(64) NOT NULL PRIMARY KEY COMMENT '任务唯一标识',
@@ -51,9 +58,10 @@ CREATE TABLE
     `reminderTime` VARCHAR(32) COMMENT '提醒时间，格式HH:MM，用于设置任务提醒',
     `tags` VARCHAR(255) COMMENT '任务标签列表，逗号分隔的字符串',
     `attachments` VARCHAR(1024) COMMENT '任务附件ID列表，逗号分隔的字符串'
-  );
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- 习惯表结构
+DROP TABLE IF EXISTS `habit`;
 CREATE TABLE
   IF NOT EXISTS `habit` (
     `id` VARCHAR(64) NOT NULL PRIMARY KEY COMMENT '习惯唯一标识',
@@ -79,9 +87,10 @@ CREATE TABLE
     `longestStreak` INT DEFAULT 0 COMMENT '最长连续完成次数',
     `totalCompletions` INT DEFAULT 0 COMMENT '总完成次数',
     `lastCompletedAt` DATETIME COMMENT '最后完成时间'
-  );
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- 习惯完成历史表结构
+DROP TABLE IF EXISTS `habit_completion`;
 CREATE TABLE
   IF NOT EXISTS `habit_completion` (
     `id` VARCHAR(64) NOT NULL PRIMARY KEY COMMENT '完成记录唯一标识',
@@ -93,4 +102,4 @@ CREATE TABLE
     `updatedAt` DATETIME NOT NULL COMMENT '记录最后更新时间',
     FOREIGN KEY (`habitId`) REFERENCES `habit` (`id`) ON DELETE CASCADE,
     UNIQUE KEY `unique_habit_date` (`habitId`, `date`)
-  );
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
