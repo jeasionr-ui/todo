@@ -322,17 +322,35 @@ onMounted(() => {
 const openEdit = () => {
   if (currentUser.value) {
     editForm.value = { ...currentUser.value }
+    // 确保 socialAccounts 对象存在
+    if (!editForm.value.socialAccounts) {
+      editForm.value.socialAccounts = {}
+    }
+    // 初始化社交账户字段
+    editForm.value.socialAccounts.facebook = editForm.value.socialAccounts.facebook || ''
+    editForm.value.socialAccounts.twitter = editForm.value.socialAccounts.twitter || ''
+    editForm.value.socialAccounts.linkedin = editForm.value.socialAccounts.linkedin || ''
+    
     isProfileInfoModal.value = true
   }
 }
 
-const saveProfile = () => {
-  // 实际应用应调用API保存 editForm.value
-  // 这里只更新 localStorage 和 currentUser
-  if (currentUser.value) {
-    Object.assign(currentUser.value, editForm.value)
-    localStorage.setItem('user', JSON.stringify(currentUser.value))
-    isProfileInfoModal.value = false
+const saveProfile = async () => {
+  try {
+    // 调用API更新用户资料
+    const updatedUser = await userService.updateProfile(editForm.value)
+    if (updatedUser) {
+      // 更新本地数据
+      currentUser.value = updatedUser
+      isProfileInfoModal.value = false
+      // 显示成功提示
+      alert('个人资料更新成功！')
+    } else {
+      alert('更新失败，请重试')
+    }
+  } catch (error) {
+    console.error('更新用户资料失败:', error)
+    alert('更新失败，请重试')
   }
 }
 </script>
