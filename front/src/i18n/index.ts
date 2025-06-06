@@ -5,8 +5,7 @@ import { ref } from 'vue'
 
 type MessageSchema = typeof zh
 
-export const i18n = createI18n<[MessageSchema], 'zh' | 'en'>({ 
-  legacy: false,
+export const i18n = createI18n({ 
   locale: 'zh', // 默认语言为中文
   fallbackLocale: 'zh',
   messages: {
@@ -29,7 +28,7 @@ const currentLanguage = ref(i18nInstance.locale.value)
   
   // 切换语言
   const changeLanguage = (locale: 'zh' | 'en') => {
-    i18nInstance.locale.value = locale
+    i18nInstance.locale = locale
     localStorage.setItem('locale', locale)
   }
   
@@ -37,7 +36,7 @@ const currentLanguage = ref(i18nInstance.locale.value)
   const initLanguage = () => {
     const savedLocale = localStorage.getItem('locale') as 'zh' | 'en' | null
     if (savedLocale && (savedLocale === 'zh' || savedLocale === 'en')) {
-      i18nInstance.locale.value = savedLocale
+      i18nInstance.locale = savedLocale
     }
   }
   

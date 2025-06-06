@@ -59,6 +59,47 @@ export const userService = {
     return user && user.loginHistory ? user.loginHistory : []
   },
 
+  // 修改密码
+  async changePassword(currentPassword: string, newPassword: string): Promise<boolean> {
+    try {
+      const user = this.getCurrentUser()
+      if (!user) return false
+      
+      const token = localStorage.getItem('token')
+      await axios.put(`/api/users/${user.id}/password`, {
+        currentPassword,
+        newPassword
+      }, {
+        headers: token ? { Authorization: `Bearer ${token}` } : {}
+      })
+      return true
+    } catch {
+      return false
+    }
+  },
+
+  // 切换双因子认证
+  async toggleTwoFactor(enable: boolean): Promise<boolean> {
+    try {
+      const user = this.getCurrentUser()
+      if (!user) return false
+      
+      const token = localStorage.getItem('token')
+      await axios.put(`/api/users/${user.id}/two-factor`, {
+        enabled: enable
+      }, {
+        headers: token ? { Authorization: `Bearer ${token}` } : {}
+      })
+      
+      // 更新本地用户信息
+      const updatedUser = { ...user, twoFactorEnabled: enable }
+      localStorage.setItem('user', JSON.stringify(updatedUser))
+      return true
+    } catch {
+      return false
+    }
+  },
+
   // 更新用户资料
   async updateProfile(updates: Partial<User>): Promise<User | null> {
     const user = this.getCurrentUser()

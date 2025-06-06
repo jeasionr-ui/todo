@@ -334,7 +334,7 @@ onMounted(async () => {
     
     // 获取登录历史
     try {
-      const loginHistory = await userService.getLoginHistory(currentUser.id)
+      const loginHistory = await userService.getLoginHistory()
       if (loginHistory && loginHistory.length > 0) {
         // 将登录历史转换为活动会话格式
         activeSessions.value = loginHistory.slice(0, 5).map((history, index) => ({
@@ -384,7 +384,6 @@ const changePassword = async () => {
   
   try {
     const success = await userService.changePassword(
-      currentUser.id,
       passwordForm.value.currentPassword,
       passwordForm.value.newPassword
     )
@@ -417,7 +416,6 @@ const toggleTwoFactor = async () => {
   
   try {
     const success = await userService.toggleTwoFactor(
-      currentUser.id,
       twoFactorEnabled.value
     )
     

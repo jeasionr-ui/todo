@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { i18n } from '@/i18n'
 import { Mandarin } from 'flatpickr/dist/l10n/zh.js'
-import { English } from 'flatpickr/dist/l10n/default.js'
+import { english } from 'flatpickr/dist/l10n/default.js'
 
 /**
  * 提供 flatPickr 日期和时间选择器的配置
@@ -17,7 +17,7 @@ export function useFlatPickr() {
     altInput: true,
     altFormat: 'F j, Y',
     wrap: false,
-    locale: i18nInstance.locale.value === 'zh' ? Mandarin : English,
+    locale: i18nInstance.locale.value === 'zh' ? Mandarin : english,
   }))
 
   // 时间选择器配置
@@ -28,7 +28,7 @@ export function useFlatPickr() {
     time_24hr: false,
     minuteIncrement: 1,
     wrap: false,
-    locale: i18nInstance.locale.value === 'zh' ? Mandarin : English,
+    locale: i18nInstance.locale.value === 'zh' ? Mandarin : english,
   }))
 
   return {

@@ -36,11 +36,11 @@ const { currentLanguage, changeLanguage } = useLanguage()
 const i18n = useI18n()
 
 const dropdownOpen = ref(false)
-const dropdownRef = ref(null)
+const dropdownRef = ref<HTMLElement | null>(null)
 
 const languages = [
-  { code: 'zh', name: '中文' },
-  { code: 'en', name: 'English' }
+  { code: 'zh' as const, name: '中文' },
+  { code: 'en' as const, name: 'English' }
 ]
 
 // 修改计算属性，直接使用 i18n 实例的当前语言
@@ -52,8 +52,9 @@ const toggleDropdown = () => {
   dropdownOpen.value = !dropdownOpen.value
 }
 
-const handleClickOutside = (event) => {
-  if (dropdownRef.value && !dropdownRef.value.contains(event.target)) {
+const handleClickOutside = (event: Event) => {
+  const target = event.target as HTMLElement
+  if (dropdownRef.value && !dropdownRef.value.contains(target)) {
     dropdownOpen.value = false
   }
 }
