@@ -1,215 +1,800 @@
-#  项目框架分析
+# ToDo 前端应用
 
-这个项目是一个基于 Vue 3 和 Tailwind CSS 的ToDo 项目管理项目：
+基于 Vue 3 + TypeScript + Tailwind CSS 构建的现代化 ToDo 项目管理系统前端应用。
 
-## 项目需求
-本项目是一个基于 Vue 3 和 Tailwind CSS 的 ToDo 项目管理系统，旨在帮助用户高效管理任务、习惯和目标。主要功能包括：
+## 🚀 快速开始
 
-1. **用户管理**：包括用户注册、登录、信息查看/编辑、权限管理等功能。
-   - 支持多种注册方式（邮箱、手机号、第三方账号）
-   - 用户资料完善与个性化设置
-   - 用户头像上传与编辑
-   - 账号安全设置（密码修改、双因素认证）
-   - 用户活跃度与成就系统
+### 环境要求
+- Node.js 16.0+
+- npm 8.0+
 
-2. **任务管理**：任务为单体的项目，可以有定时，循环等，包括任务创建/编辑、任务查看/编辑、任务状态管理（待办、进行中、已完成）、任务优先级管理、任务标签管理、任务附件管理、任务提醒管理等功能。
-   - 支持任务拖拽排序与分类
-   - 任务依赖关系设置
-   - 任务时间估算与实际耗时记录
-   - 任务模板功能，快速创建常用任务
-   - 批量操作功能（批量编辑、删除、标记完成）
-   - 任务导入/导出功能（支持多种格式）
-   - 任务评论与协作功能
+### 安装与运行
 
-3. **习惯养成**：习惯为单体的任务，包括习惯创建/编辑、习惯查看/编辑、习惯完成记录管理。
-   - 习惯打卡日历视图
-   - 习惯连续完成统计与奖励机制
-   - 习惯养成进度可视化
-   - 习惯分类与标签管理
-   - 习惯提醒设置（固定时间、场景触发）
-   - 习惯养成社区与分享功能
-   - 习惯养成建议与指导
+```bash
+# 安装依赖
+npm install
 
-4. **目标管理**：目标为一系列任务的集合，比如数学考100分，允许创建一系列任务，包括目标创建/编辑、目标查看/编辑、目标完成记录管理。
-   - 目标分解为子目标与任务
-   - 目标进度追踪与可视化
-   - 目标时间线与里程碑设置
-   - 目标优先级管理
-   - 目标模板与最佳实践
-   - 目标回顾与反思功能
-   - 目标分享与协作
+# 开发模式启动
+npm run dev
 
-5. **日历管理**：包括日历创建/编辑、日历查看/编辑、日历事件管理等功能。
-   - 多视图支持（日、周、月、年视图）
-   - 日历与任务/习惯/目标的集成
-   - 日程冲突检测与提醒
-   - 重复事件设置（每日、每周、每月、自定义）
-   - 日历导入/导出（支持iCal格式）
-   - 多日历管理与颜色编码
-   - 公共假日与特殊日期标记
+# 构建生产版本
+npm run build
 
-6. **权限管理**：包括用户权限管理、任务权限管理等功能。
-   - 基于角色的访问控制（RBAC）
-   - 自定义角色与权限设置
-   - 资源级别权限控制
-   - 权限审计与日志
-   - 临时权限授予功能
-   - 团队与项目级别权限管理
+# 预览生产构建
+npm run preview
 
-7. **提醒通知**：包括任务到期提醒、任务完成提醒、任务完成情况提醒等功能。
-   - 多渠道通知（应用内、邮件、短信、推送通知）
-   - 自定义提醒时间与频率
-   - 智能提醒（基于用户习惯与优先级）
-   - 批量提醒管理
-   - 提醒模板与快速设置
-   - 免打扰模式设置
+# 类型检查
+npm run type-check
 
-8. **报表管理**：包括任务统计报表、任务进度报表、任务完成情况报表等功能。
-   - 个人生产力分析
-   - 习惯养成趋势分析
-   - 目标完成率与偏差分析
-   - 时间利用效率报表
-   - 自定义报表与数据导出
-   - 报表分享与打印功能
-   - 数据可视化仪表板
+# 代码检查
+npm run lint
+```
 
-9. **数据同步与备份**：
-   - 跨设备数据同步
-   - 自动备份与恢复
-   - 数据导入/导出功能
-   - 版本历史与回滚
+### 访问应用
+- 开发服务器: http://localhost:5173
+- 生产预览: http://localhost:4173
 
-10. **社交与协作功能**：
-    - 团队任务协作
-    - 目标共享与协作
-    - 社区互动与激励
-    - 成就分享功能
+## 🛠️ 技术栈
 
-11. **番茄钟时间管理**：
-   - 经典番茄工作法实现（25分钟工作，5分钟休息）
-   - 自定义工作和休息时间长度
-   - 长休息设置（每完成特定番茄数后的长休息）
-   - 番茄钟与任务集成功能
-   - 番茄钟统计与可视化报告
-   - 自动任务切换与提醒
-   - 番茄钟中断处理机制
-   - 白噪音/专注音乐集成
-   - 专注模式（自动禁用通知、全屏模式等）
-   - 多设备同步番茄钟状态
-   - 团队番茄钟共享（可选择性展示当前状态给团队成员）
-   - 番茄钟完成历史记录与回顾
-   - 基于番茄钟数据的工作效率分析
-   - 智能番茄钟建议（基于历史数据推荐最佳工作时段）
+### 核心框架
+- **Vue 3.5.13** - 渐进式 JavaScript 框架（Composition API）
+- **TypeScript** - 静态类型检查
+- **Vite** - 下一代前端构建工具
+- **Vue Router 4.5.0** - 官方路由管理器
+- **Pinia** - 状态管理库
 
+### UI 与样式
+- **Tailwind CSS 4.0.0** - 原子化 CSS 框架
+- **vue3-apexcharts** - 图表可视化库
+- **自研组件库** - 基于 Tailwind 的高质量组件
 
-## 非功能需求
+### 功能增强
+- **FullCalendar** - 日历组件
+- **Flatpickr** - 日期选择器
+- **Vuedraggable** - 拖拽功能
+- **Swiper** - 轮播组件
+- **Dropzone** - 文件上传
+- **Vue-Kanban** - 看板功能
 
-1. **性能需求**：
-   - 页面加载时间不超过2秒
-   - 支持同时处理至少100个并发用户
-   - 数据同步延迟不超过5秒
-   - 尽量使用taildwindcss admin自身component和ui kits，减少第三方依赖，减少app体积
+## 📁 项目结构
+```
+src/
+├── App.vue                 # 应用根组件
+├── main.ts                 # 应用入口文件
+├── index.d.ts              # 全局类型声明
+├── vue.shims.d.ts          # Vue 类型声明
+├── assets/                 # 静态资源
+│   └── main.css           # 主样式文件（Tailwind CSS）
+├── components/             # 可复用组件
+│   ├── charts/            # 图表组件
+│   │   ├── BarChart/      # 条形图
+│   │   └── LineChart/     # 折线图
+│   ├── common/            # 通用组件
+│   │   ├── ComponentCard.vue
+│   │   ├── ThemeToggler.vue
+│   │   ├── LanguageSwitcher.vue
+│   │   └── ...
+│   ├── forms/             # 表单组件
+│   │   └── FormElements/  # 表单元素
+│   ├── habits/            # 习惯管理组件
+│   │   └── HabitDialog.vue
+│   ├── layout/            # 布局组件
+│   │   ├── AdminLayout.vue    # 管理布局
+│   │   ├── AppHeader.vue      # 顶部导航
+│   │   ├── AppSidebar.vue     # 侧边栏
+│   │   └── ...
+│   ├── task/              # 任务管理组件
+│   │   └── TaskDialog.vue
+│   └── ui/                # UI 基础组件
+│       ├── Button.vue
+│       ├── Modal.vue
+│       ├── Toast.vue
+│       └── ...
+├── composables/            # 组合式函数
+│   ├── useFlatPickr.ts    # 日期选择器
+│   ├── useFormatters.ts   # 格式化工具
+│   └── useSidebar.ts      # 侧边栏状态
+├── i18n/                  # 国际化
+│   ├── index.ts           # i18n 配置
+│   └── locales/           # 语言包
+│       ├── en.ts          # 英文
+│       └── zh.ts          # 中文
+├── icons/                 # 图标组件
+│   ├── index.ts           # 图标导出
+│   └── *.vue              # 各种图标组件
+├── router/                # 路由配置
+│   └── index.ts           # 路由定义
+├── services/              # API 服务
+│   ├── habitService.ts    # 习惯服务
+│   ├── taskService.ts     # 任务服务
+│   ├── userService.ts     # 用户服务
+│   ├── toastService.ts    # 提示服务
+│   └── types/             # 类型定义
+│       ├── HabitType.ts
+│       ├── TaskType.ts
+│       └── ...
+├── types/                 # 全局类型
+│   └── user.ts
+└── views/                 # 页面视图
+    ├── Auth/              # 认证页面
+    │   ├── SignIn.vue
+    │   ├── SignUp.vue
+    │   └── ...
+    ├── Dashboard.vue      # 仪表盘
+    ├── Habits/            # 习惯管理
+    │   └── HabitList.vue
+    ├── Tasks/             # 任务管理
+    │   └── TaskList.vue
+    └── ...
+```
 
-2. **可用性需求**：
-   - 系统可用性达到99.9%
-   - 支持主流浏览器（Chrome、Firefox、Safari、Edge）
-   - 响应式设计，适配桌面和移动设备
-   - 支持离线使用基本功能
+## 🎨 核心特性
 
-3. **安全需求**：
-   - 用户数据加密存储
-   - 防止XSS、CSRF等常见web攻击
-   - 敏感操作需二次验证
-   - 完善的数据备份与恢复机制
+### 主题系统
+- 🌙 支持亮色/暗色主题切换
+- 🎨 使用 Tailwind CSS 的主题变量
+- 💾 主题设置持久化到 localStorage
+- 🔄 响应式主题切换动画
 
-4. **可扩展性需求**：
-   - 提供API接口，支持与其他系统集成
-   - 模块化设计，便于功能扩展
-   - 支持多语言环境
+### 响应式设计
+- 📱 移动端优先的响应式布局
+- 🖥️ 支持桌面、平板、移动设备
+- 📐 基于 Tailwind CSS 的断点系统
+- 🎯 针对不同屏幕尺寸的优化
 
-5. **可维护性需求**：
-   - 清晰的代码结构与注释
-   - 良好的文档编写
-   - 版本控制与代码审查流程
+### 组件化架构
+- 🧩 高度模块化的组件设计
+- 🔧 可复用的 UI 组件库
+- 📦 布局组件与业务组件分离
+- 🎭 基于 Composition API 的逻辑复用
 
-## 技术要求
+### 国际化支持
+- 🌍 多语言支持（中文/英文）
+- 🔄 动态语言切换
+- 📝 类型安全的翻译键
+- 🎨 RTL 布局支持（预留）
 
-1. **前端技术**：
-   - Vue 3.5+（Composition API）
-   - TypeScript
-   - Tailwind CSS 4.0+
-   - Vue Router 4.5+
-   - Pinia 状态管理
-   - Vite 构建工具
+### 状态管理
+- 🗃️ 基于 Pinia 的状态管理
+- 🔄 响应式状态更新
+- 💾 状态持久化
+- 🐛 Vue DevTools 集成
 
-2. **UI组件与库**：
-   - 日历组件：FullCalendar
-   - 图表库：ApexCharts
-   - 拖拽功能：Vuedraggable
-   - 日期选择器：Flatpickr
-   - 看板功能：Vue-Kanban
+## 🏗️ 架构设计
 
-3. **API与数据存储**：
-   - RESTful API设计
-   - 支持IndexedDB本地存储
-   - 云端数据同步
+### 分层架构
+```
+┌─────────────────┐
+│     Views       │  ← 页面视图层
+├─────────────────┤
+│   Components    │  ← 组件层
+├─────────────────┤
+│   Composables   │  ← 逻辑复用层
+├─────────────────┤
+│    Services     │  ← API 服务层
+├─────────────────┤
+│     Types       │  ← 类型定义层
+└─────────────────┘
+```
 
-## 用户界面设计要求
+### 设计原则
+- **单一职责**: 每个组件/函数只负责一个功能
+- **关注点分离**: UI、逻辑、数据分离
+- **可复用性**: 组件和逻辑的高度复用
+- **可测试性**: 便于单元测试和集成测试
+- **类型安全**: 完整的 TypeScript 类型覆盖
 
-1. **整体风格**：
-   - 简洁现代的界面设计
-   - 符合Material Design或类似设计规范
-   - 支持亮色/暗色主题切换
-   - 可自定义主题颜色
+## 🔧 开发指南
 
-2. **交互设计**：
-   - 拖拽操作支持
-   - 快捷键支持
-   - 上下文菜单
-   - 渐进式引导与提示
+### 组件开发规范
 
-3. **响应式设计**：
-   - 桌面端优化布局
-   - 平板设备适配
-   - 移动端友好界面
+#### 1. 组件命名
+```typescript
+// 使用 PascalCase
+export default defineComponent({
+  name: 'TaskDialog'
+})
+```
 
-## 项目实施计划
+#### 2. 组件结构
+```vue
+<template>
+  <!-- 模板内容 -->
+</template>
 
-1. **第一阶段**：核心功能实现
-   - 用户管理系统
-   - 基础任务管理
-   - 简单报表功能
+<script setup lang="ts">
+// 导入
+import { ref, computed } from 'vue'
 
-2. **第二阶段**：扩展功能
-   - 习惯养成系统
-   - 目标管理功能
-   - 高级日历功能
+// 类型定义
+interface Props {
+  // props 类型
+}
 
-3. **第三阶段**：高级功能与优化
-   - 社交与协作功能
-   - 高级报表与数据分析
-   - 性能优化与体验提升
+interface Emits {
+  // events 类型
+}
 
+// Props & Emits
+const props = defineProps<Props>()
+const emit = defineEmits<Emits>()
 
+// 响应式数据
+const data = ref('')
 
-## 技术栈
+// 计算属性
+const computedValue = computed(() => {
+  // 计算逻辑
+})
 
-1. **前端框架**：Vue 3.5.13（使用 Composition API）
-2. **构建工具**：Vite
-3. **CSS 框架**：Tailwind CSS 4.0.0
-4. **路由管理**：Vue Router 4.5.0
-5. **TypeScript**：项目使用 TypeScript 进行类型检查
-6. **图表库**：ApexCharts（vue3-apexcharts）
-7. **其他功能组件**：
-   - FullCalendar（日历组件）
-   - Flatpickr（日期选择器）
-   - JSVectorMap（地图组件）
-   - Swiper（轮播组件）
-   - Dropzone（文件上传）
-   - Vue-Kanban（看板）
-   - Vuedraggable（拖拽功能）
+// 方法
+const handleClick = () => {
+  // 事件处理
+}
+</script>
 
-## 项目结构
+<style scoped>
+/* 组件样式（优先使用 Tailwind 类） */
+</style>
+```
+
+#### 3. 样式规范
+```vue
+<!-- 优先使用 Tailwind CSS 类 -->
+<div class="flex items-center justify-between p-4 bg-white dark:bg-gray-800">
+  <h1 class="text-lg font-semibold text-gray-900 dark:text-white">
+    标题
+  </h1>
+</div>
+```
+
+### API 服务开发
+
+#### 1. 服务文件结构
+```typescript
+// taskService.ts
+import type { Task, CreateTaskRequest, UpdateTaskRequest } from './types/TaskType'
+
+export class TaskService {
+  private baseUrl = '/api/tasks'
+
+  async getTasks(): Promise<Task[]> {
+    // 获取任务列表
+  }
+
+  async createTask(request: CreateTaskRequest): Promise<Task> {
+    // 创建任务
+  }
+
+  async updateTask(id: string, request: UpdateTaskRequest): Promise<Task> {
+    // 更新任务
+  }
+
+  async deleteTask(id: string): Promise<void> {
+    // 删除任务
+  }
+}
+
+export const taskService = new TaskService()
+```
+
+#### 2. 类型定义规范
+```typescript
+// types/TaskType.ts
+export interface Task {
+  id: string
+  title: string
+  description?: string
+  completed: boolean
+  priority: TaskPriority
+  createdAt: string
+  updatedAt: string
+}
+
+export interface CreateTaskRequest {
+  title: string
+  description?: string
+  priority?: TaskPriority
+}
+
+export interface UpdateTaskRequest {
+  title?: string
+  description?: string
+  completed?: boolean
+  priority?: TaskPriority
+}
+
+export enum TaskPriority {
+  LOW = 'low',
+  MEDIUM = 'medium',
+  HIGH = 'high',
+  URGENT = 'urgent'
+}
+```
+
+### 组合式函数开发
+
+```typescript
+// composables/useTask.ts
+import { ref, computed } from 'vue'
+import { taskService } from '@/services/taskService'
+import type { Task } from '@/services/types/TaskType'
+
+export function useTask() {
+  const tasks = ref<Task[]>([])
+  const loading = ref(false)
+  const error = ref<string | null>(null)
+
+  const completedTasks = computed(() => 
+    tasks.value.filter(task => task.completed)
+  )
+
+  const pendingTasks = computed(() => 
+    tasks.value.filter(task => !task.completed)
+  )
+
+  const loadTasks = async () => {
+    try {
+      loading.value = true
+      error.value = null
+      tasks.value = await taskService.getTasks()
+    } catch (err) {
+      error.value = err instanceof Error ? err.message : '加载失败'
+    } finally {
+      loading.value = false
+    }
+  }
+
+  const createTask = async (title: string) => {
+    try {
+      const newTask = await taskService.createTask({ title })
+      tasks.value.push(newTask)
+    } catch (err) {
+      error.value = err instanceof Error ? err.message : '创建失败'
+    }
+  }
+
+  return {
+    tasks: readonly(tasks),
+    loading: readonly(loading),
+    error: readonly(error),
+    completedTasks,
+    pendingTasks,
+    loadTasks,
+    createTask
+  }
+}
+```
+
+## 🎨 UI 组件库
+
+### 基础组件
+
+#### Button 组件
+```vue
+<template>
+  <button
+    :class="buttonClasses"
+    :disabled="disabled"
+    @click="handleClick"
+  >
+    <slot />
+  </button>
+</template>
+
+<script setup lang="ts">
+import { computed } from 'vue'
+
+interface Props {
+  variant?: 'primary' | 'secondary' | 'danger'
+  size?: 'sm' | 'md' | 'lg'
+  disabled?: boolean
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  variant: 'primary',
+  size: 'md',
+  disabled: false
+})
+
+const emit = defineEmits<{
+  click: [event: MouseEvent]
+}>()
+
+const buttonClasses = computed(() => [
+  'inline-flex items-center justify-center rounded-md font-medium transition-colors',
+  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
+  'disabled:pointer-events-none disabled:opacity-50',
+  {
+    // 变体样式
+    'bg-blue-600 text-white hover:bg-blue-700 focus-visible:ring-blue-500': 
+      props.variant === 'primary',
+    'bg-gray-200 text-gray-900 hover:bg-gray-300 focus-visible:ring-gray-500': 
+      props.variant === 'secondary',
+    'bg-red-600 text-white hover:bg-red-700 focus-visible:ring-red-500': 
+      props.variant === 'danger',
+  },
+  {
+    // 尺寸样式
+    'h-8 px-3 text-sm': props.size === 'sm',
+    'h-10 px-4 text-base': props.size === 'md',
+    'h-12 px-6 text-lg': props.size === 'lg',
+  }
+])
+
+const handleClick = (event: MouseEvent) => {
+  if (!props.disabled) {
+    emit('click', event)
+  }
+}
+</script>
+```
+
+### 使用示例
+```vue
+<template>
+  <div class="space-y-4">
+    <!-- 按钮组件 -->
+    <Button variant="primary" @click="handleSave">
+      保存
+    </Button>
+    
+    <!-- 模态框组件 -->
+    <Modal v-model:open="showModal" title="编辑任务">
+      <TaskForm @submit="handleSubmit" />
+    </Modal>
+    
+    <!-- 提示组件 -->
+    <Toast 
+      v-model:show="showToast" 
+      :type="toastType" 
+      :message="toastMessage" 
+    />
+  </div>
+</template>
+```
+
+## 🔄 状态管理
+
+### Pinia Store 示例
+
+```typescript
+// stores/taskStore.ts
+import { defineStore } from 'pinia'
+import { ref, computed } from 'vue'
+import { taskService } from '@/services/taskService'
+import type { Task } from '@/services/types/TaskType'
+
+export const useTaskStore = defineStore('task', () => {
+  // State
+  const tasks = ref<Task[]>([])
+  const loading = ref(false)
+  const error = ref<string | null>(null)
+
+  // Getters
+  const completedTasks = computed(() => 
+    tasks.value.filter(task => task.completed)
+  )
+  
+  const pendingTasks = computed(() => 
+    tasks.value.filter(task => !task.completed)
+  )
+  
+  const taskById = computed(() => 
+    (id: string) => tasks.value.find(task => task.id === id)
+  )
+
+  // Actions
+  const fetchTasks = async () => {
+    try {
+      loading.value = true
+      error.value = null
+      tasks.value = await taskService.getTasks()
+    } catch (err) {
+      error.value = err instanceof Error ? err.message : '获取任务失败'
+      throw err
+    } finally {
+      loading.value = false
+    }
+  }
+
+  const addTask = async (title: string) => {
+    try {
+      const newTask = await taskService.createTask({ title })
+      tasks.value.push(newTask)
+      return newTask
+    } catch (err) {
+      error.value = err instanceof Error ? err.message : '创建任务失败'
+      throw err
+    }
+  }
+
+  const updateTask = async (id: string, updates: Partial<Task>) => {
+    try {
+      const updatedTask = await taskService.updateTask(id, updates)
+      const index = tasks.value.findIndex(task => task.id === id)
+      if (index !== -1) {
+        tasks.value[index] = updatedTask
+      }
+      return updatedTask
+    } catch (err) {
+      error.value = err instanceof Error ? err.message : '更新任务失败'
+      throw err
+    }
+  }
+
+  const removeTask = async (id: string) => {
+    try {
+      await taskService.deleteTask(id)
+      const index = tasks.value.findIndex(task => task.id === id)
+      if (index !== -1) {
+        tasks.value.splice(index, 1)
+      }
+    } catch (err) {
+      error.value = err instanceof Error ? err.message : '删除任务失败'
+      throw err
+    }
+  }
+
+  const clearError = () => {
+    error.value = null
+  }
+
+  return {
+    // State
+    tasks: readonly(tasks),
+    loading: readonly(loading),
+    error: readonly(error),
+    
+    // Getters
+    completedTasks,
+    pendingTasks,
+    taskById,
+    
+    // Actions
+    fetchTasks,
+    addTask,
+    updateTask,
+    removeTask,
+    clearError
+  }
+})
+```
+
+## 🚀 构建与部署
+
+### 构建配置
+
+#### Vite 配置 (vite.config.ts)
+```typescript
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import { resolve } from 'path'
+
+export default defineConfig({
+  plugins: [vue()],
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, 'src')
+    }
+  },
+  build: {
+    target: 'es2015',
+    outDir: 'dist',
+    assetsDir: 'assets',
+    rollupOptions: {
+      output: {
+        chunkFileNames: 'js/[name]-[hash].js',
+        entryFileNames: 'js/[name]-[hash].js',
+        assetFileNames: ({ name }) => {
+          if (/\.(gif|jpe?g|png|svg)$/.test(name ?? '')) {
+            return 'images/[name]-[hash][extname]'
+          }
+          if (/\.css$/.test(name ?? '')) {
+            return 'css/[name]-[hash][extname]'
+          }
+          return 'assets/[name]-[hash][extname]'
+        }
+      }
+    }
+  },
+  server: {
+    port: 5173,
+    host: true,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000',
+        changeOrigin: true
+      }
+    }
+  }
+})
+```
+
+### 部署脚本
+
+```bash
+#!/bin/bash
+# deploy.sh
+
+echo "开始构建前端应用..."
+
+# 安装依赖
+npm ci
+
+# 构建应用
+npm run build
+
+# 检查构建是否成功
+if [ $? -eq 0 ]; then
+    echo "构建成功！"
+    echo "构建文件位于 dist/ 目录"
+    
+    # 可选：部署到服务器
+    # rsync -avz dist/ user@server:/var/www/html/
+    
+else
+    echo "构建失败！"
+    exit 1
+fi
+```
+
+## 🧪 测试
+
+### 单元测试配置
+
+```typescript
+// vitest.config.ts
+import { defineConfig } from 'vitest/config'
+import vue from '@vitejs/plugin-vue'
+import { resolve } from 'path'
+
+export default defineConfig({
+  plugins: [vue()],
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: ['./src/tests/setup.ts']
+  },
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, 'src')
+    }
+  }
+})
+```
+
+### 测试示例
+
+```typescript
+// src/components/ui/__tests__/Button.test.ts
+import { describe, it, expect, vi } from 'vitest'
+import { mount } from '@vue/test-utils'
+import Button from '../Button.vue'
+
+describe('Button', () => {
+  it('渲染正确的文本', () => {
+    const wrapper = mount(Button, {
+      slots: {
+        default: '点击我'
+      }
+    })
+    
+    expect(wrapper.text()).toBe('点击我')
+  })
+
+  it('处理点击事件', async () => {
+    const onClick = vi.fn()
+    const wrapper = mount(Button, {
+      props: {
+        onClick
+      },
+      slots: {
+        default: '点击我'
+      }
+    })
+
+    await wrapper.trigger('click')
+    expect(onClick).toHaveBeenCalledTimes(1)
+  })
+
+  it('禁用状态下不触发点击事件', async () => {
+    const onClick = vi.fn()
+    const wrapper = mount(Button, {
+      props: {
+        disabled: true,
+        onClick
+      },
+      slots: {
+        default: '点击我'
+      }
+    })
+
+    await wrapper.trigger('click')
+    expect(onClick).not.toHaveBeenCalled()
+  })
+})
+```
+
+## 📝 常见问题
+
+### Q: 如何添加新的主题色？
+A: 在 `tailwind.config.js` 中扩展颜色配置：
+
+```javascript
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        brand: {
+          50: '#eff6ff',
+          500: '#3b82f6',
+          900: '#1e3a8a'
+        }
+      }
+    }
+  }
+}
+```
+
+### Q: 如何在组件中使用国际化？
+A: 使用 `useI18n` composable：
+
+```vue
+<script setup lang="ts">
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+</script>
+
+<template>
+  <h1>{{ t('common.welcome') }}</h1>
+</template>
+```
+
+### Q: 如何处理API错误？
+A: 在服务层统一处理错误：
+
+```typescript
+// services/api.ts
+class ApiClient {
+  async request<T>(config: RequestConfig): Promise<T> {
+    try {
+      const response = await fetch(config.url, config)
+      
+      if (!response.ok) {
+        throw new ApiError(response.status, await response.text())
+      }
+      
+      return await response.json()
+    } catch (error) {
+      if (error instanceof ApiError) {
+        throw error
+      }
+      throw new ApiError(0, '网络错误')
+    }
+  }
+}
+```
+
+## 🤝 贡献指南
+
+### 开发流程
+1. Fork 项目仓库
+2. 创建功能分支: `git checkout -b feature/new-feature`
+3. 提交更改: `git commit -m "feat: 添加新功能"`
+4. 推送分支: `git push origin feature/new-feature`
+5. 创建 Pull Request
+
+### 代码规范
+- 遵循 ESLint 和 Prettier 配置
+- 使用 TypeScript 严格模式
+- 编写单元测试
+- 更新相关文档
+
+---
+
+更多信息请参考[项目主文档](../README.md)。
 
 ```
 /src
