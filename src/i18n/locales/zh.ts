@@ -375,6 +375,7 @@ export default {
       title: '暂无习惯',
       description: '创建您的第一个习惯，开始养成良好的生活方式',
       create: '创建习惯',
+      create_first: '创建您的第一个习惯',
     },
 
     // 表单相关

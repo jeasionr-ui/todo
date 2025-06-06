@@ -375,6 +375,7 @@ export default {
       title: 'No Habits',
       description: 'Create your first habit to start building a better lifestyle',
       create: 'Create Habit',
+      create_first: 'Create your first habit',
     },
 
     form: {

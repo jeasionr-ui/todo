@@ -361,7 +361,7 @@ import HabitDialog from '@/components/habits/HabitDialog.vue'
 
 
 import { toastService } from '@/services/toastService'
-import { habitService } from '@/services/habitService'
+import habitService from '@/services/habitService'
 import type Habit from '@/services/types/HabitType'
 
 
@@ -584,14 +584,10 @@ const confirmDeleteHabit = async () => {
   if (!habitToDelete.value) return
 
   try {
-    const success = await habitService.deleteHabit(habitToDelete.value.id)
-    if (success) {
-      toastService.success(t('habits.delete_success'))
-      // 重新加载习惯列表
-      await loadHabits()
-    } else {
-      toastService.error(t('habits.delete_error'))
-    }
+    await habitService.deleteHabit(habitToDelete.value.id)
+    toastService.success(t('habits.delete_success'))
+    // 重新加载习惯列表
+    await loadHabits()
   } catch (error) {
     console.error('Failed to delete habit:', error)
     toastService.error(t('habits.delete_error'))
@@ -608,21 +604,16 @@ const confirmDeleteHabit = async () => {
  */
 const toggleArchiveStatus = async (habit: Habit) => {
   try {
-    let success
     if (habit.isArchived) {
-      success = await habitService.unarchiveHabit(habit.id)
-      if (success) toastService.success(t('habits.unarchive_success'))
+      await habitService.unarchiveHabit(habit.id)
+      toastService.success(t('habits.unarchive_success'))
     } else {
-      success = await habitService.archiveHabit(habit.id)
-      if (success) toastService.success(t('habits.archive_success'))
+      await habitService.archiveHabit(habit.id)
+      toastService.success(t('habits.archive_success'))
     }
-
-    if (!success) {
-      toastService.error(habit.isArchived ? t('habits.unarchive_error') : t('habits.archive_error'))
-    } else {
-      // 重新加载习惯列表
-      await loadHabits()
-    }
+    
+    // 重新加载习惯列表
+    await loadHabits()
   } catch (error) {
     console.error('Failed to toggle archive status:', error)
     toastService.error(habit.isArchived ? t('habits.unarchive_error') : t('habits.archive_error'))
@@ -641,11 +632,11 @@ const toggleHabitCompletion = async (habit: Habit) => {
   try {
     if (isCompletedToday(habit)) {
       // 取消今日打卡
-      await habitService.uncompleteHabit(habit.id, today)
+      await habitService.unmarkHabitComplete(habit.id, today)
       toastService.success(t('habits.uncheck_success'))
     } else {
       // 完成今日打卡
-      await habitService.completeHabit(habit.id, today)
+      await habitService.markHabitComplete(habit.id, today)
       toastService.success(t('habits.check_success'))
     }
     // 重新加载习惯列表

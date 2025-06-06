@@ -1,4 +1,4 @@
-import { getAllTasksDb, createTaskDb, updateTaskDb, deleteTaskDb } from '../../db/todo/todo_db.js';
+import { getAllTasksDb, createTaskDb, updateTaskDb, deleteTaskDb } from '../../db/task/task_db.js';
 
 export async function getTodos() {
   return await getAllTasksDb();

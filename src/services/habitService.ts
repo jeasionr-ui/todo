@@ -1,319 +1,273 @@
-import { mockHabits } from './mockData'
 import type Habit from '@/services/types/HabitType'
 
+const API_BASE_URL = 'http://localhost:3001/api/habits'
+
 /**
- * 获取所有习惯
- * @returns 习惯列表
+ * API 错误类
  */
-export const getHabits = (): Promise<Habit[]> => {
-  return new Promise((resolve) => {
-    // 模拟网络延迟
-    setTimeout(() => {
-      resolve(mockHabits)
-    }, 300)
-  })
+export class ApiError extends Error {
+  constructor(
+    message: string,
+    public status: number,
+    public data?: any,
+  ) {
+    super(message)
+    this.name = 'ApiError'
+  }
+} /**
+ * 处理API响应
+ */
+async function handleResponse<T>(response: Response): Promise<T> {
+  if (!response.ok) {
+    const errorData = await response.json().catch(() => ({}))
+    throw new ApiError(errorData.message || '请求失败', response.status, errorData)
+  }
+
+  const responseData = await response.json()
+  
+  // 如果响应包含success字段，说明是标准的API响应格式
+  if (responseData.success !== undefined) {
+    if (!responseData.success) {
+      throw new ApiError(responseData.message || '请求失败', response.status, responseData)
+    }
+    // 返回data字段中的实际数据
+    return responseData.data
+  }
+  
+  // 否则直接返回响应数据
+  return responseData
+} /**
+ * 发送API请求
+ */
+async function apiRequest<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
+  const url = `${API_BASE_URL}${endpoint}`
+
+  const defaultOptions: RequestInit = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }
+
+  const mergedOptions = {
+    ...defaultOptions,
+    ...options,
+    headers: {
+      ...defaultOptions.headers,
+      ...options.headers,
+    },
+  }
+
+  try {
+    const response = await fetch(url, mergedOptions)
+    return await handleResponse<T>(response)
+  } catch (error) {
+    if (error instanceof ApiError) {
+      throw error
+    }
+    throw new ApiError('网络错误', 0, { originalError: error })
+  }
+} /**
+ * 获取所有习惯
+ */
+export const getHabits = async (): Promise<Habit[]> => {
+  return apiRequest<Habit[]>('/')
 }
-
-
-
-
 
 /**
  * 获取习惯详情
- * @param id 习惯ID
- * @returns 习惯详情
  */
-export const getHabitById = (id: string): Promise<Habit | null> => {
-  return new Promise((resolve) => {
-    // 模拟网络延迟
-    setTimeout(() => {
-      const habit = mockHabits.find((habit) => habit.id === id) || null
-      resolve(habit)
-    }, 200)
-  })
+export const getHabitById = async (id: string): Promise<Habit> => {
+  return apiRequest<Habit>(`/${id}`)
 }
 
 /**
  * 创建新习惯
- * @param habit 习惯数据（不包含id）
- * @returns 创建的习惯
  */
-export const createHabit = (habit: Omit<Habit, 'id' | 'createdAt' | 'updatedAt' | 'streakCount' | 'longestStreak' | 'totalCompletions' | 'completionHistory' | 'lastCompletedAt'>): Promise<Habit> => {
-  return new Promise((resolve) => {
-    // 模拟网络延迟
-    setTimeout(() => {
-      const newHabit: Habit = {
-        ...habit,
-        id: `${mockHabits.length + 1}`,
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString(),
-        streakCount: 0,
-        longestStreak: 0,
-        totalCompletions: 0,
-        completionHistory: [],
-        lastCompletedAt: null
-      }
-      mockHabits.push(newHabit)
-      resolve(newHabit)
-    }, 300)
+export const createHabit = async (
+  habit: Omit<
+    Habit,
+    | 'id'
+    | 'createdAt'
+    | 'updatedAt'
+    | 'streakCount'
+    | 'longestStreak'
+    | 'totalCompletions'
+    | 'completionHistory'
+    | 'lastCompletedAt'
+  >,
+): Promise<Habit> => {
+  return apiRequest<Habit>('/', {
+    method: 'POST',
+    body: JSON.stringify(habit),
   })
-}
-
-/**
+} /**
  * 更新习惯
- * @param id 习惯ID
- * @param updates 更新的字段
- * @returns 更新后的习惯
  */
-export const updateHabit = (
-  id: string,
-  updates: Partial<Omit<Habit, 'id' | 'createdAt' | 'updatedAt'>>,
-): Promise<Habit | null> => {
-  return new Promise((resolve) => {
-    // 模拟网络延迟
-    setTimeout(() => {
-      const index = mockHabits.findIndex((habit) => habit.id === id)
-      if (index === -1) {
-        resolve(null)
-        return
-      }
-
-      const updatedHabit: Habit = {
-        ...mockHabits[index],
-        ...updates,
-        updatedAt: new Date().toISOString(),
-      }
-      mockHabits[index] = updatedHabit
-      resolve(updatedHabit)
-    }, 300)
+export const updateHabit = async (id: string, habit: Partial<Habit>): Promise<Habit> => {
+  return apiRequest<Habit>(`/${id}`, {
+    method: 'PUT',
+    body: JSON.stringify(habit),
   })
 }
 
 /**
- * 删除习惯
- * @param id 习惯ID
- * @returns 操作结果
+ * 删除习惯（软删除）
  */
-export const deleteHabit = (id: string): Promise<boolean> => {
-  return new Promise((resolve) => {
-    // 模拟网络延迟
-    setTimeout(() => {
-      const index = mockHabits.findIndex((habit) => habit.id === id)
-      if (index === -1) {
-        resolve(false)
-        return
-      }
-
-      mockHabits.splice(index, 1)
-      resolve(true)
-    }, 200)
+export const deleteHabit = async (id: string): Promise<void> => {
+  return apiRequest<void>(`/${id}`, {
+    method: 'DELETE',
   })
 }
 
 /**
- * 完成习惯打卡
- * @param id 习惯ID
- * @param date 打卡日期
- * @param note 打卡备注
- * @returns 更新后的习惯
+ * 彻底删除习惯
  */
-export const completeHabit = (
-  id: string,
-  date: string,
-  note: string | null = null,
-): Promise<Habit | null> => {
-  return new Promise((resolve) => {
-    // 模拟网络延迟
-    setTimeout(() => {
-      const index = mockHabits.findIndex((habit) => habit.id === id)
-      if (index === -1) {
-        resolve(null)
-        return
-      }
-
-      const habit = { ...mockHabits[index] }
-      
-      // 检查是否已经完成过
-      const existingCompletion = habit.completionHistory.find(c => c.date === date)
-      if (existingCompletion) {
-        // 已经完成过，更新备注
-        existingCompletion.note = note
-      } else {
-        // 新增完成记录
-        habit.completionHistory.push({
-          date,
-          isCompleted: true,
-          note
-        })
-        
-        // 更新统计数据
-        habit.totalCompletions += 1
-        habit.lastCompletedAt = new Date().toISOString()
-        
-        // 计算连续完成次数
-        // 这里简化处理，实际应用中需要根据习惯的频率类型计算
-        habit.streakCount += 1
-        if (habit.streakCount > habit.longestStreak) {
-          habit.longestStreak = habit.streakCount
-        }
-      }
-      
-      habit.updatedAt = new Date().toISOString()
-      mockHabits[index] = habit
-      resolve(habit)
-    }, 300)
+export const permanentDeleteHabit = async (id: string): Promise<void> => {
+  return apiRequest<void>(`/${id}/permanent`, {
+    method: 'DELETE',
   })
-}
-
-/**
- * 取消习惯打卡
- * @param id 习惯ID
- * @param date 打卡日期
- * @returns 更新后的习惯
- */
-export const uncompleteHabit = (
-  id: string,
-  date: string,
-): Promise<Habit | null> => {
-  return new Promise((resolve) => {
-    // 模拟网络延迟
-    setTimeout(() => {
-      const index = mockHabits.findIndex((habit) => habit.id === id)
-      if (index === -1) {
-        resolve(null)
-        return
-      }
-
-      const habit = { ...mockHabits[index] }
-      
-      // 查找并移除完成记录
-      const completionIndex = habit.completionHistory.findIndex(c => c.date === date)
-      if (completionIndex !== -1) {
-        habit.completionHistory.splice(completionIndex, 1)
-        
-        // 更新统计数据
-        habit.totalCompletions = Math.max(0, habit.totalCompletions - 1)
-        
-        // 重新计算最后完成时间
-        if (habit.completionHistory.length > 0) {
-          const lastCompletion = habit.completionHistory.reduce((latest, current) => {
-            return new Date(latest.date) > new Date(current.date) ? latest : current
-          })
-          habit.lastCompletedAt = new Date(`${lastCompletion.date}T23:59:59`).toISOString()
-        } else {
-          habit.lastCompletedAt = null
-        }
-        
-        // 重新计算连续完成次数
-        // 这里简化处理，实际应用中需要根据习惯的频率类型计算
-        habit.streakCount = Math.max(0, habit.streakCount - 1)
-      }
-      
-      habit.updatedAt = new Date().toISOString()
-      mockHabits[index] = habit
-      resolve(habit)
-    }, 300)
-  })
-}
-
-/**
- * 获取习惯统计数据
- * @param id 习惯ID
- * @returns 习惯统计数据
- */
-export const getHabitStats = (id: string): Promise<{
-  totalDays: number
-  completedDays: number
-  completionRate: number
-  currentStreak: number
-  longestStreak: number
-} | null> => {
-  return new Promise((resolve) => {
-    // 模拟网络延迟
-    setTimeout(() => {
-      const habit = mockHabits.find((habit) => habit.id === id)
-      if (!habit) {
-        resolve(null)
-        return
-      }
-
-      const startDate = new Date(habit.startDate)
-      const today = new Date()
-      const totalDays = Math.floor((today.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24)) + 1
-      const completedDays = habit.totalCompletions
-      const completionRate = totalDays > 0 ? (completedDays / totalDays) * 100 : 0
-
-      resolve({
-        totalDays,
-        completedDays,
-        completionRate,
-        currentStreak: habit.streakCount,
-        longestStreak: habit.longestStreak
-      })
-    }, 200)
-  })
-}
-
-/**
+} /**
  * 归档习惯
- * @param id 习惯ID
- * @returns 操作结果
  */
-export const archiveHabit = (id: string): Promise<boolean> => {
-  return new Promise((resolve) => {
-    // 模拟网络延迟
-    setTimeout(() => {
-      const index = mockHabits.findIndex((habit) => habit.id === id)
-      if (index === -1) {
-        resolve(false)
-        return
-      }
-
-      mockHabits[index] = {
-        ...mockHabits[index],
-        isArchived: true,
-        updatedAt: new Date().toISOString()
-      }
-      resolve(true)
-    }, 200)
+export const archiveHabit = async (id: string): Promise<Habit> => {
+  return apiRequest<Habit>(`/${id}/archive`, {
+    method: 'PUT',
   })
 }
 
 /**
  * 取消归档习惯
- * @param id 习惯ID
- * @returns 操作结果
  */
-export const unarchiveHabit = (id: string): Promise<boolean> => {
-  return new Promise((resolve) => {
-    // 模拟网络延迟
-    setTimeout(() => {
-      const index = mockHabits.findIndex((habit) => habit.id === id)
-      if (index === -1) {
-        resolve(false)
-        return
-      }
-
-      mockHabits[index] = {
-        ...mockHabits[index],
-        isArchived: false,
-        updatedAt: new Date().toISOString()
-      }
-      resolve(true)
-    }, 200)
+export const unarchiveHabit = async (id: string): Promise<Habit> => {
+  return apiRequest<Habit>(`/${id}/unarchive`, {
+    method: 'PUT',
   })
 }
 
-// 导出习惯服务
-export const habitService = {
+/**
+ * 标记习惯完成
+ */
+export const markHabitComplete = async (
+  habitId: string,
+  date: string,
+  note?: string,
+): Promise<void> => {
+  return apiRequest<void>(`/${habitId}/complete`, {
+    method: 'POST',
+    body: JSON.stringify({ date, note }),
+  })
+} /**
+ * 取消习惯完成
+ */
+export const unmarkHabitComplete = async (habitId: string, date: string): Promise<void> => {
+  return apiRequest<void>(`/${habitId}/uncomplete`, {
+    method: 'POST',
+    body: JSON.stringify({ date }),
+  })
+}
+
+/**
+ * 获取习惯完成记录
+ */
+export const getHabitCompletions = async (
+  habitId: string,
+  startDate?: string,
+  endDate?: string,
+): Promise<any[]> => {
+  const params = new URLSearchParams()
+  if (startDate) params.append('startDate', startDate)
+  if (endDate) params.append('endDate', endDate)
+
+  const queryString = params.toString()
+  const endpoint = `/${habitId}/completions${queryString ? `?${queryString}` : ''}`
+
+  return apiRequest<any[]>(endpoint)
+} /**
+ * 获取习惯统计信息
+ */
+export const getHabitStats = async (habitId: string): Promise<any> => {
+  return apiRequest<any>(`/${habitId}/stats`)
+}
+
+/**
+ * 批量操作习惯
+ */
+export const batchUpdateHabits = async (
+  habitIds: string[],
+  updates: Partial<Habit>,
+): Promise<Habit[]> => {
+  return apiRequest<Habit[]>('/batch', {
+    method: 'PUT',
+    body: JSON.stringify({ habitIds, updates }),
+  })
+}
+
+/**
+ * 批量删除习惯
+ */
+export const batchDeleteHabits = async (habitIds: string[]): Promise<void> => {
+  return apiRequest<void>('/batch', {
+    method: 'DELETE',
+    body: JSON.stringify({ habitIds }),
+  })
+} /**
+ * 获取习惯分类列表
+ */
+export const getHabitCategories = async (): Promise<string[]> => {
+  return apiRequest<string[]>('/categories')
+}
+
+/**
+ * 搜索习惯
+ */
+export const searchHabits = async (
+  query: string,
+  category?: string,
+  tags?: string[],
+): Promise<Habit[]> => {
+  const params = new URLSearchParams()
+  params.append('q', query)
+  if (category) params.append('category', category)
+  if (tags && tags.length > 0) {
+    tags.forEach((tag) => params.append('tags', tag))
+  }
+
+  return apiRequest<Habit[]>(`/search?${params.toString()}`)
+}
+
+/**
+ * 导出习惯数据
+ */
+export const exportHabits = async (format: 'json' | 'csv' = 'json'): Promise<any> => {
+  return apiRequest<any>(`/export?format=${format}`)
+}
+
+/**
+ * 导入习惯数据
+ */
+export const importHabits = async (data: any[]): Promise<Habit[]> => {
+  return apiRequest<Habit[]>('/import', {
+    method: 'POST',
+    body: JSON.stringify({ habits: data }),
+  })
+}
+export default {
   getHabits,
   getHabitById,
   createHabit,
   updateHabit,
   deleteHabit,
-  completeHabit,
-  uncompleteHabit,
-  getHabitStats,
+  permanentDeleteHabit,
   archiveHabit,
-  unarchiveHabit
+  unarchiveHabit,
+  markHabitComplete,
+  unmarkHabitComplete,
+  getHabitCompletions,
+  getHabitStats,
+  batchUpdateHabits,
+  batchDeleteHabits,
+  getHabitCategories,
+  searchHabits,
+  exportHabits,
+  importHabits,
 }

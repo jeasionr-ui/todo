@@ -1,7 +1,7 @@
 import axios from 'axios'
 import type Task from '@/services/types/TaskType'
 
-const API_BASE = '/api/todos'
+const API_BASE = '/api/tasks'
 
 /**
  * 获取所有任务
