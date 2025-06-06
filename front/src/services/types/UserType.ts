@@ -19,7 +19,7 @@ export default interface User {
   twoFactorEnabled: boolean
   role: string
   status: 'active' | 'inactive'
-  socialAccounts: {
+  socialAccounts?: {
     google?: string
     facebook?: string
     twitter?: string
