@@ -6,20 +6,20 @@
           <div
             class="w-20 h-20 overflow-hidden border border-gray-200 rounded-full dark:border-gray-800"
           >
-            <img src="/images/user/owner.jpg" alt="user" />
+            <img :src="currentUser?.avatar || '/images/user/owner.jpg'" alt="user" />
           </div>
           <div class="order-3 xl:order-2">
             <h4
               class="mb-2 text-lg font-semibold text-center text-gray-800 dark:text-white/90 xl:text-left"
             >
-              Musharof Chowdhury
+              {{ currentUser?.firstName }} {{ currentUser?.lastName }}
             </h4>
             <div
               class="flex flex-col items-center gap-1 text-center xl:flex-row xl:gap-3 xl:text-left"
             >
-              <p class="text-sm text-gray-500 dark:text-gray-400">Team Manager</p>
+              <p class="text-sm text-gray-500 dark:text-gray-400">{{ currentUser?.bio }}</p>
               <div class="hidden h-3.5 w-px bg-gray-300 dark:bg-gray-700 xl:block"></div>
-              <p class="text-sm text-gray-500 dark:text-gray-400">Arizona, United States</p>
+              <p class="text-sm text-gray-500 dark:text-gray-400">{{ currentUser?.country }}{{ currentUser?.city ? ', ' + currentUser.city : '' }}</p>
             </div>
           </div>
           <div class="flex items-center order-2 gap-2 grow xl:order-3 xl:justify-end">
@@ -100,7 +100,7 @@
             </a>
           </div>
         </div>
-        <button @click="isProfileInfoModal = true" class="edit-button">
+        <button @click="openEdit" class="edit-button">
           <svg
             class="fill-current"
             width="18"
@@ -163,53 +163,46 @@
 
                 <div class="grid grid-cols-1 gap-x-6 gap-y-5 lg:grid-cols-2">
                   <div>
-                    <label
-                      class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
-                    >
+                    <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
                       Facebook
                     </label>
                     <input
+                      v-model="editForm.socialAccounts?.facebook"
                       type="text"
-                      value="https://www.facebook.com/PimjoHQ"
                       class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
                     />
                   </div>
 
                   <div>
-                    <label
-                      class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
-                    >
+                    <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
                       X.com
                     </label>
                     <input
+                      v-model="editForm.socialAccounts?.twitter"
                       type="text"
-                      value="https://x.com/PimjoHQ"
                       class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
                     />
                   </div>
 
                   <div>
-                    <label
-                      class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
-                    >
+                    <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
                       Linkedin
                     </label>
                     <input
+                      v-model="editForm.socialAccounts?.linkedin"
                       type="text"
-                      value="https://www.linkedin.com/company/pimjo/posts/?feedView=all"
                       class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
                     />
                   </div>
 
                   <div>
-                    <label
-                      class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
-                    >
+                    <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
                       Instagram
                     </label>
                     <input
+                      :value="editForm.socialAccounts?.linkedin || ''"
+                      @input="e => { if(editForm.socialAccounts) editForm.socialAccounts.linkedin = e.target.value }"
                       type="text"
-                      value="https://instagram.com/PimjoHQ"
                       class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
                     />
                   </div>
@@ -229,7 +222,7 @@
                     </label>
                     <input
                       type="text"
-                      value="Musharof"
+                      v-model="editForm.firstName"
                       class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
                     />
                   </div>
@@ -242,7 +235,7 @@
                     </label>
                     <input
                       type="text"
-                      value="Chowdhury"
+                      v-model="editForm.lastName"
                       class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
                     />
                   </div>
@@ -255,7 +248,7 @@
                     </label>
                     <input
                       type="text"
-                      value="randomuser@pimjo.com"
+                      v-model="editForm.email"
                       class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
                     />
                   </div>
@@ -268,7 +261,7 @@
                     </label>
                     <input
                       type="text"
-                      value="+09 363 398 46"
+                      v-model="editForm.phone"
                       class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
                     />
                   </div>
@@ -281,7 +274,7 @@
                     </label>
                     <input
                       type="text"
-                      value="Team Manager"
+                      v-model="editForm.bio"
                       class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
                     />
                   </div>
@@ -311,15 +304,47 @@
   </div>
 </template>
 
-<script setup>
-import { ref } from 'vue'
+<script setup lang="ts">
+import { ref, onMounted } from 'vue'
 import Modal from './Modal.vue'
+import { userService } from '@/services/userService'
+import type User from '@/services/types/UserType'
 
 const isProfileInfoModal = ref(false)
+const currentUser = ref<User | null>(null)
+
+// 编辑表单数据
+const editForm = ref<Partial<User>>({})
+
+onMounted(() => {
+  currentUser.value = userService.getCurrentUser()
+  if (currentUser.value) {
+    editForm.value = { ...currentUser.value }
+    // 保证 socialAccounts 对象存在并包含所有字段
+    if (!editForm.value.socialAccounts) {
+      editForm.value.socialAccounts = {}
+    }
+    // 只初始化已定义的字段，移除 instagram
+    editForm.value.socialAccounts.facebook = editForm.value.socialAccounts.facebook || ''
+    editForm.value.socialAccounts.twitter = editForm.value.socialAccounts.twitter || ''
+    editForm.value.socialAccounts.linkedin = editForm.value.socialAccounts.linkedin || ''
+  }
+})
+
+const openEdit = () => {
+  if (currentUser.value) {
+    editForm.value = { ...currentUser.value }
+    isProfileInfoModal.value = true
+  }
+}
 
 const saveProfile = () => {
-  // Implement save profile logic here
-  console.log('Profile saved')
-  isProfileInfoModal.value = false
+  // 实际应用应调用API保存 editForm.value
+  // 这里只更新 localStorage 和 currentUser
+  if (currentUser.value) {
+    Object.assign(currentUser.value, editForm.value)
+    localStorage.setItem('user', JSON.stringify(currentUser.value))
+    isProfileInfoModal.value = false
+  }
 }
 </script>

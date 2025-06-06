@@ -23,22 +23,22 @@
               <div class="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-7 2xl:gap-x-32">
                 <div>
                   <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">Facebook</p>
-                  <p class="text-sm font-medium text-gray-800 dark:text-white/90">facebook.com/username</p>
+                  <p class="text-sm font-medium text-gray-800 dark:text-white/90">{{ getSocialAccount('facebook') }}</p>
                 </div>
 
                 <div>
                   <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">X.com</p>
-                  <p class="text-sm font-medium text-gray-800 dark:text-white/90">x.com/username</p>
+                  <p class="text-sm font-medium text-gray-800 dark:text-white/90">{{ getSocialAccount('twitter') }}</p>
                 </div>
 
                 <div>
                   <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">LinkedIn</p>
-                  <p class="text-sm font-medium text-gray-800 dark:text-white/90">linkedin.com/in/username</p>
+                  <p class="text-sm font-medium text-gray-800 dark:text-white/90">{{ getSocialAccount('linkedin') }}</p>
                 </div>
 
                 <div>
                   <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">Instagram</p>
-                  <p class="text-sm font-medium text-gray-800 dark:text-white/90">instagram.com/username</p>
+                  <p class="text-sm font-medium text-gray-800 dark:text-white/90">{{ getSocialAccount('instagram') }}</p>
                 </div>
               </div>
             </div>
@@ -82,7 +82,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="(item, index) in loginHistory" :key="item.id"
+                <tr v-for="item in loginHistory" :key="item.id"
                   class="border-b border-gray-200 dark:border-gray-800">
                   <td class="py-4 text-sm font-medium text-gray-800 dark:text-white/90">
                     {{ item.device }} ({{ item.browser }})
@@ -93,9 +93,7 @@
                   <td class="py-4 text-sm font-medium text-gray-800 dark:text-white/90">
                     {{ item.ipAddress }}
                   </td>
-                  <td class="py-4 text-sm font-medium text-gray-800 dark:text-white/90">
-                    {{ formatDate(item.time) }}
-                  </td>
+                  <td class="px-4 py-2 text-sm text-gray-700 dark:text-white/80">{{ formatDate(item.time ?? '') }}</td>
                 </tr>
               </tbody>
             </table>
@@ -135,6 +133,7 @@
                     Facebook
                   </label>
                   <input type="text" v-model="socialAccounts.facebook"
+                    placeholder="facebook.com/username"
                     class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
                 </div>
 
@@ -143,6 +142,7 @@
                     X.com
                   </label>
                   <input type="text" v-model="socialAccounts.twitter"
+                    placeholder="x.com/username"
                     class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
                 </div>
 
@@ -151,6 +151,7 @@
                     LinkedIn
                   </label>
                   <input type="text" v-model="socialAccounts.linkedin"
+                    placeholder="linkedin.com/in/username"
                     class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
                 </div>
 
@@ -159,6 +160,7 @@
                     Instagram
                   </label>
                   <input type="text" v-model="socialAccounts.instagram"
+                    placeholder="instagram.com/username"
                     class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
                 </div>
               </div>
@@ -186,58 +188,59 @@
  * 显示用户的个人信息、社交媒体账号和登录历史
  */
 import { ref, onMounted } from 'vue'
-import { useI18n } from 'vue-i18n'
+import type { UserType } from '../../types/user'
 import PersonalInfoCard from '@/components/profile/PersonalInfoCard.vue'
 import Modal from '@/components/profile/Modal.vue'
 import { userService } from '@/services/userService'
 
-const { t } = useI18n()
 const isSocialAccountsModal = ref(false)
-const loginHistory = ref([
-  {
-    id: 1,
-    device: 'PC',
-    browser: 'Chrome',
-    location: 'China',
-    ipAddress: ' '
-  },
-  {
-    id: 1,
-    device: 'PC',
-    browser: 'Chrome',
-    location: 'China',
-    ipAddress: 'IP_ADDRESS',
-    time: '2023-07-10 12:00:00'
-  },
-])
-const socialAccounts = ref({
-  facebook: 'facebook.com/username',
-  twitter: 'x.com/username',
-  linkedin: 'linkedin.com/in/username',
-  instagram: 'instagram.com/username'
+const currentUser = ref<UserType | null>(null)
+const socialAccounts = ref<Record<string, string>>({
+  facebook: '',
+  twitter: '',
+  linkedin: '',
+  instagram: ''
 })
-
-// 格式化日期
-const formatDate = (dateString) => {
-  const date = new Date(dateString)
-  return date.toLocaleString()
-}
+const loginHistory = ref<UserType['loginHistory']>([])
 
 // 保存社交账号
-const saveSocialAccounts = () => {
-  // 实际应用中这里会调用API保存数据
-  console.log('保存社交账号', socialAccounts.value)
+const saveSocialAccounts = async () => {
+  if (!currentUser.value) return
+  // 只更新 socialAccounts 字段
+  const updated = await userService.updateProfile({ socialAccounts: { ...socialAccounts.value } })
+  if (updated) {
+    currentUser.value.socialAccounts = { ...socialAccounts.value }
+    localStorage.setItem('user', JSON.stringify(currentUser.value))
+  }
   isSocialAccountsModal.value = false
 }
 
 onMounted(async () => {
-  // 获取当前用户
-  const currentUser = userService.getCurrentUser()
-  if (currentUser) {
-    // 获取登录历史
-    loginHistory.value = await userService.getLoginHistory(currentUser.id)
+  currentUser.value = userService.getCurrentUser()
+  if (currentUser.value) {
+    const history = await userService.getLoginHistory()
+    loginHistory.value = (history as UserType['loginHistory']) || []
+    if (currentUser.value.socialAccounts) {
+      // 过滤 undefined，全部转为 string
+      const safeAccounts: Record<string, string> = Object.entries(currentUser.value.socialAccounts)
+        .reduce((acc, [k, v]) => {
+          acc[k] = v ?? ''
+          return acc
+        }, {} as Record<string, string>)
+      socialAccounts.value = { ...socialAccounts.value, ...safeAccounts }
+    }
   }
 })
+
+const getSocialAccount = (key: string) => {
+  return (currentUser.value?.socialAccounts?.[key] ?? socialAccounts.value[key] ?? '')
+}
+
+const formatDate = (dateString: string) => {
+  if (!dateString) return ''
+  const date = new Date(dateString)
+  return date.toLocaleString()
+}
 </script>
 
 <style scoped></style>

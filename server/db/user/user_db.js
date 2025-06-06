@@ -30,17 +30,26 @@ export async function createUserDb(user) {
 
 export async function updateUserDb(id, user) {
   const now = new Date().toISOString().slice(0, 19).replace('T', ' ');
+  // 允许更新的字段
   const fields = [
     'firstName', 'lastName', 'email', 'password', 'avatar', 'bio', 'phone', 'country', 'city', 'state', 'postalCode', 'taxId', 'twoFactorEnabled', 'role', 'status', 'socialAccounts', 'loginHistory'
   ];
-  const setClause = fields.map(f => `${f} = ?`).join(', ');
-  const values = fields.map(f => f === 'socialAccounts' || f === 'loginHistory' ? JSON.stringify(user[f] || (f === 'loginHistory' ? [] : {})) : user[f]);
+  // 只保留 user 里实际有的字段
+  const updateFields = fields.filter(f => Object.prototype.hasOwnProperty.call(user, f));
+  if (updateFields.length === 0) return await getUserByIdDb(id); // 没有要更新的内容
+  const setClause = updateFields.map(f => `${f} = ?`).join(', ');
+  const values = updateFields.map(f => {
+    if (f === 'socialAccounts' || f === 'loginHistory') {
+      return JSON.stringify(user[f] || (f === 'loginHistory' ? [] : {}));
+    }
+    return user[f];
+  });
   values.push(now, id);
   await execute(
     `UPDATE user SET ${setClause}, updatedAt = ? WHERE id = ?`,
     values
   );
-  return { ...user, id, updatedAt: now };
+  return await getUserByIdDb(id);
 }
 
 export async function deleteUserDb(id) {

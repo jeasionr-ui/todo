@@ -10,12 +10,12 @@
           <div class="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-7 2xl:gap-x-32">
             <div>
               <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">{{ $t('auth.firstName') }}</p>
-              <p class="text-sm font-medium text-gray-800 dark:text-white/90">Musharof</p>
+              <p class="text-sm font-medium text-gray-800 dark:text-white/90">{{ currentUser?.firstName }}</p>
             </div>
 
             <div>
               <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">{{ $t('auth.lastName') }}</p>
-              <p class="text-sm font-medium text-gray-800 dark:text-white/90">Chowdhury</p>
+              <p class="text-sm font-medium text-gray-800 dark:text-white/90">{{ currentUser?.lastName }}</p>
             </div>
 
             <div>
@@ -23,23 +23,23 @@
                 {{ $t('auth.email') }}
               </p>
               <p class="text-sm font-medium text-gray-800 dark:text-white/90">
-                randomuser@pimjo.com
+                {{ currentUser?.email }}
               </p>
             </div>
 
             <div>
               <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">{{ $t('auth.phoneNumber') }}</p>
-              <p class="text-sm font-medium text-gray-800 dark:text-white/90">+09 363 398 46</p>
+              <p class="text-sm font-medium text-gray-800 dark:text-white/90">{{ currentUser?.phone }}</p>
             </div>
 
             <div>
               <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">{{ $t('user.bio') }}</p>
-              <p class="text-sm font-medium text-gray-800 dark:text-white/90">Team Manager</p>
+              <p class="text-sm font-medium text-gray-800 dark:text-white/90">{{ currentUser?.bio }}</p>
             </div>
           </div>
         </div>
 
-        <button class="edit-button" @click="isProfileInfoModal = true">
+        <button class="edit-button" @click="openEdit">
           <svg
             class="fill-current"
             width="18"
@@ -102,53 +102,49 @@
 
                 <div class="grid grid-cols-1 gap-x-6 gap-y-5 lg:grid-cols-2">
                   <div>
-                    <label
-                      class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
-                    >
+                    <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
                       Facebook
                     </label>
                     <input
+                      :value="editForm.socialAccounts?.facebook || ''"
+                      @input="e => { if(editForm.socialAccounts) editForm.socialAccounts.facebook = (e.target as HTMLInputElement).value }"
                       type="text"
-                      value="https://www.facebook.com/PimjoHQ"
                       class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
                     />
                   </div>
 
                   <div>
-                    <label
-                      class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
-                    >
+                    <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
                       X.com
                     </label>
                     <input
+                      :value="editForm.socialAccounts?.twitter || ''"
+                      @input="e => { if(editForm.socialAccounts) editForm.socialAccounts.twitter = (e.target as HTMLInputElement).value }"
                       type="text"
-                      value="https://x.com/PimjoHQ"
                       class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
                     />
                   </div>
 
                   <div>
-                    <label
-                      class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
-                    >
+                    <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
                       Linkedin
                     </label>
                     <input
+                      :value="editForm.socialAccounts?.linkedin || ''"
+                      @input="e => { if(editForm.socialAccounts) editForm.socialAccounts.linkedin = (e.target as HTMLInputElement).value }"
                       type="text"
-                      value="https://www.linkedin.com/company/pimjo/posts/?feedView=all"
                       class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
                     />
                   </div>
 
                   <div>
-                    <label
-                      class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
-                    >
+                    <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
                       Instagram
                     </label>
                     <input
+                      :value="editForm.socialAccounts?.linkedin || ''"
+                      @input="e => { if(editForm.socialAccounts) editForm.socialAccounts.linkedin = (e.target as HTMLInputElement).value }"
                       type="text"
-                      value="https://instagram.com/PimjoHQ"
                       class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
                     />
                   </div>
@@ -168,7 +164,7 @@
                     </label>
                     <input
                       type="text"
-                      value="Musharof"
+                      v-model="editForm.firstName"
                       class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
                     />
                   </div>
@@ -181,7 +177,7 @@
                     </label>
                     <input
                       type="text"
-                      value="Chowdhury"
+                      v-model="editForm.lastName"
                       class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
                     />
                   </div>
@@ -194,7 +190,7 @@
                     </label>
                     <input
                       type="text"
-                      value="emirhanboruch55@gmail.com"
+                      v-model="editForm.email"
                       class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
                     />
                   </div>
@@ -207,7 +203,7 @@
                     </label>
                     <input
                       type="text"
-                      value="+09 363 398 46"
+                      v-model="editForm.phone"
                       class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
                     />
                   </div>
@@ -220,7 +216,7 @@
                     </label>
                     <input
                       type="text"
-                      value="Team Manager"
+                      v-model="editForm.bio"
                       class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
                     />
                   </div>
@@ -250,22 +246,45 @@
   </div>
 </template>
 
-<script setup>
-import { ref } from 'vue'
+<script setup lang="ts">
+import { ref, onMounted } from 'vue'
 import Modal from './Modal.vue'
-import { useI18n } from '@/i18n'
-
-// 初始化i18n
-const { t } = useI18n()
+import { userService } from '@/services/userService'
+import type User from '@/services/types/UserType'
 
 const isProfileInfoModal = ref(false)
+const currentUser = ref<User | null>(null)
+const editForm = ref<Partial<User>>({})
 
-/**
- * 保存个人资料
- */
-const saveProfile = () => {
-  // Implement save profile logic here
-  console.log('Profile saved')
-  isProfileInfoModal.value = false
+onMounted(() => {
+  currentUser.value = userService.getCurrentUser()
+  if (currentUser.value) {
+    editForm.value = { ...currentUser.value }
+    if (!editForm.value.socialAccounts) {
+      editForm.value.socialAccounts = {}
+    }
+    editForm.value.socialAccounts.facebook = editForm.value.socialAccounts.facebook || ''
+    editForm.value.socialAccounts.twitter = editForm.value.socialAccounts.twitter || ''
+    editForm.value.socialAccounts.linkedin = editForm.value.socialAccounts.linkedin || ''
+  }
+})
+
+const openEdit = () => {
+  if (currentUser.value) {
+    editForm.value = { ...currentUser.value }
+    isProfileInfoModal.value = true
+  }
+}
+
+const saveProfile = async () => {
+  if (currentUser.value) {
+    // 调用后端API保存
+    const updated = await userService.updateProfile(editForm.value)
+    if (updated) {
+      Object.assign(currentUser.value, updated)
+      localStorage.setItem('user', JSON.stringify(currentUser.value))
+    }
+    isProfileInfoModal.value = false
+  }
 }
 </script>

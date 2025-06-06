@@ -17,7 +17,7 @@ router.post('/', async (req, res) => {
     const todo = await createTodo(req.body);
     res.json(todo);
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    res.status(500).json({ error: err && err.message ? err.message : 'Server error' });
   }
 });
 
@@ -26,7 +26,7 @@ router.put('/:id', async (req, res) => {
     const todo = await updateTodo(req.params.id, req.body);
     res.json(todo);
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    res.status(500).json({ error: err && err.message ? err.message : 'Server error' });
   }
 });
 
@@ -35,7 +35,7 @@ router.delete('/:id', async (req, res) => {
     await deleteTodo(req.params.id);
     res.json({ id: req.params.id });
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    res.status(500).json({ error: err && err.message ? err.message : 'Server error' });
   }
 });
 

@@ -1,17 +1,15 @@
-import { mockTasks } from './mockData'
+import axios from 'axios'
 import type Task from '@/services/types/TaskType'
+
+const API_BASE = '/api/todos'
 
 /**
  * 获取所有任务
  * @returns 任务列表
  */
-export const getTasks = (): Promise<Task[]> => {
-  return new Promise((resolve) => {
-    // 模拟网络延迟
-    setTimeout(() => {
-      resolve(mockTasks)
-    }, 300)
-  })
+export const getTasks = async (): Promise<Task[]> => {
+  const res = await axios.get(API_BASE)
+  return res.data as Task[]
 }
 
 /**
@@ -19,14 +17,9 @@ export const getTasks = (): Promise<Task[]> => {
  * @param id 任务ID
  * @returns 任务详情
  */
-export const getTaskById = (id: string): Promise<Task | null> => {
-  return new Promise((resolve) => {
-    // 模拟网络延迟
-    setTimeout(() => {
-      const task = mockTasks.find((task) => task.id === id) || null
-      resolve(task)
-    }, 200)
-  })
+export const getTaskById = async (id: string): Promise<Task | null> => {
+  const res = await axios.get(`${API_BASE}/${id}`)
+  return res.data as Task
 }
 
 /**
@@ -34,20 +27,9 @@ export const getTaskById = (id: string): Promise<Task | null> => {
  * @param task 任务数据（不包含id）
  * @returns 创建的任务
  */
-export const createTask = (task: Omit<Task, 'id' | 'createdAt' | 'updatedAt'>): Promise<Task> => {
-  return new Promise((resolve) => {
-    // 模拟网络延迟
-    setTimeout(() => {
-      const newTask: Task = {
-        ...task,
-        id: `${mockTasks.length + 1}`,
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString(),
-      }
-      mockTasks.push(newTask)
-      resolve(newTask)
-    }, 300)
-  })
+export const createTask = async (task: Omit<Task, 'id'>): Promise<Task> => {
+  const res = await axios.post(API_BASE, task)
+  return res.data as Task
 }
 
 /**
@@ -56,28 +38,12 @@ export const createTask = (task: Omit<Task, 'id' | 'createdAt' | 'updatedAt'>): 
  * @param updates 更新的字段
  * @returns 更新后的任务
  */
-export const updateTask = (
+export const updateTask = async (
   id: string,
-  updates: Partial<Omit<Task, 'id' | 'createdAt' | 'updatedAt'>>,
+  updates: Partial<Omit<Task, 'id'>>,
 ): Promise<Task | null> => {
-  return new Promise((resolve) => {
-    // 模拟网络延迟
-    setTimeout(() => {
-      const index = mockTasks.findIndex((task) => task.id === id)
-      if (index === -1) {
-        resolve(null)
-        return
-      }
-
-      const updatedTask: Task = {
-        ...mockTasks[index],
-        ...updates,
-        updatedAt: new Date().toISOString(),
-      }
-      mockTasks[index] = updatedTask
-      resolve(updatedTask)
-    }, 300)
-  })
+  const res = await axios.put(`${API_BASE}/${id}`, updates)
+  return res.data as Task
 }
 
 /**
@@ -85,20 +51,9 @@ export const updateTask = (
  * @param id 任务ID
  * @returns 操作结果
  */
-export const deleteTask = (id: string): Promise<boolean> => {
-  return new Promise((resolve) => {
-    // 模拟网络延迟
-    setTimeout(() => {
-      const index = mockTasks.findIndex((task) => task.id === id)
-      if (index === -1) {
-        resolve(false)
-        return
-      }
-
-      mockTasks.splice(index, 1)
-      resolve(true)
-    }, 200)
-  })
+export const deleteTask = async (id: string): Promise<boolean> => {
+  await axios.delete(`${API_BASE}/${id}`)
+  return true
 }
 
 /**
@@ -107,23 +62,10 @@ export const deleteTask = (id: string): Promise<boolean> => {
  * @param status 新状态
  * @returns 操作结果
  */
-export const batchUpdateTaskStatus = (ids: string[], status: Task['status']): Promise<boolean> => {
-  return new Promise((resolve) => {
-    // 模拟网络延迟
-    setTimeout(() => {
-      ids.forEach((id) => {
-        const index = mockTasks.findIndex((task) => task.id === id)
-        if (index !== -1) {
-          mockTasks[index] = {
-            ...mockTasks[index],
-            status,
-            updatedAt: new Date().toISOString(),
-          }
-        }
-      })
-      resolve(true)
-    }, 300)
-  })
+export const batchUpdateTaskStatus = async (ids: string[], status: Task['status']): Promise<boolean> => {
+  // 假设后端未实现批量接口，前端并发调用
+  await Promise.all(ids.map(id => updateTask(id, { status })))
+  return true
 }
 
 /**
@@ -131,19 +73,9 @@ export const batchUpdateTaskStatus = (ids: string[], status: Task['status']): Pr
  * @param ids 任务ID数组
  * @returns 操作结果
  */
-export const batchDeleteTasks = (ids: string[]): Promise<boolean> => {
-  return new Promise((resolve) => {
-    // 模拟网络延迟
-    setTimeout(() => {
-      ids.forEach((id) => {
-        const index = mockTasks.findIndex((task) => task.id === id)
-        if (index !== -1) {
-          mockTasks.splice(index, 1)
-        }
-      })
-      resolve(true)
-    }, 300)
-  })
+export const batchDeleteTasks = async (ids: string[]): Promise<boolean> => {
+  await Promise.all(ids.map(id => deleteTask(id)))
+  return true
 }
 
 // 导出任务服务

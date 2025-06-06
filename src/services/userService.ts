@@ -57,5 +57,21 @@ export const userService = {
     const user = this.getCurrentUser()
     // 实际应用应通过API获取，临时兼容：返回当前用户的 loginHistory 字段
     return user && user.loginHistory ? user.loginHistory : []
+  },
+
+  // 更新用户资料
+  async updateProfile(updates: Partial<User>): Promise<User | null> {
+    const user = this.getCurrentUser()
+    if (!user) return null
+    const token = localStorage.getItem('token')
+    const res = await axios.put(`/api/users/${user.id}`, updates, {
+      headers: token ? { Authorization: `Bearer ${token}` } : {}
+    })
+    if (res.data) {
+      // 更新本地缓存
+      localStorage.setItem('user', JSON.stringify(res.data))
+      return res.data as User
+    }
+    return null
   }
 }

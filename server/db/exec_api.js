@@ -9,6 +9,7 @@ export async function query(sql, params = []) {
 }
 
 export async function execute(sql, params = []) {
+  console.log('Executing SQL:', sql, 'with params:', params)
   const connection = await mysql.createConnection(dbConfig)
   const [result] = await connection.execute(sql, params)
   await connection.end()
