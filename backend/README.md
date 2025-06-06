@@ -45,12 +45,3 @@ npm start
 - PUT    `/api/todos/:id`     更新 todo（body: { title, completed })
 - DELETE `/api/todos/:id`     删除 todo
 
-## 数据库配置
-
-- host: 47.86.237.178
-- port: 3308
-- user: todo
-- password: fXWZGS2m2JKREaFH
-- database: todo
-
-> 请确保数据库有 `todos` 表，字段至少包含：id, title, completed。
