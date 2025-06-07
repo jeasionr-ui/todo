@@ -328,6 +328,7 @@
               :totalItems="totalItems"
               :pageSize="pageSize"
               @page-change="handlePageChange"
+              @page-size-change="handlePageSizeChange"
             />
           </div>
         </div>
@@ -373,7 +374,7 @@ import Pagination from '@/components/common/Pagination.vue'
 
 import { toastService } from '@/services/toastService'
 import habitService from '@/services/habitService'
-import type { PaginationResult } from '@/services/habitService'
+import type { PaginationResult } from '@/services/taskService'
 import type Habit from '@/services/types/HabitType'
 
 
@@ -387,7 +388,7 @@ const searchQuery = ref('')
 // 分页状态
 const totalItems = ref(0)
 const currentPage = ref(1)
-const pageSize = ref(12)
+const pageSize = ref(3)
 const pageCount = ref(1)
 
 // 删除确认对话框状态
@@ -411,6 +412,7 @@ const currentHabit = ref<Partial<Habit>>({})
 
 // 根据搜索查询和筛选条件过滤习惯
 const filteredHabits = computed(() => {
+  if (!habits.value) return []
   return habits.value
     .filter(habit => {
       // 搜索过滤
@@ -723,6 +725,15 @@ const getDayLabel = (dayIndex: number): string => {
  */
 const handlePageChange = (page: number) => {
   currentPage.value = page
+  loadHabits()
+}
+
+/**
+ * 处理每页大小变化
+ */
+const handlePageSizeChange = (newPageSize: number) => {
+  pageSize.value = newPageSize
+  currentPage.value = 1 // 重置到第一页
   loadHabits()
 }
 

@@ -48,6 +48,7 @@ export default {
     page: 'Page',
     perPage: 'per page',
     items: 'items',
+    pageSize: 'Page Size',
   },
   dialog: {
     archive: 'archive',

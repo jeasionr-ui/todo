@@ -1,4 +1,5 @@
 import type Habit from '@/services/types/HabitType'
+import type { PaginationResult } from '@/services/taskService'
 
 const API_BASE_URL = 'http://localhost:3001/api/habits'
 
@@ -36,6 +37,33 @@ async function handleResponse<T>(response: Response): Promise<T> {
   
   // 否则直接返回响应数据
   return responseData
+}
+
+/**
+ * 处理分页API响应
+ */
+async function handlePaginatedResponse<T>(response: Response): Promise<PaginationResult<T>> {
+  if (!response.ok) {
+    const errorData = await response.json().catch(() => ({}))
+    throw new ApiError(errorData.message || '请求失败', response.status, errorData)
+  }
+
+  const responseData = await response.json()
+  
+  // 如果响应包含success字段，说明是标准的API响应格式
+  if (responseData.success !== undefined) {
+    if (!responseData.success) {
+      throw new ApiError(responseData.message || '请求失败', response.status, responseData)
+    }
+    // 返回包含data和pagination的完整响应
+    return {
+      data: responseData.data,
+      pagination: responseData.pagination
+    }
+  }
+  
+  // 否则直接返回响应数据
+  return responseData
 } /**
  * 发送API请求
  */
@@ -66,18 +94,39 @@ async function apiRequest<T>(endpoint: string, options: RequestInit = {}): Promi
     }
     throw new ApiError('网络错误', 0, { originalError: error })
   }
-} /**
- * 分页结果接口
- */
-export interface PaginationResult<T> {
-  data: T[]
-  pagination: {
-    total: number
-    pageSize: number
-    currentPage: number
-    totalPages: number
-  }
 }
+
+/**
+ * 发送分页API请求
+ */
+async function apiPaginatedRequest<T>(endpoint: string, options: RequestInit = {}): Promise<PaginationResult<T>> {
+  const url = `${API_BASE_URL}${endpoint}`
+
+  const defaultOptions: RequestInit = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }
+
+  const mergedOptions = {
+    ...defaultOptions,
+    ...options,
+    headers: {
+      ...defaultOptions.headers,
+      ...options.headers,
+    },
+  }
+
+  try {
+    const response = await fetch(url, mergedOptions)
+    return await handlePaginatedResponse<T>(response)
+  } catch (error) {
+    if (error instanceof ApiError) {
+      throw error
+    }
+    throw new ApiError('网络错误', 0, { originalError: error })
+  }
+} 
 
 /**
  * 获取所有习惯
@@ -116,7 +165,7 @@ export const getHabits = async (options?: {
   }
   
   const queryString = params.toString()
-  return apiRequest<PaginationResult<Habit>>(queryString ? `/?${queryString}` : '/')
+  return apiPaginatedRequest<Habit>(queryString ? `/?${queryString}` : '/')
 }
 
 /**

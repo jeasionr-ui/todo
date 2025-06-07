@@ -31,7 +31,7 @@
 
     <!-- 桌面版分页信息与控件 -->
     <div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
-      <div>
+      <div class="flex items-center space-x-4">
         <p class="text-sm text-gray-700 dark:text-gray-300">
           {{ $t('pagination.showing') }}
           <span class="font-medium">{{ startItem }}</span>
@@ -41,6 +41,20 @@
           <span class="font-medium">{{ totalItems }}</span>
           {{ $t('pagination.results') }}
         </p>
+        
+        <!-- 每页条数选择器 -->
+        <div class="flex items-center space-x-2">
+          <span class="text-sm text-gray-700 dark:text-gray-300">{{ $t('pagination.pageSize') }}:</span>
+          <select
+            :value="pageSize"
+            @change="onPageSizeChange"
+            class="rounded border border-gray-300 bg-white px-2 py-1 text-sm text-gray-700 focus:border-brand-500 focus:ring-0 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:focus:border-brand-500"
+          >
+            <option value="3">3</option>
+            <option value="6">6</option>
+            <option value="9">9</option>
+          </select>
+        </div>
       </div>
       <div>
         <nav class="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
@@ -133,6 +147,7 @@ const props = withDefaults(defineProps<Props>(), {
 const emit = defineEmits<{
   (e: 'update:currentPage', page: number): void
   (e: 'page-change', page: number): void
+  (e: 'page-size-change', pageSize: number): void
 }>()
 
 // 计算当前页显示的起始项
@@ -216,6 +231,13 @@ const onPageChange = (page: number | string) => {
     emit('update:currentPage', pageNumber)
     emit('page-change', pageNumber)
   }
+}
+
+// 修改每页条数
+const onPageSizeChange = (event: Event) => {
+  const target = event.target as HTMLSelectElement
+  const newPageSize = parseInt(target.value)
+  emit('page-size-change', newPageSize)
 }
 </script>
 

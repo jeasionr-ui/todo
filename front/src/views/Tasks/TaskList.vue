@@ -418,6 +418,7 @@
           :totalItems="totalItems"
           :pageSize="pageSize" 
           @page-change="onPageChange"
+          @page-size-change="onPageSizeChange"
         />
       </div>
     </div>
@@ -459,7 +460,7 @@ export default defineComponent({
     // 分页状态
     const totalItems = ref(0)
     const currentPage = ref(1)
-    const pageSize = ref(10)
+    const pageSize = ref(3)
     const pageCount = ref(1)
 
     // 删除确认对话框状态
@@ -629,6 +630,13 @@ export default defineComponent({
       loadTasks()
     }
 
+    // 处理每页大小变化
+    const onPageSizeChange = (newPageSize: number) => {
+      pageSize.value = newPageSize
+      currentPage.value = 1 // 重置到第一页
+      loadTasks()
+    }
+
     // 添加附件
     const addAttachment = () => {
       // 创建一个隐藏的文件输入元素
@@ -709,6 +717,7 @@ export default defineComponent({
       totalItems,
       pageCount,
       onPageChange,
+      onPageSizeChange,
     }
   },
 })

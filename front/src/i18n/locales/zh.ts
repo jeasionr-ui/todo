@@ -48,6 +48,7 @@ export default {
     page: '页',
     perPage: '每页',
     items: '条',
+    pageSize: '每页条数',
   },
   dialog: {
     archive: '归档',
