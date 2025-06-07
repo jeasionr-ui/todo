@@ -226,7 +226,7 @@ class HabitBiz {
       // 更新归档状态
       const updateSuccess = await this.habitDB.updateHabit(habitId, { 
         isArchived: true,
-        archivedAt: new Date().toISOString()
+        archivedAt: new Date().toISOString().slice(0, 19).replace('T', ' ') // 转换为 MySQL DATETIME 格式
       });
 
       if (!updateSuccess) {

@@ -118,7 +118,7 @@ class HabitDTO {
     if (habitData.cronExpression !== undefined) updatedHabit.cronExpression = habitData.cronExpression;
     if (typeof habitData.isArchived === 'boolean') updatedHabit.isArchived = habitData.isArchived;
     
-    updatedHabit.updatedAt = new Date().toISOString();
+    updatedHabit.updatedAt = new Date().toISOString().slice(0, 19).replace('T', ' '); // 转换为 MySQL DATETIME 格式
     
     const validation = updatedHabit.validate();
     

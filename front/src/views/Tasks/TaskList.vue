@@ -405,25 +405,38 @@
       <!-- 删除确认对话框 -->
       <DeleteAlertDialog
         v-model:show="showDeleteDialog"
-        title="确认删除"
+        :title="$t('task.delete')"
         :message="$t('task.confirmDelete')"
         @confirm="confirmDeleteTask"
       />
+
+      <!-- 分页组件 -->
+      <div class="mt-8" v-if="!loading && filteredTasks.length > 0">
+        <Pagination
+          v-model:currentPage="currentPage"
+          :pageCount="pageCount"
+          :totalItems="totalItems"
+          :pageSize="pageSize" 
+          @page-change="onPageChange"
+        />
+      </div>
     </div>
   </AdminLayout>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed, onMounted } from 'vue'
+import { defineComponent, ref, computed, onMounted, watch } from 'vue'
 import { useI18n } from '@/i18n'
 import { useFormatters } from '@/composables/useFormatters'
 import PageBreadcrumb from '@/components/common/PageBreadcrumb.vue'
 import AdminLayout from '@/components/layout/AdminLayout.vue'
 import DeleteAlertDialog from '@/components/ui/DeleteAlertDialog.vue'
 import TaskDialog from '@/components/task/TaskDialog.vue'
+import Pagination from '@/components/common/Pagination.vue'
 import { taskService } from '@/services/taskService'
 import { toastService } from '@/services/toastService'
 import type Task from '@/services/types/TaskType'
+import type { PaginationResult } from '@/services/taskService'
 
 export default defineComponent({
   name: 'TaskList',
@@ -432,6 +445,7 @@ export default defineComponent({
     AdminLayout,
     DeleteAlertDialog,
     TaskDialog,
+    Pagination,
   },
   setup() {
     const { t } = useI18n()
@@ -441,6 +455,12 @@ export default defineComponent({
     const tasks = ref<Task[]>([])
     const loading = ref(true)
     const searchQuery = ref('')
+
+    // 分页状态
+    const totalItems = ref(0)
+    const currentPage = ref(1)
+    const pageSize = ref(10)
+    const pageCount = ref(1)
 
     // 删除确认对话框状态
     const showDeleteDialog = ref(false)
@@ -491,7 +511,14 @@ export default defineComponent({
     const loadTasks = async () => {
       loading.value = true
       try {
-        tasks.value = await taskService.getTasks()
+        const result = await taskService.getTasks({
+          page: currentPage.value,
+          pageSize: pageSize.value,
+          status: filterStatus.value !== 'all' ? filterStatus.value : undefined
+        })
+        tasks.value = result.data
+        totalItems.value = result.pagination.total
+        pageCount.value = result.pagination.totalPages
       } catch (error) {
         console.error('加载任务失败:', error)
       } finally {
@@ -508,11 +535,17 @@ export default defineComponent({
       filterStatus.value = status
       filterPriority.value = priority
       showFilterMenu.value = false
+      // 重置页码并重新加载任务列表
+      currentPage.value = 1
+      loadTasks()
     }
 
     const resetFilter = () => {
       filterStatus.value = 'all'
       filterPriority.value = 'all'
+      // 重置页码并重新加载任务列表
+      currentPage.value = 1
+      loadTasks()
     }
 
     // 任务对话框相关方法
@@ -590,6 +623,12 @@ export default defineComponent({
       openDeleteDialog(taskId)
     }
 
+    // 分页相关方法
+    const onPageChange = (page: number) => {
+      currentPage.value = page
+      loadTasks()
+    }
+
     // 添加附件
     const addAttachment = () => {
       // 创建一个隐藏的文件输入元素
@@ -664,6 +703,12 @@ export default defineComponent({
       taskToDelete,
       openDeleteDialog,
       confirmDeleteTask,
+      // 分页相关
+      currentPage,
+      pageSize,
+      totalItems,
+      pageCount,
+      onPageChange,
     }
   },
 })

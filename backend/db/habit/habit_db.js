@@ -17,7 +17,7 @@ class HabitDB {
   async createHabit(habit) {
     try {
       const habitId = generateId();
-      const now = new Date().toISOString();
+      const now = new Date().toISOString().slice(0, 19).replace('T', ' '); // 转换为 MySQL DATETIME 格式
       
       habit.id = habitId;
       habit.createdAt = now;
@@ -127,7 +127,7 @@ class HabitDB {
    */
   async updateHabit(habitId, habit) {
     try {
-      habit.updatedAt = new Date().toISOString();
+      habit.updatedAt = new Date().toISOString().slice(0, 19).replace('T', ' '); // 转换为 MySQL DATETIME 格式
       const habitData = habit.toDatabaseFormat();
       
       const sql = `
@@ -166,7 +166,7 @@ class HabitDB {
   async deleteHabit(habitId) {
     try {
       const sql = 'UPDATE habit SET isArchived = TRUE, updatedAt = ? WHERE id = ?';
-      const now = new Date().toISOString();
+      const now = new Date().toISOString().slice(0, 19).replace('T', ' '); // 转换为 MySQL DATETIME 格式
       
       const [result] = await this.connection.execute(sql, [now, habitId]);
       return result.affectedRows > 0;
@@ -205,7 +205,7 @@ class HabitDB {
   async createCompletion(completion) {
     try {
       const completionId = generateId();
-      const now = new Date().toISOString();
+      const now = new Date().toISOString().slice(0, 19).replace('T', ' '); // 转换为 MySQL DATETIME 格式
       
       completion.id = completionId;
       completion.createdAt = now;
@@ -241,7 +241,7 @@ class HabitDB {
    */
   async updateCompletion(completionId, updateData) {
     try {
-      const now = new Date().toISOString();
+      const now = new Date().toISOString().slice(0, 19).replace('T', ' '); // 转换为 MySQL DATETIME 格式
       updateData.updatedAt = now;
       
       const fields = Object.keys(updateData).map(key => `${key} = ?`).join(', ');

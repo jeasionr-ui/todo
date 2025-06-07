@@ -46,7 +46,7 @@
         </button>
       </div>
 
-      <form @submit.prevent="!isViewMode && saveHabit">
+      <form @submit.prevent="handleSubmit">
         <!-- 习惯名称 -->
         <div class="mb-4">
           <label for="habitName" class="mb-2 block text-sm font-medium">
@@ -255,44 +255,24 @@
 
         <!-- 标签 -->
         <div class="mb-4">
-          <label for="habitTags" class="mb-2 block text-sm font-medium">
+          <label
+            for="habitTags"
+            class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
+          >
             {{ $t('habits.form.tags') }}
           </label>
           <div class="flex flex-wrap items-center gap-2 mb-2">
             <span
               v-for="(tag, index) in formData.tags"
               :key="index"
-              class="flex items-center gap-1 rounded-md bg-gray-100 px-2 py-1 text-sm dark:bg-meta-4"
+              class="flex items-center gap-1 rounded-lg border border-gray-200 bg-gray-50 px-3 py-1.5 text-xs dark:border-gray-800 dark:bg-gray-800"
             >
               {{ tag }}
               <button
                 type="button"
                 @click="removeTag(index)"
-                class="text-gray-500 hover:text-danger"
-              >
-                <svg
-                  width="12"
-                  height="12"
-                  viewBox="0 0 12 12"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M9 3L3 9"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M9 9L3 3"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </button>
+                class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
+              ></button>
             </span>
           </div>
           <div class="flex items-center gap-2">
@@ -300,37 +280,16 @@
               id="habitTags"
               v-model="newTag"
               type="text"
-              class="w-full rounded-md border border-stroke bg-transparent py-3 px-4 outline-none focus:border-primary dark:border-strokedark dark:bg-boxdark"
+              class="flex-1 rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-sm text-gray-700 focus:border-brand-500 focus:ring-0 dark:border-gray-800 dark:bg-white/[0.03] dark:text-gray-300 dark:focus:border-brand-500"
               :placeholder="$t('habits.form.tags_placeholder')"
               @keydown.enter.prevent="addTag"
             />
             <button
               type="button"
               @click="addTag"
-              class="flex items-center justify-center rounded-md border border-primary bg-primary p-3 text-white hover:bg-opacity-90"
+              class="rounded-lg bg-brand-500 px-4 py-2.5 text-sm font-medium text-white hover:bg-brand-600"
             >
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 16 16"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M8 3.33331V12.6666"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M3.33301 8H12.6663"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
+              {{ $t('common.add') }}
             </button>
           </div>
         </div>
@@ -739,6 +698,13 @@ const generateCronExpression = () => {
   }
 
   return cronExpression
+}
+
+// 处理表单提交
+const handleSubmit = () => {
+  if (!props.isViewMode) {
+    saveHabit()
+  }
 }
 
 // 保存习惯（只保留这一处实现）

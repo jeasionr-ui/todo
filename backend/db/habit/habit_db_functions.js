@@ -33,10 +33,36 @@ export async function getAllHabitsDb(options = {}) {
     }
 
     const rows = await query(sql, params);
-    return rows.map(row => new Habit(row));
+    return rows.map(row => Habit.fromDatabaseFormat(row));
   } catch (error) {
     console.error('获取习惯列表失败:', error);
     throw new Error('获取习惯列表失败');
+  }
+}
+
+/**
+ * 获取习惯总数（用于分页）
+ */
+export async function countHabitsDb(options = {}) {
+  try {
+    let sql = 'SELECT COUNT(*) as count FROM habit WHERE 1=1';
+    const params = [];
+
+    if (!options.includeArchived) {
+      sql += ' AND isArchived = ?';
+      params.push(false);
+    }
+
+    if (options.category) {
+      sql += ' AND category = ?';
+      params.push(options.category);
+    }
+
+    const rows = await query(sql, params);
+    return rows[0].count;
+  } catch (error) {
+    console.error('获取习惯总数失败:', error);
+    throw new Error('获取习惯总数失败');
   }
 }
 
@@ -52,7 +78,7 @@ export async function getHabitByIdDb(habitId) {
       return null;
     }
     
-    return new Habit(rows[0]);
+    return Habit.fromDatabaseFormat(rows[0]);
   } catch (error) {
     console.error('获取习惯详情失败:', error);
     throw new Error('获取习惯详情失败');
@@ -65,7 +91,7 @@ export async function getHabitByIdDb(habitId) {
 export async function createHabitDb(habit) {
   try {
     const habitId = generateId();
-    const now = new Date().toISOString();
+    const now = new Date().toISOString().slice(0, 19).replace('T', ' '); // 转换为 MySQL DATETIME 格式
     
     habit.id = habitId;
     habit.createdAt = now;
@@ -104,11 +130,30 @@ export async function createHabitDb(habit) {
  */
 export async function updateHabitDb(habitId, updateData) {
   try {
-    const now = new Date().toISOString();
+    const now = new Date().toISOString().slice(0, 19).replace('T', ' '); // 转换为 MySQL DATETIME 格式
     updateData.updatedAt = now;
     
-    const fields = Object.keys(updateData).map(key => `${key} = ?`).join(', ');
-    const values = Object.values(updateData);
+    // 处理 frequency 字段映射
+    const processedData = { ...updateData };
+    if (processedData.frequency) {
+      // 将 frequency 对象转换为数据库字段
+      processedData.frequencyType = processedData.frequency.type;
+      processedData.daysOfWeek = processedData.frequency.daysOfWeek ? processedData.frequency.daysOfWeek.join(',') : null;
+      processedData.daysOfMonth = processedData.frequency.daysOfMonth ? processedData.frequency.daysOfMonth.join(',') : null;
+      // 删除原始的 frequency 字段
+      delete processedData.frequency;
+    }
+    
+    // 处理 tags 字段
+    if (processedData.tags && Array.isArray(processedData.tags)) {
+      processedData.tags = processedData.tags.join(',');
+    }
+    
+    // 删除不存在于数据库表中的字段
+    delete processedData.completionHistory;
+    
+    const fields = Object.keys(processedData).map(key => `${key} = ?`).join(', ');
+    const values = Object.values(processedData);
     values.push(habitId);
     
     const sql = `UPDATE habit SET ${fields} WHERE id = ?`;
@@ -133,9 +178,10 @@ export async function deleteHabitDb(habitId, permanent = false) {
       return result.affectedRows > 0;
     } else {
       // 归档：只是标记为已归档
+      const now = new Date().toISOString().slice(0, 19).replace('T', ' '); // 转换为 MySQL DATETIME 格式
       const result = await execute(
-        'UPDATE habit SET isArchived = ?, archivedAt = ?, updatedAt = ? WHERE id = ?',
-        [true, new Date().toISOString(), new Date().toISOString(), habitId]
+        'UPDATE habit SET isArchived = ?, updatedAt = ? WHERE id = ?',
+        [true, now, habitId]
       );
       return result.affectedRows > 0;
     }
@@ -151,7 +197,7 @@ export async function deleteHabitDb(habitId, permanent = false) {
 export async function createCompletionDb(completion) {
   try {
     const completionId = generateId();
-    const now = new Date().toISOString();
+    const now = new Date().toISOString().slice(0, 19).replace('T', ' '); // 转换为 MySQL DATETIME 格式
     
     completion.id = completionId;
     completion.createdAt = now;
@@ -184,7 +230,7 @@ export async function createCompletionDb(completion) {
  */
 export async function updateCompletionDb(completionId, updateData) {
   try {
-    const now = new Date().toISOString();
+    const now = new Date().toISOString().slice(0, 19).replace('T', ' '); // 转换为 MySQL DATETIME 格式
     updateData.updatedAt = now;
     
     const fields = Object.keys(updateData).map(key => `${key} = ?`).join(', ');

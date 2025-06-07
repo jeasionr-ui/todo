@@ -5,10 +5,25 @@ const router = express.Router();
 
 router.get('/', async (req, res) => {
   try {
-    const todos = await getTodos();
-    res.json(todos);
+    const options = {
+      status: req.query.status,
+      limit: req.query.limit ? parseInt(req.query.limit) : undefined,
+      offset: req.query.offset ? parseInt(req.query.offset) : undefined,
+    };
+    
+    const result = await getTodos(options);
+    
+    if (result.success) {
+      res.status(200).json(result);
+    } else {
+      res.status(400).json(result);
+    }
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    res.status(500).json({ 
+      success: false,
+      message: '服务器内部错误',
+      error: err.message 
+    });
   }
 });
 

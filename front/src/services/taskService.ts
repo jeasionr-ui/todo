@@ -1,15 +1,48 @@
 import axios from 'axios'
 import type Task from '@/services/types/TaskType'
 
+// 定义分页结果接口
+export interface PaginationResult<T> {
+  data: T[]
+  pagination: {
+    total: number
+    pageSize: number
+    currentPage: number
+    totalPages: number
+  }
+}
+
 const API_BASE = '/api/tasks'
 
 /**
  * 获取所有任务
- * @returns 任务列表
+ * @param options 查询选项
+ * @returns 分页任务列表
  */
-export const getTasks = async (): Promise<Task[]> => {
-  const res = await axios.get(API_BASE)
-  return res.data as Task[]
+export const getTasks = async (options?: {
+  status?: string,
+  page?: number,
+  pageSize?: number
+}): Promise<PaginationResult<Task>> => {
+  const params = new URLSearchParams()
+
+  if (options?.status) {
+    params.append('status', options.status)
+  }
+  
+  // 添加分页参数
+  if (options?.pageSize) {
+    params.append('limit', String(options.pageSize))
+    
+    if (options?.page) {
+      const offset = (options.page - 1) * options.pageSize
+      params.append('offset', String(offset))
+    }
+  }
+
+  const queryString = params.toString()
+  const res = await axios.get(`${API_BASE}${queryString ? `?${queryString}` : ''}`)
+  return res.data
 }
 
 /**

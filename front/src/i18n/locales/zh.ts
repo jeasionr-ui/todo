@@ -37,6 +37,29 @@ export default {
     info: '提示',
   },
 
+  // 分页组件
+  pagination: {
+    previous: '上一页',
+    next: '下一页',
+    showing: '显示',
+    to: '至',
+    of: '共',
+    results: '条',
+    page: '页',
+    perPage: '每页',
+    items: '条',
+  },
+  dialog: {
+    archive: '归档',
+    unarchive: '取消归档',
+    archived: '已归档',
+    unarchived: '未归档',
+    archive_success: '归档成功',
+    archive_failure: '归档失败',
+    unarchive_success: '取消归档成功',
+    unarchive_failure: '取消归档失败',
+  },
+
   form: {
     selectDate: '选择日期',
   },
@@ -237,6 +260,12 @@ export default {
     all: '所有习惯',
     create: '创建习惯',
     create_title: '创建新习惯',
+    create_success: '创建习惯成功',
+    update_success: '习惯更新成功',
+    create_failed: '习惯创建失败',
+    update_failed: '习惯更新失败',
+    delete_success: '习惯删除成功',
+    delete_failed: '习惯删除失败',
     edit: '编辑习惯',
     delete: '删除习惯',
     view: '查看详情',
@@ -296,7 +325,6 @@ export default {
     viewHistory: '查看历史',
     archiveHabit: '归档习惯',
     unarchiveHabit: '取消归档',
-    deleteHabit: '删除习惯',
 
     // 创建/编辑
     habitCreated: '习惯创建成功',
@@ -318,7 +346,6 @@ export default {
     habitCompletedToday: '今日已完成',
     habitNotCompletedToday: '今日未完成',
     streakBroken: '连续记录已中断',
-    newRecord: '创造新记录！',
 
     stats: {
       current_streak: '当前连续',

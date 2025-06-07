@@ -156,7 +156,7 @@
               <!-- 归档标记 -->
               <div v-if="habit.isArchived"
                 class="absolute top-2 right-2 bg-gray-200 dark:bg-gray-700 text-xs px-2 py-1 rounded-full">
-                {{ $t('habits.archived') }}
+                {{ $t('dialog.archived') }}
               </div>
 
               <!-- 习惯图标和颜色 -->
@@ -292,7 +292,7 @@
                             <path d="M6.66699 8.66663H9.33366" stroke="#637381" stroke-width="1.5"
                               stroke-linecap="round" stroke-linejoin="round" />
                           </svg>
-                          <span>{{ habit.isArchived ? $t('habits.unarchive') : $t('habits.archive') }}</span>
+                          <span>{{ habit.isArchived ? $t('dialog.unarchive') : $t('dialog.archive') }}</span>
                         </button>
                       </li>
                       <li>
@@ -319,6 +319,17 @@
               </div>
             </div>
           </div>
+          
+          <!-- 分页组件 -->
+          <div class="mt-8" v-if="!loading && filteredHabits.length > 0">
+            <Pagination
+              v-model:currentPage="currentPage"
+              :pageCount="pageCount"
+              :totalItems="totalItems"
+              :pageSize="pageSize"
+              @page-change="handlePageChange"
+            />
+          </div>
         </div>
       </div>
 
@@ -330,10 +341,10 @@
       <div v-if="showDeleteDialog" class="fixed inset-0 z-999 flex items-center justify-center bg-black bg-opacity-40">
         <div class="w-full max-w-md rounded-md bg-white p-6 shadow-md dark:bg-boxdark md:p-8">
           <h3 class="mb-4 text-xl font-semibold text-black dark:text-white">
-            {{ $t('habits.delete_confirm.title') }}
+            {{ $t('habits.delete') }}
           </h3>
           <p class="mb-6 text-gray-600 dark:text-gray-400">
-            {{ $t('habits.delete_confirm.message', { name: habitToDelete?.name }) }}
+            {{ $t('habits.confirmDelete', { name: habitToDelete?.name }) }}
           </p>
           <div class="flex justify-end gap-3">
             <button @click="showDeleteDialog = false"
@@ -341,7 +352,7 @@
               {{ $t('common.cancel') }}
             </button>
             <button @click="confirmDeleteHabit"
-              class="flex items-center justify-center gap-2 rounded-md bg-danger py-2 px-6 text-white hover:bg-opacity-90">
+              class="rounded-lg bg-error-500 px-4 py-2 text-sm font-medium text-white hover:bg-error-600 dark:bg-error-500 dark:hover:bg-error-600">
               {{ $t('common.delete') }}
             </button>
           </div>
@@ -352,16 +363,17 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import PageBreadcrumb from "@/components/common/PageBreadcrumb.vue";
 import AdminLayout from "@/components/layout/AdminLayout.vue";
 import HabitDialog from '@/components/habits/HabitDialog.vue'
-
+import Pagination from '@/components/common/Pagination.vue'
 
 import { toastService } from '@/services/toastService'
 import habitService from '@/services/habitService'
+import type { PaginationResult } from '@/services/habitService'
 import type Habit from '@/services/types/HabitType'
 
 
@@ -371,6 +383,12 @@ const { t } = useI18n()
 const habits = ref<Habit[]>([])
 const loading = ref(true)
 const searchQuery = ref('')
+
+// 分页状态
+const totalItems = ref(0)
+const currentPage = ref(1)
+const pageSize = ref(12)
+const pageCount = ref(1)
 
 // 删除确认对话框状态
 const showDeleteDialog = ref(false)
@@ -406,10 +424,10 @@ const filteredHabits = computed(() => {
       // 频率过滤
       const matchesFrequency = !filterFrequency.value || habit.frequency.type === filterFrequency.value
 
-      // 归档状态过滤
-      const matchesArchived = showArchived.value || !habit.isArchived
+      // 归档状态不需要在前端过滤，因为我们已经在API请求中处理了
+      // 现在从后端返回的习惯数据已经根据showArchived状态过滤过了
 
-      return matchesSearch && matchesCategory && matchesFrequency && matchesArchived
+      return matchesSearch && matchesCategory && matchesFrequency
     })
 })
 
@@ -419,7 +437,17 @@ const filteredHabits = computed(() => {
 const loadHabits = async () => {
   loading.value = true
   try {
-    habits.value = await habitService.getHabits()
+    // 传递 includeArchived 和分页参数给后端
+    const result = await habitService.getHabits({
+      includeArchived: showArchived.value,
+      page: currentPage.value,
+      pageSize: pageSize.value
+    })
+    
+    // 更新习惯列表和分页信息
+    habits.value = result.data
+    totalItems.value = result.pagination.total
+    pageCount.value = result.pagination.totalPages
   } catch (error) {
     console.error('Failed to load habits:', error)
     toastService.error(t('habits.load_error'))
@@ -440,18 +468,23 @@ const toggleFilterMenu = () => {
 /**
  * 应用筛选条件
  */
-const applyFilter = () => {
+const applyFilter = async () => {
   showFilterMenu.value = false
+  // 当筛选条件变化时，需要重新加载习惯列表以获取更新的数据
+  await loadHabits()
 }
 
 /**
  * 重置筛选条件
  */
-const resetFilter = () => {
+const resetFilter = async () => {
   filterCategory.value = ''
   filterFrequency.value = ''
   showArchived.value = false
   showFilterMenu.value = false
+  
+  // 重新加载习惯列表以应用筛选条件更改（不再显示归档习惯）
+  await loadHabits()
 }
 
 /**
@@ -590,7 +623,7 @@ const confirmDeleteHabit = async () => {
     await loadHabits()
   } catch (error) {
     console.error('Failed to delete habit:', error)
-    toastService.error(t('habits.delete_error'))
+    toastService.error(t('habits.delete_failed'))
   } finally {
     // 关闭删除确认对话框
     showDeleteDialog.value = false
@@ -606,17 +639,17 @@ const toggleArchiveStatus = async (habit: Habit) => {
   try {
     if (habit.isArchived) {
       await habitService.unarchiveHabit(habit.id)
-      toastService.success(t('habits.unarchive_success'))
+      toastService.success(t('dialog.archive_success'))
     } else {
       await habitService.archiveHabit(habit.id)
-      toastService.success(t('habits.archive_success'))
+      toastService.success(t('dialog.archive_success'))
     }
     
     // 重新加载习惯列表
     await loadHabits()
   } catch (error) {
     console.error('Failed to toggle archive status:', error)
-    toastService.error(habit.isArchived ? t('habits.unarchive_error') : t('habits.archive_error'))
+    toastService.error(habit.isArchived ? t('dialog.archive_failure') : t('dialog.archive_failure'))
   } finally {
     // 关闭习惯操作菜单
     activeHabitMenu.value = null
@@ -660,12 +693,14 @@ const isCompletedToday = (habit: Habit): boolean => {
 /**
  * 检查习惯是否在指定天数前完成
  * @param habit 习惯
- * @param daysAgo 天数（1表示昨天，2表示前天，以此类推）
+ * @param index 天数索引（1是今天，2是昨天，依此类推到7是一周前）
  * @returns 是否在指定天数前完成
  */
-const isCompletedOnDay = (habit: Habit, daysAgo: number): boolean => {
+const isCompletedOnDay = (habit: Habit, index: number): boolean => {
   const date = new Date()
-  date.setDate(date.getDate() - (7 - daysAgo))
+  // 索引从右向左：7是今天，6是昨天，依此类推，1是6天前
+  // UI中习惯历史记录从右到左显示：最右边是今天，最左边是6天前
+  date.setDate(date.getDate() - (7 - index))
   const dateString = date.toISOString().split('T')[0]
   return habit.completionHistory.some(completion => completion.date === dateString && completion.isCompleted)
 }
@@ -677,10 +712,32 @@ const isCompletedOnDay = (habit: Habit, daysAgo: number): boolean => {
  */
 const getDayLabel = (dayIndex: number): string => {
   const date = new Date()
+  // 索引从右向左：7是今天，6是昨天，依此类推，1是6天前
   date.setDate(date.getDate() - (7 - dayIndex))
   const dayNames = ['日', '一', '二', '三', '四', '五', '六']
   return dayNames[date.getDay()]
 }
+
+/**
+ * 处理页面变化
+ */
+const handlePageChange = (page: number) => {
+  currentPage.value = page
+  loadHabits()
+}
+
+// 监听显示归档习惯的状态变化
+watch(showArchived, async (newVal: boolean) => {
+  // 重置页码并重新加载习惯列表
+  currentPage.value = 1
+  await loadHabits()
+})
+
+// 监听筛选条件变化
+watch([filterCategory, filterFrequency], () => {
+  // 用户改变了筛选条件但还未应用时，不自动重新加载
+  // 等待用户点击"应用"按钮
+})
 
 // 组件挂载时加载习惯列表
 onMounted(() => {

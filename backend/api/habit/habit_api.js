@@ -112,6 +112,7 @@ router.get('/', async (req, res) => {
   try {
     const options = {
       includeArchived: req.query.includeArchived === 'true',
+      includeHistory: req.query.includeHistory === 'true', // 添加是否包含完成历史记录的参数
       category: req.query.category,
       limit: req.query.limit ? parseInt(req.query.limit) : undefined,
       offset: req.query.offset ? parseInt(req.query.offset) : undefined,
@@ -314,7 +315,7 @@ router.post('/:id/complete', async (req, res) => {
     const { date } = req.body
 
     const result = await recordCompletion(habitId, {
-      completedAt: date,
+      date: date,
       isCompleted: true,
     })
 
@@ -347,7 +348,7 @@ router.delete('/:id/complete', async (req, res) => {
     const date = req.query.date
 
     const result = await recordCompletion(habitId, {
-      completedAt: date,
+      date: date,
       isCompleted: false,
     })
 
@@ -362,6 +363,39 @@ router.delete('/:id/complete', async (req, res) => {
     }
   } catch (error) {
     console.error('标记习惯未完成API错误:', error)
+    res.status(500).json({
+      success: false,
+      message: '服务器内部错误',
+      error: error.message,
+    })
+  }
+})
+
+/**
+ * 标记习惯未完成（uncomplete 路由）
+ * POST /api/habits/:id/uncomplete
+ */
+router.post('/:id/uncomplete', async (req, res) => {
+  try {
+    const habitId = req.params.id
+    const { date } = req.body
+
+    const result = await recordCompletion(habitId, {
+      date: date,
+      isCompleted: false,
+    })
+
+    if (result.success) {
+      res.status(200).json(result)
+    } else {
+      if (result.message === '习惯不存在') {
+        res.status(404).json(result)
+      } else {
+        res.status(400).json(result)
+      }
+    }
+  } catch (error) {
+    console.error('取消习惯完成API错误:', error)
     res.status(500).json({
       success: false,
       message: '服务器内部错误',

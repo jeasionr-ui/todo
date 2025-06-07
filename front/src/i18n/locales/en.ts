@@ -36,6 +36,29 @@ export default {
     warning: 'Warning',
     info: 'Info',
   },
+  
+  // Pagination component
+  pagination: {
+    previous: 'Previous',
+    next: 'Next',
+    showing: 'Showing',
+    to: 'to',
+    of: 'of',
+    results: 'results',
+    page: 'Page',
+    perPage: 'per page',
+    items: 'items',
+  },
+  dialog: {
+    archive: 'archive',
+    unarchive: 'unarchive',
+    archived: 'archived',
+    unarchived: 'unarchived',
+    archive_success: 'Archived Successfully',
+    archive_failure: 'Archived Failed',
+    unarchive_success: 'Unarchived Successfully',
+    unarchive_failure: 'Unarchived Failed',
+  },
 
   form: {
     selectDate: 'Select date',
@@ -237,6 +260,12 @@ export default {
     all: 'All Habits',
     create: 'Create Habit',
     create_title: 'Create New Habit',
+    create_success: 'Habit created successfully',
+    update_success: 'Habit updated successfully',
+    create_failed: 'Habit creation failed',
+    update_failed: 'Habit update failed',
+    delete_success: 'Task deleted successfully',
+    delete_failed: 'Task deletion failed',
     edit: 'Edit Habit',
     delete: 'Delete Habit',
     view: 'View Details',
@@ -296,7 +325,6 @@ export default {
     viewHistory: 'View History',
     archiveHabit: 'Archive Habit',
     unarchiveHabit: 'Unarchive Habit',
-    deleteHabit: 'Delete Habit',
 
     // Create/Edit
     habitCreated: 'Habit created successfully',
@@ -572,6 +600,7 @@ export default {
 
     // Confirmation dialogs
     confirmClearData: 'Are you sure you want to clear all data? This action cannot be undone.',
+    deleteTask: 'Delete Task',
     confirmDeleteHabit: 'Are you sure you want to delete this habit?',
     dataCleared: 'Data cleared',
     dataExported: 'Data exported successfully',

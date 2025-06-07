@@ -67,10 +67,56 @@ async function apiRequest<T>(endpoint: string, options: RequestInit = {}): Promi
     throw new ApiError('网络错误', 0, { originalError: error })
   }
 } /**
+ * 分页结果接口
+ */
+export interface PaginationResult<T> {
+  data: T[]
+  pagination: {
+    total: number
+    pageSize: number
+    currentPage: number
+    totalPages: number
+  }
+}
+
+/**
  * 获取所有习惯
  */
-export const getHabits = async (): Promise<Habit[]> => {
-  return apiRequest<Habit[]>('/')
+export const getHabits = async (options?: {
+  includeHistory?: boolean
+  includeArchived?: boolean
+  category?: string
+  page?: number
+  pageSize?: number
+}): Promise<PaginationResult<Habit>> => {
+  const params = new URLSearchParams()
+  
+  if (options?.includeHistory !== undefined) {
+    params.append('includeHistory', String(options.includeHistory))
+  } else {
+    params.append('includeHistory', 'true') // 默认包含完成历史
+  }
+  
+  if (options?.includeArchived !== undefined) {
+    params.append('includeArchived', String(options.includeArchived))
+  }
+  
+  if (options?.category) {
+    params.append('category', options.category)
+  }
+  
+  // 添加分页参数
+  if (options?.pageSize) {
+    params.append('limit', String(options.pageSize))
+    
+    if (options?.page) {
+      const offset = (options.page - 1) * options.pageSize
+      params.append('offset', String(offset))
+    }
+  }
+  
+  const queryString = params.toString()
+  return apiRequest<PaginationResult<Habit>>(queryString ? `/?${queryString}` : '/')
 }
 
 /**

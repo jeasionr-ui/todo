@@ -2,8 +2,31 @@ import { query, execute } from '../exec_api.js';
 import { getFilesByIdsDb } from '../file/file_db.js';
 import { v4 as uuidv4 } from 'uuid';
 
-export async function getAllTasksDb() {
-  const rows = await query('SELECT * FROM `task`');
+export async function getAllTasksDb(options = {}) {
+  let sql = 'SELECT * FROM `task`';
+  const params = [];
+
+  // 添加可能的查询条件
+  if (options.status) {
+    sql += ' WHERE status = ?';
+    params.push(options.status);
+  }
+  
+  // 添加排序规则
+  sql += ' ORDER BY dueDate ASC, priority DESC';
+
+  // 添加分页支持
+  if (options.limit) {
+    sql += ' LIMIT ?';
+    params.push(options.limit);
+    
+    if (options.offset) {
+      sql += ' OFFSET ?';
+      params.push(options.offset);
+    }
+  }
+  
+  const rows = await query(sql, params);
   const tasks = [];
   
   for (const row of rows) {
@@ -12,6 +35,28 @@ export async function getAllTasksDb() {
   }
   
   return tasks;
+}
+
+/**
+ * 获取任务总数（用于分页）
+ */
+export async function countTasksDb(options = {}) {
+  try {
+    let sql = 'SELECT COUNT(*) as count FROM `task`';
+    const params = [];
+
+    // 添加可能的查询条件
+    if (options.status) {
+      sql += ' WHERE status = ?';
+      params.push(options.status);
+    }
+
+    const rows = await query(sql, params);
+    return rows[0].count;
+  } catch (error) {
+    console.error('获取任务总数失败:', error);
+    throw new Error('获取任务总数失败');
+  }
 }
 
 export async function createTaskDb(task) {
