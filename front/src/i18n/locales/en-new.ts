@@ -32,7 +32,6 @@ export default {
     home: 'Home',
     dashboard: 'Dashboard',
     profile: 'Profile',
-    editProfile: 'Edit Profile',
     settings: 'Settings',
     support: 'Support',
     
@@ -272,10 +271,6 @@ export default {
     tags: 'Tags',
     attachments: 'Attachments',
     
-    // Placeholders
-    selectDueDate: 'Select due date',
-    selectReminderTime: 'Select reminder time',
-    
     // Task status
     todo: 'To Do',
     working: 'In Progress',
@@ -317,41 +312,6 @@ export default {
     updateFailed: 'Task update failed',
     deleteSuccess: 'Task deleted successfully',
     deleteFailed: 'Task deletion failed',
-  },
-
-  // File operations
-  file: {
-    upload: 'Upload File',
-    uploadFiles: 'Upload Files',
-    selectedFiles: 'Selected Files',
-    uploadedFiles: 'Uploaded Files',
-    download: 'Download File',
-    downloadFile: 'Download File',
-    delete: 'Delete File',
-    deleteFile: 'Delete File',
-    selectFiles: 'Select Files',
-    dragAndDrop: 'Drag and drop files here or click to select',
-    maxFileSize: 'Maximum file size',
-    supportedFormats: 'Supported formats',
-    uploadSuccess: 'File uploaded successfully',
-    uploadFailed: 'File upload failed',
-    deleteSuccess: 'File deleted successfully',
-    deleteFailed: 'File deletion failed',
-    downloadFailed: 'File download failed',
-  },
-
-  // Date and time
-  datetime: {
-    weekdays: {
-      sunday: 'Sun',
-      monday: 'Mon', 
-      tuesday: 'Tue',
-      wednesday: 'Wed',
-      thursday: 'Thu',
-      friday: 'Fri',
-      saturday: 'Sat'
-    },
-    weekdaysShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
   },
 
   // Habit management

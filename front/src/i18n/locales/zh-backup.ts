@@ -1,56 +1,40 @@
 export default {
-  // 通用文本
+  // 通用
   common: {
-    // 基础操作
+    home: '首页',
+    back: '返回',
+    filter: '筛选',
     save: '保存',
     cancel: '取消',
-    confirm: '确认',
+    editProfile: '编辑个人资料',
+    support: '帮助',
     edit: '编辑',
     delete: '删除',
-    create: '创建',
-    update: '更新',
-    add: '添加',
-    apply: '应用',
-    reset: '重置',
-    clear: '清空',
-    back: '返回',
-    next: '下一步',
-    previous: '上一步',
-    close: '关闭',
-    done: '完成',
-    skip: '跳过',
-    
-    // 状态
+    confirm: '确认',
     loading: '加载中...',
     success: '操作成功',
     failed: '操作失败',
-    error: '操作失败',
-    warning: '警告',
-    info: '提示',
-    
-    // 导航
-    home: '首页',
-    dashboard: '仪表板',
-    profile: '个人资料',
-    editProfile: '编辑个人资料',
-    settings: '设置',
-    support: '帮助',
-    
-    // 搜索和筛选
     search: '搜索',
     searchPlaceholder: '搜索或输入命令...',
-    filter: '筛选',
-    sort: '排序',
-    
-    // 数据状态
     noData: '暂无数据',
     more: '更多',
     yes: '是',
     no: '否',
-    
-    // 应用信息
     appDescription: 'Todo List 是一款简单易用的任务管理应用，帮助您高效管理日常任务和习惯养成。',
     welcome: '欢迎回来',
+    // 新增内容
+    apply: '应用',
+    add: '添加',
+    create: '创建',
+    update: '更新',
+    next: '下一步',
+    previous: '上一步',
+    sort: '排序',
+    clear: '清空',
+    reset: '重置',
+    error: '操作失败',
+    warning: '警告',
+    info: '提示',
   },
 
   // 分页组件
@@ -66,8 +50,6 @@ export default {
     items: '条',
     pageSize: '每页条数',
   },
-
-  // 对话框
   dialog: {
     archive: '归档',
     unarchive: '取消归档',
@@ -79,12 +61,10 @@ export default {
     unarchive_failure: '取消归档失败',
   },
 
-  // 表单
   form: {
     selectDate: '选择日期',
   },
 
-  // 认证相关
   auth: {
     signIn: '登录',
     signUp: '注册',
@@ -92,8 +72,6 @@ export default {
     forgotPassword: '忘记密码',
     resetPassword: '重置密码',
     rememberMe: '记住我',
-    
-    // 表单字段
     email: '邮箱',
     password: '密码',
     confirmPassword: '确认密码',
@@ -103,8 +81,6 @@ export default {
     firstName: '名',
     lastName: '姓',
     nickname: '昵称',
-    
-    // 提示文本
     agreeTerms: '我已阅读并同意服务条款和隐私政策',
     alreadyHaveAccount: '已有账号？',
     noAccount: '没有账号？',
@@ -114,8 +90,6 @@ export default {
     or: '或',
     enterEmailPassword: '请输入邮箱和密码登录',
     enterInfoToSignUp: '请填写信息完成注册',
-    
-    // 验证信息
     passwordNotMatch: '两次输入的密码不一致',
     invalidEmail: '邮箱格式不正确',
     invalidPhone: '手机号格式不正确',
@@ -126,7 +100,6 @@ export default {
     loginFailed: '登录失败，请稍后再试',
   },
 
-  // 用户相关
   user: {
     profile: '个人资料',
     settings: '账号设置',
@@ -134,23 +107,17 @@ export default {
     notifications: '通知设置',
     activity: '活动记录',
     achievements: '成就系统',
-    
-    // 个人信息
     personalInfo: '个人信息',
     address: '地址信息',
     bio: '个人简介',
     avatar: '头像',
     uploadAvatar: '上传头像',
     changeAvatar: '更换头像',
-    
-    // 地址信息
     country: '国家',
     city: '城市',
     state: '省/州',
     postalCode: '邮政编码',
     taxId: '税号',
-    
-    // 密码管理
     changePassword: '修改密码',
     currentPassword: '当前密码',
     newPassword: '新密码',
@@ -159,38 +126,8 @@ export default {
     passwordTooShort: '密码长度不能少于6个字符',
     resetPasswordFailed: '重置密码失败，请稍后再试',
     resetPasswordSuccess: '密码重置成功，请使用新密码登录',
-    
-    // 两步验证
-    twoFactorAuthentication: '两步验证',
-    enable: '启用',
-    disable: '禁用',
-    
-    // 历史记录
-    loginHistory: '登录历史',
-    deviceHistory: '设备历史',
-    lastLogin: '最近登录',
-    ipAddress: 'IP地址',
-    device: '设备',
-    browser: '浏览器',
-    location: '位置',
-    time: '时间',
-    status: '状态',
-    active: '活跃',
-    inactive: '不活跃',
-    online: '在线',
-    offline: '离线',
-    accountCreated: '账号创建于',
-    accountUpdated: '账号更新于',
-    
-    // 社交账号
-    socialAccounts: '社交账号',
-    connect: '关联',
-    disconnect: '解除关联',
-    connected: '已关联',
-    notConnected: '未关联',
   },
 
-  // 菜单导航
   menu: {
     dashboard: '仪表盘',
     tasks: '任务管理',
@@ -205,7 +142,6 @@ export default {
     toast: '消息提示',
   },
 
-  // 消息提示
   toast: {
     success: '成功',
     error: '错误',
@@ -225,15 +161,36 @@ export default {
     pleaseEnterMessage: '请输入消息内容',
   },
 
-  // 个人资料页面
   profile: {
     title: '个人资料',
     description: '查看和编辑您的个人资料',
     editSocialAccounts: '编辑社交账号',
     editSocialAccountsDesc: '连接您的社交账号到您的个人资料',
+    twoFactorAuthentication: '两步验证',
+    enable: '启用',
+    disable: '禁用',
+    loginHistory: '登录历史',
+    deviceHistory: '设备历史',
+    lastLogin: '最近登录',
+    ipAddress: 'IP地址',
+    device: '设备',
+    browser: '浏览器',
+    location: '位置',
+    time: '时间',
+    status: '状态',
+    active: '活跃',
+    inactive: '不活跃',
+    online: '在线',
+    offline: '离线',
+    accountCreated: '账号创建于',
+    accountUpdated: '账号更新于',
+    socialAccounts: '社交账号',
+    connect: '关联',
+    disconnect: '解除关联',
+    connected: '已关联',
+    notConnected: '未关联',
   },
 
-  // 通知
   notification: {
     title: '通知',
     viewAll: '查看所有通知',
@@ -245,7 +202,6 @@ export default {
     user: '用户',
   },
 
-  // 任务管理
   task: {
     title: '任务管理',
     all: '所有任务',
@@ -260,8 +216,6 @@ export default {
     allPriorities: '所有优先级',
     resetFilter: '重置筛选',
     applyFilter: '应用筛选',
-    
-    // 任务详情
     detail: '任务详情',
     name: '任务名称',
     description: '任务描述',
@@ -271,22 +225,12 @@ export default {
     reminderTime: '提醒时间',
     tags: '标签',
     attachments: '附件',
-    
-    // 占位符
-    selectDueDate: '选择截止日期',
-    selectReminderTime: '选择提醒时间',
-    
-    // 任务状态
     todo: '待办',
     working: '进行中',
     done: '已完成',
-    
-    // 优先级
     high: '高',
     medium: '中',
     low: '低',
-    
-    // 操作
     addTag: '添加标签',
     addAttachment: '添加附件',
     filter: '筛选',
@@ -294,8 +238,6 @@ export default {
     search: '搜索任务',
     noTasks: '暂无任务',
     createFirstTask: '创建您的第一个任务',
-    
-    // 高级功能
     estimatedTime: '预计时间',
     actualTime: '实际耗时',
     dependency: '依赖任务',
@@ -309,66 +251,32 @@ export default {
     batchComplete: '批量完成',
     import: '导入任务',
     export: '导出任务',
-    
-    // 状态变更
-    createSuccess: '任务创建成功',
-    createFailed: '任务创建失败',
-    updateSuccess: '任务更新成功',
-    updateFailed: '任务更新失败',
     deleteSuccess: '任务删除成功',
     deleteFailed: '任务删除失败',
   },
 
-  // 文件操作
-  file: {
-    upload: '上传文件',
-    uploadFiles: '上传文件',
-    selectedFiles: '已选择的文件',
-    uploadedFiles: '已上传的文件',
-    download: '下载文件',
-    downloadFile: '下载文件',
-    delete: '删除文件',
-    deleteFile: '删除文件',
-    selectFiles: '选择文件',
-    dragAndDrop: '拖拽文件到此处或点击选择',
-    maxFileSize: '文件大小不能超过',
-    supportedFormats: '支持的格式',
-    uploadSuccess: '文件上传成功',
-    uploadFailed: '文件上传失败',
-    deleteSuccess: '文件删除成功',
-    deleteFailed: '文件删除失败',
-    downloadFailed: '文件下载失败',
-  },
-
-  // 日期时间
-  datetime: {
-    weekdays: {
-      sunday: '日',
-      monday: '一', 
-      tuesday: '二',
-      wednesday: '三',
-      thursday: '四',
-      friday: '五',
-      saturday: '六'
-    },
-    weekdaysShort: ['日', '一', '二', '三', '四', '五', '六'],
-  },
-
-  // 习惯管理
+  // 习惯相关 - 保留原有内容，增加新内容
   habits: {
     title: '习惯养成',
     all: '所有习惯',
     create: '创建习惯',
+    create_title: '创建新习惯',
+    create_success: '创建习惯成功',
+    update_success: '习惯更新成功',
+    create_failed: '习惯创建失败',
+    update_failed: '习惯更新失败',
+    delete_success: '习惯删除成功',
+    delete_failed: '习惯删除失败',
     edit: '编辑习惯',
     delete: '删除习惯',
     view: '查看详情',
+    check_success: '打卡成功',
+    uncheck_success: '撤销打卡',
     confirmDelete: '确定要删除此习惯吗？',
     nameRequired: '习惯名称不能为空',
     createHabit: '创建习惯',
     editHabit: '编辑习惯',
     detail: '习惯详情',
-    
-    // 基本信息
     name: '习惯名称',
     description: '习惯描述',
     category: '分类',
@@ -382,16 +290,14 @@ export default {
     icon: '图标',
     tags: '标签',
     addTag: '添加标签',
-    
-    // 状态和操作
     complete: '打卡',
     completed: '已打卡',
     archive: '归档',
     unarchive: '取消归档',
     showArchived: '显示已归档',
     hideArchived: '隐藏已归档',
-    
-    // 扩展信息
+
+    // 新增内容
     habits: '习惯列表',
     myHabits: '我的习惯',
     habitName: '习惯名称',
@@ -399,20 +305,20 @@ export default {
     isArchived: '已归档',
     createdAt: '创建时间',
     updatedAt: '更新时间',
-    
+
     // 统计数据
     streakCount: '当前连续',
     longestStreak: '最长连续',
     totalCompletions: '总完成次数',
     completionHistory: '完成历史',
     lastCompletedAt: '上次完成时间',
-    
+
     // 状态
     incomplete: '未完成',
     inProgress: '进行中',
     paused: '已暂停',
     archived: '已归档',
-    
+
     // 操作
     markAsCompleted: '标记为完成',
     markAsIncomplete: '标记为未完成',
@@ -420,21 +326,12 @@ export default {
     viewHistory: '查看历史',
     archiveHabit: '归档习惯',
     unarchiveHabit: '取消归档',
-    
-    // 状态变更
-    create_title: '创建新习惯',
-    create_success: '创建习惯成功',
-    update_success: '习惯更新成功',
-    create_failed: '习惯创建失败',
-    update_failed: '习惯更新失败',
-    delete_success: '习惯删除成功',
-    delete_failed: '习惯删除失败',
-    check_success: '打卡成功',
-    uncheck_success: '撤销打卡',
+
+    // 创建/编辑
     habitCreated: '习惯创建成功',
     habitUpdated: '习惯更新成功',
     habitDeleted: '习惯删除成功',
-    
+
     // 表单验证
     nameMinLength: '习惯名称至少需要2个字符',
     nameMaxLength: '习惯名称不能超过50个字符',
@@ -443,15 +340,14 @@ export default {
     frequencyRequired: '请选择频率',
     startDateRequired: '请选择开始日期',
     invalidDateRange: '结束日期不能早于开始日期',
-    
+
     // 提示信息
     noHabitsFound: '暂无习惯记录',
     noCompletionHistory: '暂无完成记录',
     habitCompletedToday: '今日已完成',
     habitNotCompletedToday: '今日未完成',
     streakBroken: '连续记录已中断',
-    
-    // 统计
+
     stats: {
       current_streak: '当前连续',
       longest_streak: '最长连续',
@@ -460,7 +356,6 @@ export default {
       last_completed: '最近完成',
     },
 
-    // 分类
     categories: {
       health: '健康',
       fitness: '健身',
@@ -476,7 +371,6 @@ export default {
       other: '其他',
     },
 
-    // 频率
     frequency: {
       daily: '每日',
       weekly: '每周',
@@ -484,7 +378,6 @@ export default {
       custom: '自定义',
     },
 
-    // 筛选和排序
     filter: {
       title: '筛选',
       category: '分类',
@@ -506,7 +399,6 @@ export default {
       streak_desc: '连续次数 (最多)',
     },
 
-    // 空状态
     empty: {
       title: '暂无习惯',
       description: '创建您的第一个习惯，开始养成良好的生活方式',
@@ -514,7 +406,7 @@ export default {
       create_first: '创建您的第一个习惯',
     },
 
-    // 表单
+    // 表单相关
     form: {
       name: '习惯名称',
       name_placeholder: '请输入习惯名称',

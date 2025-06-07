@@ -171,7 +171,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useI18n } from 'vue-i18n'
+import { useI18n } from '@/i18n'
 import { useRouter } from 'vue-router'
 import LanguageSwitcher from '@/components/common/LanguageSwitcher.vue'
 import CommonGridShape from '@/components/common/CommonGridShape.vue'

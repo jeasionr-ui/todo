@@ -73,7 +73,7 @@
               v-model="form.dueDate"
               :config="flatpickrConfig"
               class="w-full rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-sm text-gray-700 focus:border-brand-500 focus:ring-0 dark:border-gray-800 dark:bg-white/[0.03] dark:text-gray-300 dark:focus:border-brand-500"
-              placeholder="选择截止日期"
+              :placeholder="$t('task.selectDueDate')"
             />
             <span
               class="absolute text-gray-500 -translate-y-1/2 pointer-events-none right-3 top-1/2 dark:text-gray-400"
@@ -107,7 +107,7 @@
               v-model="form.reminderTime"
               :config="flatpickrTimeConfig"
               class="w-full rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-sm text-gray-700 focus:border-brand-500 focus:ring-0 dark:border-gray-800 dark:bg-white/[0.03] dark:text-gray-300 dark:focus:border-brand-500"
-              placeholder="选择提醒时间"
+              :placeholder="$t('task.selectReminderTime')"
             />
             <span
               class="absolute text-gray-500 -translate-y-1/2 pointer-events-none right-3 top-1/2 dark:text-gray-400"

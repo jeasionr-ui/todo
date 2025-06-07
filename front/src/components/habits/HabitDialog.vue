@@ -443,7 +443,7 @@ import flatPickr from 'vue-flatpickr-component'
 import 'flatpickr/dist/flatpickr.css'
 import { useFlatPickr } from '@/composables/useFlatPickr'
 import { toastService } from '@/services/toastService'
-import { useI18n } from 'vue-i18n'
+import { useI18n } from '@/i18n'
 
 // 表单数据类型声明
 interface Frequency {

@@ -276,7 +276,7 @@
  * 允许用户更改密码、管理两步验证和查看活动会话
  */
 import { ref, onMounted } from 'vue'
-import { useI18n } from 'vue-i18n'
+import { useI18n } from '@/i18n'
 import { userService } from '@/services/userService'
 
 const { t } = useI18n()

@@ -38,7 +38,7 @@
 
 <script setup>
 // 导入 useI18n 组合式函数
-import { useI18n } from 'vue-i18n'
+import { useI18n } from '@/i18n'
 
 // 初始化 i18n
 const { t } = useI18n()

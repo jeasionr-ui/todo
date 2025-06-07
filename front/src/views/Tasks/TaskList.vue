@@ -437,7 +437,6 @@ import Pagination from '@/components/common/Pagination.vue'
 import { taskService } from '@/services/taskService'
 import { toastService } from '@/services/toastService'
 import type Task from '@/services/types/TaskType'
-import type { PaginationResult } from '@/services/taskService'
 
 export default defineComponent({
   name: 'TaskList',

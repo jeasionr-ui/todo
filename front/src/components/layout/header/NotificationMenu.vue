@@ -108,7 +108,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 import { RouterLink } from 'vue-router'
-import { useI18n } from 'vue-i18n'
+import { useI18n } from '@/i18n'
 import { getNotifications, markNotificationAsRead } from '@/services/notificationService'
 
 const { t } = useI18n()

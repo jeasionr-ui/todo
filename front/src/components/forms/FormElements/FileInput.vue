@@ -3,7 +3,7 @@
     <!-- File Upload -->
     <div>
       <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
-        {{ label }}
+        {{ label || t('file.uploadFiles') }}
       </label>
       
       <!-- File Input -->
@@ -39,7 +39,7 @@
           <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
           </svg>
-          上传文件 ({{ selectedFiles.length }})
+          {{ t('file.uploadFiles') }} ({{ selectedFiles.length }})
         </button>
       </div>
 
@@ -51,7 +51,7 @@
       <!-- Selected Files Preview -->
       <div v-if="selectedFiles.length > 0" class="mt-3 space-y-2">
         <div class="text-sm font-medium text-gray-700 dark:text-gray-300">
-          已选择的文件:
+          {{ t('file.selectedFiles') }}:
         </div>
         <div class="space-y-1">
           <div
@@ -88,7 +88,7 @@
       <!-- Uploaded Files List -->
       <div v-if="uploadedFiles.length > 0" class="mt-4 space-y-2">
         <div class="text-sm font-medium text-gray-700 dark:text-gray-300">
-          已上传的文件:
+          {{ t('file.uploadedFiles') }}:
         </div>
         <div class="space-y-1">
           <div
@@ -114,7 +114,7 @@
                 @click="downloadFile(file)"
                 type="button"
                 class="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 transition-colors"
-                title="下载文件"
+                :title="t('file.downloadFile')"
               >
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
@@ -124,7 +124,7 @@
                 @click="removeUploadedFile(file.id)"
                 type="button"
                 class="text-red-600 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300 transition-colors"
-                title="删除文件"
+                :title="t('file.deleteFile')"
               >
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
@@ -140,7 +140,10 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
+import { useI18n } from '@/i18n'
 import { uploadFile, uploadMultipleFiles, deleteFile, downloadFile as downloadFileService, formatFileSize, type FileInfo } from '@/services/fileService'
+
+const { t } = useI18n()
 
 interface Props {
   label?: string
@@ -157,7 +160,7 @@ interface Emits {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  label: '上传文件',
+  label: '',
   multiple: false,
   accept: '',
   modelValue: () => []
@@ -232,7 +235,7 @@ const uploadFiles = async () => {
     uploadProgress.value = 100
     
   } catch (error: any) {
-    errorMessage.value = error.message || '文件上传失败'
+    errorMessage.value = error.message || t('file.uploadFailed')
     emit('error', errorMessage.value)
   } finally {
     uploading.value = false
@@ -253,7 +256,7 @@ const removeUploadedFile = async (fileId: string) => {
     emit('update:modelValue', fileIds)
     
   } catch (error: any) {
-    errorMessage.value = error.message || '删除文件失败'
+    errorMessage.value = error.message || t('file.deleteFailed')
     emit('error', errorMessage.value)
   }
 }

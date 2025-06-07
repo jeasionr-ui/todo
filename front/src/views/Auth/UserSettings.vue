@@ -136,7 +136,7 @@
  * 允许用户配置应用程序的各种设置，如语言、时区、日期格式、主题和通知首选项
  */
 import { ref } from 'vue'
-import { useI18n } from 'vue-i18n'
+import { useI18n } from '@/i18n'
 import { useLanguage } from '@/i18n'
 
 const { t } = useI18n()

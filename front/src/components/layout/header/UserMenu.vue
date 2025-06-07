@@ -48,7 +48,7 @@ import { RouterLink } from 'vue-router'
 import { ref, onMounted, onUnmounted } from 'vue'
 import { userService } from '@/services/userService'
 import type User from '@/services/types/UserType'
-import { useI18n } from 'vue-i18n'
+import { useI18n } from '@/i18n'
 
 const { t } = useI18n()
 const dropdownOpen = ref(false)

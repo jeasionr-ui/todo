@@ -32,7 +32,6 @@ export default {
     home: '首页',
     dashboard: '仪表板',
     profile: '个人资料',
-    editProfile: '编辑个人资料',
     settings: '设置',
     support: '帮助',
     
@@ -272,10 +271,6 @@ export default {
     tags: '标签',
     attachments: '附件',
     
-    // 占位符
-    selectDueDate: '选择截止日期',
-    selectReminderTime: '选择提醒时间',
-    
     // 任务状态
     todo: '待办',
     working: '进行中',
@@ -317,41 +312,6 @@ export default {
     updateFailed: '任务更新失败',
     deleteSuccess: '任务删除成功',
     deleteFailed: '任务删除失败',
-  },
-
-  // 文件操作
-  file: {
-    upload: '上传文件',
-    uploadFiles: '上传文件',
-    selectedFiles: '已选择的文件',
-    uploadedFiles: '已上传的文件',
-    download: '下载文件',
-    downloadFile: '下载文件',
-    delete: '删除文件',
-    deleteFile: '删除文件',
-    selectFiles: '选择文件',
-    dragAndDrop: '拖拽文件到此处或点击选择',
-    maxFileSize: '文件大小不能超过',
-    supportedFormats: '支持的格式',
-    uploadSuccess: '文件上传成功',
-    uploadFailed: '文件上传失败',
-    deleteSuccess: '文件删除成功',
-    deleteFailed: '文件删除失败',
-    downloadFailed: '文件下载失败',
-  },
-
-  // 日期时间
-  datetime: {
-    weekdays: {
-      sunday: '日',
-      monday: '一', 
-      tuesday: '二',
-      wednesday: '三',
-      thursday: '四',
-      friday: '五',
-      saturday: '六'
-    },
-    weekdaysShort: ['日', '一', '二', '三', '四', '五', '六'],
   },
 
   // 习惯管理

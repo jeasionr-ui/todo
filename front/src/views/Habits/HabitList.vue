@@ -365,7 +365,7 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted, watch } from 'vue'
-import { useI18n } from 'vue-i18n'
+import { useI18n } from '@/i18n'
 
 import PageBreadcrumb from "@/components/common/PageBreadcrumb.vue";
 import AdminLayout from "@/components/layout/AdminLayout.vue";
@@ -716,7 +716,7 @@ const getDayLabel = (dayIndex: number): string => {
   const date = new Date()
   // 索引从右向左：7是今天，6是昨天，依此类推，1是6天前
   date.setDate(date.getDate() - (7 - dayIndex))
-  const dayNames = ['日', '一', '二', '三', '四', '五', '六']
+  const dayNames = t('datetime.weekdaysShort')
   return dayNames[date.getDay()]
 }
 

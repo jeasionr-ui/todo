@@ -1,58 +1,42 @@
 export default {
   // Common
   common: {
-    // Basic operations
+    home: 'Home',
+    back: 'Back',
+    filter: 'Filter',
     save: 'Save',
     cancel: 'Cancel',
-    confirm: 'Confirm',
+    editProfile: 'Edit Profile',
+    support: 'Support',
     edit: 'Edit',
     delete: 'Delete',
-    create: 'Create',
-    update: 'Update',
-    add: 'Add',
-    apply: 'Apply',
-    reset: 'Reset',
-    clear: 'Clear',
-    back: 'Back',
-    next: 'Next',
-    previous: 'Previous',
-    close: 'Close',
-    done: 'Done',
-    skip: 'Skip',
-    
-    // Status
+    confirm: 'Confirm',
     loading: 'Loading...',
     success: 'Operation successful',
     failed: 'Operation failed',
-    error: 'Operation failed',
-    warning: 'Warning',
-    info: 'Info',
-    
-    // Navigation
-    home: 'Home',
-    dashboard: 'Dashboard',
-    profile: 'Profile',
-    editProfile: 'Edit Profile',
-    settings: 'Settings',
-    support: 'Support',
-    
-    // Search and filtering
     search: 'Search',
     searchPlaceholder: 'Search or enter command...',
-    filter: 'Filter',
-    sort: 'Sort',
-    
-    // Data states
     noData: 'No data',
     more: 'More',
     yes: 'Yes',
     no: 'No',
-    
-    // App info
     appDescription: 'ToDo App - Your personal task and habit management tool',
     welcome: 'Welcome back',
+    // New content
+    apply: 'Apply',
+    add: 'Add',
+    create: 'Create',
+    update: 'Update',
+    next: 'Next',
+    previous: 'Previous',
+    sort: 'Sort',
+    clear: 'Clear',
+    reset: 'Reset',
+    error: 'Operation failed',
+    warning: 'Warning',
+    info: 'Info',
   },
-
+  
   // Pagination component
   pagination: {
     previous: 'Previous',
@@ -66,8 +50,6 @@ export default {
     items: 'items',
     pageSize: 'Page Size',
   },
-
-  // Dialog
   dialog: {
     archive: 'archive',
     unarchive: 'unarchive',
@@ -79,12 +61,10 @@ export default {
     unarchive_failure: 'Unarchived Failed',
   },
 
-  // Forms
   form: {
     selectDate: 'Select date',
   },
 
-  // Authentication
   auth: {
     signIn: 'Sign In',
     signUp: 'Sign Up',
@@ -92,8 +72,6 @@ export default {
     forgotPassword: 'Forgot Password',
     resetPassword: 'Reset Password',
     rememberMe: 'Remember Me',
-    
-    // Form fields
     email: 'Email',
     password: 'Password',
     confirmPassword: 'Confirm Password',
@@ -103,8 +81,6 @@ export default {
     firstName: 'First Name',
     lastName: 'Last Name',
     nickname: 'Nickname',
-    
-    // Prompts
     agreeTerms: 'I have read and agree to the Terms of Service and Privacy Policy',
     alreadyHaveAccount: 'Already have an account?',
     noAccount: "Don't have an account?",
@@ -114,8 +90,6 @@ export default {
     or: 'Or',
     enterEmailPassword: 'Please enter your email and password to sign in',
     enterInfoToSignUp: 'Please fill in the information to complete registration',
-    
-    // Validation
     passwordNotMatch: 'Passwords do not match',
     invalidEmail: 'Invalid email format',
     invalidPhone: 'Invalid phone number format',
@@ -126,7 +100,6 @@ export default {
     loginFailed: 'Login failed, please try again later',
   },
 
-  // User
   user: {
     profile: 'Profile',
     settings: 'Account Settings',
@@ -134,23 +107,17 @@ export default {
     notifications: 'Notification Settings',
     activity: 'Activity Log',
     achievements: 'Achievement System',
-    
-    // Personal information
     personalInfo: 'Personal Information',
     address: 'Address Information',
     bio: 'Bio',
     avatar: 'Avatar',
     uploadAvatar: 'Upload Avatar',
     changeAvatar: 'Change Avatar',
-    
-    // Address info
     country: 'Country',
     city: 'City',
     state: 'State/Province',
     postalCode: 'Postal Code',
     taxId: 'Tax ID',
-    
-    // Password management
     changePassword: 'Change Password',
     currentPassword: 'Current Password',
     newPassword: 'New Password',
@@ -159,38 +126,8 @@ export default {
     passwordTooShort: 'Password must be at least 6 characters',
     resetPasswordFailed: 'Password reset failed, please try again later',
     resetPasswordSuccess: 'Password reset successful, please sign in with your new password',
-    
-    // Two-factor authentication
-    twoFactorAuthentication: 'Two-Factor Authentication',
-    enable: 'Enable',
-    disable: 'Disable',
-    
-    // History
-    loginHistory: 'Login History',
-    deviceHistory: 'Device History',
-    lastLogin: 'Last Login',
-    ipAddress: 'IP Address',
-    device: 'Device',
-    browser: 'Browser',
-    location: 'Location',
-    time: 'Time',
-    status: 'Status',
-    active: 'Active',
-    inactive: 'Inactive',
-    online: 'Online',
-    offline: 'Offline',
-    accountCreated: 'Account created at',
-    accountUpdated: 'Account updated at',
-    
-    // Social accounts
-    socialAccounts: 'Social Accounts',
-    connect: 'Connect',
-    disconnect: 'Disconnect',
-    connected: 'Connected',
-    notConnected: 'Not Connected',
   },
 
-  // Menu navigation
   menu: {
     dashboard: 'Dashboard',
     tasks: 'Task Management',
@@ -205,7 +142,6 @@ export default {
     toast: 'Toast Notifications',
   },
 
-  // Toast notifications
   toast: {
     success: 'Success',
     error: 'Error',
@@ -225,15 +161,36 @@ export default {
     pleaseEnterMessage: 'Please enter a message',
   },
 
-  // Profile page
   profile: {
     title: 'Profile',
     description: 'View and edit your profile',
     editSocialAccounts: 'Edit Social Accounts',
     editSocialAccountsDesc: 'Connect your social accounts to your profile',
+    twoFactorAuthentication: 'Two-Factor Authentication',
+    enable: 'Enable',
+    disable: 'Disable',
+    loginHistory: 'Login History',
+    deviceHistory: 'Device History',
+    lastLogin: 'Last Login',
+    ipAddress: 'IP Address',
+    device: 'Device',
+    browser: 'Browser',
+    location: 'Location',
+    time: 'Time',
+    status: 'Status',
+    active: 'Active',
+    inactive: 'Inactive',
+    online: 'Online',
+    offline: 'Offline',
+    accountCreated: 'Account created at',
+    accountUpdated: 'Account updated at',
+    socialAccounts: 'Social Accounts',
+    connect: 'Connect',
+    disconnect: 'Disconnect',
+    connected: 'Connected',
+    notConnected: 'Not Connected',
   },
 
-  // Notifications
   notification: {
     title: 'Notifications',
     viewAll: 'View All Notifications',
@@ -245,7 +202,6 @@ export default {
     user: 'User',
   },
 
-  // Task management
   task: {
     title: 'Task Management',
     all: 'All Tasks',
@@ -260,8 +216,6 @@ export default {
     allPriorities: 'All Priorities',
     resetFilter: 'Reset Filter',
     applyFilter: 'Apply Filter',
-    
-    // Task details
     detail: 'Task Details',
     name: 'Task Name',
     description: 'Task Description',
@@ -271,22 +225,12 @@ export default {
     reminderTime: 'Reminder Time',
     tags: 'Tags',
     attachments: 'Attachments',
-    
-    // Placeholders
-    selectDueDate: 'Select due date',
-    selectReminderTime: 'Select reminder time',
-    
-    // Task status
     todo: 'To Do',
     working: 'In Progress',
     done: 'Done',
-    
-    // Priority
     high: 'High',
     medium: 'Medium',
     low: 'Low',
-    
-    // Actions
     addTag: 'Add Tag',
     addAttachment: 'Add Attachment',
     filter: 'Filter',
@@ -294,8 +238,6 @@ export default {
     search: 'Search Tasks',
     noTasks: 'No tasks',
     createFirstTask: 'Create your first task',
-    
-    // Advanced features
     estimatedTime: 'Estimated Time',
     actualTime: 'Actual Time',
     dependency: 'Dependent Task',
@@ -309,66 +251,32 @@ export default {
     batchComplete: 'Batch Complete',
     import: 'Import Tasks',
     export: 'Export Tasks',
-    
-    // Status changes
-    createSuccess: 'Task created successfully',
-    createFailed: 'Task creation failed',
-    updateSuccess: 'Task updated successfully',
-    updateFailed: 'Task update failed',
     deleteSuccess: 'Task deleted successfully',
     deleteFailed: 'Task deletion failed',
   },
 
-  // File operations
-  file: {
-    upload: 'Upload File',
-    uploadFiles: 'Upload Files',
-    selectedFiles: 'Selected Files',
-    uploadedFiles: 'Uploaded Files',
-    download: 'Download File',
-    downloadFile: 'Download File',
-    delete: 'Delete File',
-    deleteFile: 'Delete File',
-    selectFiles: 'Select Files',
-    dragAndDrop: 'Drag and drop files here or click to select',
-    maxFileSize: 'Maximum file size',
-    supportedFormats: 'Supported formats',
-    uploadSuccess: 'File uploaded successfully',
-    uploadFailed: 'File upload failed',
-    deleteSuccess: 'File deleted successfully',
-    deleteFailed: 'File deletion failed',
-    downloadFailed: 'File download failed',
-  },
-
-  // Date and time
-  datetime: {
-    weekdays: {
-      sunday: 'Sun',
-      monday: 'Mon', 
-      tuesday: 'Tue',
-      wednesday: 'Wed',
-      thursday: 'Thu',
-      friday: 'Fri',
-      saturday: 'Sat'
-    },
-    weekdaysShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-  },
-
-  // Habit management
+  // Habits - Keep original content and add new content
   habits: {
     title: 'Habit Tracking',
     all: 'All Habits',
     create: 'Create Habit',
+    create_title: 'Create New Habit',
+    create_success: 'Habit created successfully',
+    update_success: 'Habit updated successfully',
+    create_failed: 'Habit creation failed',
+    update_failed: 'Habit update failed',
+    delete_success: 'Task deleted successfully',
+    delete_failed: 'Task deletion failed',
     edit: 'Edit Habit',
     delete: 'Delete Habit',
     view: 'View Details',
+    check_success: 'Check Success',
+    uncheck_success: 'Uncheck Success',
     confirmDelete: 'Are you sure you want to delete this habit?',
     nameRequired: 'Habit name is required',
     createHabit: 'Create Habit',
     editHabit: 'Edit Habit',
     detail: 'Habit Details',
-    
-    // Basic information
     name: 'Habit Name',
     description: 'Habit Description',
     category: 'Category',
@@ -382,16 +290,14 @@ export default {
     icon: 'Icon',
     tags: 'Tags',
     addTag: 'Add Tag',
-    
-    // Status and actions
     complete: 'Check In',
     completed: 'Checked In',
     archive: 'Archive',
     unarchive: 'Unarchive',
     showArchived: 'Show Archived',
     hideArchived: 'Hide Archived',
-    
-    // Extended info
+
+    // New content
     habits: 'Habit List',
     myHabits: 'My Habits',
     habitName: 'Habit Name',
@@ -399,20 +305,20 @@ export default {
     isArchived: 'Archived',
     createdAt: 'Created At',
     updatedAt: 'Updated At',
-    
+
     // Statistics
     streakCount: 'Current Streak',
     longestStreak: 'Longest Streak',
     totalCompletions: 'Total Completions',
     completionHistory: 'Completion History',
     lastCompletedAt: 'Last Completed At',
-    
+
     // Status
     incomplete: 'Incomplete',
     inProgress: 'In Progress',
     paused: 'Paused',
     archived: 'Archived',
-    
+
     // Actions
     markAsCompleted: 'Mark as Completed',
     markAsIncomplete: 'Mark as Incomplete',
@@ -420,21 +326,12 @@ export default {
     viewHistory: 'View History',
     archiveHabit: 'Archive Habit',
     unarchiveHabit: 'Unarchive Habit',
-    
-    // Status changes
-    create_title: 'Create New Habit',
-    create_success: 'Habit created successfully',
-    update_success: 'Habit updated successfully',
-    create_failed: 'Habit creation failed',
-    update_failed: 'Habit update failed',
-    delete_success: 'Habit deleted successfully',
-    delete_failed: 'Habit deletion failed',
-    check_success: 'Check Success',
-    uncheck_success: 'Uncheck Success',
+
+    // Create/Edit
     habitCreated: 'Habit created successfully',
     habitUpdated: 'Habit updated successfully',
     habitDeleted: 'Habit deleted successfully',
-    
+
     // Form validation
     nameMinLength: 'Habit name must be at least 2 characters',
     nameMaxLength: 'Habit name cannot exceed 50 characters',
@@ -443,15 +340,15 @@ export default {
     frequencyRequired: 'Please select a frequency',
     startDateRequired: 'Please select a start date',
     invalidDateRange: 'End date cannot be earlier than start date',
-    
+
     // Notifications
     noHabitsFound: 'No habits found',
     noCompletionHistory: 'No completion history',
     habitCompletedToday: 'Completed today',
     habitNotCompletedToday: 'Not completed today',
     streakBroken: 'Streak broken',
-    
-    // Statistics
+    newRecord: 'New record achieved!',
+
     stats: {
       current_streak: 'Current Streak',
       longest_streak: 'Longest Streak',
@@ -460,7 +357,6 @@ export default {
       last_completed: 'Last Completed',
     },
 
-    // Categories
     categories: {
       health: 'Health',
       fitness: 'Fitness',
@@ -476,7 +372,6 @@ export default {
       other: 'Other',
     },
 
-    // Frequency
     frequency: {
       daily: 'Daily',
       weekly: 'Weekly',
@@ -484,7 +379,6 @@ export default {
       custom: 'Custom',
     },
 
-    // Filter and sort
     filter: {
       title: 'Filter',
       category: 'Category',
@@ -506,7 +400,6 @@ export default {
       streak_desc: 'Streak Count (Highest)',
     },
 
-    // Empty states
     empty: {
       title: 'No Habits',
       description: 'Create your first habit to start building a better lifestyle',
@@ -514,7 +407,6 @@ export default {
       create_first: 'Create your first habit',
     },
 
-    // Forms
     form: {
       name: 'Habit Name',
       name_placeholder: 'Enter habit name',
@@ -709,6 +601,7 @@ export default {
 
     // Confirmation dialogs
     confirmClearData: 'Are you sure you want to clear all data? This action cannot be undone.',
+    deleteTask: 'Delete Task',
     confirmDeleteHabit: 'Are you sure you want to delete this habit?',
     dataCleared: 'Data cleared',
     dataExported: 'Data exported successfully',
