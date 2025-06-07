@@ -122,8 +122,14 @@ export default {
     twoFactorAuth: '两步验证',
     enterVerificationCode: '请输入验证码',
     accountSecurity: '账号安全',
-    invalidCredentials: '邮箱或密码不正确',
+    
+    // 登录错误分类
+    invalidCredentials: '用户名或密码错误',
     loginFailed: '登录失败，请稍后再试',
+    serverError: '服务器异常，请稍后再试',
+    networkError: '网络连接失败，请检查网络状态',
+    accountLocked: '账号已被锁定，请联系管理员',
+    tooManyAttempts: '登录尝试次数过多，请稍后再试',
   },
 
   // 用户相关

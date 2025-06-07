@@ -122,8 +122,14 @@ export default {
     twoFactorAuth: 'Two-Factor Authentication',
     enterVerificationCode: 'Please enter the verification code',
     accountSecurity: 'Account Security',
-    invalidCredentials: 'Invalid email or password',
+    
+    // Login error classification
+    invalidCredentials: 'Invalid username or password',
     loginFailed: 'Login failed, please try again later',
+    serverError: 'Server error, please try again later',
+    networkError: 'Network connection failed, please check your network',
+    accountLocked: 'Account has been locked, please contact administrator',
+    tooManyAttempts: 'Too many login attempts, please try again later',
   },
 
   // User

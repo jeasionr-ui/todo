@@ -7,13 +7,18 @@ const API_BASE = '/api/auth'
 export const userService = {
   // 登录
   async login(email: string, password: string): Promise<User | null> {
-    const res = await axios.post(`${API_BASE}/login`, { email, password })
-    if (res.data && res.data.token && res.data.user) {
-      localStorage.setItem('token', res.data.token)
-      localStorage.setItem('user', JSON.stringify(res.data.user))
-      return res.data.user as User
+    try {
+      const res = await axios.post(`${API_BASE}/login`, { email, password })
+      if (res.data && res.data.token && res.data.user) {
+        localStorage.setItem('token', res.data.token)
+        localStorage.setItem('user', JSON.stringify(res.data.user))
+        return res.data.user as User
+      }
+      return null
+    } catch (error: any) {
+      // 重新抛出错误以便调用方能够处理具体的错误类型
+      throw error
     }
-    return null
   },
 
   // 注册

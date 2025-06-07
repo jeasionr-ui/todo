@@ -7,14 +7,30 @@ const router = express.Router();
 router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
+    
+    // 基本参数验证
+    if (!email || !password) {
+      return res.status(400).json({ 
+        error: 'Email and password are required',
+        code: 'MISSING_CREDENTIALS'
+      });
+    }
+    
     const result = await loginBiz(email, password);
     if (result) {
       res.json(result);
     } else {
-      res.status(401).json({ error: 'Invalid email or password' });
+      res.status(401).json({ 
+        error: 'Invalid email or password',
+        code: 'INVALID_CREDENTIALS'
+      });
     }
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    console.error('Login error:', err);
+    res.status(500).json({ 
+      error: 'Internal server error',
+      code: 'SERVER_ERROR'
+    });
   }
 });
 

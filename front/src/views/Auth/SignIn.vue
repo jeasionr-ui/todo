@@ -69,6 +69,23 @@
                   </div>
                 </div>
                 <form @submit.prevent="handleSubmit">
+                  <!-- Error Message -->
+                  <div v-if="loginError" class="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg dark:bg-red-900/20 dark:border-red-800">
+                    <div class="flex items-center">
+                      <!-- 根据错误类型显示不同图标 -->
+                      <svg v-if="isNetworkError" class="w-5 h-5 text-red-600 dark:text-red-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"></path>
+                      </svg>
+                      <svg v-else-if="isServerError" class="w-5 h-5 text-red-600 dark:text-red-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path>
+                      </svg>
+                      <svg v-else class="w-5 h-5 text-red-600 dark:text-red-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                      </svg>
+                      <span class="text-sm text-red-600 dark:text-red-400">{{ loginError }}</span>
+                    </div>
+                  </div>
+                  
                   <div class="space-y-5">
                     <!-- Email -->
                     <div>
@@ -170,15 +187,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { useI18n } from '@/i18n'
 import { useRouter } from 'vue-router'
 import LanguageSwitcher from '@/components/common/LanguageSwitcher.vue'
 import CommonGridShape from '@/components/common/CommonGridShape.vue'
 import FullScreenLayout from '@/components/layout/FullScreenLayout.vue'
 import { userService } from '@/services/userService'
-
-
 
 const { t } = useI18n()
 const router = useRouter()
@@ -187,6 +202,15 @@ const password = ref('')
 const showPassword = ref(false)
 const keepLoggedIn = ref(false)
 const loginError = ref('')
+
+// 计算属性用于判断错误类型
+const isNetworkError = computed(() => 
+  loginError.value === t('auth.networkError')
+)
+
+const isServerError = computed(() => 
+  loginError.value === t('auth.serverError')
+)
 
 const togglePasswordVisibility = () => {
   showPassword.value = !showPassword.value
@@ -202,9 +226,45 @@ const handleSubmit = async () => {
     } else {
       loginError.value = t('auth.invalidCredentials')
     }
-  } catch (error) {
+  } catch (error: any) {
     console.error('Login error:', error)
-    loginError.value = t('auth.loginFailed')
+    
+    // 根据错误类型和状态码进行分类处理
+    if (error.response) {
+      // 服务器返回了错误响应
+      const status = error.response.status
+      const errorMessage = error.response.data?.error || ''
+      
+      switch (status) {
+        case 401:
+          // 认证失败 - 用户名或密码错误
+          loginError.value = t('auth.invalidCredentials')
+          break
+        case 423:
+          // 账号被锁定
+          loginError.value = t('auth.accountLocked')
+          break
+        case 429:
+          // 请求过多
+          loginError.value = t('auth.tooManyAttempts')
+          break
+        case 500:
+        case 502:
+        case 503:
+        case 504:
+          // 服务器错误
+          loginError.value = t('auth.serverError')
+          break
+        default:
+          loginError.value = t('auth.loginFailed')
+      }
+    } else if (error.request) {
+      // 网络错误 - 请求发出但没有收到响应
+      loginError.value = t('auth.networkError')
+    } else {
+      // 其他错误
+      loginError.value = t('auth.loginFailed')
+    }
   }
 }
 </script>
