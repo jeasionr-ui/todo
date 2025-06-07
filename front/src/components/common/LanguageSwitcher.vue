@@ -16,7 +16,7 @@
       <button
         v-for="lang in languages"
         :key="lang.code"
-        @click="changeLanguage(lang.code)"
+        @click="handleLanguageChange(lang.code)"
         class="flex items-center gap-3 px-3 py-2 font-medium text-gray-700 rounded-lg group text-theme-sm hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300"
         :class="{ 'bg-gray-100 dark:bg-white/5': i18n.locale.value === lang.code }"
       >
@@ -50,6 +50,11 @@ const currentLanguageLabel = computed(() => {
 
 const toggleDropdown = () => {
   dropdownOpen.value = !dropdownOpen.value
+}
+
+const handleLanguageChange = (langCode: 'zh' | 'en') => {
+  changeLanguage(langCode)
+  dropdownOpen.value = false // 切换语言后关闭下拉菜单
 }
 
 const handleClickOutside = (event: Event) => {

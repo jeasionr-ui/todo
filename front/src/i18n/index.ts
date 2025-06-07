@@ -28,7 +28,8 @@ const currentLanguage = ref(i18nInstance.locale.value)
   
   // 切换语言
   const changeLanguage = (locale: 'zh' | 'en') => {
-    i18nInstance.locale = locale
+    i18nInstance.locale.value = locale
+    currentLanguage.value = locale
     localStorage.setItem('locale', locale)
   }
   
@@ -36,7 +37,8 @@ const currentLanguage = ref(i18nInstance.locale.value)
   const initLanguage = () => {
     const savedLocale = localStorage.getItem('locale') as 'zh' | 'en' | null
     if (savedLocale && (savedLocale === 'zh' || savedLocale === 'en')) {
-      i18nInstance.locale = savedLocale
+      i18nInstance.locale.value = savedLocale
+      currentLanguage.value = savedLocale
     }
   }
   
