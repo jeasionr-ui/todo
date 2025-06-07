@@ -253,6 +253,35 @@ const router = createRouter({
       },
     },
 
+    // Pomodoro Timer 路由
+    {
+      path: '/pomodoro',
+      name: 'Pomodoro',
+      component: () => import('../views/Pomodoro/PomodoroTimer.vue'),
+      meta: {
+        title: 'Pomodoro Timer',
+        requiresAuth: true,
+      },
+    },
+    {
+      path: '/pomodoro/settings',
+      name: 'PomodoroSettings',
+      component: () => import('../views/Pomodoro/PomodoroSettings.vue'),
+      meta: {
+        title: 'Pomodoro Settings',
+        requiresAuth: true,
+      },
+    },
+    {
+      path: '/pomodoro/stats',
+      name: 'PomodoroStats',
+      component: () => import('../views/Pomodoro/PomodoroStats.vue'),
+      meta: {
+        title: 'Pomodoro Statistics',
+        requiresAuth: true,
+      },
+    },
+
     {
       path: '/calendar',
       name: 'Calendar',

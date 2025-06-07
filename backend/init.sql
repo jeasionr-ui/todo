@@ -177,3 +177,89 @@ CREATE TABLE
     `updatedAt` DATETIME NOT NULL COMMENT '记录更新时间',
     FOREIGN KEY (`goalId`) REFERENCES `goal` (`id`) ON DELETE CASCADE
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- 番茄钟模板表结构
+DROP TABLE IF EXISTS `pomodoro_template`;
+CREATE TABLE
+  IF NOT EXISTS `pomodoro_template` (
+    `id` VARCHAR(64) NOT NULL PRIMARY KEY COMMENT '番茄钟模板唯一标识',
+    `name` VARCHAR(255) NOT NULL COMMENT '模板名称',
+    `description` TEXT COMMENT '模板描述',
+    `workDuration` INT NOT NULL DEFAULT 25 COMMENT '工作时长（分钟）',
+    `shortBreakDuration` INT NOT NULL DEFAULT 5 COMMENT '短休息时长（分钟）',
+    `longBreakDuration` INT NOT NULL DEFAULT 15 COMMENT '长休息时长（分钟）',
+    `roundsBeforeLongBreak` INT NOT NULL DEFAULT 4 COMMENT '长休息前的番茄钟轮数',
+    `autoStartBreak` BOOLEAN DEFAULT TRUE COMMENT '是否自动开始休息',
+    `autoStartWork` BOOLEAN DEFAULT FALSE COMMENT '是否自动开始工作',
+    `enableNotifications` BOOLEAN DEFAULT TRUE COMMENT '是否启用通知',
+    `enableSounds` BOOLEAN DEFAULT TRUE COMMENT '是否启用声音',
+    `focusMode` BOOLEAN DEFAULT FALSE COMMENT '是否启用专注模式',
+    `isDefault` BOOLEAN DEFAULT FALSE COMMENT '是否为默认模板',
+    `isArchived` BOOLEAN DEFAULT FALSE COMMENT '是否已归档',
+    `createdAt` DATETIME NOT NULL COMMENT '创建时间',
+    `updatedAt` DATETIME NOT NULL COMMENT '更新时间'
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- 番茄钟会话表结构
+DROP TABLE IF EXISTS `pomodoro_session`;
+CREATE TABLE
+  IF NOT EXISTS `pomodoro_session` (
+    `id` VARCHAR(64) NOT NULL PRIMARY KEY COMMENT '番茄钟会话唯一标识',
+    `templateId` VARCHAR(64) COMMENT '使用的模板ID',
+    `taskId` VARCHAR(64) COMMENT '关联的任务ID',
+    `type` ENUM ('work', 'short_break', 'long_break') NOT NULL COMMENT '会话类型：工作/短休息/长休息',
+    `status` ENUM ('pending', 'running', 'paused', 'completed', 'cancelled') DEFAULT 'pending' COMMENT '会话状态',
+    `plannedDuration` INT NOT NULL COMMENT '计划时长（分钟）',
+    `actualDuration` INT COMMENT '实际时长（分钟）',
+    `startTime` DATETIME COMMENT '开始时间',
+    `endTime` DATETIME COMMENT '结束时间',
+    `pausedDuration` INT DEFAULT 0 COMMENT '暂停总时长（分钟）',
+    `pauseCount` INT DEFAULT 0 COMMENT '暂停次数',
+    `interruptions` INT DEFAULT 0 COMMENT '中断次数',
+    `notes` TEXT COMMENT '会话备注',
+    `productivity` ENUM ('very_low', 'low', 'medium', 'high', 'very_high') COMMENT '生产力评级',
+    `mood` ENUM ('very_bad', 'bad', 'neutral', 'good', 'very_good') COMMENT '心情状态',
+    `energy` ENUM ('very_low', 'low', 'medium', 'high', 'very_high') COMMENT '精力状态',
+    `tags` VARCHAR(255) COMMENT '标签列表，逗号分隔',
+    `isArchived` BOOLEAN DEFAULT FALSE COMMENT '是否已归档',
+    `createdAt` DATETIME NOT NULL COMMENT '创建时间',
+    `updatedAt` DATETIME NOT NULL COMMENT '更新时间',
+    FOREIGN KEY (`templateId`) REFERENCES `pomodoro_template` (`id`) ON DELETE SET NULL,
+    FOREIGN KEY (`taskId`) REFERENCES `task` (`id`) ON DELETE SET NULL
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- 番茄钟暂停记录表
+DROP TABLE IF EXISTS `pomodoro_pause`;
+CREATE TABLE
+  IF NOT EXISTS `pomodoro_pause` (
+    `id` VARCHAR(64) NOT NULL PRIMARY KEY COMMENT '暂停记录唯一标识',
+    `sessionId` VARCHAR(64) NOT NULL COMMENT '关联的会话ID',
+    `pauseTime` DATETIME NOT NULL COMMENT '暂停时间',
+    `resumeTime` DATETIME COMMENT '恢复时间',
+    `duration` INT COMMENT '暂停时长（分钟）',
+    `reason` VARCHAR(255) COMMENT '暂停原因',
+    `createdAt` DATETIME NOT NULL COMMENT '创建时间',
+    FOREIGN KEY (`sessionId`) REFERENCES `pomodoro_session` (`id`) ON DELETE CASCADE
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- 番茄钟统计表结构
+DROP TABLE IF EXISTS `pomodoro_stats`;
+CREATE TABLE
+  IF NOT EXISTS `pomodoro_stats` (
+    `id` VARCHAR(64) NOT NULL PRIMARY KEY COMMENT '统计记录唯一标识',
+    `date` VARCHAR(32) NOT NULL COMMENT '统计日期，格式YYYY-MM-DD',
+    `totalSessions` INT DEFAULT 0 COMMENT '总会话数',
+    `completedSessions` INT DEFAULT 0 COMMENT '完成的会话数',
+    `totalWorkTime` INT DEFAULT 0 COMMENT '总工作时间（分钟）',
+    `totalBreakTime` INT DEFAULT 0 COMMENT '总休息时间（分钟）',
+    `totalPauseTime` INT DEFAULT 0 COMMENT '总暂停时间（分钟）',
+    `averageProductivity` DECIMAL(3,2) COMMENT '平均生产力评级',
+    `averageMood` DECIMAL(3,2) COMMENT '平均心情状态',
+    `averageEnergy` DECIMAL(3,2) COMMENT '平均精力状态',
+    `interruptions` INT DEFAULT 0 COMMENT '总中断次数',
+    `tasksCompleted` INT DEFAULT 0 COMMENT '完成的任务数',
+    `longestFocusSession` INT DEFAULT 0 COMMENT '最长专注时间（分钟）',
+    `createdAt` DATETIME NOT NULL COMMENT '创建时间',
+    `updatedAt` DATETIME NOT NULL COMMENT '更新时间',
+    UNIQUE KEY `unique_date` (`date`)
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

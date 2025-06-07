@@ -162,6 +162,7 @@ import {
   TableIcon,
   ListIcon,
   PlugInIcon,
+  PomodoroIcon,
 } from "../../icons";
 import SidebarWidget from "./SidebarWidget.vue";
 import BoxCubeIcon from "@/icons/BoxCubeIcon.vue";
@@ -192,6 +193,12 @@ const menuGroups = [
         icon: GridIcon,
         name: t('menu.goals'),
         path: "/goals",
+      },
+
+      {
+        icon: PomodoroIcon,
+        name: t('menu.pomodoro'),
+        path: "/pomodoro",
       },
 
       {

@@ -202,6 +202,7 @@ export default {
     tasks: 'Task Management',
     habits: 'Habit Tracking',
     goals: 'Goal Management',
+    pomodoro: 'Pomodoro Timer',
     calendar: 'Calendar Management',
     reports: 'Report Analysis',
     settings: 'System Settings',

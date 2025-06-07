@@ -19,6 +19,7 @@ export default {
     close: '关闭',
     done: '完成',
     skip: '跳过',
+    saving: '保存中...',
     
     // 状态
     loading: '加载中...',
@@ -202,6 +203,7 @@ export default {
     tasks: '任务管理',
     habits: '习惯养成',
     goals: '目标管理',
+    pomodoro: '番茄钟',
     calendar: '日历管理',
     reports: '报表分析',
     settings: '系统设置',
@@ -993,5 +995,102 @@ export default {
     solo: '独自',
     beginner: '初学者',
     advanced: '高级',
+  },
+
+  // 番茄钟
+  pomodoro: {
+    title: '番茄钟',
+    timer: '计时器',
+    settings: {
+      title: '番茄钟设置',
+      templates: '模板管理',
+      createTemplate: '创建模板',
+      editTemplate: '编辑模板',
+      templateName: '模板名称',
+      templateNamePlaceholder: '输入模板名称',
+      description: '描述',
+      descriptionPlaceholder: '输入模板描述',
+      workDuration: '工作时长',
+      breakDuration: '短休息时长',
+      longBreakDuration: '长休息时长',
+      sessionsBeforeLongBreak: '长休息前的轮次',
+      autoStartBreaks: '自动开始休息',
+      autoStartBreaksDescription: '工作时间结束后自动开始休息',
+      setAsDefault: '设为默认模板',
+      default: '默认',
+      confirmDeleteTemplate: '确定要删除这个模板吗？',
+      notifications: '通知设置',
+      enableNotifications: '启用通知',
+      notificationsDescription: '会话结束时显示通知',
+      soundNotifications: '声音通知',
+      soundNotificationsDescription: '播放提示音',
+      focusMode: '专注模式',
+      fullscreenMode: '全屏模式',
+      fullscreenModeDescription: '专注时进入全屏模式',
+    },
+    stats: {
+      title: '统计报告',
+      thisWeek: '本周',
+      thisMonth: '本月',
+      thisQuarter: '本季度',
+    },
+    // 计时器状态
+    readyToStart: '准备开始',
+    focusTime: '专注时间',
+    breakTime: '休息时间',
+    focusSession: '专注会话',
+    workingOn: '正在进行',
+    remaining: '剩余时间',
+    
+    // 按钮操作
+    start: '开始',
+    pause: '暂停',
+    resume: '继续',
+    complete: '完成',
+    cancel: '取消',
+    
+    // 模式切换
+    focusModeOn: '专注模式开启',
+    focusModeOff: '专注模式关闭',
+    
+    // 统计信息
+    todaySessions: '今日会话',
+    completed: '已完成',
+    focusTimeTotal: '专注时长',
+    
+    // 快速操作
+    quickActions: '快速操作',
+    selectTask: '选择任务',
+    templates: '模板',
+    statistics: '统计',
+    history: '历史记录',
+    
+    // 任务选择对话框
+    taskSelector: {
+      title: '选择任务',
+      noTasks: '暂无任务',
+      searchPlaceholder: '搜索任务...',
+      createNew: '创建新任务',
+      withoutTask: '不关联任务',
+    },
+    
+    // 完成会话对话框
+    completeModal: {
+      title: '完成会话',
+      message: '恭喜完成这个番茄钟会话！',
+      duration: '时长: {duration}',
+      addNotes: '添加备注',
+      notesPlaceholder: '记录这次会话的心得...',
+      markTaskComplete: '标记任务完成',
+    },
+    
+    // 取消会话对话框
+    cancelModal: {
+      title: '取消会话',
+      message: '确定要取消当前会话吗？',
+      reason: '取消原因',
+      reasonPlaceholder: '请简述取消原因...',
+      confirm: '确定取消',
+    },
   },
 }
