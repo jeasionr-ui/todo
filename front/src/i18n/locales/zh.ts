@@ -20,7 +20,7 @@ export default {
     done: '完成',
     skip: '跳过',
     saving: '保存中...',
-    
+
     // 状态
     loading: '加载中...',
     success: '操作成功',
@@ -28,7 +28,7 @@ export default {
     error: '操作失败',
     warning: '警告',
     info: '提示',
-    
+
     // 导航
     home: '首页',
     dashboard: '仪表板',
@@ -36,19 +36,20 @@ export default {
     editProfile: '编辑个人资料',
     settings: '设置',
     support: '帮助',
-    
+
     // 搜索和筛选
     search: '搜索',
     searchPlaceholder: '搜索或输入命令...',
     filter: '筛选',
     sort: '排序',
-    
+
     // 数据状态
     noData: '暂无数据',
     more: '更多',
     yes: '是',
     no: '否',
-    
+    due: '到期',
+
     // 应用信息
     appDescription: 'Todo List 是一款简单易用的任务管理应用，帮助您高效管理日常任务和习惯养成。',
     welcome: '欢迎回来',
@@ -93,7 +94,7 @@ export default {
     forgotPassword: '忘记密码',
     resetPassword: '重置密码',
     rememberMe: '记住我',
-    
+
     // 表单字段
     email: '邮箱',
     password: '密码',
@@ -104,7 +105,7 @@ export default {
     firstName: '名',
     lastName: '姓',
     nickname: '昵称',
-    
+
     // 提示文本
     agreeTerms: '我已阅读并同意服务条款和隐私政策',
     alreadyHaveAccount: '已有账号？',
@@ -115,7 +116,7 @@ export default {
     or: '或',
     enterEmailPassword: '请输入邮箱和密码登录',
     enterInfoToSignUp: '请填写信息完成注册',
-    
+
     // 验证信息
     passwordNotMatch: '两次输入的密码不一致',
     invalidEmail: '邮箱格式不正确',
@@ -123,7 +124,7 @@ export default {
     twoFactorAuth: '两步验证',
     enterVerificationCode: '请输入验证码',
     accountSecurity: '账号安全',
-    
+
     // 登录错误分类
     invalidCredentials: '用户名或密码错误',
     loginFailed: '登录失败，请稍后再试',
@@ -141,7 +142,7 @@ export default {
     notifications: '通知设置',
     activity: '活动记录',
     achievements: '成就系统',
-    
+
     // 个人信息
     personalInfo: '个人信息',
     address: '地址信息',
@@ -149,14 +150,14 @@ export default {
     avatar: '头像',
     uploadAvatar: '上传头像',
     changeAvatar: '更换头像',
-    
+
     // 地址信息
     country: '国家',
     city: '城市',
     state: '省/州',
     postalCode: '邮政编码',
     taxId: '税号',
-    
+
     // 密码管理
     changePassword: '修改密码',
     currentPassword: '当前密码',
@@ -166,12 +167,12 @@ export default {
     passwordTooShort: '密码长度不能少于6个字符',
     resetPasswordFailed: '重置密码失败，请稍后再试',
     resetPasswordSuccess: '密码重置成功，请使用新密码登录',
-    
+
     // 两步验证
     twoFactorAuthentication: '两步验证',
     enable: '启用',
     disable: '禁用',
-    
+
     // 历史记录
     loginHistory: '登录历史',
     deviceHistory: '设备历史',
@@ -188,7 +189,7 @@ export default {
     offline: '离线',
     accountCreated: '账号创建于',
     accountUpdated: '账号更新于',
-    
+
     // 社交账号
     socialAccounts: '社交账号',
     connect: '关联',
@@ -268,7 +269,7 @@ export default {
     allPriorities: '所有优先级',
     resetFilter: '重置筛选',
     applyFilter: '应用筛选',
-    
+
     // 任务详情
     detail: '任务详情',
     name: '任务名称',
@@ -279,21 +280,21 @@ export default {
     reminderTime: '提醒时间',
     tags: '标签',
     attachments: '附件',
-    
+
     // 占位符
     selectDueDate: '选择截止日期',
     selectReminderTime: '选择提醒时间',
-    
+
     // 任务状态
     todo: '待办',
     working: '进行中',
     done: '已完成',
-    
+
     // 优先级
     high: '高',
     medium: '中',
     low: '低',
-    
+
     // 操作
     addTag: '添加标签',
     addAttachment: '添加附件',
@@ -302,7 +303,7 @@ export default {
     search: '搜索任务',
     noTasks: '暂无任务',
     createFirstTask: '创建您的第一个任务',
-    
+
     // 高级功能
     estimatedTime: '预计时间',
     actualTime: '实际耗时',
@@ -317,7 +318,7 @@ export default {
     batchComplete: '批量完成',
     import: '导入任务',
     export: '导出任务',
-    
+
     // 状态变更
     createSuccess: '任务创建成功',
     createFailed: '任务创建失败',
@@ -338,7 +339,7 @@ export default {
     delete: '删除目标',
     search: '搜索目标',
     filter: '筛选',
-    
+
     // 表单字段
     titleField: '目标标题',
     titlePlaceholder: '请输入目标标题',
@@ -354,7 +355,7 @@ export default {
     completedDate: '完成日期',
     parentGoal: '父目标',
     noParentGoal: '无父目标',
-    
+
     // 状态
     draft: '草稿',
     planning: '规划中',
@@ -363,13 +364,13 @@ export default {
     completed: '已完成',
     cancelled: '已取消',
     allStatus: '所有状态',
-    
+
     // 优先级
     high: '高',
     medium: '中',
     low: '低',
     allPriorities: '所有优先级',
-    
+
     // 类别
     personal: '个人',
     career: '职业',
@@ -382,7 +383,7 @@ export default {
     allCategories: '所有类别',
     allGoals: '所有目标',
     topLevelGoals: '顶级目标',
-    
+
     // 基本信息
     basicInfo: '基本信息',
     subGoal: '子目标',
@@ -390,7 +391,7 @@ export default {
     totalGoals: '总目标数',
     activeGoals: '进行中',
     completedGoals: '已完成',
-    
+
     // 里程碑
     milestones: '里程碑',
     addMilestone: '添加里程碑',
@@ -400,7 +401,7 @@ export default {
     order: '顺序',
     isCompleted: '已完成',
     noMilestones: '暂无里程碑',
-    
+
     // 任务关联
     tasks: '关联任务',
     associatedTasks: '关联的任务',
@@ -412,7 +413,7 @@ export default {
     noAvailableTasks: '暂无可关联的任务',
     noTasks: '暂无关联任务',
     associate: '关联',
-    
+
     // 回顾
     reviews: '目标回顾',
     addReview: '添加回顾',
@@ -424,7 +425,7 @@ export default {
       weekly: '每周回顾',
       monthly: '每月回顾',
       quarterly: '季度回顾',
-      custom: '自定义回顾'
+      custom: '自定义回顾',
     },
     rating: '评分',
     reviewContent: '回顾内容',
@@ -434,7 +435,7 @@ export default {
     nextSteps: '下一步计划',
     nextStepsPlaceholder: '计划接下来要采取的行动...',
     noReviews: '暂无回顾记录',
-    
+
     // 操作消息
     createSuccess: '目标创建成功',
     createError: '目标创建失败',
@@ -444,7 +445,7 @@ export default {
     deleteError: '目标删除失败',
     deleteConfirm: '确定要删除目标"{title}"吗？',
     loadError: '加载目标失败',
-    
+
     // 里程碑操作
     milestoneCreateSuccess: '里程碑创建成功',
     milestoneCreateError: '里程碑创建失败',
@@ -454,7 +455,7 @@ export default {
     milestoneDeleted: '里程碑已删除',
     milestoneDeleteError: '里程碑删除失败',
     deleteMilestoneConfirm: '确定要删除这个里程碑吗？',
-    
+
     // 回顾操作
     reviewCreateSuccess: '回顾创建成功',
     reviewCreateError: '回顾创建失败',
@@ -463,7 +464,7 @@ export default {
     reviewDeleted: '回顾已删除',
     reviewDeleteError: '回顾删除失败',
     deleteReviewConfirm: '确定要删除这个回顾吗？',
-    
+
     // 任务关联操作
     loadTasksError: '加载任务失败',
     tasksAssociated: '已关联 {count} 个任务',
@@ -471,7 +472,7 @@ export default {
     taskDissociated: '任务关联已取消',
     taskDissociateError: '取消任务关联失败',
     dissociateTaskConfirm: '确定要取消关联这个任务吗？',
-    
+
     // 其他
     noGoals: '暂无目标，开始创建您的第一个目标吧！',
   },
@@ -501,12 +502,12 @@ export default {
   datetime: {
     weekdays: {
       sunday: '日',
-      monday: '一', 
+      monday: '一',
       tuesday: '二',
       wednesday: '三',
       thursday: '四',
       friday: '五',
-      saturday: '六'
+      saturday: '六',
     },
     weekdaysShort: ['日', '一', '二', '三', '四', '五', '六'],
   },
@@ -524,7 +525,7 @@ export default {
     createHabit: '创建习惯',
     editHabit: '编辑习惯',
     detail: '习惯详情',
-    
+
     // 基本信息
     name: '习惯名称',
     description: '习惯描述',
@@ -539,7 +540,7 @@ export default {
     icon: '图标',
     tags: '标签',
     addTag: '添加标签',
-    
+
     // 状态和操作
     complete: '打卡',
     completed: '已打卡',
@@ -547,7 +548,7 @@ export default {
     unarchive: '取消归档',
     showArchived: '显示已归档',
     hideArchived: '隐藏已归档',
-    
+
     // 扩展信息
     habits: '习惯列表',
     myHabits: '我的习惯',
@@ -556,20 +557,20 @@ export default {
     isArchived: '已归档',
     createdAt: '创建时间',
     updatedAt: '更新时间',
-    
+
     // 统计数据
     streakCount: '当前连续',
     longestStreak: '最长连续',
     totalCompletions: '总完成次数',
     completionHistory: '完成历史',
     lastCompletedAt: '上次完成时间',
-    
+
     // 状态
     incomplete: '未完成',
     inProgress: '进行中',
     paused: '已暂停',
     archived: '已归档',
-    
+
     // 操作
     markAsCompleted: '标记为完成',
     markAsIncomplete: '标记为未完成',
@@ -577,7 +578,7 @@ export default {
     viewHistory: '查看历史',
     archiveHabit: '归档习惯',
     unarchiveHabit: '取消归档',
-    
+
     // 状态变更
     create_title: '创建新习惯',
     create_success: '创建习惯成功',
@@ -591,7 +592,7 @@ export default {
     habitCreated: '习惯创建成功',
     habitUpdated: '习惯更新成功',
     habitDeleted: '习惯删除成功',
-    
+
     // 表单验证
     nameMinLength: '习惯名称至少需要2个字符',
     nameMaxLength: '习惯名称不能超过50个字符',
@@ -600,14 +601,14 @@ export default {
     frequencyRequired: '请选择频率',
     startDateRequired: '请选择开始日期',
     invalidDateRange: '结束日期不能早于开始日期',
-    
+
     // 提示信息
     noHabitsFound: '暂无习惯记录',
     noCompletionHistory: '暂无完成记录',
     habitCompletedToday: '今日已完成',
     habitNotCompletedToday: '今日未完成',
     streakBroken: '连续记录已中断',
-    
+
     // 统计
     stats: {
       current_streak: '当前连续',
@@ -1000,12 +1001,20 @@ export default {
   // 番茄钟
   pomodoro: {
     title: '番茄钟',
-    timer: '计时器',
+    timer: {
+      readyToStart: '准备开始',
+      focusTime: '专注时间',
+      shortBreak: '短休息',
+      longBreak: '长休息',
+    },
     settings: {
       title: '番茄钟设置',
       templates: '模板管理',
+      activeTemplate: '当前模板',
       createTemplate: '创建模板',
       editTemplate: '编辑模板',
+      newTemplate: '新建模板',
+      addTemplate: '添加模板',
       templateName: '模板名称',
       templateNamePlaceholder: '输入模板名称',
       description: '描述',
@@ -1014,17 +1023,23 @@ export default {
       breakDuration: '短休息时长',
       longBreakDuration: '长休息时长',
       sessionsBeforeLongBreak: '长休息前的轮次',
+      duration: '工作 {work} 分钟，休息 {break} 分钟',
       autoStartBreaks: '自动开始休息',
       autoStartBreaksDescription: '工作时间结束后自动开始休息',
       setAsDefault: '设为默认模板',
       default: '默认',
       confirmDeleteTemplate: '确定要删除这个模板吗？',
+      focusMode: '专注模式',
+      disableNotifications: '禁用通知',
+      blockWebsites: '屏蔽网站',
+      showProgressInTitle: '在标题栏显示进度',
       notifications: '通知设置',
       enableNotifications: '启用通知',
       notificationsDescription: '会话结束时显示通知',
+      enableSounds: '启用声音',
+      soundVolume: '音量',
       soundNotifications: '声音通知',
       soundNotificationsDescription: '播放提示音',
-      focusMode: '专注模式',
       fullscreenMode: '全屏模式',
       fullscreenModeDescription: '专注时进入全屏模式',
     },
@@ -1033,6 +1048,32 @@ export default {
       thisWeek: '本周',
       thisMonth: '本月',
       thisQuarter: '本季度',
+      totalSessions: '总会话数',
+      completedSessions: '已完成会话',
+      totalFocusTime: '总专注时长',
+      avgProductivity: '平均生产力',
+      dailySessions: '每日会话',
+      productivityTrend: '生产力趋势',
+      timeDistribution: '时间分布',
+      workTime: '工作时间',
+      breakTime: '休息时间',
+      completionRate: '完成率',
+      of: '的',
+      sessionsCompleted: '会话已完成',
+      recentSessions: '最近会话',
+      date: '日期',
+      task: '任务',
+      duration: '时长',
+      status: '状态',
+      productivity: '生产力',
+    },
+    // 会话状态
+    status: {
+      completed: '已完成',
+      cancelled: '已取消',
+      paused: '已暂停',
+      running: '进行中',
+      pending: '待开始',
     },
     // 计时器状态
     readyToStart: '准备开始',
@@ -1041,30 +1082,35 @@ export default {
     focusSession: '专注会话',
     workingOn: '正在进行',
     remaining: '剩余时间',
-    
+
     // 按钮操作
     start: '开始',
     pause: '暂停',
     resume: '继续',
-    complete: '完成',
-    cancel: '取消',
-    
+    abort:'取消',
+    completed: '完成',
+
     // 模式切换
     focusModeOn: '专注模式开启',
     focusModeOff: '专注模式关闭',
-    
+
     // 统计信息
     todaySessions: '今日会话',
-    completed: '已完成',
     focusTimeTotal: '专注时长',
-    
+
     // 快速操作
     quickActions: '快速操作',
     selectTask: '选择任务',
+    selectTaskOptions: {
+      button: '选择任务',
+      noTasks: '暂无任务',
+      estimatedPomodoros: '预估 {count} 个番茄钟',
+      startWithoutTask: '不选择任务开始',
+    },
     templates: '模板',
     statistics: '统计',
     history: '历史记录',
-    
+
     // 任务选择对话框
     taskSelector: {
       title: '选择任务',
@@ -1073,7 +1119,7 @@ export default {
       createNew: '创建新任务',
       withoutTask: '不关联任务',
     },
-    
+
     // 完成会话对话框
     completeModal: {
       title: '完成会话',
@@ -1083,7 +1129,27 @@ export default {
       notesPlaceholder: '记录这次会话的心得...',
       markTaskComplete: '标记任务完成',
     },
-    
+
+    // 会话完成相关
+    complete: {
+      duration: '时长: {duration}',
+      productivityRating: '生产力评级',
+      rating: {
+        poor: '较差',
+        fair: '一般',
+        good: '良好',
+        veryGood: '很好',
+        excellent: '优秀',
+      },
+      notes: '会话备注',
+      notesPlaceholder: '记录这次会话的心得和收获...',
+      breakSuggestion: {
+        title: '建议休息一下',
+        message: '您已经完成了一个专注会话，建议休息5-15分钟来恢复精力。',
+      },
+      confirm: '确认完成',
+    },
+
     // 取消会话对话框
     cancelModal: {
       title: '取消会话',
@@ -1091,6 +1157,39 @@ export default {
       reason: '取消原因',
       reasonPlaceholder: '请简述取消原因...',
       confirm: '确定取消',
+    },
+
+    // 取消会话相关
+    cancel: {
+      timeSpent: '已用时间: {duration}',
+      warning: {
+        title: '取消会话提醒',
+        message: '取消会话将丢失当前进度，且不会记录为已完成的番茄钟。',
+      },
+      reason: '取消原因',
+      selectReason: '请选择取消原因',
+      reasons: {
+        interruption: '外部干扰',
+        urgentTask: '紧急任务',
+        feelingUnwell: '身体不适',
+        distraction: '注意力分散',
+        other: '其他原因',
+      },
+      notes: '备注说明',
+      notesPlaceholder: '请详细说明取消的原因...',
+      confirm: '确认取消',
+    },
+  },
+
+  // 任务相关（用于 tasks.status.* 键）
+  tasks: {
+    status: {
+      todo: '待办',
+      in_progress: '进行中',
+      working: '进行中',
+      done: '已完成',
+      completed: '已完成',
+      pending: '待处理',
     },
   },
 }

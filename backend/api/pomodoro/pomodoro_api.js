@@ -298,7 +298,14 @@ router.post('/sessions/:id/complete', async (req, res) => {
   try {
     const sessionId = req.params.id;
     const { productivityRating, notes } = req.body;
-    const result = await completeSession(sessionId, { productivityRating, notes });
+    
+    // Map productivityRating to productivity for database consistency
+    const sessionData = { notes };
+    if (productivityRating) {
+      sessionData.productivity = productivityRating;
+    }
+    
+    const result = await completeSession(sessionId, sessionData);
     
     if (result.success) {
       res.status(200).json(result);

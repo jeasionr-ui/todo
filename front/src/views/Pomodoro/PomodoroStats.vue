@@ -219,13 +219,13 @@
               <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
                 <tr v-for="session in recentSessions" :key="session.id">
                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
-                    {{ formatDate(session.created_at) }}
+                    {{ formatDate(session.createdAt) }}
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
-                    {{ session.task_title || $t('pomodoro.focusSession') }}
+                    {{ session.taskId || $t('pomodoro.focusSession') }}
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
-                    {{ session.actual_duration || session.planned_duration }}min
+                    {{ session.actualDuration || session.plannedDuration }}min
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap">
                     <span
@@ -245,7 +245,7 @@
                           :key="star"
                           :class="[
                             'w-4 h-4',
-                            star <= (session.productivity_rating || 0) ? 'text-yellow-400' : 'text-gray-300 dark:text-gray-600'
+                            star <= getProductivityRating(session.productivity) ? 'text-yellow-400' : 'text-gray-300 dark:text-gray-600'
                           ]"
                           fill="currentColor"
                           viewBox="0 0 20 20"
@@ -294,22 +294,35 @@ const overviewStats = ref({
 const loadStats = async () => {
   try {
     // Load recent sessions
-    const sessions = await pomodoroService.getSessionHistory(1, 10)
-    recentSessions.value = sessions.sessions
+    const sessionsResult = await pomodoroService.getSessionHistory({
+      page: 1,
+      pageSize: 10
+    })
+    recentSessions.value = sessionsResult.data || []
 
     // Calculate overview stats
-    overviewStats.value.totalSessions = sessions.sessions.length
-    overviewStats.value.completedSessions = sessions.sessions.filter(s => s.status === 'completed').length
-    overviewStats.value.totalWorkTime = sessions.sessions.reduce((sum, s) => sum + (s.actual_duration || s.planned_duration || 0), 0)
+    overviewStats.value.totalSessions = recentSessions.value.length
+    overviewStats.value.completedSessions = recentSessions.value.filter(s => s.status === 'completed').length
+    overviewStats.value.totalWorkTime = recentSessions.value.reduce((sum, s) => sum + (s.actualDuration || s.plannedDuration || 0), 0)
     overviewStats.value.totalBreakTime = Math.floor(overviewStats.value.totalWorkTime * 0.2) // Estimate 20% break time
     overviewStats.value.totalFocusTime = overviewStats.value.totalWorkTime
     
-    const productivityRatings = sessions.sessions
-      .filter(s => s.productivity_rating)
-      .map(s => s.productivity_rating!)
+    // Calculate average productivity (convert enum to number)
+    const productivityValues = recentSessions.value
+      .filter(s => s.productivity)
+      .map(s => {
+        switch (s.productivity) {
+          case 'very_low': return 1
+          case 'low': return 2
+          case 'medium': return 3
+          case 'high': return 4
+          case 'very_high': return 5
+          default: return 3
+        }
+      })
     
-    overviewStats.value.avgProductivity = productivityRatings.length > 0
-      ? productivityRatings.reduce((sum, rating) => sum + rating, 0) / productivityRatings.length
+    overviewStats.value.avgProductivity = productivityValues.length > 0
+      ? productivityValues.reduce((sum, rating) => sum + rating, 0) / productivityValues.length
       : 0
 
     // Create charts
@@ -339,6 +352,32 @@ const createCharts = () => {
   }
 }
 
+const getProductivityRating = (productivity?: string): number => {
+  switch (productivity) {
+    case 'very_low': return 1
+    case 'low': return 2
+    case 'medium': return 3
+    case 'high': return 4
+    case 'very_high': return 5
+    default: return 0
+  }
+}
+
+const getStatusColor = (status: string): string => {
+  switch (status) {
+    case 'completed':
+      return 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
+    case 'cancelled':
+      return 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200'
+    case 'paused':
+      return 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200'
+    case 'running':
+      return 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200'
+    default:
+      return 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200'
+  }
+}
+
 const formatTime = (minutes: number): string => {
   const hours = Math.floor(minutes / 60)
   const remainingMinutes = minutes % 60
@@ -351,16 +390,6 @@ const formatTime = (minutes: number): string => {
 const formatDate = (dateString: string): string => {
   const date = new Date(dateString)
   return date.toLocaleDateString()
-}
-
-const getStatusColor = (status: string): string => {
-  const colors = {
-    completed: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200',
-    cancelled: 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200',
-    running: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
-    paused: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200'
-  }
-  return colors[status as keyof typeof colors] || 'bg-gray-100 text-gray-800'
 }
 
 onMounted(() => {

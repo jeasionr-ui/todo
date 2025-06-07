@@ -50,7 +50,7 @@
           <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
           </svg>
-          <p class="mt-2 text-gray-600 dark:text-gray-400">{{ $t('pomodoro.selectTask.noTasks') }}</p>
+          <p class="mt-2 text-gray-600 dark:text-gray-400">{{ $t('pomodoro.selectTaskOptions.noTasks') }}</p>
         </div>
 
         <div v-else class="divide-y divide-gray-200 dark:divide-gray-700">
@@ -89,7 +89,7 @@
                         {{ $t('common.due') }}: {{ formatDate(task.due_date) }}
                       </span>
                       <span v-if="task.estimated_pomodoros" class="text-xs text-gray-500 dark:text-gray-400">
-                        {{ $t('pomodoro.selectTask.estimatedPomodoros', { count: task.estimated_pomodoros }) }}
+                        {{ $t('pomodoro.selectTaskOptions.estimatedPomodoros', { count: task.estimated_pomodoros }) }}
                       </span>
                     </div>
                   </div>
@@ -117,7 +117,7 @@
             @click="startWithoutTask"
             class="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200"
           >
-            {{ $t('pomodoro.selectTask.startWithoutTask') }}
+            {{ $t('pomodoro.selectTaskOptions.startWithoutTask') }}
           </button>
           <button
             @click="$emit('update:show', false)"

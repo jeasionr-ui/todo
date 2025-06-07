@@ -1,38 +1,38 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800">
-    <!-- Header -->
-    <div class="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center py-4">
-          <h1 class="text-2xl font-bold text-gray-900 dark:text-white">{{ $t('pomodoro.title') }}</h1>
-          <div class="flex items-center space-x-4">
-            <button
-              @click="showSettings = true"
-              class="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
-            >
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-              </svg>
-            </button>
-            <button
-              @click="toggleFocusMode"
-              :class="[
-                'px-4 py-2 rounded-lg font-medium transition-colors',
-                focusMode
-                  ? 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200'
-                  : 'bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300'
-              ]"
-            >
-              {{ focusMode ? $t('pomodoro.focusModeOn') : $t('pomodoro.focusModeOff') }}
-            </button>
-          </div>
+  <AdminLayout>
+    <PageBreadcrumb :pageTitle="$t('pomodoro.title')" />
+    <div
+      class="min-h-screen rounded-2xl border border-gray-200 bg-white px-5 py-7 dark:border-gray-800 dark:bg-white/[0.03] xl:px-10 xl:py-12"
+    >
+      <!-- Header -->
+      <div class="mb-8 flex flex-wrap items-center justify-between gap-4">
+        <h3 class="text-2xl font-semibold mb-4 md:mb-0">
+          {{ $t('pomodoro.title') }}
+        </h3>
+        <div class="flex items-center space-x-4">
+          <button
+            @click="showSettings = true"
+            class="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+          >
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            </svg>
+          </button>
+          <button
+            @click="toggleFocusMode"
+            :class="[
+              'px-4 py-2 rounded-lg font-medium transition-colors',
+              focusMode
+                ? 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200'
+                : 'bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300'
+            ]"
+          >
+            {{ focusMode ? $t('pomodoro.focusModeOn') : $t('pomodoro.focusModeOff') }}
+          </button>
         </div>
       </div>
-    </div>
 
-    <!-- Main Content -->
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <!-- Current Session Info -->
       <div v-if="currentSession" class="mb-8">
         <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
@@ -117,7 +117,7 @@
             </button>
 
             <button
-              v-if="currentSession && !timerState.isRunning"
+              v-if="currentSession && !timerState.isRunning && timerState.isPaused"
               @click="resumeSession"
               class="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold transition-colors flex items-center space-x-2"
             >
@@ -146,7 +146,7 @@
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
               </svg>
-              <span>{{ $t('pomodoro.complete') }}</span>
+              <span>{{ $t('pomodoro.completed') }}</span>
             </button>
 
             <button
@@ -157,7 +157,7 @@
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
               </svg>
-              <span>{{ $t('pomodoro.cancel') }}</span>
+              <span>{{ $t('pomodoro.abort') }}</span>
             </button>
           </div>
         </div>
@@ -253,19 +253,21 @@
           </button>
         </div>
       </div>
-    </div>
 
-    <!-- Modals -->
-    <PomodoroSettings v-model:show="showSettings" @updated="loadData" />
-    <TaskSelector v-model:show="showTaskSelector" @selected="handleTaskSelected" />
-    <CompleteSessionModal v-model:show="showCompleteModal" :session="currentSession" @completed="handleSessionCompleted" />
-    <CancelSessionModal v-model:show="showCancelModal" :session="currentSession" @cancelled="handleSessionCancelled" />
-  </div>
+      <!-- Modals -->
+      <PomodoroSettings v-model:show="showSettings" @updated="loadData" />
+      <TaskSelector v-model:show="showTaskSelector" @selected="handleTaskSelected" />
+      <CompleteSessionModal v-model:show="showCompleteModal" :session="currentSession" @completed="handleSessionCompleted" />
+      <CancelSessionModal v-model:show="showCancelModal" :session="currentSession" @cancelled="handleSessionCancelled" />
+    </div>
+  </AdminLayout>
 </template>
 
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
+import PageBreadcrumb from '@/components/common/PageBreadcrumb.vue'
+import AdminLayout from '@/components/layout/AdminLayout.vue'
 import { pomodoroService } from '@/services/pomodoroService'
 import type { PomodoroSession, PomodoroTemplate, PomodoroStats, TimerState } from '@/types/pomodoro'
 import PomodoroSettings from '@/components/Pomodoro/PomodoroSettings.vue'
@@ -379,14 +381,43 @@ const getTimerColor = (): string => {
 }
 
 const loadData = async () => {
+  console.log('Loading data...')
   try {
     // Load active session
     const sessions = await pomodoroService.getActiveSessions()
     currentSession.value = sessions.length > 0 ? sessions[0] : null
+    console.log('Active sessions:', sessions)
     
     // Load default template
     const templates = await pomodoroService.getTemplates()
     activeTemplate.value = templates.find(t => t.isDefault) || templates[0] || null
+    console.log('Templates:', templates)
+    console.log('Active template:', activeTemplate.value)
+    
+    // If no templates exist, create a default one
+    if (!activeTemplate.value) {
+      console.log('No templates found, creating default template...')
+      try {
+        const defaultTemplateResponse = await pomodoroService.createTemplate({
+          name: '默认番茄钟',
+          description: '25分钟工作，5分钟短休息，15分钟长休息',
+          workDuration: 25,
+          shortBreakDuration: 5,
+          longBreakDuration: 15,
+          longBreakInterval: 4,
+          autoStartBreaks: false,
+          autoStartWork: false,
+          isDefault: true
+        })
+        
+        if (defaultTemplateResponse.success && defaultTemplateResponse.data) {
+          activeTemplate.value = defaultTemplateResponse.data
+          console.log('Default template created:', activeTemplate.value)
+        }
+      } catch (error) {
+        console.error('Failed to create default template:', error)
+      }
+    }
     
     // Load today's stats
     const statsResponse = await pomodoroService.getDailyStats({ date: new Date().toISOString().split('T')[0] })
@@ -414,6 +445,8 @@ const loadData = async () => {
 const updateTimerFromSession = () => {
   if (!currentSession.value || !activeTemplate.value) return
   
+  console.log('Updating timer from session:', currentSession.value)
+  
   const now = new Date()
   const sessionStart = new Date(currentSession.value.startTime || currentSession.value.createdAt)
   const elapsedMs = now.getTime() - sessionStart.getTime()
@@ -439,24 +472,63 @@ const updateTimerFromSession = () => {
   
   timerState.value.totalTime = sessionDuration
   timerState.value.remainingTime = Math.max(0, sessionDuration - elapsedSeconds)
-  timerState.value.isRunning = currentSession.value.status === 'running'
-  timerState.value.isPaused = currentSession.value.status === 'paused'
+  
+  // Only update running state if not already manually set
+  const wasRunning = timerState.value.isRunning
+  const shouldBeRunning = currentSession.value.status === 'running'
+  const shouldBePaused = currentSession.value.status === 'paused'
+  
+  console.log('Timer state check:', {
+    wasRunning,
+    shouldBeRunning,
+    shouldBePaused,
+    sessionStatus: currentSession.value.status,
+    hasTimerInterval: !!timerInterval
+  })
+  
+  if (shouldBeRunning && !wasRunning && !timerInterval) {
+    console.log('Session is running but timer not started, starting timer...')
+    startTimer()
+  } else if (!shouldBeRunning && wasRunning && timerInterval) {
+    console.log('Session not running but timer is, stopping timer...')
+    stopTimer()
+  }
+  
+  timerState.value.isRunning = shouldBeRunning
+  timerState.value.isPaused = shouldBePaused
 }
 
 const startTimer = () => {
-  if (timerInterval) return
+  console.log('startTimer called, current state:', {
+    timerInterval,
+    isRunning: timerState.value.isRunning,
+    remainingTime: timerState.value.remainingTime
+  })
+  
+  if (timerInterval) {
+    console.log('Timer already running, returning')
+    return
+  }
   
   timerState.value.isRunning = true
   timerState.value.isPaused = false
   
+  console.log('Starting timer interval...')
   timerInterval = window.setInterval(() => {
     if (timerState.value.remainingTime > 0) {
       timerState.value.remainingTime--
+      // Log every 10 seconds to avoid spam
+      if (timerState.value.remainingTime % 10 === 0) {
+        console.log('Timer tick:', timerState.value.remainingTime)
+      }
     } else {
       // Timer finished
+      console.log('Timer completed!')
       handleTimerComplete()
     }
   }, 1000)
+  
+  console.log('Timer started successfully, interval ID:', timerInterval)
 }
 
 const stopTimer = () => {
@@ -467,22 +539,68 @@ const stopTimer = () => {
   timerState.value.isRunning = false
 }
 
-const handleTimerComplete = () => {
+const handleTimerComplete = async () => {
+  console.log('Timer completed!', { 
+    sessionType: timerState.value.sessionType, 
+    currentSessionId: currentSession.value?.id 
+  })
+  
   stopTimer()
   
   if (currentSession.value) {
     if (timerState.value.sessionType === 'work') {
-      // Work period completed, start break
-      startBreakPeriod()
+      // Work period completed, first complete the current session, then start break
+      console.log('Work session completed, transitioning to break...')
+      await completeCurrentSession()
+      await startBreakPeriod()
     } else {
       // Break completed, session is done
+      console.log('Break session completed, showing completion modal...')
+      await completeCurrentSession()
       showCompleteModal.value = true
     }
+  } else {
+    console.log('No current session found when timer completed')
+  }
+}
+
+const completeCurrentSession = async () => {
+  if (!currentSession.value) return
+  
+  try {
+    await pomodoroService.completeSession(currentSession.value.id, {
+      productivityRating: 'medium',
+      notes: ''
+    })
+    console.log('Session completed:', currentSession.value.id)
+    
+    // Clear the current session to indicate it's no longer active
+    currentSession.value = null
+    
+    // Update stats
+    const statsResponse = await pomodoroService.getDailyStats({ date: new Date().toISOString().split('T')[0] })
+    if (statsResponse.success && statsResponse.data) {
+      const statsData = Array.isArray(statsResponse.data) ? statsResponse.data[0] : statsResponse.data
+      if (statsData) {
+        todayStats.value = statsData
+      }
+    }
+  } catch (error) {
+    console.error('Failed to complete current session:', error)
   }
 }
 
 const startBreakPeriod = async () => {
-  if (!activeTemplate.value || !currentSession.value) return
+  if (!activeTemplate.value) {
+    console.error('No active template found for break period')
+    return
+  }
+  
+  console.log('Starting break period...', { 
+    activeTemplate: activeTemplate.value.id,
+    currentSession: currentSession.value ? currentSession.value.id : 'null',
+    todayStats: todayStats.value.completedSessions 
+  })
   
   try {
     // Create break session
@@ -490,6 +608,8 @@ const startBreakPeriod = async () => {
     const duration = breakType === 'long_break' 
       ? activeTemplate.value.longBreakDuration 
       : activeTemplate.value.shortBreakDuration
+    
+    console.log('Creating break session:', { breakType, duration })
     
     const breakSessionResponse = await pomodoroService.createSession({
       templateId: activeTemplate.value.id,
@@ -499,18 +619,27 @@ const startBreakPeriod = async () => {
     
     if (breakSessionResponse.success && breakSessionResponse.data) {
       const breakSession = breakSessionResponse.data
+      console.log('Break session created successfully:', breakSession.id)
+      
       currentSession.value = breakSession
       timerState.value.sessionType = breakType
       timerState.value.totalTime = duration * 60
       timerState.value.remainingTime = duration * 60
       
       if (activeTemplate.value.autoStartBreaks) {
+        console.log('Auto-starting break session...')
         await pomodoroService.startSession(breakSession.id)
         startTimer()
       }
+    } else {
+      console.error('Failed to create break session:', breakSessionResponse)
     }
   } catch (error) {
     console.error('Failed to start break period:', error)
+    // If break creation fails, we should still clear the current session state
+    currentSession.value = null
+    timerState.value.isRunning = false
+    timerState.value.isPaused = false
   }
 }
 
@@ -520,14 +649,22 @@ const shouldUseLongBreak = (): boolean => {
 }
 
 const startNewSession = async () => {
-  if (!activeTemplate.value) return
+  console.log('Starting new session...', { activeTemplate: activeTemplate.value })
+  
+  if (!activeTemplate.value) {
+    console.error('No active template found')
+    return
+  }
   
   try {
+    console.log('Creating session with template:', activeTemplate.value.id)
     const sessionResponse = await pomodoroService.createSession({
       templateId: activeTemplate.value.id,
       type: 'work',
       plannedDuration: activeTemplate.value.workDuration
     })
+    
+    console.log('Session creation response:', sessionResponse)
     
     if (sessionResponse.success && sessionResponse.data) {
       const session = sessionResponse.data
@@ -538,10 +675,22 @@ const startNewSession = async () => {
       timerState.value.totalTime = activeTemplate.value.workDuration * 60
       timerState.value.remainingTime = activeTemplate.value.workDuration * 60
       
+      console.log('Starting session:', session.id)
       await pomodoroService.startSession(session.id)
+      
+      console.log('Starting timer...')
       startTimer()
       
-      await loadData() // Refresh stats
+      // Refresh stats but don't reload session data to avoid overriding timer state
+      const statsResponse = await pomodoroService.getDailyStats({ date: new Date().toISOString().split('T')[0] })
+      if (statsResponse.success && statsResponse.data) {
+        const statsData = Array.isArray(statsResponse.data) ? statsResponse.data[0] : statsResponse.data
+        if (statsData) {
+          todayStats.value = statsData
+        }
+      }
+    } else {
+      console.error('Failed to create session:', sessionResponse)
     }
   } catch (error) {
     console.error('Failed to start session:', error)

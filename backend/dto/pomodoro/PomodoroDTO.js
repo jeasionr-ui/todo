@@ -34,8 +34,8 @@ export class PomodoroTemplateDTO {
     const template = new PomodoroTemplate();
     
     // 设置基本信息
-    template.name = templateData.name?.trim() || '';
-    template.description = templateData.description?.trim() || '';
+    template.name = templateData.name ? templateData.name.trim() : '';
+    template.description = templateData.description ? templateData.description.trim() : '';
     
     // 设置时长配置
     template.workDuration = parseInt(templateData.workDuration) || 25;
