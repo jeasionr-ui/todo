@@ -236,15 +236,23 @@ const router = createRouter({
     },
 
     {
+      path: '/goals',
+      name: 'Goals',
+      component: () => import('../views/Goals/GoalList.vue'),
+      meta: {
+        title: 'Goal Management',
+      },
+    },
+
+    {
       path: '/habits',
       name: 'Habits',
       component: () => import('../views/Habits/HabitList.vue'),
       meta: {
-        title: 'Habits Management',
+        title: 'Habit Management',
       },
     },
 
-    
     {
       path: '/calendar',
       name: 'Calendar',

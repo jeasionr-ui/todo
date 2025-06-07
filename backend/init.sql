@@ -103,3 +103,77 @@ CREATE TABLE
     FOREIGN KEY (`habitId`) REFERENCES `habit` (`id`) ON DELETE CASCADE,
     UNIQUE KEY `unique_habit_date` (`habitId`, `date`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- 目标表结构
+DROP TABLE IF EXISTS `goal`;
+CREATE TABLE
+  IF NOT EXISTS `goal` (
+    `id` VARCHAR(64) NOT NULL PRIMARY KEY COMMENT '目标唯一标识',
+    `title` VARCHAR(255) NOT NULL COMMENT '目标标题',
+    `description` TEXT COMMENT '目标详细描述',
+    `category` VARCHAR(100) NOT NULL COMMENT '目标分类',
+    `status` ENUM ('draft', 'active', 'completed', 'cancelled', 'paused') DEFAULT 'draft' COMMENT '目标状态：草稿/活跃/已完成/已取消/暂停',
+    `priority` ENUM ('low', 'medium', 'high', 'urgent') DEFAULT 'medium' COMMENT '目标优先级：低/中/高/紧急',
+    `startDate` VARCHAR(32) NOT NULL COMMENT '目标开始日期，格式YYYY-MM-DD',
+    `targetDate` VARCHAR(32) COMMENT '目标截止日期，格式YYYY-MM-DD',
+    `actualCompletionDate` VARCHAR(32) COMMENT '实际完成日期，格式YYYY-MM-DD',
+    `progress` DECIMAL(5,2) DEFAULT 0.00 COMMENT '目标进度百分比（0-100）',
+    `parentGoalId` VARCHAR(64) COMMENT '父目标ID，用于目标分解',
+    `tags` VARCHAR(255) COMMENT '目标标签列表，逗号分隔的字符串',
+    `color` VARCHAR(16) DEFAULT '#3B82F6' COMMENT '目标颜色代码',
+    `icon` VARCHAR(16) DEFAULT '🎯' COMMENT '目标图标（emoji）',
+    `isArchived` BOOLEAN DEFAULT FALSE COMMENT '是否已归档',
+    `createdAt` DATETIME NOT NULL COMMENT '目标创建时间',
+    `updatedAt` DATETIME NOT NULL COMMENT '目标最后更新时间',
+    FOREIGN KEY (`parentGoalId`) REFERENCES `goal` (`id`) ON DELETE SET NULL
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- 目标里程碑表结构
+DROP TABLE IF EXISTS `goal_milestone`;
+CREATE TABLE
+  IF NOT EXISTS `goal_milestone` (
+    `id` VARCHAR(64) NOT NULL PRIMARY KEY COMMENT '里程碑唯一标识',
+    `goalId` VARCHAR(64) NOT NULL COMMENT '关联的目标ID',
+    `title` VARCHAR(255) NOT NULL COMMENT '里程碑标题',
+    `description` TEXT COMMENT '里程碑描述',
+    `targetDate` VARCHAR(32) NOT NULL COMMENT '里程碑目标日期，格式YYYY-MM-DD',
+    `isCompleted` BOOLEAN DEFAULT FALSE COMMENT '是否已完成',
+    `completedAt` DATETIME COMMENT '完成时间',
+    `sortOrder` INT DEFAULT 0 COMMENT '排序顺序',
+    `createdAt` DATETIME NOT NULL COMMENT '创建时间',
+    `updatedAt` DATETIME NOT NULL COMMENT '更新时间',
+    FOREIGN KEY (`goalId`) REFERENCES `goal` (`id`) ON DELETE CASCADE
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- 目标与任务关联表
+DROP TABLE IF EXISTS `goal_task_relation`;
+CREATE TABLE
+  IF NOT EXISTS `goal_task_relation` (
+    `id` VARCHAR(64) NOT NULL PRIMARY KEY COMMENT '关联记录唯一标识',
+    `goalId` VARCHAR(64) NOT NULL COMMENT '目标ID',
+    `taskId` VARCHAR(64) NOT NULL COMMENT '任务ID',
+    `createdAt` DATETIME NOT NULL COMMENT '关联创建时间',
+    FOREIGN KEY (`goalId`) REFERENCES `goal` (`id`) ON DELETE CASCADE,
+    FOREIGN KEY (`taskId`) REFERENCES `task` (`id`) ON DELETE CASCADE,
+    UNIQUE KEY `unique_goal_task` (`goalId`, `taskId`)
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- 目标回顾记录表
+DROP TABLE IF EXISTS `goal_review`;
+CREATE TABLE
+  IF NOT EXISTS `goal_review` (
+    `id` VARCHAR(64) NOT NULL PRIMARY KEY COMMENT '回顾记录唯一标识',
+    `goalId` VARCHAR(64) NOT NULL COMMENT '关联的目标ID',
+    `reviewDate` VARCHAR(32) NOT NULL COMMENT '回顾日期，格式YYYY-MM-DD',
+    `reviewType` ENUM ('daily', 'weekly', 'monthly', 'quarterly', 'custom') NOT NULL COMMENT '回顾类型',
+    `progress` DECIMAL(5,2) NOT NULL COMMENT '回顾时的进度百分比',
+    `achievements` TEXT COMMENT '取得的成就',
+    `challenges` TEXT COMMENT '遇到的挑战',
+    `improvements` TEXT COMMENT '改进建议',
+    `nextSteps` TEXT COMMENT '下一步计划',
+    `mood` ENUM ('very_bad', 'bad', 'neutral', 'good', 'very_good') COMMENT '心情状态',
+    `rating` INT COMMENT '满意度评分（1-5）',
+    `createdAt` DATETIME NOT NULL COMMENT '记录创建时间',
+    `updatedAt` DATETIME NOT NULL COMMENT '记录更新时间',
+    FOREIGN KEY (`goalId`) REFERENCES `goal` (`id`) ON DELETE CASCADE
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

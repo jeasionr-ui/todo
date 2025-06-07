@@ -190,6 +190,12 @@ const menuGroups = [
 
       {
         icon: GridIcon,
+        name: t('menu.goals'),
+        path: "/goals",
+      },
+
+      {
+        icon: GridIcon,
         name: t('menu.dashboard'),
         subItems: [{ name: "Ecommerce", path: "/", pro: false }],
       },

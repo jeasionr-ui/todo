@@ -325,6 +325,155 @@ export default {
     deleteFailed: '任务删除失败',
   },
 
+  // 目标管理
+  goal: {
+    // 基础信息
+    title: '目标管理',
+    all: '所有目标',
+    create: '创建目标',
+    edit: '编辑目标',
+    view: '查看目标',
+    delete: '删除目标',
+    search: '搜索目标',
+    filter: '筛选',
+    
+    // 表单字段
+    titleField: '目标标题',
+    titlePlaceholder: '请输入目标标题',
+    description: '目标描述',
+    descriptionPlaceholder: '请描述您的目标...',
+    category: '目标类别',
+    selectCategory: '选择类别',
+    priority: '优先级',
+    status: '状态',
+    progress: '进度',
+    startDate: '开始日期',
+    targetDate: '目标日期',
+    completedDate: '完成日期',
+    parentGoal: '父目标',
+    noParentGoal: '无父目标',
+    
+    // 状态
+    draft: '草稿',
+    planning: '规划中',
+    active: '进行中',
+    paused: '已暂停',
+    completed: '已完成',
+    cancelled: '已取消',
+    allStatus: '所有状态',
+    
+    // 优先级
+    high: '高',
+    medium: '中',
+    low: '低',
+    allPriorities: '所有优先级',
+    
+    // 类别
+    personal: '个人',
+    career: '职业',
+    health: '健康',
+    education: '教育',
+    finance: '财务',
+    relationship: '人际',
+    hobby: '兴趣',
+    other: '其他',
+    allCategories: '所有类别',
+    allGoals: '所有目标',
+    topLevelGoals: '顶级目标',
+    
+    // 基本信息
+    basicInfo: '基本信息',
+    subGoal: '子目标',
+    averageProgress: '平均进度',
+    totalGoals: '总目标数',
+    activeGoals: '进行中',
+    completedGoals: '已完成',
+    
+    // 里程碑
+    milestones: '里程碑',
+    addMilestone: '添加里程碑',
+    editMilestone: '编辑里程碑',
+    milestoneTitlePlaceholder: '请输入里程碑标题',
+    milestoneDescriptionPlaceholder: '请描述这个里程碑...',
+    order: '顺序',
+    isCompleted: '已完成',
+    noMilestones: '暂无里程碑',
+    
+    // 任务关联
+    tasks: '关联任务',
+    associatedTasks: '关联的任务',
+    associateTask: '关联任务',
+    dissociateTask: '取消关联',
+    searchTasks: '搜索任务',
+    searchTasksPlaceholder: '搜索任务名称或描述...',
+    selectedTasks: '已选择 {count} 个任务',
+    noAvailableTasks: '暂无可关联的任务',
+    noTasks: '暂无关联任务',
+    associate: '关联',
+    
+    // 回顾
+    reviews: '目标回顾',
+    addReview: '添加回顾',
+    editReview: '编辑回顾',
+    reviewDate: '回顾日期',
+    reviewType: '回顾类型',
+    selectReviewType: '选择回顾类型',
+    reviewTypeOptions: {
+      weekly: '每周回顾',
+      monthly: '每月回顾',
+      quarterly: '季度回顾',
+      custom: '自定义回顾'
+    },
+    rating: '评分',
+    reviewContent: '回顾内容',
+    reviewContentPlaceholder: '分享您对目标进展的想法和感受...',
+    lessonsLearned: '经验教训',
+    lessonsLearnedPlaceholder: '记录从这个目标中学到的经验...',
+    nextSteps: '下一步计划',
+    nextStepsPlaceholder: '计划接下来要采取的行动...',
+    noReviews: '暂无回顾记录',
+    
+    // 操作消息
+    createSuccess: '目标创建成功',
+    createError: '目标创建失败',
+    updateSuccess: '目标更新成功',
+    updateError: '目标更新失败',
+    deleteSuccess: '目标删除成功',
+    deleteError: '目标删除失败',
+    deleteConfirm: '确定要删除目标"{title}"吗？',
+    loadError: '加载目标失败',
+    
+    // 里程碑操作
+    milestoneCreateSuccess: '里程碑创建成功',
+    milestoneCreateError: '里程碑创建失败',
+    milestoneUpdateSuccess: '里程碑更新成功',
+    milestoneUpdateError: '里程碑更新失败',
+    milestoneUpdated: '里程碑状态已更新',
+    milestoneDeleted: '里程碑已删除',
+    milestoneDeleteError: '里程碑删除失败',
+    deleteMilestoneConfirm: '确定要删除这个里程碑吗？',
+    
+    // 回顾操作
+    reviewCreateSuccess: '回顾创建成功',
+    reviewCreateError: '回顾创建失败',
+    reviewUpdateSuccess: '回顾更新成功',
+    reviewUpdateError: '回顾更新失败',
+    reviewDeleted: '回顾已删除',
+    reviewDeleteError: '回顾删除失败',
+    deleteReviewConfirm: '确定要删除这个回顾吗？',
+    
+    // 任务关联操作
+    loadTasksError: '加载任务失败',
+    tasksAssociated: '已关联 {count} 个任务',
+    associateTasksError: '关联任务失败',
+    taskDissociated: '任务关联已取消',
+    taskDissociateError: '取消任务关联失败',
+    dissociateTaskConfirm: '确定要取消关联这个任务吗？',
+    
+    // 其他
+    noGoals: '暂无目标，开始创建您的第一个目标吧！',
+  },
+
   // 文件操作
   file: {
     upload: '上传文件',
