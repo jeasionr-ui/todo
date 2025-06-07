@@ -437,7 +437,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, defineProps, defineEmits, watch } from 'vue'
+import { ref, defineProps, defineEmits, watch, computed } from 'vue'
 import { onClickOutside } from '@vueuse/core'
 import flatPickr from 'vue-flatpickr-component'
 import 'flatpickr/dist/flatpickr.css'
@@ -576,7 +576,7 @@ watch(
 
 const emit = defineEmits(['close', 'save', 'edit'])
 
-const { t } = useI18n()
+const { t, tm } = useI18n()
 
 // 从查看模式切换到编辑模式
 const openEditMode = () => {
@@ -586,7 +586,7 @@ const openEditMode = () => {
 const { flatpickrConfig, flatpickrTimeConfig } = useFlatPickr()
 
 // 周天数组
-const weekDays = ['日', '一', '二', '三', '四', '五', '六']
+const weekDays = computed(() => tm('datetime.weekdaysShort') as string[])
 
 // 自定义日期输入已移除
 

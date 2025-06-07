@@ -378,7 +378,7 @@ import type { PaginationResult } from '@/services/taskService'
 import type Habit from '@/services/types/HabitType'
 
 
-const { t } = useI18n()
+const { t, tm } = useI18n()
 
 // 习惯列表状态
 const habits = ref<Habit[]>([])
@@ -716,7 +716,8 @@ const getDayLabel = (dayIndex: number): string => {
   const date = new Date()
   // 索引从右向左：7是今天，6是昨天，依此类推，1是6天前
   date.setDate(date.getDate() - (7 - dayIndex))
-  const dayNames = t('datetime.weekdaysShort')
+  const { tm } = useI18n()
+  const dayNames = tm('datetime.weekdaysShort') as string[]
   return dayNames[date.getDay()]
 }
 
