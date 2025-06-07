@@ -317,39 +317,16 @@
         </div>
       </div>
 
-      <!-- 分页 -->
-      <div v-if="pagination.totalPages > 1" class="mt-8 flex justify-center">
-        <nav class="flex items-center gap-1">
-          <button
-            @click="changePage(pagination.currentPage - 1)"
-            :disabled="pagination.currentPage === 1"
-            class="px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed dark:text-gray-400 dark:hover:text-gray-200"
-          >
-            {{ $t('common.previous') }}
-          </button>
-          
-          <button
-            v-for="page in getPageNumbers()"
-            :key="page"
-            @click="changePage(page)"
-            :class="[
-              'px-3 py-2 text-sm font-medium rounded-lg',
-              page === pagination.currentPage
-                ? 'bg-brand-500 text-white'
-                : 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200'
-            ]"
-          >
-            {{ page }}
-          </button>
-          
-          <button
-            @click="changePage(pagination.currentPage + 1)"
-            :disabled="pagination.currentPage === pagination.totalPages"
-            class="px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed dark:text-gray-400 dark:hover:text-gray-200"
-          >
-            {{ $t('common.next') }}
-          </button>
-        </nav>
+      <!-- 分页组件 -->
+      <div class="mt-8" v-if="!loading && goals.length > 0">
+        <Pagination
+          v-model:currentPage="pagination.currentPage"
+          :pageCount="pagination.totalPages"
+          :totalItems="pagination.total"
+          :pageSize="pagination.pageSize"
+          @page-change="onPageChange"
+          @page-size-change="onPageSizeChange"
+        />
       </div>
     </div>
 
@@ -377,6 +354,7 @@ import { ref, reactive, onMounted, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import AdminLayout from '@/components/layout/AdminLayout.vue'
 import PageBreadcrumb from '@/components/common/PageBreadcrumb.vue'
+import Pagination from '@/components/common/Pagination.vue'
 import GoalDialog from '@/components/goals/GoalDialog.vue'
 import GoalDetailDialog from '@/components/goals/GoalDetailDialog.vue'
 import { goalService } from '@/services/goalService'
@@ -406,13 +384,13 @@ const filters = reactive<GoalFilters>({
   parentGoalId: '',
   search: '',
   page: 1,
-  pageSize: 10
+  pageSize: 3
 })
 
 // 分页信息
 const pagination = reactive({
   total: 0,
-  pageSize: 10,
+  pageSize: 3,
   currentPage: 1,
   totalPages: 0
 })
@@ -547,8 +525,21 @@ const deleteGoal = async (goalId: string) => {
 const changePage = (page: number) => {
   if (page >= 1 && page <= pagination.totalPages) {
     filters.page = page
+    pagination.currentPage = page
     loadGoals()
   }
+}
+
+const onPageChange = (page: number) => {
+  changePage(page)
+}
+
+const onPageSizeChange = (newPageSize: number) => {
+  filters.pageSize = newPageSize
+  filters.page = 1
+  pagination.pageSize = newPageSize
+  pagination.currentPage = 1
+  loadGoals()
 }
 
 const getPageNumbers = () => {
