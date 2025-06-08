@@ -56,7 +56,7 @@ export default {
     perPage: '每页',
 
     // 应用信息
-    appDescription: 'Todo List 是一款简单易用的任务管理应用，帮助您高效管理日常任务和习惯养成。',
+    appDescription: 'Bingo Todo 是一款简单易用的任务管理应用，帮助您高效管理日常任务和习惯养成。',
     welcome: '欢迎回来',
 
     // 时间单位

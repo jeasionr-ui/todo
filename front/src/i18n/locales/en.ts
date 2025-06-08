@@ -19,7 +19,7 @@ export default {
     close: 'Close',
     done: 'Done',
     skip: 'Skip',
-    
+
     // Status
     loading: 'Loading...',
     success: 'Operation successful',
@@ -27,7 +27,7 @@ export default {
     error: 'Operation failed',
     warning: 'Warning',
     info: 'Info',
-    
+
     // Navigation
     home: 'Home',
     dashboard: 'Dashboard',
@@ -35,13 +35,13 @@ export default {
     editProfile: 'Edit Profile',
     settings: 'Settings',
     support: 'Support',
-    
+
     // Search and filtering
     search: 'Search',
     searchPlaceholder: 'Search or enter command...',
     filter: 'Filter',
     sort: 'Sort',
-    
+
     // Data states
     noData: 'No data',
     more: 'More',
@@ -54,11 +54,11 @@ export default {
     of: 'of',
     perPage: 'Per page',
     saving: 'Saving...',
-    
+
     // App info
-    appDescription: 'ToDo App - Your personal task and habit management tool',
+    appDescription: 'Bingo ToDo - Your personal task and habit management tool',
     welcome: 'Welcome back',
-    
+
     // Time units
     minute: 'minute',
     hour: 'hour',
@@ -107,7 +107,7 @@ export default {
     forgotPassword: 'Forgot Password',
     resetPassword: 'Reset Password',
     rememberMe: 'Remember Me',
-    
+
     // Form fields
     email: 'Email',
     password: 'Password',
@@ -118,7 +118,7 @@ export default {
     firstName: 'First Name',
     lastName: 'Last Name',
     nickname: 'Nickname',
-    
+
     // Prompts
     agreeTerms: 'I have read and agree to the Terms of Service and Privacy Policy',
     alreadyHaveAccount: 'Already have an account?',
@@ -129,7 +129,7 @@ export default {
     or: 'Or',
     enterEmailPassword: 'Please enter your email and password to sign in',
     enterInfoToSignUp: 'Please fill in the information to complete registration',
-    
+
     // Validation
     passwordNotMatch: 'Passwords do not match',
     invalidEmail: 'Invalid email format',
@@ -137,7 +137,7 @@ export default {
     twoFactorAuth: 'Two-Factor Authentication',
     enterVerificationCode: 'Please enter the verification code',
     accountSecurity: 'Account Security',
-    
+
     // Login error classification
     invalidCredentials: 'Invalid username or password',
     loginFailed: 'Login failed, please try again later',
@@ -155,7 +155,7 @@ export default {
     notifications: 'Notification Settings',
     activity: 'Activity Log',
     achievements: 'Achievement System',
-    
+
     // Personal information
     personalInfo: 'Personal Information',
     address: 'Address Information',
@@ -163,14 +163,14 @@ export default {
     avatar: 'Avatar',
     uploadAvatar: 'Upload Avatar',
     changeAvatar: 'Change Avatar',
-    
+
     // Address info
     country: 'Country',
     city: 'City',
     state: 'State/Province',
     postalCode: 'Postal Code',
     taxId: 'Tax ID',
-    
+
     // Password management
     changePassword: 'Change Password',
     currentPassword: 'Current Password',
@@ -180,12 +180,12 @@ export default {
     passwordTooShort: 'Password must be at least 6 characters',
     resetPasswordFailed: 'Password reset failed, please try again later',
     resetPasswordSuccess: 'Password reset successful, please sign in with your new password',
-    
+
     // Two-factor authentication
     twoFactorAuthentication: 'Two-Factor Authentication',
     enable: 'Enable',
     disable: 'Disable',
-    
+
     // History
     loginHistory: 'Login History',
     deviceHistory: 'Device History',
@@ -202,7 +202,7 @@ export default {
     offline: 'Offline',
     accountCreated: 'Account created at',
     accountUpdated: 'Account updated at',
-    
+
     // Social accounts
     socialAccounts: 'Social Accounts',
     connect: 'Connect',
@@ -239,7 +239,7 @@ export default {
     endDate: 'End Date',
     export: 'Export Data',
     exportSuccess: 'Data exported as {format} format: {filename}',
-    
+
     // Report types
     types: {
       productivity: 'Productivity',
@@ -249,7 +249,7 @@ export default {
       taskStats: 'Task Statistics',
       pomodoro: 'Pomodoro Method',
     },
-    
+
     // Common statistics terms
     stats: {
       total: 'Total',
@@ -296,9 +296,9 @@ export default {
       todo: 'To Do',
       avgSessionLength: 'Average Session Length',
       breakTime: 'Break Time',
-      avgEfficiency: 'Average Efficiency'
+      avgEfficiency: 'Average Efficiency',
     },
-    
+
     // Pomodoro statistics
     pomodoro: {
       focusTime: 'Focus Time',
@@ -312,10 +312,10 @@ export default {
       sessionType: {
         completed: 'Completed',
         interrupted: 'Interrupted',
-        skipped: 'Skipped'
-      }
+        skipped: 'Skipped',
+      },
     },
-    
+
     // Time efficiency report
     timeEfficiency: {
       title: 'Time Efficiency Report',
@@ -330,13 +330,13 @@ export default {
         focusWork: 'Focus Work',
         learning: 'Learning',
         meeting: 'Meetings',
-        other: 'Other'
+        other: 'Other',
       },
       levels: {
         high: 'High Efficiency',
         medium: 'Medium Efficiency',
-        low: 'Low Efficiency'
-      }
+        low: 'Low Efficiency',
+      },
     },
 
     // Task reports
@@ -353,7 +353,7 @@ export default {
       overdueAnalysis: 'Overdue Task Analysis',
       overdueTasks: 'Overdue Tasks',
       avgDaysOverdue: 'Average Days Overdue',
-      overdueRate: 'Overdue Rate'
+      overdueRate: 'Overdue Rate',
     },
 
     // Productivity report
@@ -366,7 +366,7 @@ export default {
       trend: 'Productivity Trend',
       insights: 'Data Insights',
       recommendations: 'Improvement Suggestions',
-      noData: 'No productivity data available'
+      noData: 'No productivity data available',
     },
 
     // Habits report
@@ -378,7 +378,7 @@ export default {
       completionRate: 'Completion Rate',
       completionTrend: 'Habit Completion Trend',
       dayLabel: 'Day {day}: {value}%',
-      noData: 'No habits data available'
+      noData: 'No habits data available',
     },
 
     // Goals report
@@ -396,9 +396,9 @@ export default {
         fitnessGoal: 'Fitness Plan',
         readingGoal: 'Reading Goal',
         projectDevelopment: 'Project Development',
-        socialImprovement: 'Social Improvement'
-      }
-    }
+        socialImprovement: 'Social Improvement',
+      },
+    },
   },
 
   // Toast notifications
@@ -427,7 +427,7 @@ export default {
     description: 'View and edit your profile',
     editSocialAccounts: 'Edit Social Accounts',
     editSocialAccountsDesc: 'Connect your social accounts to your profile',
-    
+
     // Login history and device information
     loginHistory: 'Login History',
     device: 'Device',
@@ -464,7 +464,7 @@ export default {
     allPriorities: 'All Priorities',
     resetFilter: 'Reset Filter',
     applyFilter: 'Apply Filter',
-    
+
     // Task details
     detail: 'Task Details',
     name: 'Task Name',
@@ -475,21 +475,21 @@ export default {
     reminderTime: 'Reminder Time',
     tags: 'Tags',
     attachments: 'Attachments',
-    
+
     // Placeholders
     selectDueDate: 'Select due date',
     selectReminderTime: 'Select reminder time',
-    
+
     // Task status
     todo: 'To Do',
     working: 'In Progress',
     done: 'Done',
-    
+
     // Priority
     high: 'High',
     medium: 'Medium',
     low: 'Low',
-    
+
     // Actions
     addTag: 'Add Tag',
     addAttachment: 'Add Attachment',
@@ -498,7 +498,7 @@ export default {
     search: 'Search Tasks',
     noTasks: 'No tasks',
     createFirstTask: 'Create your first task',
-    
+
     // Advanced features
     estimatedTime: 'Estimated Time',
     actualTime: 'Actual Time',
@@ -513,7 +513,7 @@ export default {
     batchComplete: 'Batch Complete',
     import: 'Import Tasks',
     export: 'Export Tasks',
-    
+
     // Status changes
     createSuccess: 'Task created successfully',
     createFailed: 'Task creation failed',
@@ -701,12 +701,12 @@ export default {
   datetime: {
     weekdays: {
       sunday: 'Sun',
-      monday: 'Mon', 
+      monday: 'Mon',
       tuesday: 'Tue',
       wednesday: 'Wed',
       thursday: 'Thu',
       friday: 'Fri',
-      saturday: 'Sat'
+      saturday: 'Sat',
     },
     weekdaysShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
   },
@@ -724,7 +724,7 @@ export default {
     createHabit: 'Create Habit',
     editHabit: 'Edit Habit',
     detail: 'Habit Details',
-    
+
     // Basic information
     name: 'Habit Name',
     description: 'Habit Description',
@@ -739,7 +739,7 @@ export default {
     icon: 'Icon',
     tags: 'Tags',
     addTag: 'Add Tag',
-    
+
     // Status and actions
     complete: 'Check In',
     completed: 'Checked In',
@@ -747,7 +747,7 @@ export default {
     unarchive: 'Unarchive',
     showArchived: 'Show Archived',
     hideArchived: 'Hide Archived',
-    
+
     // Extended info
     habits: 'Habit List',
     myHabits: 'My Habits',
@@ -756,20 +756,20 @@ export default {
     isArchived: 'Archived',
     createdAt: 'Created At',
     updatedAt: 'Updated At',
-    
+
     // Statistics
     streakCount: 'Current Streak',
     longestStreak: 'Longest Streak',
     totalCompletions: 'Total Completions',
     completionHistory: 'Completion History',
     lastCompletedAt: 'Last Completed At',
-    
+
     // Status
     incomplete: 'Incomplete',
     inProgress: 'In Progress',
     paused: 'Paused',
     archived: 'Archived',
-    
+
     // Actions
     markAsCompleted: 'Mark as Completed',
     markAsIncomplete: 'Mark as Incomplete',
@@ -777,7 +777,7 @@ export default {
     viewHistory: 'View History',
     archiveHabit: 'Archive Habit',
     unarchiveHabit: 'Unarchive Habit',
-    
+
     // Status changes
     create_title: 'Create New Habit',
     create_success: 'Habit created successfully',
@@ -791,7 +791,7 @@ export default {
     habitCreated: 'Habit created successfully',
     habitUpdated: 'Habit updated successfully',
     habitDeleted: 'Habit deleted successfully',
-    
+
     // Form validation
     nameMinLength: 'Habit name must be at least 2 characters',
     nameMaxLength: 'Habit name cannot exceed 50 characters',
@@ -800,14 +800,14 @@ export default {
     frequencyRequired: 'Please select a frequency',
     startDateRequired: 'Please select a start date',
     invalidDateRange: 'End date cannot be earlier than start date',
-    
+
     // Notifications
     noHabitsFound: 'No habits found',
     noCompletionHistory: 'No completion history',
     habitCompletedToday: 'Completed today',
     habitNotCompletedToday: 'Not completed today',
     streakBroken: 'Streak broken',
-    
+
     // Statistics
     stats: {
       current_streak: 'Current Streak',
@@ -1308,7 +1308,7 @@ export default {
     },
     templates: 'Templates',
     statistics: 'Statistics',
-    
+
     // History page
     history: {
       title: 'History',
@@ -1365,7 +1365,8 @@ export default {
       notesPlaceholder: 'Record thoughts and gains from this session...',
       breakSuggestion: {
         title: 'Suggest taking a break',
-        message: 'You have completed a focus session, suggest taking a 5-15 minute break to restore energy.',
+        message:
+          'You have completed a focus session, suggest taking a 5-15 minute break to restore energy.',
       },
       confirm: 'Confirm Complete',
     },
@@ -1384,7 +1385,8 @@ export default {
       timeSpent: 'Time spent: {duration}',
       warning: {
         title: 'Cancel session reminder',
-        message: 'Cancelling the session will lose current progress and will not be recorded as a completed pomodoro.',
+        message:
+          'Cancelling the session will lose current progress and will not be recorded as a completed pomodoro.',
       },
       reason: 'Cancel Reason',
       selectReason: 'Please select cancel reason',
@@ -1425,40 +1427,40 @@ export default {
     weekdays: {
       monday: 'Mon',
       tuesday: 'Tue',
-      wednesday: 'Wed', 
+      wednesday: 'Wed',
       thursday: 'Thu',
       friday: 'Fri',
       saturday: 'Sat',
-      sunday: 'Sun'
-    }
+      sunday: 'Sun',
+    },
   },
-  
+
   // Dashboard
   dashboard: {
     // Welcome section
-    welcomeMessage: 'Today is {date}, let\'s efficiently complete today\'s goals!',
-    
+    welcomeMessage: "Today is {date}, let's efficiently complete today's goals!",
+
     // Section headers
-    todayTasks: 'Today\'s Tasks',
-    todayHabits: 'Today\'s Habits',
+    todayTasks: "Today's Tasks",
+    todayHabits: "Today's Habits",
     activeGoals: 'Active Goals',
     pomodoroTimer: 'Pomodoro Timer',
-    todayStats: 'Today\'s Statistics',
-    
+    todayStats: "Today's Statistics",
+
     // Common actions
     more: 'More',
     noTasks: 'No tasks',
     noHabits: 'No habits',
     noGoals: 'No goals',
-    
+
     // Task related
     taskCompleted: 'Completed',
     markComplete: 'Mark Complete',
-    
+
     // Habit related
     consecutiveDays: '{count} days in a row',
     goalTarget: 'Goal: {target}',
-    
+
     // Pomodoro states
     focusTime: 'Focus Time',
     shortBreak: 'Short Break',
@@ -1467,25 +1469,25 @@ export default {
     pause: 'Pause',
     start: 'Start',
     reset: 'Reset',
-    
+
     // Statistics
     completedTasks: 'Completed Tasks',
     completedHabits: 'Completed Habits',
     pomodoroSessions: 'Pomodoro Sessions',
     avgGoalProgress: 'Avg Goal Progress',
-    
+
     // Priority levels
     highPriority: 'High Priority',
     mediumPriority: 'Medium Priority',
     lowPriority: 'Low Priority',
     normalPriority: 'Normal',
-    
+
     // Frequency types
     daily: 'Daily',
     weekly: 'Weekly',
     monthly: 'Monthly',
     custom: 'Custom',
-    
+
     // Date related
     notSet: 'Not set',
     dueDate: 'Due: {date}',
@@ -1494,21 +1496,22 @@ export default {
   // Security settings
   security: {
     title: 'Security Settings',
-    description: 'Manage your account security settings, including password, two-factor authentication, and active sessions',
-    
+    description:
+      'Manage your account security settings, including password, two-factor authentication, and active sessions',
+
     // Password change
     changePassword: 'Change Password',
     currentPassword: 'Current Password',
     newPassword: 'New Password',
     confirmNewPassword: 'Confirm New Password',
     updatePassword: 'Update Password',
-    
+
     // Two-factor authentication
     twoFactorAuth: 'Two-Factor Authentication',
     twoFactorAuthDesc: 'Enable two-factor authentication for your account to enhance security',
     enabled: 'Enabled',
     disabled: 'Disabled',
-    
+
     // Active sessions
     activeSessions: 'Active Sessions',
     device: 'Device',
