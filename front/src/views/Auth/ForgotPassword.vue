@@ -4,18 +4,25 @@
       <div
         class="relative flex flex-col justify-center w-full h-screen lg:flex-row dark:bg-gray-900"
       >
-        <div class="flex flex-col flex-1 w-full lg:w-1/2">
-          <!-- 顶部导航 -->
-          <div class="flex justify-between items-center w-full">
+        <div class="flex flex-col flex-1 w-full lg:w-1/2 relative">
+          <!-- 语言切换器 - 右上角椭圆形背景 -->
+          <div class="absolute top-5 right-5 z-10">
+            <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full px-4 py-2 shadow-sm border border-gray-200/50 dark:border-gray-700/50">
+              <LanguageSwitcher />
+            </div>
+          </div>
+          
+          <!-- 返回按钮 - 左上角 -->
+          <div class="absolute top-5 left-5 z-10">
             <router-link
               to="/signin"
-              class="inline-flex items-center text-sm text-gray-500 transition-colors hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
+              class="inline-flex items-center gap-2 text-sm text-gray-500 transition-colors hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full px-4 py-2 shadow-sm border border-gray-200/50 dark:border-gray-700/50"
             >
               <svg
                 class="stroke-current"
                 xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
+                width="16"
+                height="16"
                 viewBox="0 0 20 20"
                 fill="none"
               >
@@ -29,8 +36,6 @@
               </svg>
               {{ $t('common.back') }}
             </router-link>
-            
-            <LanguageSwitcher />
           </div>
           
           <div class="flex flex-col justify-center flex-1 w-full max-w-md mx-auto">
