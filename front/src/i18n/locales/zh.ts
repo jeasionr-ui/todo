@@ -14,8 +14,8 @@ export default {
     reset: '重置',
     clear: '清空',
     back: '返回',
-    next: '下一步',
-    previous: '上一步',
+    next: '下一页',
+    previous: '上一页',
     close: '关闭',
     done: '完成',
     skip: '跳过',
@@ -49,6 +49,11 @@ export default {
     yes: '是',
     no: '否',
     due: '到期',
+    view: '查看',
+    to: '至',
+    page: '页',
+    of: '共',
+    perPage: '每页',
 
     // 应用信息
     appDescription: 'Todo List 是一款简单易用的任务管理应用，帮助您高效管理日常任务和习惯养成。',
@@ -57,14 +62,8 @@ export default {
 
   // 分页组件
   pagination: {
-    previous: '上一页',
-    next: '下一页',
     showing: '显示',
-    to: '至',
-    of: '共',
     results: '条',
-    page: '页',
-    perPage: '每页',
     items: '条',
     pageSize: '每页条数',
   },
@@ -1143,7 +1142,28 @@ export default {
     },
     templates: '模板',
     statistics: '统计',
-    history: '历史记录',
+    
+    // 历史记录页面
+    history: {
+      title: '历史记录',
+      allStatuses: '所有状态',
+      totalSessions: '总会话数',
+      completed: '已完成',
+      totalTime: '总时长',
+      avgProductivity: '平均生产力',
+      sessions: '会话记录',
+      showing: '显示第 {start} - {end} 条，共 {total} 条',
+      date: '日期',
+      task: '任务',
+      template: '模板',
+      duration: '时长',
+      status: '状态',
+      productivity: '生产力',
+      actions: '操作',
+      planned: '计划',
+      noSessions: '暂无会话记录',
+      viewTask: '查看任务',
+    },
 
     // 任务选择对话框
     taskSelector: {
