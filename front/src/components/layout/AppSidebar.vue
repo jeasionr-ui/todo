@@ -186,6 +186,11 @@ const menuGroups = [
       },
       {
         icon: CalenderIcon,
+        name: t('menu.calendar'),
+        path: "/tasks/calendar",
+      },
+      {
+        icon: CalenderIcon,
         name: t('menu.habits'),
         path: "/habits",
       },

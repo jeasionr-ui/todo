@@ -203,7 +203,7 @@ export default {
     habits: 'Habit Tracking',
     goals: 'Goal Management',
     pomodoro: 'Pomodoro Timer',
-    calendar: 'Calendar Management',
+    calendar: 'Calendar View',
     reports: 'Report Analysis',
     settings: 'System Settings',
     userManagement: 'User Management',
@@ -879,5 +879,16 @@ export default {
     solo: 'Solo',
     beginner: 'Beginner',
     advanced: 'Advanced',
+  },
+
+  // Task Calendar
+  taskCalendar: {
+    title: 'Task Calendar',
+    todayView: 'Today',
+    weekView: 'Week',
+    monthView: 'Month',
+    today: 'Today',
+    noTime: 'No time',
+    moreTasks: 'more tasks',
   },
 }

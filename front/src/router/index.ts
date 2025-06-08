@@ -86,6 +86,15 @@ const router = createRouter({
       },
     },
     {
+      path: '/tasks/calendar',
+      name: 'TaskCalendar',
+      component: () => import('../views/Tasks/TaskCalendar.vue'),
+      meta: {
+        title: 'Task Calendar',
+        requiresAuth: true,
+      },
+    },
+    {
       path: '/tasks/:id',
       name: 'TaskDetail',
       component: () => import('../views/Tasks/TaskList.vue'),

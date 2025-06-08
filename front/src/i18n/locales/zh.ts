@@ -208,7 +208,7 @@ export default {
     habits: '习惯养成',
     goals: '目标管理',
     pomodoro: '番茄钟',
-    calendar: '日历管理',
+    calendar: '日历视图',
     reports: '报表分析',
     settings: '系统设置',
     userManagement: '用户管理',
@@ -1249,5 +1249,16 @@ export default {
       completed: '已完成',
       pending: '待处理',
     },
+  },
+
+  // 任务日历
+  taskCalendar: {
+    title: '任务日历',
+    todayView: '今日',
+    weekView: '本周',
+    monthView: '本月',
+    today: '今天',
+    noTime: '无时间',
+    moreTasks: '更多任务',
   },
 }
