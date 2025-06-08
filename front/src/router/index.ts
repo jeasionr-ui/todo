@@ -236,6 +236,15 @@ const router = createRouter({
     },
 
     {
+      path: '/tasks/:id',
+      name: 'TaskDetail',
+      component: () => import('../views/Tasks/TaskList.vue'),
+      meta: {
+        title: 'Task Detail',
+      },
+    },
+
+    {
       path: '/goals',
       name: 'Goals',
       component: () => import('../views/Goals/GoalList.vue'),

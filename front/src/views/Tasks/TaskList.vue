@@ -427,6 +427,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, computed, onMounted, watch } from 'vue'
+import { useRoute } from 'vue-router'
 import { useI18n } from '@/i18n'
 import { useFormatters } from '@/composables/useFormatters'
 import PageBreadcrumb from '@/components/common/PageBreadcrumb.vue'
@@ -450,6 +451,7 @@ export default defineComponent({
   setup() {
     const { t } = useI18n()
     const { formatDate } = useFormatters()
+    const route = useRoute()
 
     // 任务列表状态
     const tasks = ref<Task[]>([])
@@ -680,8 +682,17 @@ export default defineComponent({
     }
 
     // 初始化加载任务
-    onMounted(() => {
-      loadTasks()
+    onMounted(async () => {
+      await loadTasks()
+      
+      // 检查URL参数，如果是任务详情页面，自动打开对应的任务编辑对话框
+      const taskId = route.params.id as string
+      if (taskId && taskId !== '0') {
+        const task = tasks.value.find(t => t.id === taskId)
+        if (task) {
+          openEditTaskDialog(task)
+        }
+      }
     })
 
     return {

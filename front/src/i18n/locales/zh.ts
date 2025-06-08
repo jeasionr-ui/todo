@@ -66,6 +66,10 @@ export default {
     results: '条',
     items: '条',
     pageSize: '每页条数',
+    previous: '上一页',
+    next: '下一页',
+    to: '至',
+    of: '共',
   },
 
   // 对话框
