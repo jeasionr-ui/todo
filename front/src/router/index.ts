@@ -139,7 +139,7 @@ const router = createRouter({
     {
       path: '/:pathMatch(.*)*',
       name: 'NotFound',
-      component: () => import('../views/templates/Errors/FourZeroFour.vue'),
+      component: () => import('../views/Errors/FourZeroFour.vue'),
       meta: {
         title: '404 Not Found',
       },
