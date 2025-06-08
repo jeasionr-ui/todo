@@ -50,14 +50,14 @@
             :key="template.id"
             :class="[
               'relative p-6 border-2 rounded-lg cursor-pointer transition-all duration-200',
-              template.is_default
+              template.isDefault
                 ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20'
                 : 'border-gray-200 dark:border-gray-600 hover:border-blue-300 dark:hover:border-blue-500'
             ]"
             @click="setDefaultTemplate(template.id)"
           >
             <!-- Default Badge -->
-            <div v-if="template.is_default" class="absolute top-2 right-2">
+            <div v-if="template.isDefault" class="absolute top-2 right-2">
               <span class="bg-blue-500 text-white text-xs px-2 py-1 rounded-full">
                 {{ $t('pomodoro.settings.default') }}
               </span>
@@ -75,19 +75,19 @@
             <div class="space-y-2 text-sm">
               <div class="flex justify-between">
                 <span class="text-gray-500 dark:text-gray-400">{{ $t('pomodoro.settings.workDuration') }}</span>
-                <span class="font-medium text-gray-900 dark:text-white">{{ template.work_duration }}分钟</span>
+                <span class="font-medium text-gray-900 dark:text-white">{{ template.workDuration }}分钟</span>
               </div>
               <div class="flex justify-between">
                 <span class="text-gray-500 dark:text-gray-400">{{ $t('pomodoro.settings.breakDuration') }}</span>
-                <span class="font-medium text-gray-900 dark:text-white">{{ template.break_duration }}分钟</span>
+                <span class="font-medium text-gray-900 dark:text-white">{{ template.shortBreakDuration }}分钟</span>
               </div>
               <div class="flex justify-between">
                 <span class="text-gray-500 dark:text-gray-400">{{ $t('pomodoro.settings.longBreakDuration') }}</span>
-                <span class="font-medium text-gray-900 dark:text-white">{{ template.long_break_duration }}分钟</span>
+                <span class="font-medium text-gray-900 dark:text-white">{{ template.longBreakDuration }}分钟</span>
               </div>
               <div class="flex justify-between">
                 <span class="text-gray-500 dark:text-gray-400">{{ $t('pomodoro.settings.sessionsBeforeLongBreak') }}</span>
-                <span class="font-medium text-gray-900 dark:text-white">{{ template.sessions_before_long_break }}</span>
+                <span class="font-medium text-gray-900 dark:text-white">{{ template.longBreakInterval }}</span>
               </div>
             </div>
 
@@ -102,7 +102,7 @@
                 </svg>
               </button>
               <button
-                v-if="!template.is_default"
+                v-if="!template.isDefault"
                 @click.stop="deleteTemplate(template.id)"
                 class="p-2 text-gray-500 hover:text-red-500 dark:text-gray-400 dark:hover:text-red-400"
               >
@@ -248,7 +248,7 @@ import { ref, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { pomodoroService } from '@/services/pomodoroService'
 import type { PomodoroTemplate } from '@/types/pomodoro'
-import TemplateFormModal from '@/components/pomodoro/TemplateFormModal.vue'
+import TemplateFormModal from '@/components/Pomodoro/TemplateFormModal.vue'
 
 const { t } = useI18n()
 
@@ -276,9 +276,9 @@ const loadTemplates = async () => {
   }
 }
 
-const setDefaultTemplate = async (templateId: number) => {
+const setDefaultTemplate = async (templateId: string) => {
   try {
-    await pomodoroService.setDefaultTemplate(templateId)
+    await pomodoroService.setDefaultTemplate(parseInt(templateId))
     await loadTemplates() // Refresh to show updated default
   } catch (error) {
     console.error('Failed to set default template:', error)
@@ -290,7 +290,7 @@ const editTemplate = (template: PomodoroTemplate) => {
   showCreateTemplate.value = true
 }
 
-const deleteTemplate = async (templateId: number) => {
+const deleteTemplate = async (templateId: string) => {
   if (!confirm(t('pomodoro.settings.confirmDeleteTemplate'))) {
     return
   }

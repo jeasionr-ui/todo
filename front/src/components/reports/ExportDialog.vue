@@ -311,24 +311,25 @@ const exportToPDF = async (exportData: any): Promise<Blob> => {
 // 获取选中的报表数据
 const fetchSelectedReports = async (exportData: any) => {
   const reports: any = {}
+  const dateRange = { start: exportData.startDate, end: exportData.endDate }
 
   if (exportData.options.productivity) {
-    reports.productivity = await reportService.getProductivityReport(exportData.startDate, exportData.endDate)
+    reports.productivity = await reportService.getProductivityReport(dateRange)
   }
   if (exportData.options.habits) {
-    reports.habits = await reportService.getHabitsReport(exportData.startDate, exportData.endDate)
+    reports.habits = await reportService.getHabitsReport(dateRange)
   }
   if (exportData.options.goals) {
-    reports.goals = await reportService.getGoalsReport(exportData.startDate, exportData.endDate)
+    reports.goals = await reportService.getGoalsReport(dateRange)
   }
   if (exportData.options.timeEfficiency) {
-    reports.timeEfficiency = await reportService.getTimeEfficiencyReport(exportData.startDate, exportData.endDate)
+    reports.timeEfficiency = await reportService.getTimeEfficiencyReport(dateRange)
   }
   if (exportData.options.tasks) {
-    reports.tasks = await reportService.getTaskReport(exportData.startDate, exportData.endDate)
+    reports.tasks = await reportService.getTasksReport(dateRange)
   }
   if (exportData.options.pomodoro) {
-    reports.pomodoro = await reportService.getPomodoroReport(exportData.startDate, exportData.endDate)
+    reports.pomodoro = await reportService.getPomodoroReport(dateRange)
   }
 
   return reports

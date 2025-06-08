@@ -1,5 +1,7 @@
 <template>
-  <div class="p-4 sm:p-6 lg:p-8">
+  <AdminLayout>
+    <PageBreadcrumb :pageTitle="$t('profile.title')" />
+    <div class="p-4 sm:p-6 lg:p-8">
     <div class="mb-6">
       <h2 class="text-2xl font-semibold text-gray-800 dark:text-white/90">{{ $t('profile.title') }}</h2>
       <p class="text-sm text-gray-500 dark:text-gray-400">{{ $t('profile.description') }}</p>
@@ -179,7 +181,8 @@
         </div>
       </template>
     </Modal>
-  </div>
+    </div>
+  </AdminLayout>
 </template>
 
 <script setup lang="ts">
@@ -189,6 +192,8 @@
  */
 import { ref, onMounted } from 'vue'
 import type { UserType } from '../../types/user'
+import AdminLayout from '@/components/layout/AdminLayout.vue'
+import PageBreadcrumb from '@/components/common/PageBreadcrumb.vue'
 import PersonalInfoCard from '@/components/profile/PersonalInfoCard.vue'
 import Modal from '@/components/profile/Modal.vue'
 import { userService } from '@/services/userService'
