@@ -137,9 +137,7 @@
               </li>
             </ul>
           </div>
-        </div>
-      </nav>
-      <SidebarWidget v-if="isExpanded || isHovered || isMobileOpen" />
+        </div>        </nav>
     </div>
   </aside>
 </template>
@@ -164,7 +162,6 @@ import {
   PlugInIcon,
   PomodoroIcon,
 } from "../../icons";
-import SidebarWidget from "./SidebarWidget.vue";
 import BoxCubeIcon from "@/icons/BoxCubeIcon.vue";
 import { useSidebar } from "@/composables/useSidebar";
 import { useI18n } from '@/i18n'
