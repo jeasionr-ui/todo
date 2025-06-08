@@ -1,9 +1,11 @@
 <template>
-  <div class="p-4 sm:p-6 lg:p-8">
-    <div class="mb-6">
-      <h2 class="text-2xl font-semibold text-gray-800 dark:text-white/90">{{ $t('security.title') }}</h2>
-      <p class="text-sm text-gray-500 dark:text-gray-400">{{ $t('security.description') }}</p>
-    </div>
+  <AdminLayout>
+    <PageBreadcrumb :pageTitle="$t('security.title')" />
+    <div class="p-4 sm:p-6 lg:p-8">
+      <div class="mb-6">
+        <h2 class="text-2xl font-semibold text-gray-800 dark:text-white/90">{{ $t('security.title') }}</h2>
+        <p class="text-sm text-gray-500 dark:text-gray-400">{{ $t('security.description') }}</p>
+      </div>
 
     <!-- 安全设置 -->
     <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
@@ -267,7 +269,8 @@
         </div>
       </div>
     </div>
-  </div>
+    </div>
+  </AdminLayout>
 </template>
 
 <script setup lang="ts">
@@ -277,6 +280,8 @@
  */
 import { ref, onMounted } from 'vue'
 import { useI18n } from '@/i18n'
+import AdminLayout from '@/components/layout/AdminLayout.vue'
+import PageBreadcrumb from '@/components/common/PageBreadcrumb.vue'
 import { userService } from '@/services/userService'
 
 const { t } = useI18n()
