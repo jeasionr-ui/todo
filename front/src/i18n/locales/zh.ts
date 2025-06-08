@@ -408,6 +408,14 @@ export default {
     description: '查看和编辑您的个人资料',
     editSocialAccounts: '编辑社交账号',
     editSocialAccountsDesc: '连接您的社交账号到您的个人资料',
+    
+    // 登录历史和设备信息
+    loginHistory: '登录历史',
+    device: '设备',
+    location: '位置',
+    ipAddress: 'IP地址',
+    time: '时间',
+    socialAccounts: '社交账号',
   },
 
   // 通知

@@ -427,6 +427,14 @@ export default {
     description: 'View and edit your profile',
     editSocialAccounts: 'Edit Social Accounts',
     editSocialAccountsDesc: 'Connect your social accounts to your profile',
+    
+    // Login history and device information
+    loginHistory: 'Login History',
+    device: 'Device',
+    location: 'Location',
+    ipAddress: 'IP Address',
+    time: 'Time',
+    socialAccounts: 'Social Accounts',
   },
 
   // Notifications
