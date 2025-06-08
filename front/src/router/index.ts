@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-
 import { userService } from '@/services/userService'
 
 const router = createRouter({
@@ -8,6 +7,7 @@ const router = createRouter({
     return savedPosition || { left: 0, top: 0 }
   },
   routes: [
+    // 主页面
     {
       path: '/',
       name: 'Dashboard',
@@ -17,151 +17,8 @@ const router = createRouter({
         requiresAuth: true,
       },
     },
-    {
-      path: '/templates/ecommerce',
-      name: 'Ecommerce',
-      component: () => import('../views/templates/Ecommerce.vue'),
-      meta: {
-        title: 'eCommerce Dashboard',
-      },
-    },
-    {
-      path: '/templates/calendar',
-      name: 'Calendar',
-      component: () => import('../views/templates/Others/Calendar.vue'),
-      meta: {
-        title: 'Calendar',
-      },
-    },
-    {
-      path: '/templates/profile',
-      name: 'Profile',
-      component: () => import('../views/templates/Others/UserProfile.vue'),
-      meta: {
-        title: 'Profile',
-      },
-    },
-    {
-      path: '/templates/form-elements',
-      name: 'Form Elements',
-      component: () => import('../views/templates/Forms/FormElements.vue'),
-      meta: {
-        title: 'Form Elements',
-      },
-    },
-    {
-      path: '/templates/basic-tables',
-      name: 'Basic Tables',
-      component: () => import('../views/templates/Tables/BasicTables.vue'),
-      meta: {
-        title: 'Basic Tables',
-      },
-    },
-    {
-      path: '/templates/line-chart',
-      name: 'Line Chart',
-      component: () => import('../views/templates/Chart/LineChart/LineChart.vue'),
-    },
-    {
-      path: '/templates/bar-chart',
-      name: 'Bar Chart',
-      component: () => import('../views/templates/Chart/BarChart/BarChart.vue'),
-    },
-    {
-      path: '/templates/alerts',
-      name: 'Alerts',
-      component: () => import('../views/templates/UiElements/Alerts.vue'),
-      meta: {
-        title: 'Alerts',
-      },
-    },
-    {
-      path: '/templates/avatars',
-      name: 'Avatars',
-      component: () => import('../views/templates/UiElements/Avatars.vue'),
-      meta: {
-        title: 'Avatars',
-      },
-    },
-    {
-      path: '/templates/badge',
-      name: 'Badge',
-      component: () => import('../views/templates/UiElements/Badges.vue'),
-      meta: {
-        title: 'Badge',
-      },
-    },
 
-    {
-      path: '/templates/buttons',
-      name: 'Buttons',
-      component: () => import('../views/templates/UiElements/Buttons.vue'),
-      meta: {
-        title: 'Buttons',
-      },
-    },
-
-    {
-      path: '/templates/images',
-      name: 'Images',
-      component: () => import('../views/templates/UiElements/Images.vue'),
-      meta: {
-        title: 'Images',
-      },
-    },
-
-    {
-      path: '/ui/toast',
-      name: 'Toast',
-      component: () => import('../views/UiElements/ToastDemo.vue'),
-      meta: {
-        title: 'Toast',
-      },
-    },
-    {
-      path: '/templates/videos',
-      name: 'Videos',
-      component: () => import('../views/templates/UiElements/Videos.vue'),
-      meta: {
-        title: 'Videos',
-      },
-    },
-    {
-      path: '/templates/blank',
-      name: 'Blank',
-      component: () => import('../views/templates/Pages/BlankPage.vue'),
-      meta: {
-        title: 'Blank',
-      },
-    },
-
-    {
-      path: '/templates/error-404',
-      name: '404 Error',
-      component: () => import('../views/templates/Errors/FourZeroFour.vue'),
-      meta: {
-        title: '404 Error',
-      },
-    },
-
-    {
-      path: '/templates/signin',
-      name: 'Signin',
-      component: () => import('../views/templates/Auth/Signin.vue'),
-      meta: {
-        title: 'Signin',
-      },
-    },
-    {
-      path: '/templates/signup',
-      name: 'Signup',
-      component: () => import('../views/templates/Auth/Signup.vue'),
-      meta: {
-        title: 'Signup',
-      },
-    },
-
-    // 添加用户管理相关路由
+    // 用户认证相关路由
     {
       path: '/signin',
       name: 'SignIn',
@@ -198,6 +55,7 @@ const router = createRouter({
         guest: true,
       },
     },
+    // 用户个人信息路由
     {
       path: '/profile',
       name: 'UserProfile',
@@ -208,61 +66,54 @@ const router = createRouter({
       },
     },
     {
-      path: '/settings',
-      name: 'UserSettings',
-      component: () => import('../views/Auth/UserSettings.vue'),
-      meta: {
-        title: 'User Settings',
-        requiresAuth: true,
-      },
-    },
-    {
       path: '/security',
       name: 'UserSecurity',
       component: () => import('../views/Auth/UserSecurity.vue'),
       meta: {
-        title: 'User Security',
+        title: 'Security Settings',
         requiresAuth: true,
       },
     },
 
+    // 核心功能路由
     {
       path: '/tasks',
       name: 'Tasks',
       component: () => import('../views/Tasks/TaskList.vue'),
       meta: {
         title: 'Task Management',
+        requiresAuth: true,
       },
     },
-
     {
       path: '/tasks/:id',
       name: 'TaskDetail',
       component: () => import('../views/Tasks/TaskList.vue'),
       meta: {
         title: 'Task Detail',
+        requiresAuth: true,
       },
     },
-
     {
       path: '/goals',
       name: 'Goals',
       component: () => import('../views/Goals/GoalList.vue'),
       meta: {
         title: 'Goal Management',
+        requiresAuth: true,
       },
     },
-
     {
       path: '/habits',
       name: 'Habits',
       component: () => import('../views/Habits/HabitList.vue'),
       meta: {
         title: 'Habit Management',
+        requiresAuth: true,
       },
     },
 
-    // Pomodoro Timer 路由
+    // Pomodoro 相关路由
     {
       path: '/pomodoro',
       name: 'Pomodoro',
@@ -272,44 +123,8 @@ const router = createRouter({
         requiresAuth: true,
       },
     },
-    {
-      path: '/pomodoro/settings',
-      name: 'PomodoroSettings',
-      component: () => import('../views/Pomodoro/PomodoroSettings.vue'),
-      meta: {
-        title: 'Pomodoro Settings',
-        requiresAuth: true,
-      },
-    },
-    {
-      path: '/pomodoro/stats',
-      name: 'PomodoroStats',
-      component: () => import('../views/Pomodoro/PomodoroStats.vue'),
-      meta: {
-        title: 'Pomodoro Statistics',
-        requiresAuth: true,
-      },
-    },
-    {
-      path: '/pomodoro/templates',
-      name: 'PomodoroTemplates',
-      component: () => import('../views/Pomodoro/PomodoroSettings.vue'),
-      meta: {
-        title: 'Pomodoro Templates',
-        requiresAuth: true,
-      },
-    },
-    {
-      path: '/pomodoro/history',
-      name: 'PomodoroHistory',
-      component: () => import('../views/Pomodoro/PomodoroHistory.vue'),
-      meta: {
-        title: 'Pomodoro History',
-        requiresAuth: true,
-      },
-    },
 
-    // Reports 路由
+    // 报告路由
     {
       path: '/reports',
       name: 'Reports',
@@ -320,139 +135,13 @@ const router = createRouter({
       },
     },
 
+    // 404 页面
     {
-      path: '/calendar',
-      name: 'Calendar',
-      component: () => import('../views/Others/Calendar.vue'),
+      path: '/:pathMatch(.*)*',
+      name: 'NotFound',
+      component: () => import('../views/templates/Errors/FourZeroFour.vue'),
       meta: {
-        title: 'Calendar',
-      },
-    },
-    {
-      path: '/profile',
-      name: 'Profile',
-      component: () => import('../views/Others/UserProfile.vue'),
-      meta: {
-        title: 'Profile',
-      },
-    },
-    {
-      path: '/form-elements',
-      name: 'Form Elements',
-      component: () => import('../views/Forms/FormElements.vue'),
-      meta: {
-        title: 'Form Elements',
-      },
-    },
-    {
-      path: '/basic-tables',
-      name: 'Basic Tables',
-      component: () => import('../views/Tables/BasicTables.vue'),
-      meta: {
-        title: 'Basic Tables',
-      },
-    },
-    {
-      path: '/line-chart',
-      name: 'Line Chart',
-      component: () => import('../views/Chart/LineChart/LineChart.vue'),
-    },
-    {
-      path: '/bar-chart',
-      name: 'Bar Chart',
-      component: () => import('../views/Chart/BarChart/BarChart.vue'),
-    },
-    {
-      path: '/alerts',
-      name: 'Alerts',
-      component: () => import('../views/UiElements/Alerts.vue'),
-      meta: {
-        title: 'Alerts',
-      },
-    },
-    {
-      path: '/avatars',
-      name: 'Avatars',
-      component: () => import('../views/UiElements/Avatars.vue'),
-      meta: {
-        title: 'Avatars',
-      },
-    },
-    {
-      path: '/badge',
-      name: 'Badge',
-      component: () => import('../views/UiElements/Badges.vue'),
-      meta: {
-        title: 'Badge',
-      },
-    },
-
-    {
-      path: '/buttons',
-      name: 'Buttons',
-      component: () => import('../views/UiElements/Buttons.vue'),
-      meta: {
-        title: 'Buttons',
-      },
-    },
-
-    {
-      path: '/images',
-      name: 'Images',
-      component: () => import('../views/UiElements/Images.vue'),
-      meta: {
-        title: 'Images',
-      },
-    },
-    {
-      path: '/videos',
-      name: 'Videos',
-      component: () => import('../views/UiElements/Videos.vue'),
-      meta: {
-        title: 'Videos',
-      },
-    },
-    {
-      path: '/blank',
-      name: 'Blank',
-      component: () => import('../views/Pages/BlankPage.vue'),
-      meta: {
-        title: 'Blank',
-      },
-    },
-
-    {
-      path: '/error-404',
-      name: '404 Error',
-      component: () => import('../views/Errors/FourZeroFour.vue'),
-      meta: {
-        title: '404 Error',
-      },
-    },
-
-    {
-      path: '/videos',
-      name: 'Videos',
-      component: () => import('../views/UiElements/Videos.vue'),
-      meta: {
-        title: 'Videos',
-      },
-    },
-    {
-      path: '/blank',
-      name: 'Blank',
-      component: () => import('../views/Pages/BlankPage.vue'),
-      meta: {
-        title: 'Blank',
-      },
-    },
-
-    {
-      path: '/error-404',
-      name: '404 Error',
-      component: () => import('../views/Errors/FourZeroFour.vue'),
-      meta: {
-        title: '404 Error',
+        title: '404 Not Found',
       },
     },
   ],
@@ -460,6 +149,7 @@ const router = createRouter({
 
 export default router
 
+// 路由守卫
 router.beforeEach((to, from, next) => {
   // 设置页面标题
   document.title = `${to.meta.title || 'Todo App'} | Todo App`

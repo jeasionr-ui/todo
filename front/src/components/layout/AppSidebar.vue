@@ -175,108 +175,53 @@ const { isExpanded, isMobileOpen, isHovered, openSubmenu } = useSidebar();
 
 const menuGroups = [
   {
-    title: "Menu",
+    title: "主要功能",
     items: [
+      {
+        icon: GridIcon,
+        name: t('menu.dashboard'),
+        path: "/",
+      },
       {
         icon: GridIcon,
         name: t('menu.tasks'),
         path: "/tasks",
       },
-
       {
         icon: CalenderIcon,
         name: t('menu.habits'),
         path: "/habits",
       },
-
       {
         icon: GridIcon,
         name: t('menu.goals'),
         path: "/goals",
       },
-
       {
         icon: PomodoroIcon,
         name: t('menu.pomodoro'),
         path: "/pomodoro",
       },
-
       {
         icon: PieChartIcon,
         name: t('menu.reports'),
         path: "/reports",
       },
-
-      {
-        icon: GridIcon,
-        name: t('menu.dashboard'),
-        subItems: [{ name: "Ecommerce", path: "/", pro: false }],
-      },
-      {
-        icon: CalenderIcon,
-        name: "Calendar",
-        path: "/calendar",
-      },
-      {
-        icon: UserCircleIcon,
-        name: "User Profile",
-        path: "/profile",
-      },
-
-      {
-        name: "Forms",
-        icon: ListIcon,
-        subItems: [
-          { name: "Form Elements", path: "/form-elements", pro: false },
-        ],
-      },
-      {
-        name: "Tables",
-        icon: TableIcon,
-        subItems: [{ name: "Basic Tables", path: "/basic-tables", pro: false }],
-      },
-      {
-        name: "Pages",
-        icon: PageIcon,
-        subItems: [
-          { name: "Black Page", path: "/blank", pro: false },
-          { name: "404 Page", path: "/error-404", pro: false },
-        ],
-      },
     ],
   },
   {
-    title: "Others",
+    title: "用户管理",
     items: [
       {
-        icon: PieChartIcon,
-        name: "Charts",
-        subItems: [
-          { name: "Line Chart", path: "/line-chart", pro: false },
-          { name: "Bar Chart", path: "/bar-chart", pro: false },
-        ],
-      },
-      {
-        icon: BoxCubeIcon,
-        name: "Ui Elements",
-        subItems: [
-          { name: "Alerts", path: "/alerts", pro: false },
-          { name: "Avatars", path: "/avatars", pro: false },
-          { name: "Badge", path: "/badge", pro: false },
-          { name: "Buttons", path: "/buttons", pro: false },
-          { name: "Images", path: "/images", pro: false },
-          { name: "Videos", path: "/videos", pro: false },
-        ],
+        icon: UserCircleIcon,
+        name: "用户资料",
+        path: "/profile",
       },
       {
         icon: PlugInIcon,
-        name: "Authentication",
-        subItems: [
-          { name: "Signin", path: "/signin", pro: false },
-          { name: "Signup", path: "/signup", pro: false },
-        ],
+        name: "安全设置",
+        path: "/security",
       },
-      // ... Add other menu items here
     ],
   },
 ];
