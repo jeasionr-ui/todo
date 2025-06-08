@@ -57,7 +57,10 @@ CREATE TABLE
     `dueDate` VARCHAR(32) COMMENT '任务截止日期，格式YYYY-MM-DD',
     `reminderTime` VARCHAR(32) COMMENT '提醒时间，格式HH:MM，用于设置任务提醒',
     `tags` VARCHAR(255) COMMENT '任务标签列表，逗号分隔的字符串',
-    `attachments` VARCHAR(1024) COMMENT '任务附件ID列表，逗号分隔的字符串'
+    `attachments` VARCHAR(1024) COMMENT '任务附件ID列表，逗号分隔的字符串',
+    `userId` VARCHAR(64) COMMENT '用户ID',
+    `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间'
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- 习惯表结构
@@ -81,6 +84,7 @@ CREATE TABLE
     `icon` VARCHAR(16) NOT NULL COMMENT '习惯图标（emoji）',
     `cronExpression` VARCHAR(128) COMMENT 'cron表达式，用于定时任务',
     `isArchived` BOOLEAN DEFAULT FALSE COMMENT '是否已归档',
+    `userId` VARCHAR(64) COMMENT '用户ID',
     `createdAt` DATETIME NOT NULL COMMENT '习惯创建时间',
     `updatedAt` DATETIME NOT NULL COMMENT '习惯最后更新时间',
     `streakCount` INT DEFAULT 0 COMMENT '当前连续完成次数',

@@ -74,3 +74,8 @@ export async function getPaginatedByCondition(table, condition, page = 1, pageSi
   const params = [table, condition, pageSize, offset]
   return await query(sql, params)
 }
+
+// Alias for compatibility with report_db.js
+export async function execSql(sql, params = []) {
+  return await query(sql, params)
+}

@@ -212,6 +212,40 @@ export default {
     toast: 'Toast Notifications',
   },
 
+  // Report Analysis
+  reports: {
+    title: 'Report Analysis',
+    dateRange: 'Date Range',
+    startDate: 'Start Date',
+    endDate: 'End Date',
+    export: 'Export Data',
+    
+    // Report types
+    productivity: 'Productivity',
+    habits: 'Habit Tracking',
+    goals: 'Goal Completion',
+    timeEfficiency: 'Time Efficiency',
+    taskStats: 'Task Statistics',
+    pomodoro: 'Pomodoro Method',
+    
+    // Task reports
+    tasks: {
+      title: 'Task Statistics Report',
+      totalTasks: 'Total Tasks',
+      completedTasks: 'Completed Tasks',
+      pendingTasks: 'Pending Tasks',
+      completionRate: 'Completion Rate',
+      completionTrend: 'Completion Trend',
+      priorityDistribution: 'Priority Distribution',
+      statusDistribution: 'Status Distribution',
+      tagUsage: 'Tag Usage Frequency',
+      overdueAnalysis: 'Overdue Task Analysis',
+      overdueTasks: 'Overdue Tasks',
+      avgDaysOverdue: 'Average Days Overdue',
+      overdueRate: 'Overdue Rate'
+    }
+  },
+
   // Toast notifications
   toast: {
     success: 'Success',

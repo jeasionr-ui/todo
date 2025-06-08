@@ -282,6 +282,17 @@ const router = createRouter({
       },
     },
 
+    // Reports 路由
+    {
+      path: '/reports',
+      name: 'Reports',
+      component: () => import('../views/Reports.vue'),
+      meta: {
+        title: 'Reports & Analytics',
+        requiresAuth: true,
+      },
+    },
+
     {
       path: '/calendar',
       name: 'Calendar',

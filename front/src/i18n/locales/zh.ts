@@ -214,6 +214,40 @@ export default {
     toast: '消息提示',
   },
 
+  // 报表分析
+  reports: {
+    title: '报表分析',
+    dateRange: '日期范围',
+    startDate: '开始日期',
+    endDate: '结束日期',
+    export: '导出数据',
+    
+    // 报表类型
+    productivity: '生产力',
+    habits: '习惯跟踪',
+    goals: '目标完成',
+    timeEfficiency: '时间效率',
+    taskStats: '任务统计',
+    pomodoro: '番茄工作法',
+    
+    // 任务报表
+    tasks: {
+      title: '任务统计报告',
+      totalTasks: '总任务数',
+      completedTasks: '已完成任务',
+      pendingTasks: '待处理任务',
+      completionRate: '完成率',
+      completionTrend: '完成趋势',
+      priorityDistribution: '优先级分布',
+      statusDistribution: '状态分布',
+      tagUsage: '标签使用频率',
+      overdueAnalysis: '逾期任务分析',
+      overdueTasks: '逾期任务',
+      avgDaysOverdue: '平均逾期天数',
+      overdueRate: '逾期率'
+    }
+  },
+
   // 消息提示
   toast: {
     success: '成功',

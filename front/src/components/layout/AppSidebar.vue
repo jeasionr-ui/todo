@@ -202,6 +202,12 @@ const menuGroups = [
       },
 
       {
+        icon: PieChartIcon,
+        name: t('menu.reports'),
+        path: "/reports",
+      },
+
+      {
         icon: GridIcon,
         name: t('menu.dashboard'),
         subItems: [{ name: "Ecommerce", path: "/", pro: false }],
