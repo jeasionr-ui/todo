@@ -1482,4 +1482,33 @@ export default {
     notSet: 'Not set',
     dueDate: 'Due: {date}',
   },
+
+  // Security settings
+  security: {
+    title: 'Security Settings',
+    description: 'Manage your account security settings, including password, two-factor authentication, and active sessions',
+    
+    // Password change
+    changePassword: 'Change Password',
+    currentPassword: 'Current Password',
+    newPassword: 'New Password',
+    confirmNewPassword: 'Confirm New Password',
+    updatePassword: 'Update Password',
+    
+    // Two-factor authentication
+    twoFactorAuth: 'Two-Factor Authentication',
+    twoFactorAuthDesc: 'Enable two-factor authentication for your account to enhance security',
+    enabled: 'Enabled',
+    disabled: 'Disabled',
+    
+    // Active sessions
+    activeSessions: 'Active Sessions',
+    device: 'Device',
+    location: 'Location',
+    ipAddress: 'IP Address',
+    lastActive: 'Last Active',
+    action: 'Action',
+    current: 'Current',
+    terminate: 'Terminate',
+  },
 }

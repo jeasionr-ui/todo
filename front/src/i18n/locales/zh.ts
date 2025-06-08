@@ -1463,4 +1463,33 @@ export default {
     notSet: '未设置',
     dueDate: '截止: {date}',
   },
+
+  // Security settings
+  security: {
+    title: '安全设置',
+    description: '管理您的账户安全设置，包括密码、两步验证和活动会话',
+    
+    // Password change
+    changePassword: '更改密码',
+    currentPassword: '当前密码',
+    newPassword: '新密码',
+    confirmNewPassword: '确认新密码',
+    updatePassword: '更新密码',
+    
+    // Two-factor authentication
+    twoFactorAuth: '两步验证',
+    twoFactorAuthDesc: '为您的账户启用两步验证以提高安全性',
+    enabled: '已启用',
+    disabled: '已禁用',
+    
+    // Active sessions
+    activeSessions: '活动会话',
+    device: '设备',
+    location: '位置',
+    ipAddress: 'IP 地址',
+    lastActive: '最后活动',
+    action: '操作',
+    current: '当前',
+    terminate: '终止',
+  },
 }
