@@ -10,6 +10,15 @@ const router = createRouter({
   routes: [
     {
       path: '/',
+      name: 'Dashboard',
+      component: () => import('../views/Dashboard.vue'),
+      meta: {
+        title: 'Dashboard',
+        requiresAuth: true,
+      },
+    },
+    {
+      path: '/templates/ecommerce',
       name: 'Ecommerce',
       component: () => import('../views/templates/Ecommerce.vue'),
       meta: {
@@ -153,15 +162,6 @@ const router = createRouter({
     },
 
     // 添加用户管理相关路由
-    {
-      path: '/',
-      name: 'Home',
-      component: () => import('../views/Dashboard.vue'),
-      meta: {
-        title: 'Dashboard',
-        requiresAuth: true,
-      },
-    },
     {
       path: '/signin',
       name: 'SignIn',
