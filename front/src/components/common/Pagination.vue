@@ -34,11 +34,11 @@
       <div class="flex items-center space-x-4">
         <p class="text-sm text-gray-700 dark:text-gray-300">
           {{ $t('pagination.showing') }}
-          <span class="font-medium">{{ startItem }}</span>
+          <span class="font-medium p-2">{{ startItem }}</span>
           {{ $t('pagination.to') }}
-          <span class="font-medium">{{ endItem }}</span>
+          <span class="font-medium p-2">{{ endItem }}</span>
           {{ $t('pagination.of') }}
-          <span class="font-medium">{{ totalItems }}</span>
+          <span class="font-medium p-2">{{ totalItems }}</span>
           {{ $t('pagination.results') }}
         </p>
         
