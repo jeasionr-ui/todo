@@ -6,14 +6,14 @@
       <!-- 习惯列表头部 -->
       <div class="mb-8 flex flex-wrap items-center justify-between gap-4">
 
-        <h3 class="text-2xl font-semibold mb-4 md:mb-0">
+        <h3 class="text-2xl font-semibold text-gray-800 dark:text-white/90 mb-4 md:mb-0">
           {{ $t('habits.all') }}
         </h3>
         <div class="flex flex-col sm:flex-row gap-3">
           <!-- 搜索框 -->
           <div class="relative">
             <input type="text" :placeholder="$t('common.search')" v-model="searchQuery"
-              class="w-full sm:w-64 h-10 px-4 py-2 border border-stroke rounded-md focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-boxdark" />
+              class="w-full sm:w-64 h-10 px-4 py-2 border border-gray-200 rounded-md focus:border-primary focus-visible:outline-none text-gray-700 placeholder-gray-400 dark:border-gray-800 dark:bg-white/[0.03] dark:text-gray-300 dark:placeholder-gray-500" />
             <span class="absolute right-4 top-3">
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -29,7 +29,7 @@
           <!-- 筛选按钮 -->
           <div class="relative">
             <button @click="toggleFilterMenu"
-              class="filter-button flex items-center justify-center gap-2 h-10 px-4 py-2 border border-stroke rounded-md hover:bg-gray-100 focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-boxdark dark:hover:bg-meta-4">
+              class="filter-button flex items-center justify-center gap-2 h-10 px-4 py-2 border border-gray-200 rounded-md hover:bg-gray-100 focus:border-primary focus-visible:outline-none text-gray-700 dark:border-gray-800 dark:bg-white/[0.03] dark:hover:bg-gray-700 dark:text-gray-300">
               <span>{{ $t('common.filter') }}</span>
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -43,14 +43,14 @@
 
             <!-- 筛选菜单 -->
             <div v-if="showFilterMenu"
-              class="filter-menu absolute right-0 top-full mt-2 w-60 rounded-md border border-stroke bg-white p-4 shadow-md dark:border-strokedark dark:bg-boxdark z-50">
-              <h3 class="mb-2 font-medium">{{ $t('habits.filter.title') }}</h3>
+              class="filter-menu absolute right-0 top-full mt-2 w-60 rounded-md border border-gray-200 bg-white p-4 shadow-md dark:border-gray-800 dark:bg-white/[0.03] z-50">
+              <h3 class="mb-2 font-medium text-gray-800 dark:text-white/90">{{ $t('habits.filter.title') }}</h3>
 
               <!-- 分类筛选 -->
               <div class="mb-4">
-                <label class="mb-2 block text-sm">{{ $t('habits.filter.category') }}</label>
+                <label class="mb-2 block text-sm text-gray-700 dark:text-gray-300">{{ $t('habits.filter.category') }}</label>
                 <select v-model="filterCategory"
-                  class="w-full rounded-md border border-stroke py-2 px-3 outline-none focus:border-primary dark:border-strokedark dark:bg-boxdark">
+                  class="w-full rounded-md border border-gray-200 py-2 px-3 outline-none focus:border-primary text-gray-700 dark:border-gray-800 dark:bg-white/[0.03] dark:text-gray-300">
                   <option value="">{{ $t('habits.filter.all_categories') }}</option>
                   <option value="health">{{ $t('habits.categories.health') }}</option>
                   <option value="fitness">{{ $t('habits.categories.fitness') }}</option>
@@ -69,9 +69,9 @@
 
               <!-- 频率筛选 -->
               <div class="mb-4">
-                <label class="mb-2 block text-sm">{{ $t('habits.filter.frequency') }}</label>
+                <label class="mb-2 block text-sm text-gray-700 dark:text-gray-300">{{ $t('habits.filter.frequency') }}</label>
                 <select v-model="filterFrequency"
-                  class="w-full rounded-md border border-stroke py-2 px-3 outline-none focus:border-primary dark:border-strokedark dark:bg-boxdark">
+                  class="w-full rounded-md border border-gray-200 py-2 px-3 outline-none focus:border-primary text-gray-700 dark:border-gray-800 dark:bg-white/[0.03] dark:text-gray-300">
                   <option value="">{{ $t('habits.filter.all_frequencies') }}</option>
                   <option value="daily">{{ $t('habits.frequency.daily') }}</option>
                   <option value="weekly">{{ $t('habits.frequency.weekly') }}</option>
@@ -85,14 +85,14 @@
                 <label class="flex items-center gap-2">
                   <input type="checkbox" v-model="showArchived"
                     class="h-4 w-4 rounded-sm border-stroke bg-transparent accent-primary" />
-                  <span class="text-sm">{{ $t('habits.filter.show_archived') }}</span>
+                  <span class="text-sm text-gray-700 dark:text-gray-300">{{ $t('habits.filter.show_archived') }}</span>
                 </label>
               </div>
 
               <!-- 筛选操作按钮 -->
               <div class="flex justify-end gap-2">
                 <button @click="resetFilter"
-                  class="flex items-center justify-center rounded-md border border-stroke py-1 px-3 text-sm hover:bg-gray-100 dark:border-strokedark dark:hover:bg-meta-4">
+                  class="flex items-center justify-center rounded-md border border-gray-200 py-1 px-3 text-sm text-gray-700 hover:bg-gray-100 dark:border-gray-800 dark:hover:bg-gray-700 dark:text-gray-300">
                   {{ $t('common.reset') }}
                 </button>
                 <button @click="applyFilter"
@@ -118,7 +118,7 @@
       </div>
 
       <!-- 习惯列表 -->
-      <div class=" bg-white dark:bg-boxdark px-5 py-6 ">
+      <div class="rounded-lg border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03]">
         <div v-if="loading" class="flex justify-center items-center py-10">
           <div class="animate-spin rounded-full h-10 w-10 border-b-2 border-primary"></div>
         </div>
@@ -151,11 +151,11 @@
           <!-- 习惯卡片列表 -->
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             <div v-for="habit in filteredHabits" :key="habit.id"
-              class="rounded-md border border-stroke bg-white p-4 shadow-sm dark:border-strokedark dark:bg-meta-4 relative"
+              class="rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-800 dark:bg-white/[0.03] relative"
               :class="{ 'opacity-70': habit.isArchived }">
               <!-- 归档标记 -->
               <div v-if="habit.isArchived"
-                class="absolute top-2 right-2 bg-gray-200 dark:bg-gray-700 text-xs px-2 py-1 rounded-full">
+                class="absolute top-2 right-2 bg-gray-200 dark:bg-gray-700 text-xs text-gray-700 dark:text-gray-300 px-2 py-1 rounded-full">
                 {{ $t('dialog.archived') }}
               </div>
 
@@ -168,7 +168,7 @@
                   </span>
                 </div>
                 <div class="flex-1">
-                  <h3 class="text-lg font-semibold truncate" :title="habit.name">
+                  <h3 class="text-lg font-semibold text-gray-800 dark:text-white/90 truncate" :title="habit.name">
                     {{ habit.name }}
                   </h3>
                   <p class="text-sm text-gray-500 dark:text-gray-400">
@@ -186,7 +186,7 @@
               <!-- 习惯标签 -->
               <div v-if="habit.tags && habit.tags.length > 0" class="flex flex-wrap gap-1 mb-3">
                 <span v-for="tag in habit.tags" :key="tag"
-                  class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 rounded-full">
+                  class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full">
                   {{ tag }}
                 </span>
               </div>
@@ -194,11 +194,11 @@
               <!-- 习惯统计 -->
               <div class="flex items-center justify-between mb-3">
                 <div class="text-sm">
-                  <span class="font-semibold">{{ habit.streakCount }}</span>
+                  <span class="font-semibold text-gray-800 dark:text-white/90">{{ habit.streakCount }}</span>
                   <span class="text-gray-500 dark:text-gray-400"> {{ $t('habits.stats.current_streak') }}</span>
                 </div>
                 <div class="text-sm">
-                  <span class="font-semibold">{{ habit.totalCompletions }}</span>
+                  <span class="font-semibold text-gray-800 dark:text-white/90">{{ habit.totalCompletions }}</span>
                   <span class="text-gray-500 dark:text-gray-400"> {{ $t('habits.stats.total') }}</span>
                 </div>
               </div>
@@ -249,11 +249,11 @@
 
                   <!-- 习惯操作菜单 -->
                   <div v-if="activeHabitMenu === habit.id"
-                    class="habit-menu absolute right-0 top-full mt-1 w-40 rounded-md border border-stroke bg-white p-2 shadow-md dark:border-strokedark dark:bg-boxdark z-50">
+                    class="habit-menu absolute right-0 top-full mt-1 w-40 rounded-md border border-gray-200 bg-white p-2 shadow-md dark:border-gray-800 dark:bg-white/[0.03] z-50">
                     <ul class="flex flex-col gap-1">
                       <li>
                         <button @click="openEditHabitDialog(habit)"
-                          class="flex w-full items-center gap-2 rounded-md px-3 py-1.5 text-sm hover:bg-gray-100 dark:hover:bg-meta-4">
+                          class="flex w-full items-center gap-2 rounded-md px-3 py-1.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
                           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -267,7 +267,7 @@
                       </li>
                       <li>
                         <button @click="viewHabitDetails(habit)"
-                          class="flex w-full items-center gap-2 rounded-md px-3 py-1.5 text-sm hover:bg-gray-100 dark:hover:bg-meta-4">
+                          class="flex w-full items-center gap-2 rounded-md px-3 py-1.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
                           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -282,7 +282,7 @@
                       </li>
                       <li>
                         <button @click="toggleArchiveStatus(habit)"
-                          class="flex w-full items-center gap-2 rounded-md px-3 py-1.5 text-sm hover:bg-gray-100 dark:hover:bg-meta-4">
+                          class="flex w-full items-center gap-2 rounded-md px-3 py-1.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
                           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path d="M14 5.33337V14H2V5.33337" stroke="#637381" stroke-width="1.5"
@@ -297,7 +297,7 @@
                       </li>
                       <li>
                         <button @click="openDeleteDialog(habit)"
-                          class="flex w-full items-center gap-2 rounded-md px-3 py-1.5 text-sm text-danger hover:bg-gray-100 dark:hover:bg-meta-4">
+                          class="flex w-full items-center gap-2 rounded-md px-3 py-1.5 text-sm text-danger hover:bg-gray-100 dark:hover:bg-gray-700">
                           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path d="M2 4H3.33333H14" stroke="#DC3545" stroke-width="1.5" stroke-linecap="round"
@@ -340,7 +340,7 @@
 
       <!-- 删除确认对话框 -->
       <div v-if="showDeleteDialog" class="fixed inset-0 z-999 flex items-center justify-center bg-black bg-opacity-40">
-        <div class="w-full max-w-md rounded-md bg-white p-6 shadow-md dark:bg-boxdark md:p-8">
+        <div class="w-full max-w-md rounded-md bg-white p-6 shadow-md dark:bg-white/[0.03] md:p-8">
           <h3 class="mb-4 text-xl font-semibold text-black dark:text-white">
             {{ $t('habits.delete') }}
           </h3>
@@ -349,7 +349,7 @@
           </p>
           <div class="flex justify-end gap-3">
             <button @click="showDeleteDialog = false"
-              class="flex items-center justify-center gap-2 rounded-md border border-stroke py-2 px-6 hover:bg-gray-100 dark:border-strokedark dark:hover:bg-meta-4">
+              class="flex items-center justify-center gap-2 rounded-md border border-gray-200 py-2 px-6 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:border-gray-800 dark:hover:bg-gray-700">
               {{ $t('common.cancel') }}
             </button>
             <button @click="confirmDeleteHabit"
