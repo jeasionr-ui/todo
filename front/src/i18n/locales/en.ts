@@ -47,6 +47,13 @@ export default {
     more: 'More',
     yes: 'Yes',
     no: 'No',
+    due: 'Due',
+    view: 'View',
+    to: 'to',
+    page: 'Page',
+    of: 'of',
+    perPage: 'Per page',
+    saving: 'Saving...',
     
     // App info
     appDescription: 'ToDo App - Your personal task and habit management tool',
@@ -358,6 +365,155 @@ export default {
     updateFailed: 'Task update failed',
     deleteSuccess: 'Task deleted successfully',
     deleteFailed: 'Task deletion failed',
+  },
+
+  // Goal management
+  goal: {
+    // Basic information
+    title: 'Goal Management',
+    all: 'All Goals',
+    create: 'Create Goal',
+    edit: 'Edit Goal',
+    view: 'View Goal',
+    delete: 'Delete Goal',
+    search: 'Search Goals',
+    filter: 'Filter',
+
+    // Form fields
+    titleField: 'Goal Title',
+    titlePlaceholder: 'Please enter goal title',
+    description: 'Goal Description',
+    descriptionPlaceholder: 'Please describe your goal...',
+    category: 'Goal Category',
+    selectCategory: 'Select Category',
+    priority: 'Priority',
+    status: 'Status',
+    progress: 'Progress',
+    startDate: 'Start Date',
+    targetDate: 'Target Date',
+    completedDate: 'Completed Date',
+    parentGoal: 'Parent Goal',
+    noParentGoal: 'No Parent Goal',
+
+    // Status
+    draft: 'Draft',
+    planning: 'Planning',
+    active: 'Active',
+    paused: 'Paused',
+    completed: 'Completed',
+    cancelled: 'Cancelled',
+    allStatus: 'All Status',
+
+    // Priority
+    high: 'High',
+    medium: 'Medium',
+    low: 'Low',
+    allPriorities: 'All Priorities',
+
+    // Categories
+    personal: 'Personal',
+    career: 'Career',
+    health: 'Health',
+    education: 'Education',
+    finance: 'Finance',
+    relationship: 'Relationship',
+    hobby: 'Hobby',
+    other: 'Other',
+    allCategories: 'All Categories',
+    allGoals: 'All Goals',
+    topLevelGoals: 'Top Level Goals',
+
+    // Basic info
+    basicInfo: 'Basic Information',
+    subGoal: 'Sub Goal',
+    averageProgress: 'Average Progress',
+    totalGoals: 'Total Goals',
+    activeGoals: 'Active',
+    completedGoals: 'Completed',
+
+    // Milestones
+    milestones: 'Milestones',
+    addMilestone: 'Add Milestone',
+    editMilestone: 'Edit Milestone',
+    milestoneTitlePlaceholder: 'Please enter milestone title',
+    milestoneDescriptionPlaceholder: 'Please describe this milestone...',
+    order: 'Order',
+    isCompleted: 'Completed',
+    noMilestones: 'No milestones',
+
+    // Task association
+    tasks: 'Associated Tasks',
+    associatedTasks: 'Associated Tasks',
+    associateTask: 'Associate Task',
+    dissociateTask: 'Dissociate Task',
+    searchTasks: 'Search Tasks',
+    searchTasksPlaceholder: 'Search task name or description...',
+    selectedTasks: 'Selected {count} tasks',
+    noAvailableTasks: 'No available tasks',
+    noTasks: 'No associated tasks',
+    associate: 'Associate',
+
+    // Reviews
+    reviews: 'Goal Reviews',
+    addReview: 'Add Review',
+    editReview: 'Edit Review',
+    reviewDate: 'Review Date',
+    reviewType: 'Review Type',
+    selectReviewType: 'Select Review Type',
+    reviewTypeOptions: {
+      weekly: 'Weekly Review',
+      monthly: 'Monthly Review',
+      quarterly: 'Quarterly Review',
+      custom: 'Custom Review',
+    },
+    rating: 'Rating',
+    reviewContent: 'Review Content',
+    reviewContentPlaceholder: 'Share your thoughts and feelings about goal progress...',
+    lessonsLearned: 'Lessons Learned',
+    lessonsLearnedPlaceholder: 'Record lessons learned from this goal...',
+    nextSteps: 'Next Steps',
+    nextStepsPlaceholder: 'Plan next actions to take...',
+    noReviews: 'No review records',
+
+    // Operation messages
+    createSuccess: 'Goal created successfully',
+    createError: 'Goal creation failed',
+    updateSuccess: 'Goal updated successfully',
+    updateError: 'Goal update failed',
+    deleteSuccess: 'Goal deleted successfully',
+    deleteError: 'Goal deletion failed',
+    deleteConfirm: 'Are you sure you want to delete goal "{title}"?',
+    loadError: 'Failed to load goal',
+
+    // Milestone operations
+    milestoneCreateSuccess: 'Milestone created successfully',
+    milestoneCreateError: 'Milestone creation failed',
+    milestoneUpdateSuccess: 'Milestone updated successfully',
+    milestoneUpdateError: 'Milestone update failed',
+    milestoneUpdated: 'Milestone status updated',
+    milestoneDeleted: 'Milestone deleted',
+    milestoneDeleteError: 'Milestone deletion failed',
+    deleteMilestoneConfirm: 'Are you sure you want to delete this milestone?',
+
+    // Review operations
+    reviewCreateSuccess: 'Review created successfully',
+    reviewCreateError: 'Review creation failed',
+    reviewUpdateSuccess: 'Review updated successfully',
+    reviewUpdateError: 'Review update failed',
+    reviewDeleted: 'Review deleted',
+    reviewDeleteError: 'Review deletion failed',
+    deleteReviewConfirm: 'Are you sure you want to delete this review?',
+
+    // Task association operations
+    loadTasksError: 'Failed to load tasks',
+    tasksAssociated: 'Associated {count} tasks',
+    associateTasksError: 'Failed to associate tasks',
+    taskDissociated: 'Task association cancelled',
+    taskDissociateError: 'Failed to cancel task association',
+    dissociateTaskConfirm: 'Are you sure you want to dissociate this task?',
+
+    // Other
+    noGoals: 'No goals yet, start creating your first goal!',
   },
 
   // File operations
@@ -879,6 +1035,222 @@ export default {
     solo: 'Solo',
     beginner: 'Beginner',
     advanced: 'Advanced',
+  },
+
+  // Pomodoro
+  pomodoro: {
+    title: 'Pomodoro Timer',
+    timer: {
+      readyToStart: 'Ready to start',
+      focusTime: 'Focus time',
+      shortBreak: 'Short break',
+      longBreak: 'Long break',
+    },
+    settings: {
+      title: 'Pomodoro Settings',
+      templates: 'Template Management',
+      activeTemplate: 'Current Template',
+      createTemplate: 'Create Template',
+      editTemplate: 'Edit Template',
+      newTemplate: 'New Template',
+      addTemplate: 'Add Template',
+      templateName: 'Template Name',
+      templateNamePlaceholder: 'Enter template name',
+      description: 'Description',
+      descriptionPlaceholder: 'Enter template description',
+      workDuration: 'Work Duration',
+      breakDuration: 'Short Break Duration',
+      longBreakDuration: 'Long Break Duration',
+      sessionsBeforeLongBreak: 'Sessions Before Long Break',
+      duration: 'Work {work} minutes, break {break} minutes',
+      autoStartBreaks: 'Auto Start Breaks',
+      autoStartBreaksDescription: 'Automatically start break after work time ends',
+      setAsDefault: 'Set as Default Template',
+      default: 'Default',
+      confirmDeleteTemplate: 'Are you sure you want to delete this template?',
+      focusMode: 'Focus Mode',
+      disableNotifications: 'Disable Notifications',
+      blockWebsites: 'Block Websites',
+      showProgressInTitle: 'Show Progress in Title',
+      notifications: 'Notification Settings',
+      enableNotifications: 'Enable Notifications',
+      notificationsDescription: 'Show notification when session ends',
+      enableSounds: 'Enable Sounds',
+      soundVolume: 'Volume',
+      soundNotifications: 'Sound Notifications',
+      soundNotificationsDescription: 'Play notification sounds',
+      fullscreenMode: 'Fullscreen Mode',
+      fullscreenModeDescription: 'Enter fullscreen mode during focus',
+    },
+    stats: {
+      title: 'Statistics Report',
+      thisWeek: 'This Week',
+      thisMonth: 'This Month',
+      thisQuarter: 'This Quarter',
+      totalSessions: 'Total Sessions',
+      completedSessions: 'Completed Sessions',
+      totalFocusTime: 'Total Focus Time',
+      avgProductivity: 'Average Productivity',
+      dailySessions: 'Daily Sessions',
+      productivityTrend: 'Productivity Trend',
+      timeDistribution: 'Time Distribution',
+      workTime: 'Work Time',
+      breakTime: 'Break Time',
+      completionRate: 'Completion Rate',
+      of: 'of',
+      sessionsCompleted: 'sessions completed',
+      recentSessions: 'Recent Sessions',
+      date: 'Date',
+      task: 'Task',
+      duration: 'Duration',
+      status: 'Status',
+      productivity: 'Productivity',
+    },
+    // Session status
+    status: {
+      completed: 'Completed',
+      cancelled: 'Cancelled',
+      paused: 'Paused',
+      running: 'Running',
+      pending: 'Pending',
+    },
+    // Timer status
+    readyToStart: 'Ready to start',
+    focusTime: 'Focus time',
+    breakTime: 'Break time',
+    focusSession: 'Focus session',
+    workingOn: 'Working on',
+    remaining: 'Remaining time',
+
+    // Button operations
+    start: 'Start',
+    pause: 'Pause',
+    resume: 'Resume',
+    abort: 'Cancel',
+    completed: 'Completed',
+
+    // Mode switching
+    focusModeOn: 'Focus mode on',
+    focusModeOff: 'Focus mode off',
+
+    // Statistics
+    todaySessions: 'Today sessions',
+    focusTimeTotal: 'Focus time',
+
+    // Quick actions
+    quickActions: 'Quick Actions',
+    selectTask: 'Select Task',
+    selectTaskOptions: {
+      button: 'Select Task',
+      noTasks: 'No tasks',
+      estimatedPomodoros: 'Estimated {count} pomodoros',
+      startWithoutTask: 'Start without task',
+    },
+    templates: 'Templates',
+    statistics: 'Statistics',
+    
+    // History page
+    history: {
+      title: 'History',
+      allStatuses: 'All Status',
+      totalSessions: 'Total Sessions',
+      completed: 'Completed',
+      totalTime: 'Total Time',
+      avgProductivity: 'Average Productivity',
+      sessions: 'Session Records',
+      showing: 'Showing {start} - {end} of {total}',
+      date: 'Date',
+      task: 'Task',
+      template: 'Template',
+      duration: 'Duration',
+      status: 'Status',
+      productivity: 'Productivity',
+      actions: 'Actions',
+      planned: 'Planned',
+      noSessions: 'No session records',
+      viewTask: 'View Task',
+    },
+
+    // Task selector dialog
+    taskSelector: {
+      title: 'Select Task',
+      noTasks: 'No tasks',
+      searchPlaceholder: 'Search tasks...',
+      createNew: 'Create new task',
+      withoutTask: 'Without task',
+    },
+
+    // Complete session dialog
+    completeModal: {
+      title: 'Complete Session',
+      message: 'Congratulations on completing this pomodoro session!',
+      duration: 'Duration: {duration}',
+      addNotes: 'Add Notes',
+      notesPlaceholder: 'Record thoughts from this session...',
+      markTaskComplete: 'Mark task complete',
+    },
+
+    // Session completion related
+    complete: {
+      duration: 'Duration: {duration}',
+      productivityRating: 'Productivity Rating',
+      rating: {
+        poor: 'Poor',
+        fair: 'Fair',
+        good: 'Good',
+        veryGood: 'Very Good',
+        excellent: 'Excellent',
+      },
+      notes: 'Session Notes',
+      notesPlaceholder: 'Record thoughts and gains from this session...',
+      breakSuggestion: {
+        title: 'Suggest taking a break',
+        message: 'You have completed a focus session, suggest taking a 5-15 minute break to restore energy.',
+      },
+      confirm: 'Confirm Complete',
+    },
+
+    // Cancel session dialog
+    cancelModal: {
+      title: 'Cancel Session',
+      message: 'Are you sure you want to cancel the current session?',
+      reason: 'Cancel Reason',
+      reasonPlaceholder: 'Please briefly describe the reason for cancellation...',
+      confirm: 'Confirm Cancel',
+    },
+
+    // Cancel session related
+    cancel: {
+      timeSpent: 'Time spent: {duration}',
+      warning: {
+        title: 'Cancel session reminder',
+        message: 'Cancelling the session will lose current progress and will not be recorded as a completed pomodoro.',
+      },
+      reason: 'Cancel Reason',
+      selectReason: 'Please select cancel reason',
+      reasons: {
+        interruption: 'External interruption',
+        urgentTask: 'Urgent task',
+        feelingUnwell: 'Feeling unwell',
+        distraction: 'Distraction',
+        other: 'Other reason',
+      },
+      notes: 'Notes',
+      notesPlaceholder: 'Please describe the reason for cancellation in detail...',
+      confirm: 'Confirm Cancel',
+    },
+  },
+
+  // Task related (for tasks.status.* keys)
+  tasks: {
+    status: {
+      todo: 'To Do',
+      in_progress: 'In Progress',
+      working: 'Working',
+      done: 'Done',
+      completed: 'Completed',
+      pending: 'Pending',
+    },
   },
 
   // Task Calendar
