@@ -1261,4 +1261,62 @@ export default {
     noTime: '无时间',
     moreTasks: '更多任务',
   },
+  
+  // Dashboard
+  dashboard: {
+    // Welcome section
+    welcomeMessage: '今天是 {date}，让我们高效完成今天的目标吧！',
+    
+    // Section headers
+    todayTasks: '今日任务',
+    todayHabits: '今日习惯',
+    activeGoals: '进行中的目标',
+    pomodoroTimer: '番茄钟',
+    todayStats: '今日统计',
+    
+    // Common actions
+    more: '更多',
+    noTasks: '暂无任务',
+    noHabits: '暂无习惯',
+    noGoals: '暂无目标',
+    
+    // Task related
+    taskCompleted: '已完成',
+    markComplete: '标记完成',
+    
+    // Habit related
+    consecutiveDays: '连续 {count} 天',
+    goalTarget: '目标: {target}',
+    
+    // Pomodoro states
+    focusTime: '专注时间',
+    shortBreak: '短休息',
+    longBreak: '长休息',
+    readyToStart: '准备开始',
+    pause: '暂停',
+    start: '开始',
+    reset: '重置',
+    
+    // Statistics
+    completedTasks: '已完成任务',
+    completedHabits: '已完成习惯',
+    pomodoroSessions: '番茄钟次数',
+    avgGoalProgress: '目标平均进度',
+    
+    // Priority levels
+    highPriority: '高优先级',
+    mediumPriority: '中优先级',
+    lowPriority: '低优先级',
+    normalPriority: '普通',
+    
+    // Frequency types
+    daily: '每日',
+    weekly: '每周',
+    monthly: '每月',
+    custom: '自定义',
+    
+    // Date related
+    notSet: '未设置',
+    dueDate: '截止: {date}',
+  },
 }

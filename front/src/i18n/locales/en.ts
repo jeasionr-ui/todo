@@ -1263,4 +1263,62 @@ export default {
     noTime: 'No time',
     moreTasks: 'more tasks',
   },
+  
+  // Dashboard
+  dashboard: {
+    // Welcome section
+    welcomeMessage: 'Today is {date}, let\'s efficiently complete today\'s goals!',
+    
+    // Section headers
+    todayTasks: 'Today\'s Tasks',
+    todayHabits: 'Today\'s Habits',
+    activeGoals: 'Active Goals',
+    pomodoroTimer: 'Pomodoro Timer',
+    todayStats: 'Today\'s Statistics',
+    
+    // Common actions
+    more: 'More',
+    noTasks: 'No tasks',
+    noHabits: 'No habits',
+    noGoals: 'No goals',
+    
+    // Task related
+    taskCompleted: 'Completed',
+    markComplete: 'Mark Complete',
+    
+    // Habit related
+    consecutiveDays: '{count} days in a row',
+    goalTarget: 'Goal: {target}',
+    
+    // Pomodoro states
+    focusTime: 'Focus Time',
+    shortBreak: 'Short Break',
+    longBreak: 'Long Break',
+    readyToStart: 'Ready to Start',
+    pause: 'Pause',
+    start: 'Start',
+    reset: 'Reset',
+    
+    // Statistics
+    completedTasks: 'Completed Tasks',
+    completedHabits: 'Completed Habits',
+    pomodoroSessions: 'Pomodoro Sessions',
+    avgGoalProgress: 'Avg Goal Progress',
+    
+    // Priority levels
+    highPriority: 'High Priority',
+    mediumPriority: 'Medium Priority',
+    lowPriority: 'Low Priority',
+    normalPriority: 'Normal',
+    
+    // Frequency types
+    daily: 'Daily',
+    weekly: 'Weekly',
+    monthly: 'Monthly',
+    custom: 'Custom',
+    
+    // Date related
+    notSet: 'Not set',
+    dueDate: 'Due: {date}',
+  },
 }

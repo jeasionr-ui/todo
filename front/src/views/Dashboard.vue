@@ -9,7 +9,7 @@
           {{ $t('common.welcome') }}, {{ currentUser?.firstName }}!
         </h3>
         <p class="text-gray-500 dark:text-gray-400">
-          今天是 {{ formatDate(new Date()) }}，让我们高效完成今天的目标吧！
+          {{ $t('dashboard.welcomeMessage', { date: formatDate(new Date()) }) }}
         </p>
       </div>
 
@@ -23,13 +23,13 @@
               <svg class="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
               </svg>
-              今日任务
+              {{ $t('dashboard.todayTasks') }}
             </h4>
             <router-link 
               to="/tasks"
               class="text-blue-500 hover:text-blue-600 text-sm font-medium"
             >
-              更多
+              {{ $t('dashboard.more') }}
             </router-link>
           </div>
           
@@ -44,7 +44,7 @@
             <svg class="w-12 h-12 text-gray-300 dark:text-gray-600 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
             </svg>
-            <p class="text-gray-500 dark:text-gray-400 text-sm">暂无任务</p>
+            <p class="text-gray-500 dark:text-gray-400 text-sm">{{ $t('dashboard.noTasks') }}</p>
           </div>
           
           <div v-else class="space-y-3">
@@ -80,13 +80,13 @@
               <svg class="w-5 h-5 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              今日习惯
+              {{ $t('dashboard.todayHabits') }}
             </h4>
             <router-link 
               to="/habits"
               class="text-green-500 hover:text-green-600 text-sm font-medium"
             >
-              更多
+              {{ $t('dashboard.more') }}
             </router-link>
           </div>
           
@@ -101,7 +101,7 @@
             <svg class="w-12 h-12 text-gray-300 dark:text-gray-600 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            <p class="text-gray-500 dark:text-gray-400 text-sm">暂无习惯</p>
+            <p class="text-gray-500 dark:text-gray-400 text-sm">{{ $t('dashboard.noHabits') }}</p>
           </div>
           
           <div v-else class="space-y-3">
@@ -121,13 +121,13 @@
                       : 'bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300 hover:bg-green-100 hover:text-green-800'
                   ]"
                 >
-                  {{ isHabitCompletedToday(habit) ? '已完成' : '标记完成' }}
+                  {{ isHabitCompletedToday(habit) ? $t('dashboard.taskCompleted') : $t('dashboard.markComplete') }}
                 </button>
               </div>
               <div class="flex items-center text-xs text-gray-500">
-                <span>连续 {{ habit.streakCount }} 天</span>
+                <span>{{ $t('dashboard.consecutiveDays', { count: habit.streakCount }) }}</span>
                 <span class="mx-2">•</span>
-                <span>目标: {{ getFrequencyText(habit.frequency) }}</span>
+                <span>{{ $t('dashboard.goalTarget', { target: getFrequencyText(habit.frequency) }) }}</span>
               </div>
             </div>
           </div>
@@ -140,13 +140,13 @@
               <svg class="w-5 h-5 mr-2 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
-              进行中的目标
+              {{ $t('dashboard.activeGoals') }}
             </h4>
             <router-link 
               to="/goals"
               class="text-purple-500 hover:text-purple-600 text-sm font-medium"
             >
-              更多
+              {{ $t('dashboard.more') }}
             </router-link>
           </div>
           
@@ -161,7 +161,7 @@
             <svg class="w-12 h-12 text-gray-300 dark:text-gray-600 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
             </svg>
-            <p class="text-gray-500 dark:text-gray-400 text-sm">暂无目标</p>
+            <p class="text-gray-500 dark:text-gray-400 text-sm">{{ $t('dashboard.noGoals') }}</p>
           </div>
           
           <div v-else class="space-y-3">
@@ -183,8 +183,8 @@
                 ></div>
               </div>
               <div class="flex justify-between text-xs text-gray-500">
-                <span>{{ goal.startDate ? formatDate(new Date(goal.startDate)) : '未设置' }}</span>
-                <span>截止: {{ goal.targetDate ? formatDate(new Date(goal.targetDate)) : '未设置' }}</span>
+                <span>{{ goal.startDate ? formatDate(new Date(goal.startDate)) : $t('dashboard.notSet') }}</span>
+                <span>{{ $t('dashboard.dueDate', { date: goal.targetDate ? formatDate(new Date(goal.targetDate)) : $t('dashboard.notSet') }) }}</span>
               </div>
             </div>
           </div>
@@ -200,13 +200,13 @@
               <svg class="w-5 h-5 mr-2 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              番茄钟
+              {{ $t('dashboard.pomodoroTimer') }}
             </h4>
             <router-link 
               to="/pomodoro"
               class="text-red-500 hover:text-red-600 text-sm font-medium"
             >
-              更多
+              {{ $t('dashboard.more') }}
             </router-link>
           </div>
           
@@ -216,7 +216,7 @@
                 {{ formatTime(pomodoroTime) }}
               </div>
               <p class="text-sm text-gray-500 dark:text-gray-400">
-                {{ pomodoroStatus === 'work' ? '专注时间' : pomodoroStatus === 'shortBreak' ? '短休息' : pomodoroStatus === 'longBreak' ? '长休息' : '准备开始' }}
+                {{ pomodoroStatus === 'work' ? $t('dashboard.focusTime') : pomodoroStatus === 'shortBreak' ? $t('dashboard.shortBreak') : pomodoroStatus === 'longBreak' ? $t('dashboard.longBreak') : $t('dashboard.readyToStart') }}
               </p>
             </div>
             
@@ -230,13 +230,13 @@
                     : 'bg-green-500 hover:bg-green-600 text-white'
                 ]"
               >
-                {{ pomodoroRunning ? '暂停' : '开始' }}
+                {{ pomodoroRunning ? $t('dashboard.pause') : $t('dashboard.start') }}
               </button>
               <button 
                 @click="resetPomodoro"
                 class="px-6 py-2 rounded-lg font-medium bg-gray-500 hover:bg-gray-600 text-white transition-colors"
               >
-                重置
+                {{ $t('dashboard.reset') }}
               </button>
             </div>
           </div>
@@ -248,25 +248,25 @@
             <svg class="w-5 h-5 mr-2 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
             </svg>
-            今日统计
+            {{ $t('dashboard.todayStats') }}
           </h4>
           
           <div class="grid grid-cols-2 gap-4">
             <div class="text-center p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
               <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">{{ completedTasksToday }}</div>
-              <div class="text-sm text-gray-600 dark:text-gray-400">已完成任务</div>
+              <div class="text-sm text-gray-600 dark:text-gray-400">{{ $t('dashboard.completedTasks') }}</div>
             </div>
             <div class="text-center p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
               <div class="text-2xl font-bold text-green-600 dark:text-green-400">{{ completedHabitsToday }}</div>
-              <div class="text-sm text-gray-600 dark:text-gray-400">已完成习惯</div>
+              <div class="text-sm text-gray-600 dark:text-gray-400">{{ $t('dashboard.completedHabits') }}</div>
             </div>
             <div class="text-center p-4 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
               <div class="text-2xl font-bold text-purple-600 dark:text-purple-400">{{ pomodoroSessionsToday }}</div>
-              <div class="text-sm text-gray-600 dark:text-gray-400">番茄钟次数</div>
+              <div class="text-sm text-gray-600 dark:text-gray-400">{{ $t('dashboard.pomodoroSessions') }}</div>
             </div>
             <div class="text-center p-4 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg">
               <div class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">{{ Math.round(avgGoalProgress) }}%</div>
-              <div class="text-sm text-gray-600 dark:text-gray-400">目标平均进度</div>
+              <div class="text-sm text-gray-600 dark:text-gray-400">{{ $t('dashboard.avgGoalProgress') }}</div>
             </div>
           </div>
         </div>
@@ -277,6 +277,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import AdminLayout from '@/components/layout/AdminLayout.vue'
 import PageBreadcrumb from '@/components/common/PageBreadcrumb.vue'
 import { userService } from '@/services/userService'
@@ -289,6 +290,7 @@ import type Task from '@/services/types/TaskType'
 import type Habit from '@/services/types/HabitType'
 import type { Goal } from '@/services/types/GoalType'
 
+const { t, locale } = useI18n()
 const currentUser = ref<User | null>(null)
 
 // 任务相关
@@ -321,7 +323,9 @@ const avgGoalProgress = computed(() => {
 
 // 工具函数
 const formatDate = (date: Date) => {
-  return date.toLocaleDateString('zh-CN', { 
+  const { locale } = useI18n()
+  const localeCode = locale.value === 'zh' ? 'zh-CN' : 'en-US'
+  return date.toLocaleDateString(localeCode, { 
     year: 'numeric', 
     month: 'long', 
     day: 'numeric',
@@ -346,19 +350,19 @@ const getPriorityColor = (priority: string) => {
 
 const getPriorityText = (priority: string) => {
   switch (priority) {
-    case 'high': return '高优先级'
-    case 'medium': return '中优先级'
-    case 'low': return '低优先级'
-    default: return '普通'
+    case 'high': return t('dashboard.highPriority')
+    case 'medium': return t('dashboard.mediumPriority')
+    case 'low': return t('dashboard.lowPriority')
+    default: return t('dashboard.normalPriority')
   }
 }
 
 const getFrequencyText = (frequency: Habit['frequency']) => {
   switch (frequency.type) {
-    case 'daily': return '每日'
-    case 'weekly': return '每周'
-    case 'monthly': return '每月'
-    default: return '自定义'
+    case 'daily': return t('dashboard.daily')
+    case 'weekly': return t('dashboard.weekly')
+    case 'monthly': return t('dashboard.monthly')
+    default: return t('dashboard.custom')
   }
 }
 
