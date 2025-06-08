@@ -281,6 +281,24 @@ const router = createRouter({
         requiresAuth: true,
       },
     },
+    {
+      path: '/pomodoro/templates',
+      name: 'PomodoroTemplates',
+      component: () => import('../views/Pomodoro/PomodoroSettings.vue'),
+      meta: {
+        title: 'Pomodoro Templates',
+        requiresAuth: true,
+      },
+    },
+    {
+      path: '/pomodoro/history',
+      name: 'PomodoroHistory',
+      component: () => import('../views/Pomodoro/PomodoroHistory.vue'),
+      meta: {
+        title: 'Pomodoro History',
+        requiresAuth: true,
+      },
+    },
 
     // Reports 路由
     {
