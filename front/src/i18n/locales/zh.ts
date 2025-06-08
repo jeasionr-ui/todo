@@ -533,6 +533,8 @@ export default {
     deleteSuccess: '文件删除成功',
     deleteFailed: '文件删除失败',
     downloadFailed: '文件下载失败',
+    chooseFile: '选择文件',
+    noFileSelected: '未选择任何文件',
   },
 
   // 日期时间

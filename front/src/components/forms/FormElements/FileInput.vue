@@ -8,15 +8,30 @@
       
       <!-- File Input -->
       <div class="relative">
+        <!-- Hidden native file input -->
         <input
           ref="fileInput"
           type="file"
           :multiple="multiple"
           :accept="accept"
           @change="handleFileSelect"
-          class="focus:border-ring-brand-300 h-11 w-full overflow-hidden rounded-lg border border-gray-300 bg-transparent text-sm text-gray-500 shadow-theme-xs transition-colors file:mr-5 file:border-collapse file:cursor-pointer file:rounded-l-lg file:border-0 file:border-r file:border-solid file:border-gray-200 file:bg-gray-50 file:py-3 file:pl-3.5 file:pr-3 file:text-sm file:text-gray-700 placeholder:text-gray-400 hover:file:bg-gray-100 focus:outline-hidden focus:file:ring-brand-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-400 dark:text-white/90 dark:file:border-gray-800 dark:file:bg-white/[0.03] dark:file:text-gray-400 dark:placeholder:text-gray-400"
+          class="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
           :disabled="uploading"
         />
+        
+        <!-- Custom file input button -->
+        <div class="flex items-center justify-center h-11 w-full rounded-lg border border-gray-300 bg-white dark:bg-gray-900 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors cursor-pointer">
+          <div class="flex items-center space-x-2 text-gray-600 dark:text-gray-400">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+            </svg>
+            <span class="text-sm">
+              {{ selectedFiles.length > 0 
+                ? t('file.selectedFiles') + ': ' + selectedFiles.length 
+                : t('file.chooseFile') }}
+            </span>
+          </div>
+        </div>
         
         <!-- Upload Progress -->
         <div v-if="uploading" class="absolute inset-0 flex items-center justify-center bg-white/80 dark:bg-gray-900/80 rounded-lg">
@@ -140,10 +155,10 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import { useI18n } from '@/i18n'
+import { useI18n } from 'vue-i18n'
 import { uploadFile, uploadMultipleFiles, deleteFile, downloadFile as downloadFileService, formatFileSize, type FileInfo } from '@/services/fileService'
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
 
 interface Props {
   label?: string
@@ -269,7 +284,8 @@ const downloadFile = (file: FileInfo) => {
 // 格式化日期
 const formatDate = (dateString: string) => {
   const date = new Date(dateString)
-  return date.toLocaleDateString('zh-CN', {
+  const localeCode = locale.value === 'zh' ? 'zh-CN' : 'en-US'
+  return date.toLocaleDateString(localeCode, {
     year: 'numeric',
     month: '2-digit',
     day: '2-digit',

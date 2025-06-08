@@ -535,6 +535,8 @@ export default {
     deleteSuccess: 'File deleted successfully',
     deleteFailed: 'File deletion failed',
     downloadFailed: 'File download failed',
+    chooseFile: 'Choose File',
+    noFileSelected: 'No file selected',
   },
 
   // Date and time
