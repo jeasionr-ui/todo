@@ -108,6 +108,9 @@ export default {
     resetPassword: 'Reset Password',
     rememberMe: 'Remember Me',
 
+    enterEmailForReset: 'Email to reset your password',
+    backSingIn: 'Back to ',
+
     // Form fields
     email: 'Email',
     password: 'Password',

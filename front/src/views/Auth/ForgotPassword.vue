@@ -96,7 +96,7 @@
                   <p
                     class="text-sm font-normal text-center text-gray-700 dark:text-gray-400 sm:text-start"
                   >
-                    {{ $t('auth.rememberPassword') }}
+                    {{ $t('auth.backSingIn') }}
                     <router-link
                       to="/signin"
                       class="text-brand-500 hover:text-brand-600 dark:text-brand-400"

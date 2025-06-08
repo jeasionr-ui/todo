@@ -106,6 +106,9 @@ export default {
     resetPassword: '重置密码',
     rememberMe: '记住我',
 
+    enterEmailForReset: '请输入您的邮箱以重置密码',
+    backSingIn: '返回',
+
     // 表单字段
     email: '邮箱',
     password: '密码',
@@ -237,7 +240,7 @@ export default {
     endDate: '结束日期',
     export: '导出数据',
     exportSuccess: '数据已导出为 {format} 格式: {filename}',
-    
+
     // 报表类型
     types: {
       productivity: '生产力',
@@ -247,7 +250,7 @@ export default {
       taskStats: '任务统计',
       pomodoro: '番茄工作法',
     },
-    
+
     // 通用统计术语
     stats: {
       total: '总数',
@@ -294,9 +297,9 @@ export default {
       todo: '待开始',
       avgSessionLength: '平均会话时长',
       breakTime: '休息时间',
-      avgEfficiency: '平均效率'
+      avgEfficiency: '平均效率',
     },
-    
+
     // 番茄钟统计
     pomodoro: {
       focusTime: '专注时间',
@@ -310,10 +313,10 @@ export default {
       sessionType: {
         completed: '完成',
         interrupted: '中断',
-        skipped: '跳过'
-      }
+        skipped: '跳过',
+      },
     },
-    
+
     // 时间效率报表
     timeEfficiency: {
       title: '时间效率报告',
@@ -328,15 +331,15 @@ export default {
         focusWork: '专注工作',
         learning: '学习提升',
         meeting: '会议沟通',
-        other: '其他杂项'
+        other: '其他杂项',
       },
       levels: {
         high: '高效',
         medium: '一般',
-        low: '低效'
-      }
+        low: '低效',
+      },
     },
-    
+
     // 生产力报表
     productivity: {
       title: '生产力报告',
@@ -347,7 +350,7 @@ export default {
       trend: '生产力趋势',
       insights: '数据洞察',
       recommendations: '改进建议',
-      noData: '暂无生产力数据'
+      noData: '暂无生产力数据',
     },
 
     // 习惯报表
@@ -359,7 +362,7 @@ export default {
       completionRate: '完成率',
       completionTrend: '习惯完成趋势',
       dayLabel: '第{day}天: {value}%',
-      noData: '暂无习惯数据'
+      noData: '暂无习惯数据',
     },
 
     // 目标报表
@@ -377,9 +380,9 @@ export default {
         fitnessGoal: '健身计划',
         readingGoal: '读书目标',
         projectDevelopment: '项目开发',
-        socialImprovement: '社交改善'
-      }
-    }
+        socialImprovement: '社交改善',
+      },
+    },
   },
 
   // 消息提示
@@ -408,7 +411,7 @@ export default {
     description: '查看和编辑您的个人资料',
     editSocialAccounts: '编辑社交账号',
     editSocialAccountsDesc: '连接您的社交账号到您的个人资料',
-    
+
     // 登录历史和设备信息
     loginHistory: '登录历史',
     device: '设备',
@@ -1267,7 +1270,7 @@ export default {
     start: '开始',
     pause: '暂停',
     resume: '继续',
-    abort:'取消',
+    abort: '取消',
     completed: '完成',
 
     // 模式切换
@@ -1289,7 +1292,7 @@ export default {
     },
     templates: '模板',
     statistics: '统计',
-    
+
     // 历史记录页面
     history: {
       title: '历史记录',
@@ -1405,41 +1408,41 @@ export default {
     moreTasks: '更多任务',
     weekdays: {
       monday: '周一',
-      tuesday: '周二', 
+      tuesday: '周二',
       wednesday: '周三',
       thursday: '周四',
       friday: '周五',
       saturday: '周六',
-      sunday: '周日'
-    }
+      sunday: '周日',
+    },
   },
-  
+
   // Dashboard
   dashboard: {
     // Welcome section
     welcomeMessage: '今天是 {date}，让我们高效完成今天的目标吧！',
-    
+
     // Section headers
     todayTasks: '今日任务',
     todayHabits: '今日习惯',
     activeGoals: '进行中的目标',
     pomodoroTimer: '番茄钟',
     todayStats: '今日统计',
-    
+
     // Common actions
     more: '更多',
     noTasks: '暂无任务',
     noHabits: '暂无习惯',
     noGoals: '暂无目标',
-    
+
     // Task related
     taskCompleted: '已完成',
     markComplete: '标记完成',
-    
+
     // Habit related
     consecutiveDays: '连续 {count} 天',
     goalTarget: '目标: {target}',
-    
+
     // Pomodoro states
     focusTime: '专注时间',
     shortBreak: '短休息',
@@ -1448,25 +1451,25 @@ export default {
     pause: '暂停',
     start: '开始',
     reset: '重置',
-    
+
     // Statistics
     completedTasks: '已完成任务',
     completedHabits: '已完成习惯',
     pomodoroSessions: '番茄钟次数',
     avgGoalProgress: '目标平均进度',
-    
+
     // Priority levels
     highPriority: '高优先级',
     mediumPriority: '中优先级',
     lowPriority: '低优先级',
     normalPriority: '普通',
-    
+
     // Frequency types
     daily: '每日',
     weekly: '每周',
     monthly: '每月',
     custom: '自定义',
-    
+
     // Date related
     notSet: '未设置',
     dueDate: '截止: {date}',
@@ -1476,20 +1479,20 @@ export default {
   security: {
     title: '安全设置',
     description: '管理您的账户安全设置，包括密码、两步验证和活动会话',
-    
+
     // Password change
     changePassword: '更改密码',
     currentPassword: '当前密码',
     newPassword: '新密码',
     confirmNewPassword: '确认新密码',
     updatePassword: '更新密码',
-    
+
     // Two-factor authentication
     twoFactorAuth: '两步验证',
     twoFactorAuthDesc: '为您的账户启用两步验证以提高安全性',
     enabled: '已启用',
     disabled: '已禁用',
-    
+
     // Active sessions
     activeSessions: '活动会话',
     device: '设备',
