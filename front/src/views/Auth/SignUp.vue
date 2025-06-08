@@ -216,47 +216,67 @@
                       </div>
                     </div>
                     <!-- 协议 -->
-                    <div>
-                      <label
-                        for="agreeTerms"
-                        class="flex items-center text-sm font-normal text-gray-700 cursor-pointer select-none dark:text-gray-400"
-                      >
-                        <div class="relative">
-                          <input
-                            v-model="agreeTerms"
-                            type="checkbox"
-                            id="agreeTerms"
-                            class="sr-only"
-                          />
-                          <div
-                            :class="
-                              agreeTerms
-                                ? 'border-brand-500 bg-brand-500'
-                                : 'bg-transparent border-gray-300 dark:border-gray-700'
-                            "
-                            class="mr-3 flex h-5 w-5 items-center justify-center rounded-md border-[1.25px]"
-                          >
-                            <span :class="agreeTerms ? '' : 'opacity-0'">
-                              <svg
-                                width="14"
-                                height="14"
-                                viewBox="0 0 14 14"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path
-                                  d="M11.6666 3.5L5.24992 9.91667L2.33325 7"
-                                  stroke="white"
-                                  stroke-width="1.94437"
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                />
-                              </svg>
-                            </span>
+                    <div class="space-y-3">
+                      <!-- 服务条款和隐私政策 - 单个复选框 -->
+                      <div class="flex items-start gap-3">
+                        <label
+                          for="agreeLegal"
+                          class="flex items-start text-sm font-normal text-gray-700 cursor-pointer select-none dark:text-gray-400"
+                        >
+                          <div class="relative">
+                            <input
+                              v-model="agreeLegal"
+                              type="checkbox"
+                              id="agreeLegal"
+                              class="sr-only"
+                            />
+                            <div
+                              :class="
+                                agreeLegal
+                                  ? 'border-brand-500 bg-brand-500'
+                                  : 'bg-transparent border-gray-300 dark:border-gray-700'
+                              "
+                              class="mr-3 flex h-5 w-5 items-center justify-center rounded-md border-[1.25px] flex-shrink-0 mt-0.5"
+                            >
+                              <span :class="agreeLegal ? '' : 'opacity-0'">
+                                <svg
+                                  width="14"
+                                  height="14"
+                                  viewBox="0 0 14 14"
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M11.6666 3.5L5.24992 9.91667L2.33325 7"
+                                    stroke="white"
+                                    stroke-width="1.94437"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                  />
+                                </svg>
+                              </span>
+                            </div>
                           </div>
-                        </div>
-                        {{ $t('auth.agreeTerms') }}
-                      </label>
+                          <span class="leading-relaxed">
+                            {{ $t('legal.agreeToTermsAndPrivacy') }}
+                            <button
+                              type="button"
+                              @click="showTermsDialog = true"
+                              class="text-brand-500 hover:text-brand-600 underline mx-1"
+                            >
+                              {{ $t('legal.termsOfService') }}
+                            </button>
+                            {{ $t('legal.and') }}
+                            <button
+                              type="button"
+                              @click="showPrivacyDialog = true"
+                              class="text-brand-500 hover:text-brand-600 underline ml-1"
+                            >
+                              {{ $t('legal.privacyPolicy') }}
+                            </button>
+                          </span>
+                        </label>
+                      </div>
                     </div>
                     <!-- 错误信息 -->
                     <div v-if="registerError" class="text-error-500 text-sm">
@@ -394,6 +414,16 @@
         </div>
       </div>
     </div>
+    
+    <!-- 法律文档组件 -->
+    <TermsOfService 
+      :is-open="showTermsDialog" 
+      @close="showTermsDialog = false" 
+    />
+    <PrivacyPolicy 
+      :is-open="showPrivacyDialog" 
+      @close="showPrivacyDialog = false" 
+    />
   </FullScreenLayout>
 </template>
 
@@ -404,6 +434,8 @@ import { useRouter } from 'vue-router'
 import CommonGridShape from '@/components/common/CommonGridShape.vue'
 import FullScreenLayout from '@/components/layout/FullScreenLayout.vue'
 import LanguageSwitcher from '@/components/common/LanguageSwitcher.vue'
+import TermsOfService from '@/components/auth/TermsOfService.vue'
+import PrivacyPolicy from '@/components/auth/PrivacyPolicy.vue'
 import { userService } from '@/services/userService'
 
 const { t } = useI18n()
@@ -415,7 +447,9 @@ const password = ref('')
 const confirmPassword = ref('')
 const showPassword = ref(false)
 const showConfirmPassword = ref(false)
-const agreeTerms = ref(false)
+const agreeLegal = ref(false)
+const showTermsDialog = ref(false)
+const showPrivacyDialog = ref(false)
 const registerError = ref('')
 
 // 表单验证
@@ -426,7 +460,7 @@ const isFormValid = computed(() => {
     email.value.trim() !== '' &&
     password.value.trim() !== '' &&
     password.value === confirmPassword.value &&
-    agreeTerms.value
+    agreeLegal.value
   )
 })
 

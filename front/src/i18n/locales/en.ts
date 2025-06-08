@@ -124,6 +124,7 @@ export default {
 
     // Prompts
     agreeTerms: 'I have read and agree to the Terms of Service and Privacy Policy',
+    agreeToTermsAndPrivacy: 'I have read and agree to the Terms of Service and Privacy Policy',
     alreadyHaveAccount: 'Already have an account?',
     noAccount: "Don't have an account?",
     createAccount: 'Create Account',
@@ -1524,5 +1525,174 @@ export default {
     action: 'Action',
     current: 'Current',
     terminate: 'Terminate',
+  },
+
+  // Legal documents
+  legal: {
+    termsOfService: 'Terms of Service',
+    privacyPolicy: 'Privacy Policy',
+    lastUpdated: 'Last Updated',
+    agreeToTerms: 'I have read and agree to the',
+    agreeToPrivacy: 'and',
+    agreeToTermsAndPrivacy: 'I have read and agree to the',
+    and: 'and',
+    
+    // Contact information
+    contact: {
+      title: 'Contact Us',
+      content: 'If you have any questions or suggestions about this document, please contact us:',
+      email: 'Email',
+      address: 'Address',
+      addressValue: 'Chaoyang District Technology Park, Beijing, China'
+    },
+
+    // Terms of Service
+    terms: {
+      acceptance: {
+        title: '1. Acceptance of Terms',
+        content: 'By accessing and using the Bingo Todo service, you agree to be bound by these Terms of Service. If you do not agree to any part of these terms, you may not use our service.'
+      },
+      description: {
+        title: '2. Service Description',
+        content: 'Bingo Todo is a comprehensive productivity application designed to help users manage tasks, track habits, and achieve goals. Our services include but are not limited to:',
+        features: {
+          taskManagement: 'Task creation, editing, and management',
+          habitTracking: 'Habit tracking and progress monitoring',
+          pomodoroTimer: 'Focus time management and Pomodoro timer features',
+          goalSetting: 'Goal setting and progress tracking',
+          progressReports: 'Progress reports and data analytics'
+        }
+      },
+      userAccount: {
+        title: '3. User Accounts',
+        content: 'To use our service, you need to create an account. You are responsible for:',
+        requirements: {
+          accurateInfo: 'Providing accurate, complete, and current registration information',
+          securePassword: 'Maintaining the security and confidentiality of your password',
+          confidentiality: 'Being responsible for all activities that occur under your account'
+        }
+      },
+      userConduct: {
+        title: '4. User Conduct',
+        content: 'You agree not to use our service for the following activities:',
+        prohibited: {
+          illegalActivities: 'Any illegal or unauthorized purposes',
+          harmfulContent: 'Distributing harmful, defamatory, or offensive content',
+          systemInterference: 'Interfering with or disrupting the operation of the service',
+          unauthorizedAccess: 'Unauthorized access to other users\' accounts or data'
+        }
+      },
+      intellectualProperty: {
+        title: '5. Intellectual Property',
+        content: 'All rights, title, and interest in and to the service and its original content, features, and functionality are owned by Bingo Todo and its licensors. The service is protected by copyright, trademark, and other laws.'
+      },
+      termination: {
+        title: '6. Termination',
+        content: 'We may terminate or suspend your account and access to the service at any time for any reason, including but not limited to violation of these Terms of Service.'
+      },
+      disclaimers: {
+        title: '7. Disclaimers',
+        content: 'The service is provided "as is" without any express or implied warranties. We do not guarantee that the service will meet your requirements or be uninterrupted.'
+      },
+      changes: {
+        title: '8. Changes to Terms',
+        content: 'We reserve the right to modify these terms at any time. Significant changes will be communicated to users through appropriate means. Continued use of the service constitutes acceptance of the modified terms.'
+      }
+    },
+
+    // Privacy Policy
+    privacy: {
+      introduction: {
+        title: '1. Introduction',
+        content: 'This Privacy Policy describes how we collect, use, and protect the information you provide when using the Bingo Todo service. We are committed to protecting your privacy and data security.'
+      },
+      dataCollection: {
+        title: '2. Information Collection',
+        content: 'We collect the following types of information to provide and improve our services:',
+        personalInfo: {
+          title: 'Personal Information',
+          name: 'Name and username',
+          email: 'Email address',
+          password: 'Encrypted password information',
+          profile: 'Profile information'
+        },
+        usageData: {
+          title: 'Usage Data',
+          tasks: 'Task and project data',
+          habits: 'Habit tracking information',
+          goals: 'Goal and progress data',
+          sessions: 'Usage sessions and preference settings'
+        },
+        technicalData: {
+          title: 'Technical Data',
+          ip: 'IP address and device identifiers',
+          browser: 'Browser type and version',
+          device: 'Device information and operating system',
+          logs: 'Access logs and usage statistics'
+        }
+      },
+      dataUse: {
+        title: '3. Information Use',
+        content: 'We use the collected information for the following purposes:',
+        purposes: {
+          serviceProvision: 'Providing, maintaining, and improving our services',
+          improvement: 'Analyzing usage patterns to enhance user experience',
+          communication: 'Communicating with you about service-related matters',
+          support: 'Providing customer support and technical assistance',
+          legal: 'Complying with legal obligations and protecting legitimate interests'
+        }
+      },
+      dataSharing: {
+        title: '4. Information Sharing',
+        content: 'We do not sell, trade, or rent your personal information to third parties. We only share information in the following circumstances:',
+        exceptions: {
+          consent: 'With your explicit consent',
+          legal: 'To comply with legal requirements or court orders',
+          protection: 'To protect our rights, property, or safety',
+          business: 'In the event of business transfer or merger'
+        }
+      },
+      dataSecurity: {
+        title: '5. Data Security',
+        content: 'We implement industry-standard security measures to protect your personal information:',
+        measures: {
+          encryption: 'Data transmission and storage encryption',
+          access: 'Strict access controls and authentication',
+          monitoring: 'Regular security monitoring and vulnerability assessments',
+          updates: 'Timely security updates and patches'
+        }
+      },
+      userRights: {
+        title: '6. User Rights',
+        content: 'You have the following rights regarding your personal data:',
+        rights: {
+          access: 'Access your personal data',
+          correction: 'Correct inaccurate information',
+          deletion: 'Delete your personal data',
+          portability: 'Data portability',
+          objection: 'Object to certain data processing activities'
+        }
+      },
+      cookies: {
+        title: '7. Cookies and Tracking Technologies',
+        content: 'We use cookies and similar technologies to improve your experience:',
+        types: {
+          essential: 'Essential functional cookies',
+          functional: 'Enhancement functional cookies',
+          analytics: 'Analytics and performance cookies'
+        }
+      },
+      dataRetention: {
+        title: '8. Data Retention',
+        content: 'We retain your personal information only for as long as necessary to achieve the purposes of collection or to meet legal requirements.'
+      },
+      changes: {
+        title: '9. Policy Changes',
+        content: 'We may update this Privacy Policy from time to time. Significant changes will be posted on our website.'
+      },
+      contact: {
+        content: 'If you have any questions about this Privacy Policy, please contact us:'
+      }
+    }
   },
 }

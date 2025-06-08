@@ -122,6 +122,7 @@ export default {
 
     // 提示文本
     agreeTerms: '我已阅读并同意服务条款和隐私政策',
+    agreeToTermsAndPrivacy: '我已阅读并同意服务条款和隐私政策',
     alreadyHaveAccount: '已有账号？',
     noAccount: '没有账号？',
     createAccount: '创建账号',
@@ -1502,5 +1503,174 @@ export default {
     action: '操作',
     current: '当前',
     terminate: '终止',
+  },
+
+  // 法律文档
+  legal: {
+    termsOfService: '服务条款',
+    privacyPolicy: '隐私政策',
+    lastUpdated: '最后更新',
+    agreeToTerms: '我已阅读并同意',
+    agreeToPrivacy: '和',
+    agreeToTermsAndPrivacy: '我已阅读并同意',
+    and: '和',
+    
+    // 联系信息
+    contact: {
+      title: '联系我们',
+      content: '如果您对本文件有任何疑问或建议，请通过以下方式联系我们：',
+      email: '邮箱',
+      address: '地址',
+      addressValue: '中国北京市朝阳区科技园区'
+    },
+
+    // 服务条款
+    terms: {
+      acceptance: {
+        title: '1. 接受条款',
+        content: '通过访问和使用 Bingo Todo 服务，您同意受这些服务条款的约束。如果您不同意这些条款的任何部分，您不得使用我们的服务。'
+      },
+      description: {
+        title: '2. 服务描述',
+        content: 'Bingo Todo 是一个综合性的生产力应用程序，旨在帮助用户管理任务、跟踪习惯和实现目标。我们的服务包括但不限于：',
+        features: {
+          taskManagement: '任务创建、编辑和管理',
+          habitTracking: '习惯跟踪和进度监控',
+          pomodoroTimer: '专注时间管理和番茄钟功能',
+          goalSetting: '目标设定和进度跟踪',
+          progressReports: '进度报告和数据分析'
+        }
+      },
+      userAccount: {
+        title: '3. 用户账户',
+        content: '要使用我们的服务，您需要创建一个账户。您有责任：',
+        requirements: {
+          accurateInfo: '提供准确、完整和最新的注册信息',
+          securePassword: '维护密码的安全性和保密性',
+          confidentiality: '对您账户下发生的所有活动负责'
+        }
+      },
+      userConduct: {
+        title: '4. 用户行为',
+        content: '您同意不会使用我们的服务进行以下活动：',
+        prohibited: {
+          illegalActivities: '任何非法或未经授权的用途',
+          harmfulContent: '传播有害、诽谤或冒犯性内容',
+          systemInterference: '干扰或破坏服务的运行',
+          unauthorizedAccess: '未经授权访问其他用户的账户或数据'
+        }
+      },
+      intellectualProperty: {
+        title: '5. 知识产权',
+        content: '服务及其原创内容、功能和特性的所有权利、标题和利益均属于 Bingo Todo 及其许可方所有。该服务受版权、商标和其他法律保护。'
+      },
+      termination: {
+        title: '6. 服务终止',
+        content: '我们可能因任何原因随时终止或暂停您的账户和访问权限，包括但不限于违反这些服务条款。'
+      },
+      disclaimers: {
+        title: '7. 免责声明',
+        content: '服务按"现状"提供，不提供任何明示或暗示的担保。我们不保证服务将满足您的要求或不会中断。'
+      },
+      changes: {
+        title: '8. 条款变更',
+        content: '我们保留随时修改这些条款的权利。重大变更将通过适当方式通知用户。继续使用服务即表示接受修改后的条款。'
+      }
+    },
+
+    // 隐私政策
+    privacy: {
+      introduction: {
+        title: '1. 简介',
+        content: '本隐私政策描述了我们如何收集、使用和保护您在使用 Bingo Todo 服务时提供的信息。我们致力于保护您的隐私和数据安全。'
+      },
+      dataCollection: {
+        title: '2. 信息收集',
+        content: '我们收集以下类型的信息以提供和改进我们的服务：',
+        personalInfo: {
+          title: '个人信息',
+          name: '姓名和用户名',
+          email: '电子邮件地址',
+          password: '加密的密码信息',
+          profile: '个人资料信息'
+        },
+        usageData: {
+          title: '使用数据',
+          tasks: '任务和项目数据',
+          habits: '习惯跟踪信息',
+          goals: '目标和进度数据',
+          sessions: '使用会话和偏好设置'
+        },
+        technicalData: {
+          title: '技术数据',
+          ip: 'IP地址和设备标识符',
+          browser: '浏览器类型和版本',
+          device: '设备信息和操作系统',
+          logs: '访问日志和使用统计'
+        }
+      },
+      dataUse: {
+        title: '3. 信息使用',
+        content: '我们使用收集的信息用于以下目的：',
+        purposes: {
+          serviceProvision: '提供、维护和改进我们的服务',
+          improvement: '分析使用模式以增强用户体验',
+          communication: '与您就服务相关事宜进行沟通',
+          support: '提供客户支持和技术协助',
+          legal: '遵守法律义务和保护合法权益'
+        }
+      },
+      dataSharing: {
+        title: '4. 信息共享',
+        content: '我们不会向第三方出售、交易或租赁您的个人信息。我们只在以下情况下共享信息：',
+        exceptions: {
+          consent: '获得您的明确同意',
+          legal: '遵守法律要求或法院命令',
+          protection: '保护我们的权利、财产或安全',
+          business: '业务转让或合并的情况下'
+        }
+      },
+      dataSecurity: {
+        title: '5. 数据安全',
+        content: '我们采用行业标准的安全措施来保护您的个人信息：',
+        measures: {
+          encryption: '数据传输和存储加密',
+          access: '严格的访问控制和身份验证',
+          monitoring: '定期安全监控和漏洞评估',
+          updates: '及时的安全更新和补丁'
+        }
+      },
+      userRights: {
+        title: '6. 用户权利',
+        content: '您对您的个人数据享有以下权利：',
+        rights: {
+          access: '访问您的个人数据',
+          correction: '更正不准确的信息',
+          deletion: '删除您的个人数据',
+          portability: '数据可移植性',
+          objection: '反对某些数据处理活动'
+        }
+      },
+      cookies: {
+        title: '7. Cookie 和跟踪技术',
+        content: '我们使用 Cookie 和类似技术来改善您的体验：',
+        types: {
+          essential: '必要的功能性 Cookie',
+          functional: '增强功能的 Cookie',
+          analytics: '分析和性能 Cookie'
+        }
+      },
+      dataRetention: {
+        title: '8. 数据保留',
+        content: '我们仅在必要的时间内保留您的个人信息，以实现收集目的或满足法律要求。'
+      },
+      changes: {
+        title: '9. 政策变更',
+        content: '我们可能会不时更新此隐私政策。重大变更将在我们的网站上发布通知。'
+      },
+      contact: {
+        content: '如果您对此隐私政策有任何疑问，请联系我们：'
+      }
+    }
   },
 }
