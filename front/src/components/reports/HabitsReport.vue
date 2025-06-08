@@ -10,26 +10,26 @@
       <!-- 关键指标 -->
       <div class="grid grid-cols-1 gap-4 md:grid-cols-4">
         <div class="rounded-lg bg-gray-50 p-4 dark:bg-gray-800/50">
-          <p class="text-sm text-gray-600 dark:text-gray-400">总习惯数</p>
+          <p class="text-sm text-gray-600 dark:text-gray-400">{{ $t('reports.habits.totalHabits') }}</p>
           <p class="text-2xl font-bold text-gray-900 dark:text-white">{{ stats.totalHabits }}</p>
         </div>
         <div class="rounded-lg bg-gray-50 p-4 dark:bg-gray-800/50">
-          <p class="text-sm text-gray-600 dark:text-gray-400">活跃习惯</p>
+          <p class="text-sm text-gray-600 dark:text-gray-400">{{ $t('reports.habits.activeHabits') }}</p>
           <p class="text-2xl font-bold text-green-600 dark:text-green-400">{{ stats.activeHabits }}</p>
         </div>
         <div class="rounded-lg bg-gray-50 p-4 dark:bg-gray-800/50">
-          <p class="text-sm text-gray-600 dark:text-gray-400">平均连击</p>
-          <p class="text-2xl font-bold text-orange-600 dark:text-orange-400">{{ stats.averageStreak }}天</p>
+          <p class="text-sm text-gray-600 dark:text-gray-400">{{ $t('reports.habits.averageStreak') }}</p>
+          <p class="text-2xl font-bold text-orange-600 dark:text-orange-400">{{ stats.averageStreak }}{{ $t('common.day') }}</p>
         </div>
         <div class="rounded-lg bg-gray-50 p-4 dark:bg-gray-800/50">
-          <p class="text-sm text-gray-600 dark:text-gray-400">完成率</p>
+          <p class="text-sm text-gray-600 dark:text-gray-400">{{ $t('reports.habits.completionRate') }}</p>
           <p class="text-2xl font-bold text-blue-600 dark:text-blue-400">{{ stats.completionRate.toFixed(1) }}%</p>
         </div>
       </div>
 
       <!-- 简化的趋势图表 -->
       <div class="rounded-lg border border-gray-200 p-6 dark:border-gray-700">
-        <h3 class="mb-4 text-lg font-semibold text-gray-900 dark:text-white">习惯完成趋势</h3>
+        <h3 class="mb-4 text-lg font-semibold text-gray-900 dark:text-white">{{ $t('reports.habits.completionTrend') }}</h3>
         <div class="h-40 flex items-end justify-center space-x-2">
           <div
             v-for="(day, index) in trendData"
@@ -39,7 +39,7 @@
               'w-8 flex items-end justify-center text-xs text-white font-medium'
             ]"
             :style="{ height: `${(day.value / 100) * 160}px` }"
-            :title="`第${index + 1}天: ${day.value}%`"
+            :title="$t('reports.habits.dayLabel', { day: index + 1, value: day.value })"
           >
             {{ day.value }}
           </div>
@@ -51,6 +51,7 @@
 
 <script setup lang="ts">
 import { ref, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 interface Props {
   startDate: string
@@ -58,9 +59,10 @@ interface Props {
 }
 
 const props = defineProps<Props>()
+const { t } = useI18n()
 const loading = ref(true)
 
-// 模拟统计数据
+// Mock statistics data
 const stats = ref({
   totalHabits: 8,
   activeHabits: 6,
@@ -68,19 +70,19 @@ const stats = ref({
   completionRate: 85.3
 })
 
-// 模拟趋势数据
+// Mock trend data
 const trendData = ref(
   Array.from({ length: 7 }, (_, i) => ({
-    value: Math.floor(Math.random() * 40) + 60 // 60-100之间的随机值
+    value: Math.floor(Math.random() * 40) + 60 // Random value between 60-100
   }))
 )
 
-// 模拟加载数据
+// Mock data loading
 const loadData = async () => {
   loading.value = true
   try {
     await new Promise(resolve => setTimeout(resolve, 800))
-    // 重新生成趋势数据
+    // Regenerate trend data
     trendData.value = Array.from({ length: 7 }, (_, i) => ({
       value: Math.floor(Math.random() * 40) + 60
     }))
@@ -91,7 +93,7 @@ const loadData = async () => {
   }
 }
 
-// 监听日期变化
+// Watch for date changes
 watch(() => [props.startDate, props.endDate], () => {
   loadData()
 }, { immediate: true })

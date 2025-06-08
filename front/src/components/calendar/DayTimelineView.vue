@@ -88,6 +88,7 @@
 
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref } from 'vue'
+import { useI18n } from '@/i18n'
 import type Task from '@/services/types/TaskType'
 
 interface Props {
@@ -108,6 +109,7 @@ const emit = defineEmits<{
   taskClick: [task: Task]
 }>()
 
+const { t, locale } = useI18n()
 const currentTime = ref(new Date())
 const timelineContainer = ref<HTMLElement | null>(null)
 const activeTaskId = ref<string | null>(null)
@@ -120,7 +122,7 @@ const isToday = computed(() => {
 
 // 当前时间字符串
 const currentTimeString = computed(() => {
-  return currentTime.value.toLocaleTimeString('zh-CN', {
+  return currentTime.value.toLocaleTimeString(locale.value === 'zh' ? 'zh-CN' : 'en-US', {
     hour: '2-digit',
     minute: '2-digit'
   })
@@ -204,7 +206,7 @@ function calculateNoTimeTaskPosition(index: number) {
 
 // 格式化日期
 function formatDate(date: Date) {
-  return date.toLocaleDateString('zh-CN', {
+  return date.toLocaleDateString(locale.value === 'zh' ? 'zh-CN' : 'en-US', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',

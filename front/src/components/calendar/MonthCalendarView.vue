@@ -82,7 +82,7 @@
               v-if="day.tasks.length > 3"
               class="text-xs text-gray-500 dark:text-gray-400 font-medium p-1"
             >
-              +{{ day.tasks.length - 3 }} 更多
+              +{{ day.tasks.length - 3 }} {{ $t('common.more') }}
             </div>
           </div>
         </div>
@@ -93,6 +93,7 @@
 
 <script setup lang="ts">
 import { computed, ref } from 'vue'
+import { useI18n } from '@/i18n'
 import type Task from '@/services/types/TaskType'
 
 interface Props {
@@ -116,10 +117,19 @@ const emit = defineEmits<{
   dateClick: [date: string]
 }>()
 
+const { t, locale } = useI18n()
 const activeTaskId = ref<string | null>(null)
 
 // 星期名称
-const dayNames = ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+const dayNames = computed(() => [
+  t('taskCalendar.weekdays.monday'),
+  t('taskCalendar.weekdays.tuesday'),
+  t('taskCalendar.weekdays.wednesday'),
+  t('taskCalendar.weekdays.thursday'),
+  t('taskCalendar.weekdays.friday'),
+  t('taskCalendar.weekdays.saturday'),
+  t('taskCalendar.weekdays.sunday')
+])
 
 // 月历天数
 const calendarDays = computed<CalendarDay[]>(() => {
@@ -169,7 +179,7 @@ const calendarDays = computed<CalendarDay[]>(() => {
 
 // 格式化月份
 function formatMonth() {
-  return props.currentDate.toLocaleDateString('zh-CN', {
+  return props.currentDate.toLocaleDateString(locale.value === 'zh' ? 'zh-CN' : 'en-US', {
     year: 'numeric',
     month: 'long'
   })

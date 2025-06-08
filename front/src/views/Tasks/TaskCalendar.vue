@@ -109,14 +109,14 @@ import MonthCalendarView from '@/components/calendar/MonthCalendarView.vue'
 import { getTasks } from '@/services/taskService'
 import type Task from '@/services/types/TaskType'
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
 
 // 视图选项
-const viewOptions = [
+const viewOptions = computed(() => [
   { value: 'today' as const, label: t('taskCalendar.todayView') },
   { value: 'week' as const, label: t('taskCalendar.weekView') },
   { value: 'month' as const, label: t('taskCalendar.monthView') }
-]
+])
 
 // 响应式数据
 const currentView = ref<'today' | 'week' | 'month'>('today')
@@ -156,7 +156,7 @@ const formatDisplayDate = () => {
       if (isSameDay(date, now)) {
         return t('taskCalendar.today')
       }
-      return date.toLocaleDateString('zh-CN', {
+      return date.toLocaleDateString(locale.value === 'zh' ? 'zh-CN' : 'en-US', {
         year: 'numeric',
         month: 'long',
         day: 'numeric'
@@ -166,7 +166,7 @@ const formatDisplayDate = () => {
       const weekEnd = getWeekEnd(date)
       return `${formatShortDate(weekStart)} - ${formatShortDate(weekEnd)}`
     case 'month':
-      return date.toLocaleDateString('zh-CN', {
+      return date.toLocaleDateString(locale.value === 'zh' ? 'zh-CN' : 'en-US', {
         year: 'numeric',
         month: 'long'
       })
@@ -206,8 +206,9 @@ const handleTaskClick = (task: Task) => {
 }
 
 // 处理日期点击（用于周视图和月视图）
-const handleDateClick = (date: Date) => {
-  currentDate.value = date
+const handleDateClick = (date: string | Date) => {
+  const targetDate = typeof date === 'string' ? new Date(date) : date
+  currentDate.value = targetDate
   currentView.value = 'today'
 }
 
@@ -259,7 +260,7 @@ const getWeekEnd = (date: Date) => {
 }
 
 const formatShortDate = (date: Date) => {
-  return date.toLocaleDateString('zh-CN', {
+  return date.toLocaleDateString(locale.value === 'zh' ? 'zh-CN' : 'en-US', {
     month: 'short',
     day: 'numeric'
   })

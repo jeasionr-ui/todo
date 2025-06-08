@@ -21,7 +21,7 @@
             {{ Math.abs(change) }}%
           </span>
           <span class="ml-1 text-gray-500 dark:text-gray-400">
-            {{ change >= 0 ? '较上期增长' : '较上期下降' }}
+            {{ change >= 0 ? t('reports.stats.increase') : t('reports.stats.decrease') }}
           </span>
         </div>
       </div>
@@ -45,6 +45,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { 
   TrendingUp, 
   TrendingDown, 
@@ -72,7 +73,9 @@ const props = withDefaults(defineProps<Props>(), {
   color: 'blue'
 })
 
-// 图标映射
+const { t } = useI18n()
+
+// Icon mapping
 const iconMap = {
   TrendingUp,
   Repeat,
@@ -85,25 +88,25 @@ const iconMap = {
 
 const iconComponent = computed(() => iconMap[props.icon as keyof typeof iconMap] || TrendingUp)
 
-// 变化趋势图标
+// Change trend icon
 const changeIcon = computed(() => {
   if (props.change === undefined) return null
   return props.change >= 0 ? TrendingUp : TrendingDown
 })
 
-// 变化趋势颜色
+// Change trend color
 const changeColor = computed(() => {
   if (props.change === undefined) return ''
   return props.change >= 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'
 })
 
-// 格式化数值
+// Format value
 const formattedValue = computed(() => {
   const value = props.value.toFixed(props.suffix === '%' ? 1 : 0)
   return `${props.prefix}${value}${props.suffix}`
 })
 
-// 颜色主题
+// Color themes
 const colorClasses = {
   blue: 'bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800',
   green: 'bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800',

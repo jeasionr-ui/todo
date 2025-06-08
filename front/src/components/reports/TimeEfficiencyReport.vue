@@ -1,35 +1,35 @@
 <template>
   <div class="space-y-6">
-    <!-- 加载状态 -->
+    <!-- Loading state -->
     <div v-if="loading" class="flex justify-center py-8">
       <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-orange-600"></div>
     </div>
     
-    <!-- 数据显示 -->
+    <!-- Data display -->
     <div v-else class="space-y-6">
-      <!-- 关键指标 -->
+      <!-- Key metrics -->
       <div class="grid grid-cols-1 gap-4 md:grid-cols-4">
         <div class="rounded-lg bg-gray-50 p-4 dark:bg-gray-800/50">
-          <p class="text-sm text-gray-600 dark:text-gray-400">总时间</p>
+          <p class="text-sm text-gray-600 dark:text-gray-400">{{ $t('reports.timeEfficiency.totalTime') }}</p>
           <p class="text-2xl font-bold text-gray-900 dark:text-white">{{ formatTime(stats.totalTime) }}</p>
         </div>
         <div class="rounded-lg bg-gray-50 p-4 dark:bg-gray-800/50">
-          <p class="text-sm text-gray-600 dark:text-gray-400">有效时间</p>
+          <p class="text-sm text-gray-600 dark:text-gray-400">{{ $t('reports.timeEfficiency.effectiveTime') }}</p>
           <p class="text-2xl font-bold text-green-600 dark:text-green-400">{{ formatTime(stats.effectiveTime) }}</p>
         </div>
         <div class="rounded-lg bg-gray-50 p-4 dark:bg-gray-800/50">
-          <p class="text-sm text-gray-600 dark:text-gray-400">效率</p>
+          <p class="text-sm text-gray-600 dark:text-gray-400">{{ $t('reports.timeEfficiency.efficiency') }}</p>
           <p class="text-2xl font-bold text-orange-600 dark:text-orange-400">{{ stats.efficiency.toFixed(1) }}%</p>
         </div>
         <div class="rounded-lg bg-gray-50 p-4 dark:bg-gray-800/50">
-          <p class="text-sm text-gray-600 dark:text-gray-400">平均会话</p>
+          <p class="text-sm text-gray-600 dark:text-gray-400">{{ $t('reports.timeEfficiency.averageSession') }}</p>
           <p class="text-2xl font-bold text-blue-600 dark:text-blue-400">{{ formatTime(stats.averageSessionTime) }}</p>
         </div>
       </div>
 
-      <!-- 时间效率可视化 -->
+      <!-- Time efficiency visualization -->
       <div class="rounded-lg border border-gray-200 p-6 dark:border-gray-700">
-        <h3 class="mb-4 text-lg font-semibold text-gray-900 dark:text-white">每日效率趋势</h3>
+        <h3 class="mb-4 text-lg font-semibold text-gray-900 dark:text-white">{{ $t('reports.timeEfficiency.dailyTrend') }}</h3>
         <div class="h-40 flex items-end justify-center space-x-3">
           <div
             v-for="(day, index) in efficiencyTrend"
@@ -42,20 +42,20 @@
                 getEfficiencyColor(day.efficiency)
               ]"
               :style="{ height: `${(day.efficiency / 100) * 120}px` }"
-              :title="`第${index + 1}天: ${day.efficiency}%`"
+              :title="`${$t('common.day')} ${index + 1}: ${day.efficiency}%`"
             >
               {{ day.efficiency }}
             </div>
-            <span class="text-xs text-gray-500">第{{ index + 1 }}天</span>
+            <span class="text-xs text-gray-500">{{ $t('common.day') }} {{ index + 1 }}</span>
           </div>
         </div>
       </div>
 
-      <!-- 效率分析 -->
+      <!-- Efficiency analysis -->
       <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
-        <!-- 时间分配 -->
+        <!-- Time allocation -->
         <div class="rounded-lg border border-gray-200 p-6 dark:border-gray-700">
-          <h3 class="mb-4 text-lg font-semibold text-gray-900 dark:text-white">时间分配</h3>
+          <h3 class="mb-4 text-lg font-semibold text-gray-900 dark:text-white">{{ $t('reports.timeEfficiency.timeAllocation') }}</h3>
           <div class="space-y-3">
             <div v-for="category in timeCategories" :key="category.name" class="flex items-center justify-between">
               <span class="text-sm text-gray-700 dark:text-gray-300">{{ category.name }}</span>
@@ -72,9 +72,9 @@
           </div>
         </div>
 
-        <!-- 效率等级 -->
+        <!-- Efficiency levels -->
         <div class="rounded-lg border border-gray-200 p-6 dark:border-gray-700">
-          <h3 class="mb-4 text-lg font-semibold text-gray-900 dark:text-white">效率等级分布</h3>
+          <h3 class="mb-4 text-lg font-semibold text-gray-900 dark:text-white">{{ $t('reports.timeEfficiency.efficiencyLevels') }}</h3>
           <div class="space-y-3">
             <div v-for="level in efficiencyLevels" :key="level.name" class="flex items-center justify-between">
               <div class="flex items-center space-x-2">
@@ -92,6 +92,7 @@
 
 <script setup lang="ts">
 import { ref, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 interface Props {
   startDate: string
@@ -99,61 +100,62 @@ interface Props {
 }
 
 const props = defineProps<Props>()
+const { t } = useI18n()
 const loading = ref(true)
 
-// 模拟统计数据
+// Mock statistics data
 const stats = ref({
-  totalTime: 28800, // 8小时，以秒为单位
-  effectiveTime: 23040, // 6.4小时
+  totalTime: 28800, // 8 hours in seconds
+  effectiveTime: 23040, // 6.4 hours
   efficiency: 80.0,
-  averageSessionTime: 3600 // 1小时
+  averageSessionTime: 3600 // 1 hour
 })
 
-// 模拟效率趋势数据
+// Mock efficiency trend data
 const efficiencyTrend = ref(
   Array.from({ length: 7 }, (_, i) => ({
-    efficiency: Math.floor(Math.random() * 30) + 60 // 60-90之间的随机值
+    efficiency: Math.floor(Math.random() * 30) + 60 // Random value between 60-90
   }))
 )
 
-// 时间分类数据
+// Time categories data
 const timeCategories = ref([
-  { name: '专注工作', percentage: 65, color: 'bg-green-500' },
-  { name: '学习提升', percentage: 20, color: 'bg-blue-500' },
-  { name: '会议沟通', percentage: 10, color: 'bg-yellow-500' },
-  { name: '其他杂项', percentage: 5, color: 'bg-gray-500' }
+  { name: t('reports.timeEfficiency.categories.focusWork'), percentage: 65, color: 'bg-green-500' },
+  { name: t('reports.timeEfficiency.categories.learning'), percentage: 20, color: 'bg-blue-500' },
+  { name: t('reports.timeEfficiency.categories.meeting'), percentage: 10, color: 'bg-yellow-500' },
+  { name: t('reports.timeEfficiency.categories.other'), percentage: 5, color: 'bg-gray-500' }
 ])
 
-// 效率等级数据
+// Efficiency levels data
 const efficiencyLevels = ref([
-  { name: '高效', color: 'bg-green-500', count: 15 },
-  { name: '一般', color: 'bg-yellow-500', count: 8 },
-  { name: '低效', color: 'bg-red-500', count: 3 }
+  { name: t('reports.timeEfficiency.levels.high'), color: 'bg-green-500', count: 15 },
+  { name: t('reports.timeEfficiency.levels.medium'), color: 'bg-yellow-500', count: 8 },
+  { name: t('reports.timeEfficiency.levels.low'), color: 'bg-red-500', count: 3 }
 ])
 
-// 格式化时间显示
+// Format time display
 const formatTime = (seconds: number): string => {
   const hours = Math.floor(seconds / 3600)
   const minutes = Math.floor((seconds % 3600) / 60)
   if (hours > 0) {
-    return `${hours}h ${minutes}m`
+    return `${hours}${t('common.hour')} ${minutes}${t('common.minute')}`
   }
-  return `${minutes}m`
+  return `${minutes}${t('common.minute')}`
 }
 
-// 获取效率颜色
+// Get efficiency color
 const getEfficiencyColor = (efficiency: number): string => {
   if (efficiency >= 80) return 'bg-green-500'
   if (efficiency >= 60) return 'bg-yellow-500'
   return 'bg-red-500'
 }
 
-// 模拟加载数据
+// Mock loading data
 const loadData = async () => {
   loading.value = true
   try {
     await new Promise(resolve => setTimeout(resolve, 700))
-    // 重新生成效率趋势数据
+    // Regenerate efficiency trend data
     efficiencyTrend.value = Array.from({ length: 7 }, (_, i) => ({
       efficiency: Math.floor(Math.random() * 30) + 60
     }))
@@ -164,7 +166,7 @@ const loadData = async () => {
   }
 }
 
-// 监听日期变化
+// Watch date changes
 watch(() => [props.startDate, props.endDate], () => {
   loadData()
 }, { immediate: true })

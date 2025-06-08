@@ -105,6 +105,7 @@ const emit = defineEmits<{
 
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref } from 'vue'
+import { useI18n } from '@/i18n'
 import type Task from '@/services/types/TaskType'
 
 interface Props {
@@ -119,6 +120,7 @@ const emit = defineEmits<{
   dateClick: [date: string]
 }>()
 
+const { t, locale } = useI18n()
 const currentTime = ref(new Date())
 const activeTaskId = ref<string | null>(null)
 
@@ -139,7 +141,7 @@ const weekDays = computed(() => {
     
     days.push({
       date: date.toISOString().split('T')[0],
-      dayName: date.toLocaleDateString('zh-CN', { weekday: 'short' }),
+      dayName: date.toLocaleDateString(locale.value === 'zh' ? 'zh-CN' : 'en-US', { weekday: 'short' }),
       dayNumber: date.getDate(),
       isToday
     })
@@ -176,7 +178,7 @@ function formatWeekRange() {
   const endOfWeek = new Date(startOfWeek)
   endOfWeek.setDate(startOfWeek.getDate() + 6)
   
-  return `${startOfWeek.toLocaleDateString('zh-CN', { month: 'short', day: 'numeric' })} - ${endOfWeek.toLocaleDateString('zh-CN', { month: 'short', day: 'numeric' })}`
+  return `${startOfWeek.toLocaleDateString(locale.value === 'zh' ? 'zh-CN' : 'en-US', { month: 'short', day: 'numeric' })} - ${endOfWeek.toLocaleDateString(locale.value === 'zh' ? 'zh-CN' : 'en-US', { month: 'short', day: 'numeric' })}`
 }
 
 // 格式化小时

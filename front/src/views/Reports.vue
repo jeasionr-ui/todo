@@ -46,7 +46,7 @@
         <!-- 概览卡片 -->
         <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
           <StatsCard
-            :title="$t('reports.productivity')"
+            :title="$t('reports.types.productivity')"
             :value="stats.productivity"
             suffix="%"
             :change="getProductivityChange()"
@@ -54,7 +54,7 @@
             color="blue"
           />
           <StatsCard
-            :title="$t('reports.habits')"
+            :title="$t('reports.types.habits')"
             :value="stats.habits"
             suffix="%"
             :change="getHabitsChange()"
@@ -62,7 +62,7 @@
             color="green"
           />
           <StatsCard
-            :title="$t('reports.goals')"
+            :title="$t('reports.types.goals')"
             :value="stats.goals"
             suffix="%"
             :change="getGoalsChange()"
@@ -70,7 +70,7 @@
             color="purple"
           />
           <StatsCard
-            :title="$t('reports.timeEfficiency')"
+            :title="$t('reports.types.timeEfficiency')"
             :value="stats.timeEfficiency"
             suffix="%"
             :change="getTimeEfficiencyChange()"
@@ -94,7 +94,7 @@
                     : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300'
                 ]"
               >
-                {{ $t(`reports.${tab.key}`) }}
+                {{ $t(`reports.types.${tab.key}`) }}
               </button>
             </nav>
           </div>
@@ -159,6 +159,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
+import { useI18n } from 'vue-i18n'
 import AdminLayout from '@/components/layout/AdminLayout.vue'
 import PageBreadcrumb from '@/components/common/PageBreadcrumb.vue'
 import StatsCard from '@/components/reports/StatsCard.vue'
@@ -170,11 +171,12 @@ import TasksReport from '@/components/reports/TasksReport.vue'
 import PomodoroReport from '@/components/reports/PomodoroReport.vue'
 import ExportDialog from '@/components/reports/ExportDialog.vue'
 
+const { t } = useI18n()
 const loading = ref(false)
 const activeTab = ref('productivity')
 const showExportDialog = ref(false)
 
-// 简化的统计数据，实际应该从各个报表组件获取
+// Simplified statistics data, should be fetched from respective report components
 const stats = ref({
   productivity: 85,
   habits: 92,
@@ -182,28 +184,28 @@ const stats = ref({
   timeEfficiency: 88
 })
 
-// 日期范围
+// Date range
 const dateRange = ref({
-  start: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 30天前
-  end: new Date().toISOString().split('T')[0] // 今天
+  start: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 30 days ago
+  end: new Date().toISOString().split('T')[0] // today
 })
 
-// 标签页配置
+// Tab configuration
 const tabs = [
-  { key: 'productivity', label: '生产力' },
-  { key: 'habits', label: '习惯跟踪' },
-  { key: 'goals', label: '目标完成' },
-  { key: 'timeEfficiency', label: '时间效率' },
-  { key: 'taskStats', label: '任务统计' },
-  { key: 'pomodoro', label: '番茄工作法' }
+  { key: 'productivity' },
+  { key: 'habits' },
+  { key: 'goals' },
+  { key: 'timeEfficiency' },
+  { key: 'taskStats' },
+  { key: 'pomodoro' }
 ]
 
-// 加载报表数据（简化版）
+// Load reports data (simplified version)
 const loadReports = async () => {
   loading.value = true
   try {
-    // 这里可以加载概览数据
-    await new Promise(resolve => setTimeout(resolve, 500)) // 模拟加载
+    // Load overview data here
+    await new Promise(resolve => setTimeout(resolve, 500)) // simulate loading
   } catch (error) {
     console.error('Failed to load reports:', error)
   } finally {
@@ -211,19 +213,22 @@ const loadReports = async () => {
   }
 }
 
-// 导出数据
+// Export data
 const exportData = () => {
   showExportDialog.value = true
 }
 
 const handleExported = (data: { format: string, filename: string }) => {
-  console.log(`数据已导出为 ${data.format.toUpperCase()} 格式: ${data.filename}`)
+  console.log(t('reports.exportSuccess', { 
+    format: data.format.toUpperCase(), 
+    filename: data.filename 
+  }))
   showExportDialog.value = false
 }
 
-// 获取变化百分比（模拟数据，实际应该从 API 获取对比数据）
+// Get percentage change (mock data, should fetch comparison data from API)
 const getProductivityChange = () => {
-  return Math.floor(Math.random() * 20) - 10 // -10 到 +10 之间的随机值
+  return Math.floor(Math.random() * 20) - 10 // random value between -10 to +10
 }
 
 const getHabitsChange = () => {

@@ -58,6 +58,14 @@ export default {
     // App info
     appDescription: 'ToDo App - Your personal task and habit management tool',
     welcome: 'Welcome back',
+    
+    // Time units
+    minute: 'minute',
+    hour: 'hour',
+    day: 'day',
+    week: 'week',
+    month: 'month',
+    year: 'year',
   },
 
   // Pagination component
@@ -217,6 +225,10 @@ export default {
     roleManagement: 'Role Management',
     permissionManagement: 'Permission Management',
     toast: 'Toast Notifications',
+    // Menu group titles
+    mainFeatures: 'Main Functions',
+    userProfile: 'User Profile',
+    securitySettings: 'Security Settings',
   },
 
   // Report Analysis
@@ -226,15 +238,107 @@ export default {
     startDate: 'Start Date',
     endDate: 'End Date',
     export: 'Export Data',
+    exportSuccess: 'Data exported as {format} format: {filename}',
     
     // Report types
-    productivity: 'Productivity',
-    habits: 'Habit Tracking',
-    goals: 'Goal Completion',
-    timeEfficiency: 'Time Efficiency',
-    taskStats: 'Task Statistics',
-    pomodoro: 'Pomodoro Method',
+    types: {
+      productivity: 'Productivity',
+      habits: 'Habit Tracking',
+      goals: 'Goal Completion',
+      timeEfficiency: 'Time Efficiency',
+      taskStats: 'Task Statistics',
+      pomodoro: 'Pomodoro Method',
+    },
     
+    // Common statistics terms
+    stats: {
+      total: 'Total',
+      totalTasks: 'Total Tasks',
+      completed: 'Completed',
+      completedTasks: 'Completed',
+      pending: 'In Progress',
+      pendingTasks: 'In Progress',
+      active: 'Active',
+      activeHabits: 'Active Habits',
+      completionRate: 'Completion Rate',
+      average: 'Average',
+      trend: 'Trend',
+      distribution: 'Distribution',
+      analysis: 'Analysis',
+      sessions: 'Sessions',
+      totalSessions: 'Total Sessions',
+      completedSessions: 'Completed Sessions',
+      focusTime: 'Focus Time',
+      totalFocusTime: 'Total Focus Time',
+      efficiency: 'Efficiency',
+      streak: 'Streak',
+      averageStreak: 'Average Streak',
+      level: 'Level',
+      increase: 'Increase from last period',
+      decrease: 'Decrease from last period',
+      totalGoals: 'Total Goals',
+      completedGoals: 'Completed',
+      averageProgress: 'Average Progress',
+      onTrackGoals: 'On Track',
+      totalHabits: 'Total Habits',
+      completionTrend: 'Completion Trend',
+      priorityDistribution: 'Priority Distribution',
+      statusDistribution: 'Status Distribution',
+      tagUsage: 'Tag Usage Frequency',
+      overdueAnalysis: 'Overdue Tasks Analysis',
+      overdueTasks: 'Overdue Tasks',
+      avgDaysOverdue: 'Average Days Overdue',
+      overdueRate: 'Overdue Rate',
+      highPriority: 'High Priority',
+      mediumPriority: 'Medium Priority',
+      lowPriority: 'Low Priority',
+      inProgress: 'In Progress',
+      todo: 'To Do',
+      avgSessionLength: 'Average Session Length',
+      breakTime: 'Break Time',
+      avgEfficiency: 'Average Efficiency'
+    },
+    
+    // Pomodoro statistics
+    pomodoro: {
+      focusTime: 'Focus Time',
+      averageSession: 'Average Session',
+      sessionStatus: 'Session Status',
+      efficiency: 'Efficiency Indicators',
+      completionRate: 'Completion Rate',
+      streakDays: 'Streak Days',
+      productivityScore: 'Productivity Score',
+      timeDistribution: 'Time Distribution',
+      sessionType: {
+        completed: 'Completed',
+        interrupted: 'Interrupted',
+        skipped: 'Skipped'
+      }
+    },
+    
+    // Time efficiency report
+    timeEfficiency: {
+      title: 'Time Efficiency Report',
+      totalTime: 'Total Time',
+      effectiveTime: 'Effective Time',
+      efficiency: 'Efficiency',
+      averageSession: 'Average Session',
+      dailyTrend: 'Daily Efficiency Trend',
+      timeAllocation: 'Time Allocation',
+      efficiencyLevels: 'Efficiency Levels Distribution',
+      categories: {
+        focusWork: 'Focus Work',
+        learning: 'Learning',
+        meeting: 'Meetings',
+        other: 'Other'
+      },
+      levels: {
+        high: 'High Efficiency',
+        medium: 'Medium Efficiency',
+        low: 'Low Efficiency'
+      }
+    },
+
     // Task reports
     tasks: {
       title: 'Task Statistics Report',
@@ -250,6 +354,50 @@ export default {
       overdueTasks: 'Overdue Tasks',
       avgDaysOverdue: 'Average Days Overdue',
       overdueRate: 'Overdue Rate'
+    },
+
+    // Productivity report
+    productivity: {
+      title: 'Productivity Report',
+      totalTasks: 'Total Tasks',
+      completedTasks: 'Completed',
+      completionRate: 'Completion Rate',
+      averageTime: 'Average Time',
+      trend: 'Productivity Trend',
+      insights: 'Data Insights',
+      recommendations: 'Improvement Suggestions',
+      noData: 'No productivity data available'
+    },
+
+    // Habits report
+    habits: {
+      title: 'Habits Tracking Report',
+      totalHabits: 'Total Habits',
+      activeHabits: 'Active Habits',
+      averageStreak: 'Average Streak',
+      completionRate: 'Completion Rate',
+      completionTrend: 'Habit Completion Trend',
+      dayLabel: 'Day {day}: {value}%',
+      noData: 'No habits data available'
+    },
+
+    // Goals report
+    goals: {
+      title: 'Goals Completion Report',
+      totalGoals: 'Total Goals',
+      completedGoals: 'Completed',
+      averageProgress: 'Average Progress',
+      onTrackGoals: 'On Track',
+      progressVisualization: 'Goals Progress Visualization',
+      noData: 'No goals data available',
+      // Sample goal names
+      sampleGoals: {
+        learnNewSkill: 'Learn New Skill',
+        fitnessGoal: 'Fitness Plan',
+        readingGoal: 'Reading Goal',
+        projectDevelopment: 'Project Development',
+        socialImprovement: 'Social Improvement'
+      }
     }
   },
 
@@ -390,7 +538,9 @@ export default {
     status: 'Status',
     progress: 'Progress',
     startDate: 'Start Date',
+    selectStartDate: 'Select start date',
     targetDate: 'Target Date',
+    selectTargetDate: 'Select target date',
     completedDate: 'Completed Date',
     parentGoal: 'Parent Goal',
     noParentGoal: 'No Parent Goal',
@@ -1264,6 +1414,15 @@ export default {
     today: 'Today',
     noTime: 'No time',
     moreTasks: 'more tasks',
+    weekdays: {
+      monday: 'Mon',
+      tuesday: 'Tue',
+      wednesday: 'Wed', 
+      thursday: 'Thu',
+      friday: 'Fri',
+      saturday: 'Sat',
+      sunday: 'Sun'
+    }
   },
   
   // Dashboard

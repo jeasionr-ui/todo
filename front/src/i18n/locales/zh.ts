@@ -58,6 +58,14 @@ export default {
     // 应用信息
     appDescription: 'Todo List 是一款简单易用的任务管理应用，帮助您高效管理日常任务和习惯养成。',
     welcome: '欢迎回来',
+
+    // 时间单位
+    minute: '分钟',
+    hour: '小时',
+    day: '天',
+    week: '周',
+    month: '月',
+    year: '年',
   },
 
   // 分页组件
@@ -215,6 +223,10 @@ export default {
     roleManagement: '角色管理',
     permissionManagement: '权限管理',
     toast: '消息提示',
+    // 菜单组标题
+    mainFeatures: '主要功能',
+    userProfile: '用户资料',
+    securitySettings: '安全设置',
   },
 
   // 报表分析
@@ -224,22 +236,49 @@ export default {
     startDate: '开始日期',
     endDate: '结束日期',
     export: '导出数据',
+    exportSuccess: '数据已导出为 {format} 格式: {filename}',
     
     // 报表类型
-    productivity: '生产力',
-    habits: '习惯跟踪',
-    goals: '目标完成',
-    timeEfficiency: '时间效率',
-    taskStats: '任务统计',
-    pomodoro: '番茄工作法',
+    types: {
+      productivity: '生产力',
+      habits: '习惯跟踪',
+      goals: '目标完成',
+      timeEfficiency: '时间效率',
+      taskStats: '任务统计',
+      pomodoro: '番茄工作法',
+    },
     
-    // 任务报表
-    tasks: {
-      title: '任务统计报告',
+    // 通用统计术语
+    stats: {
+      total: '总数',
       totalTasks: '总任务数',
-      completedTasks: '已完成任务',
-      pendingTasks: '待处理任务',
+      completed: '已完成',
+      completedTasks: '已完成',
+      pending: '进行中',
+      pendingTasks: '进行中',
+      active: '活跃',
+      activeHabits: '活跃习惯',
       completionRate: '完成率',
+      average: '平均',
+      trend: '趋势',
+      distribution: '分布',
+      analysis: '分析',
+      sessions: '会话',
+      totalSessions: '总会话数',
+      completedSessions: '完成会话',
+      focusTime: '专注时间',
+      totalFocusTime: '总专注时间',
+      efficiency: '效率',
+      streak: '连续',
+      averageStreak: '平均连击',
+      level: '等级',
+      increase: '较上期增长',
+      decrease: '较上期下降',
+      totalGoals: '总目标数',
+      completedGoals: '已完成',
+      averageProgress: '平均进度',
+      onTrackGoals: '正常进行',
+      totalHabits: '总习惯数',
       completionTrend: '完成趋势',
       priorityDistribution: '优先级分布',
       statusDistribution: '状态分布',
@@ -247,7 +286,99 @@ export default {
       overdueAnalysis: '逾期任务分析',
       overdueTasks: '逾期任务',
       avgDaysOverdue: '平均逾期天数',
-      overdueRate: '逾期率'
+      overdueRate: '逾期率',
+      highPriority: '高优先级',
+      mediumPriority: '中优先级',
+      lowPriority: '低优先级',
+      inProgress: '进行中',
+      todo: '待开始',
+      avgSessionLength: '平均会话时长',
+      breakTime: '休息时间',
+      avgEfficiency: '平均效率'
+    },
+    
+    // 番茄钟统计
+    pomodoro: {
+      focusTime: '专注时间',
+      averageSession: '平均会话',
+      sessionStatus: '会话状态',
+      efficiency: '效率指标',
+      completionRate: '完成率',
+      streakDays: '连续天数',
+      productivityScore: '生产力得分',
+      timeDistribution: '时间段分布',
+      sessionType: {
+        completed: '完成',
+        interrupted: '中断',
+        skipped: '跳过'
+      }
+    },
+    
+    // 时间效率报表
+    timeEfficiency: {
+      title: '时间效率报告',
+      totalTime: '总时间',
+      effectiveTime: '有效时间',
+      efficiency: '效率',
+      averageSession: '平均会话',
+      dailyTrend: '每日效率趋势',
+      timeAllocation: '时间分配',
+      efficiencyLevels: '效率等级分布',
+      categories: {
+        focusWork: '专注工作',
+        learning: '学习提升',
+        meeting: '会议沟通',
+        other: '其他杂项'
+      },
+      levels: {
+        high: '高效',
+        medium: '一般',
+        low: '低效'
+      }
+    },
+    
+    // 生产力报表
+    productivity: {
+      title: '生产力报告',
+      totalTasks: '总任务数',
+      completedTasks: '已完成',
+      completionRate: '完成率',
+      averageTime: '平均用时',
+      trend: '生产力趋势',
+      insights: '数据洞察',
+      recommendations: '改进建议',
+      noData: '暂无生产力数据'
+    },
+
+    // 习惯报表
+    habits: {
+      title: '习惯跟踪报告',
+      totalHabits: '总习惯数',
+      activeHabits: '活跃习惯',
+      averageStreak: '平均连击',
+      completionRate: '完成率',
+      completionTrend: '习惯完成趋势',
+      dayLabel: '第{day}天: {value}%',
+      noData: '暂无习惯数据'
+    },
+
+    // 目标报表
+    goals: {
+      title: '目标完成报告',
+      totalGoals: '总目标数',
+      completedGoals: '已完成',
+      averageProgress: '平均进度',
+      onTrackGoals: '正常进行',
+      progressVisualization: '目标进度可视化',
+      noData: '暂无目标数据',
+      // 示例目标名称
+      sampleGoals: {
+        learnNewSkill: '学习新技能',
+        fitnessGoal: '健身计划',
+        readingGoal: '读书目标',
+        projectDevelopment: '项目开发',
+        socialImprovement: '社交改善'
+      }
     }
   },
 
@@ -388,7 +519,9 @@ export default {
     status: '状态',
     progress: '进度',
     startDate: '开始日期',
+    selectStartDate: '选择开始日期',
     targetDate: '目标日期',
+    selectTargetDate: '选择目标日期',
     completedDate: '完成日期',
     parentGoal: '父目标',
     noParentGoal: '无父目标',
@@ -1262,6 +1395,15 @@ export default {
     today: '今天',
     noTime: '无时间',
     moreTasks: '更多任务',
+    weekdays: {
+      monday: '周一',
+      tuesday: '周二', 
+      wednesday: '周三',
+      thursday: '周四',
+      friday: '周五',
+      saturday: '周六',
+      sunday: '周日'
+    }
   },
   
   // Dashboard

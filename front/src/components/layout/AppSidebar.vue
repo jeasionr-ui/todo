@@ -172,7 +172,7 @@ const { isExpanded, isMobileOpen, isHovered, openSubmenu } = useSidebar();
 
 const menuGroups = [
   {
-    title: "主要功能",
+    title: t('menu.mainFeatures'),
     items: [
       {
         icon: GridIcon,
@@ -212,16 +212,16 @@ const menuGroups = [
     ],
   },
   {
-    title: "用户管理",
+    title: t('menu.userManagement'),
     items: [
       {
         icon: UserCircleIcon,
-        name: "用户资料",
+        name: t('menu.userProfile'),
         path: "/profile",
       },
       {
         icon: PlugInIcon,
-        name: "安全设置",
+        name: t('menu.securitySettings'),
         path: "/security",
       },
     ],

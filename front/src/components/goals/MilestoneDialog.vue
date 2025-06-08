@@ -56,11 +56,19 @@
               <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
                 {{ $t('goal.targetDate') }}
               </label>
-              <input
-                v-model="form.targetDate"
-                type="date"
-                class="w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm focus:border-brand-500 focus:ring-0 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
-              />
+              <div class="relative">
+                <flat-pickr
+                  v-model="targetDateValue"
+                  :config="flatpickrConfig"
+                  class="w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm focus:border-brand-500 focus:ring-0 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+                  :placeholder="$t('goal.selectTargetDate')"
+                />
+                <span class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-gray-500 dark:text-gray-400">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M5.5 1.5V4.5M10.5 1.5V4.5M2 7.5H14M3.5 2.5H12.5C13.0523 2.5 13.5 2.94772 13.5 3.5V13.5C13.5 14.0523 13.0523 14.5 12.5 14.5H3.5C2.94772 14.5 2.5 14.0523 2.5 13.5V3.5C2.5 2.94772 2.94772 2.5 3.5 2.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+              </div>
             </div>
 
             <!-- 顺序 -->
@@ -116,8 +124,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, watch, onMounted } from 'vue'
+import { ref, reactive, watch, onMounted, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
+import FlatPickr from 'vue-flatpickr-component'
+import 'flatpickr/dist/flatpickr.css'
+import { useFlatPickr } from '@/composables/useFlatPickr'
 import { goalService } from '@/services/goalService'
 import type { GoalMilestone, CreateMilestoneRequest, UpdateMilestoneRequest } from '@/services/types/GoalType'
 import { toastService } from '@/services/toastService'
@@ -149,6 +160,17 @@ const form = reactive<CreateMilestoneRequest & UpdateMilestoneRequest>({
   targetDate: '',
   order: 1,
   isCompleted: false
+})
+
+// Flatpickr configuration
+const { flatpickrConfig } = useFlatPickr()
+
+// Computed properties for flatpickr v-model compatibility
+const targetDateValue = computed({
+  get: () => form.targetDate || null,
+  set: (value: string | null) => {
+    form.targetDate = value || ''
+  }
 })
 
 // 方法

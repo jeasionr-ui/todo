@@ -10,26 +10,26 @@
       <!-- 关键指标 -->
       <div class="grid grid-cols-1 gap-4 md:grid-cols-4">
         <div class="rounded-lg bg-gray-50 p-4 dark:bg-gray-800/50">
-          <p class="text-sm text-gray-600 dark:text-gray-400">总任务数</p>
+          <p class="text-sm text-gray-600 dark:text-gray-400">{{ $t('reports.productivity.totalTasks') }}</p>
           <p class="text-2xl font-bold text-gray-900 dark:text-white">{{ data.totalTasks }}</p>
         </div>
         <div class="rounded-lg bg-gray-50 p-4 dark:bg-gray-800/50">
-          <p class="text-sm text-gray-600 dark:text-gray-400">已完成</p>
+          <p class="text-sm text-gray-600 dark:text-gray-400">{{ $t('reports.productivity.completedTasks') }}</p>
           <p class="text-2xl font-bold text-green-600 dark:text-green-400">{{ data.completedTasks }}</p>
         </div>
         <div class="rounded-lg bg-gray-50 p-4 dark:bg-gray-800/50">
-          <p class="text-sm text-gray-600 dark:text-gray-400">完成率</p>
+          <p class="text-sm text-gray-600 dark:text-gray-400">{{ $t('reports.productivity.completionRate') }}</p>
           <p class="text-2xl font-bold text-blue-600 dark:text-blue-400">{{ data.completionRate.toFixed(1) }}%</p>
         </div>
         <div class="rounded-lg bg-gray-50 p-4 dark:bg-gray-800/50">
-          <p class="text-sm text-gray-600 dark:text-gray-400">平均用时</p>
+          <p class="text-sm text-gray-600 dark:text-gray-400">{{ $t('reports.productivity.averageTime') }}</p>
           <p class="text-2xl font-bold text-purple-600 dark:text-purple-400">{{ formatTime(data.averageTime) }}</p>
         </div>
       </div>
 
       <!-- 趋势图表 -->
       <div class="rounded-lg border border-gray-200 p-6 dark:border-gray-700">
-        <h3 class="mb-4 text-lg font-semibold text-gray-900 dark:text-white">生产力趋势</h3>
+        <h3 class="mb-4 text-lg font-semibold text-gray-900 dark:text-white">{{ $t('reports.productivity.trend') }}</h3>
         <div class="h-80">
           <apexchart
             v-if="chartOptions && chartSeries.length > 0"
@@ -45,7 +45,7 @@
       <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
         <!-- 洞察 -->
         <div class="rounded-lg border border-gray-200 p-6 dark:border-gray-700">
-          <h3 class="mb-4 text-lg font-semibold text-gray-900 dark:text-white">数据洞察</h3>
+          <h3 class="mb-4 text-lg font-semibold text-gray-900 dark:text-white">{{ $t('reports.productivity.insights') }}</h3>
           <ul class="space-y-3">
             <li
               v-for="(insight, index) in data.insights"
@@ -60,7 +60,7 @@
 
         <!-- 建议 -->
         <div class="rounded-lg border border-gray-200 p-6 dark:border-gray-700">
-          <h3 class="mb-4 text-lg font-semibold text-gray-900 dark:text-white">改进建议</h3>
+          <h3 class="mb-4 text-lg font-semibold text-gray-900 dark:text-white">{{ $t('reports.productivity.recommendations') }}</h3>
           <ul class="space-y-3">
             <li
               v-for="(recommendation, index) in data.recommendations"
@@ -77,13 +77,14 @@
     
     <!-- 暂无数据状态 -->
     <div v-else class="py-12 text-center">
-      <p class="text-gray-500 dark:text-gray-400">暂无生产力数据</p>
+      <p class="text-gray-500 dark:text-gray-400">{{ $t('reports.productivity.noData') }}</p>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed, ref, onMounted, watch } from 'vue'
+import { useI18n } from '@/i18n'
 import type { ProductivityReport } from '@/services/reportService'
 
 interface Props {
@@ -94,6 +95,7 @@ interface Props {
 
 const props = defineProps<Props>()
 const loading = ref(true)
+const { t } = useI18n()
 
 // 模拟数据
 const data = ref<ProductivityReport | null>(null)
@@ -143,11 +145,11 @@ watch(() => [props.startDate, props.endDate], () => {
 // 格式化时间（分钟转换为小时分钟）
 const formatTime = (minutes: number): string => {
   if (minutes < 60) {
-    return `${minutes.toFixed(0)}分钟`
+    return `${minutes.toFixed(0)}${t('common.minute')}`
   }
   const hours = Math.floor(minutes / 60)
   const remainingMinutes = minutes % 60
-  return `${hours}小时${remainingMinutes.toFixed(0)}分钟`
+  return `${hours}${t('common.hour')}${remainingMinutes.toFixed(0)}${t('common.minute')}`
 }
 
 // 图表配置
