@@ -59,9 +59,22 @@ export const userService = {
 
   // 获取登录历史
   async getLoginHistory(): Promise<User['loginHistory']> {
-    const user = this.getCurrentUser()
-    // 实际应用应通过API获取，临时兼容：返回当前用户的 loginHistory 字段
-    return user && user.loginHistory ? user.loginHistory : []
+    try {
+      const user = this.getCurrentUser()
+      if (!user) return []
+      
+      const token = localStorage.getItem('token')
+      const res = await axios.get(`${API_BASE}/login-history/${user.id}`, {
+        headers: token ? { Authorization: `Bearer ${token}` } : {}
+      })
+      
+      return res.data.loginHistory || []
+    } catch (error) {
+      console.error('Failed to fetch login history:', error)
+      // 降级方案：返回当前用户的 loginHistory 字段
+      const user = this.getCurrentUser()
+      return user && user.loginHistory ? user.loginHistory : []
+    }
   },
 
   // 修改密码

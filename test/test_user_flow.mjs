@@ -28,11 +28,36 @@ async function testUserFlow() {
       
       // 2. 登录测试
       console.log('🔐 测试用户登录...');
-      const loginResult = await loginBiz(userData.email, userData.password);
+      // 创建mock请求对象来测试登录历史记录
+      const mockReq = {
+        headers: {
+          'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+          'x-forwarded-for': '192.168.1.100',
+          'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8'
+        },
+        connection: {
+          remoteAddress: '192.168.1.100'
+        },
+        ip: '192.168.1.100'
+      };
+      const loginResult = await loginBiz(userData.email, userData.password, mockReq);
       if (loginResult && loginResult.user) {
         console.log('✅ 用户登录成功');
         console.log('   - 登录用户:', loginResult.user.email);
         console.log('   - Token验证:', loginResult.token ? '通过' : '失败');
+        console.log('   - 登录历史记录:', loginResult.user.loginHistory ? `已记录 ${loginResult.user.loginHistory.length} 条` : '无记录');
+        
+        // 检查登录历史内容
+        if (loginResult.user.loginHistory && loginResult.user.loginHistory.length > 0) {
+          const latestLogin = loginResult.user.loginHistory[0];
+          console.log('   - 最新登录记录:');
+          console.log(`     * 设备: ${latestLogin.device}`);
+          console.log(`     * 浏览器: ${latestLogin.browser}`);
+          console.log(`     * 操作系统: ${latestLogin.os}`);
+          console.log(`     * IP地址: ${latestLogin.ipAddress}`);
+          console.log(`     * 位置: ${latestLogin.location}`);
+          console.log(`     * 时间: ${latestLogin.time}`);
+        }
       } else {
         console.log('❌ 用户登录失败');
       }
@@ -86,7 +111,7 @@ async function testUserFlow() {
       
       // 6. 测试错误的登录
       console.log('🚫 测试错误密码登录...');
-      const wrongLoginResult = await loginBiz(userData.email, 'wrongpassword');
+      const wrongLoginResult = await loginBiz(userData.email, 'wrongpassword', mockReq);
       if (!wrongLoginResult) {
         console.log('✅ 错误密码登录正确拒绝');
       } else {
