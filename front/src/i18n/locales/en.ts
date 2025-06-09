@@ -1,1733 +1,1443 @@
+// Auto-generated merged translation file
 export default {
-  // Common
-  common: {
-    // Basic operations
-    save: 'Save',
-    cancel: 'Cancel',
-    confirm: 'Confirm',
-    edit: 'Edit',
-    delete: 'Delete',
-    create: 'Create',
-    update: 'Update',
-    add: 'Add',
-    apply: 'Apply',
-    reset: 'Reset',
-    clear: 'Clear',
-    back: 'Back',
-    next: 'Next',
-    previous: 'Previous',
-    close: 'Close',
-    done: 'Done',
-    skip: 'Skip',
-    saving: 'saving...',
-    processing: 'processing...',
-
-    // Status
-    loading: 'Loading...',
-    success: 'Operation successful',
-    failed: 'Operation failed',
-    error: 'Operation failed',
-    warning: 'Warning',
-    info: 'Info',
-    networkError: 'Network error, please check your connection',
-
-    // Navigation
-    home: 'Home',
-    dashboard: 'Dashboard',
-    profile: 'Profile',
-    editProfile: 'Edit Profile',
-    settings: 'Settings',
-    support: 'Support',
-
-    // Search and filtering
-    search: 'Search',
-    searchPlaceholder: 'Search or enter command...',
-    filter: 'Filter',
-    sort: 'Sort',
-
-    // Data states
-    noData: 'No data',
-    more: 'More',
-    yes: 'Yes',
-    no: 'No',
-    due: 'Due',
-    view: 'View',
-    to: 'to',
-    page: 'Page',
-    of: 'of',
-    perPage: 'Per page',
-
-    // App info
-    appDescription: 'Bingo ToDo - Your personal task and habit management tool',
-    welcome: 'Welcome back',
-
-    // Time units
-    minute: 'minute',
-    hour: 'hour',
-    day: 'day',
-    week: 'week',
-    month: 'month',
-    year: 'year',
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "edit": "Edit",
+    "delete": "Delete",
+    "create": "Create",
+    "update": "Update",
+    "add": "Add",
+    "apply": "Apply",
+    "reset": "Reset",
+    "clear": "Clear",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "close": "Close",
+    "done": "Done",
+    "skip": "Skip",
+    "saving": "saving...",
+    "processing": "processing...",
+    "loading": "Loading...",
+    "success": "Operation successful",
+    "failed": "Operation failed",
+    "error": "Operation failed",
+    "warning": "Warning",
+    "info": "Info",
+    "networkError": "Network error, please check your connection",
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "profile": "Profile",
+    "editProfile": "Edit Profile",
+    "settings": "Settings",
+    "support": "Support",
+    "search": "Search",
+    "searchPlaceholder": "Search or enter command...",
+    "filter": "Filter",
+    "sort": "Sort",
+    "noData": "No data",
+    "more": "More",
+    "yes": "Yes",
+    "no": "No",
+    "due": "Due",
+    "view": "View",
+    "to": "to",
+    "page": "Page",
+    "of": "of",
+    "perPage": "Per page",
+    "appDescription": "Bingo ToDo - Your personal task and habit management tool",
+    "welcome": "Welcome back",
+    "minute": "minute",
+    "hour": "hour",
+    "day": "day",
+    "week": "week",
+    "month": "month",
+    "year": "year"
   },
-
-  // Pagination component
-  pagination: {
-    previous: 'Previous',
-    next: 'Next',
-    showing: 'Showing',
-    to: 'to',
-    of: 'of',
-    results: 'results',
-    page: 'Page',
-    perPage: 'per page',
-    items: 'items',
-    pageSize: 'Page Size',
+  "pagination": {
+    "previous": "Previous",
+    "next": "Next",
+    "showing": "Showing",
+    "to": "to",
+    "of": "of",
+    "results": "results",
+    "page": "Page",
+    "perPage": "per page",
+    "items": "items",
+    "pageSize": "Page Size"
   },
-
-  // Dialog
-  dialog: {
-    archive: 'archive',
-    unarchive: 'unarchive',
-    archived: 'archived',
-    unarchived: 'unarchived',
-    archive_success: 'Archived Successfully',
-    archive_failure: 'Archived Failed',
-    unarchive_success: 'Unarchived Successfully',
-    unarchive_failure: 'Unarchived Failed',
+  "dialog": {
+    "archive": "archive",
+    "unarchive": "unarchive",
+    "archived": "archived",
+    "unarchived": "unarchived",
+    "archive_success": "Archived Successfully",
+    "archive_failure": "Archived Failed",
+    "unarchive_success": "Unarchived Successfully",
+    "unarchive_failure": "Unarchived Failed"
   },
-
-  // Forms
-  form: {
-    selectDate: 'Select date',
+  "form": {
+    "selectDate": "Select date"
   },
-
-  // Authentication
-  auth: {
-    signIn: 'Sign In',
-    signUp: 'Sign Up',
-    signOut: 'Sign Out',
-    forgotPassword: 'Forgot Password',
-    resetPassword: 'Reset Password',
-    rememberMe: 'Remember Me',
-
-    enterEmailForReset: 'Email to reset your password',
-    backSingIn: 'Back to ',
-
-    // Form fields
-    email: 'Email',
-    password: 'Password',
-    confirmPassword: 'Confirm Password',
-    phoneNumber: 'Phone Number',
-    verificationCode: 'Verification Code',
-    sendCode: 'Send Code',
-    firstName: 'First Name',
-    lastName: 'Last Name',
-    nickname: 'Nickname',
-
-    // Prompts
-    agreeTerms: 'I have read and agree to the Terms of Service and Privacy Policy',
-    agreeToTermsAndPrivacy: 'I have read and agree to the Terms of Service and Privacy Policy',
-    alreadyHaveAccount: 'Already have an account?',
-    noAccount: "Don't have an account?",
-    createAccount: 'Create Account',
-    signInWith: 'Sign in with third-party account',
-    signUpWith: 'Sign up with third-party account',
-    or: 'Or',
-    enterEmailPassword: 'Please enter your email and password to sign in',
-    enterInfoToSignUp: 'Please fill in the information to complete registration',
-
-    // Validation
-    passwordNotMatch: 'Passwords do not match',
-    invalidEmail: 'Invalid email format',
-    invalidPhone: 'Invalid phone number format',
-    twoFactorAuth: 'Two-Factor Authentication',
-    enterVerificationCode: 'Please enter the verification code',
-    accountSecurity: 'Account Security',
-
-    // Login error classification
-    invalidCredentials: 'Invalid username or password',
-    loginFailed: 'Login failed, please try again later',
-    serverError: 'Server error, please try again later',
-    networkError: 'Network connection failed, please check your network',
-    accountLocked: 'Account has been locked, please contact administrator',
-    tooManyAttempts: 'Too many login attempts, please try again later',
+  "auth": {
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "signOut": "Sign Out",
+    "forgotPassword": "Forgot Password",
+    "resetPassword": "Reset Password",
+    "rememberMe": "Remember Me",
+    "enterEmailForReset": "Email to reset your password",
+    "backSingIn": "Back to ",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "phoneNumber": "Phone Number",
+    "verificationCode": "Verification Code",
+    "sendCode": "Send Code",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "nickname": "Nickname",
+    "agreeTerms": "I have read and agree to the Terms of Service and Privacy Policy",
+    "agreeToTermsAndPrivacy": "I have read and agree to the Terms of Service and Privacy Policy",
+    "alreadyHaveAccount": "Already have an account?",
+    "noAccount": "Don't have an account?",
+    "createAccount": "Create Account",
+    "signInWith": "Sign in with third-party account",
+    "signUpWith": "Sign up with third-party account",
+    "or": "Or",
+    "enterEmailPassword": "Please enter your email and password to sign in",
+    "enterInfoToSignUp": "Please fill in the information to complete registration",
+    "passwordNotMatch": "Passwords do not match",
+    "invalidEmail": "Invalid email format",
+    "invalidPhone": "Invalid phone number format",
+    "twoFactorAuth": "Two-Factor Authentication",
+    "enterVerificationCode": "Please enter the verification code",
+    "accountSecurity": "Account Security",
+    "invalidCredentials": "Invalid username or password",
+    "loginFailed": "Login failed, please try again later",
+    "serverError": "Server error, please try again later",
+    "networkError": "Network connection failed, please check your network",
+    "accountLocked": "Account has been locked, please contact administrator",
+    "tooManyAttempts": "Too many login attempts, please try again later"
   },
-
-  // User
-  user: {
-    profile: 'Profile',
-    settings: 'Account Settings',
-    security: 'Security Settings',
-    notifications: 'Notification Settings',
-    activity: 'Activity Log',
-    achievements: 'Achievement System',
-
-    // Personal information
-    personalInfo: 'Personal Information',
-    address: 'Address Information',
-    bio: 'Bio',
-    avatar: 'Avatar',
-    uploadAvatar: 'Upload Avatar',
-    changeAvatar: 'Change Avatar',
-
-    // Address info
-    country: 'Country',
-    city: 'City',
-    state: 'State/Province',
-    postalCode: 'Postal Code',
-    taxId: 'Tax ID',
-
-    // Password management
-    changePassword: 'Change Password',
-    currentPassword: 'Current Password',
-    newPassword: 'New Password',
-    enterNewPassword: 'Please enter your new password',
-    passwordRequired: 'Password is required',
-    passwordTooShort: 'Password must be at least 6 characters',
-    resetPasswordFailed: 'Password reset failed, please try again later',
-    resetPasswordSuccess: 'Password reset successful, please sign in with your new password',
-
-    // Two-factor authentication
-    twoFactorAuthentication: 'Two-Factor Authentication',
-    enable: 'Enable',
-    disable: 'Disable',
-
-    // History
-    loginHistory: 'Login History',
-    deviceHistory: 'Device History',
-    lastLogin: 'Last Login',
-    ipAddress: 'IP Address',
-    device: 'Device',
-    browser: 'Browser',
-    location: 'Location',
-    time: 'Time',
-    status: 'Status',
-    active: 'Active',
-    inactive: 'Inactive',
-    online: 'Online',
-    offline: 'Offline',
-    accountCreated: 'Account created at',
-    accountUpdated: 'Account updated at',
-
-    // Social accounts
-    socialAccounts: 'Social Accounts',
-    connect: 'Connect',
-    disconnect: 'Disconnect',
-    connected: 'Connected',
-    notConnected: 'Not Connected',
+  "user": {
+    "profile": "Profile",
+    "settings": "Account Settings",
+    "security": "Security Settings",
+    "notifications": "Notification Settings",
+    "activity": "Activity Log",
+    "achievements": "Achievement System",
+    "personalInfo": "Personal Information",
+    "address": "Address Information",
+    "bio": "Bio",
+    "avatar": "Avatar",
+    "uploadAvatar": "Upload Avatar",
+    "changeAvatar": "Change Avatar",
+    "country": "Country",
+    "city": "City",
+    "state": "State/Province",
+    "postalCode": "Postal Code",
+    "taxId": "Tax ID",
+    "changePassword": "Change Password",
+    "currentPassword": "Current Password",
+    "newPassword": "New Password",
+    "enterNewPassword": "Please enter your new password",
+    "passwordRequired": "Password is required",
+    "passwordTooShort": "Password must be at least 6 characters",
+    "resetPasswordFailed": "Password reset failed, please try again later",
+    "resetPasswordSuccess": "Password reset successful, please sign in with your new password",
+    "twoFactorAuthentication": "Two-Factor Authentication",
+    "enable": "Enable",
+    "disable": "Disable",
+    "loginHistory": "Login History",
+    "deviceHistory": "Device History",
+    "lastLogin": "Last Login",
+    "ipAddress": "IP Address",
+    "device": "Device",
+    "browser": "Browser",
+    "location": "Location",
+    "time": "Time",
+    "status": "Status",
+    "active": "Active",
+    "inactive": "Inactive",
+    "online": "Online",
+    "offline": "Offline",
+    "accountCreated": "Account created at",
+    "accountUpdated": "Account updated at",
+    "socialAccounts": "Social Accounts",
+    "connect": "Connect",
+    "disconnect": "Disconnect",
+    "connected": "Connected",
+    "notConnected": "Not Connected"
   },
-
-  // Menu navigation
-  menu: {
-    dashboard: 'Dashboard',
-    tasks: 'Task Management',
-    habits: 'Habit Tracking',
-    goals: 'Goal Management',
-    pomodoro: 'Pomodoro Timer',
-    calendar: 'Calendar View',
-    reports: 'Report Analysis',
-    settings: 'System Settings',
-    userManagement: 'User Management',
-    roleManagement: 'Role Management',
-    permissionManagement: 'Permission Management',
-    toast: 'Toast Notifications',
-    // Menu group titles
-    mainFeatures: 'Main Functions',
-    userProfile: 'User Profile',
-    securitySettings: 'Security Settings',
+  "menu": {
+    "dashboard": "Dashboard",
+    "tasks": "Task Management",
+    "habits": "Habit Tracking",
+    "goals": "Goal Management",
+    "pomodoro": "Pomodoro Timer",
+    "calendar": "Calendar View",
+    "reports": "Report Analysis",
+    "settings": "System Settings",
+    "userManagement": "User Management",
+    "roleManagement": "Role Management",
+    "permissionManagement": "Permission Management",
+    "toast": "Toast Notifications",
+    "mainFeatures": "Main Functions",
+    "userProfile": "User Profile",
+    "securitySettings": "Security Settings"
   },
-
-  // Report Analysis
-  reports: {
-    title: 'Report Analysis',
-    dateRange: 'Date Range',
-    startDate: 'Start Date',
-    endDate: 'End Date',
-    export: 'Export Data',
-    exportSuccess: 'Data exported as {format} format: {filename}',
-
-    // Report types
-    types: {
-      productivity: 'Productivity',
-      habits: 'Habit Tracking',
-      goals: 'Goal Completion',
-      timeEfficiency: 'Time Efficiency',
-      taskStats: 'Task Statistics',
-      pomodoro: 'Pomodoro Method',
+  "reports": {
+    "title": "Report Analysis",
+    "dateRange": "Date Range",
+    "startDate": "Start Date",
+    "endDate": "End Date",
+    "export": "Export Data",
+    "exportSuccess": "Data exported as {format} format: {filename}",
+    "types": {
+      "productivity": "Productivity",
+      "habits": "Habit Tracking",
+      "goals": "Goal Completion",
+      "timeEfficiency": "Time Efficiency",
+      "taskStats": "Task Statistics",
+      "pomodoro": "Pomodoro Method"
     },
-
-    // Common statistics terms
-    stats: {
-      total: 'Total',
-      totalTasks: 'Total Tasks',
-      completed: 'Completed',
-      completedTasks: 'Completed',
-      pending: 'In Progress',
-      pendingTasks: 'In Progress',
-      active: 'Active',
-      activeHabits: 'Active Habits',
-      completionRate: 'Completion Rate',
-      average: 'Average',
-      trend: 'Trend',
-      distribution: 'Distribution',
-      analysis: 'Analysis',
-      sessions: 'Sessions',
-      totalSessions: 'Total Sessions',
-      completedSessions: 'Completed Sessions',
-      focusTime: 'Focus Time',
-      totalFocusTime: 'Total Focus Time',
-      efficiency: 'Efficiency',
-      streak: 'Streak',
-      averageStreak: 'Average Streak',
-      level: 'Level',
-      increase: 'Increase from last period',
-      decrease: 'Decrease from last period',
-      totalGoals: 'Total Goals',
-      completedGoals: 'Completed',
-      averageProgress: 'Average Progress',
-      onTrackGoals: 'On Track',
-      totalHabits: 'Total Habits',
-      completionTrend: 'Completion Trend',
-      priorityDistribution: 'Priority Distribution',
-      statusDistribution: 'Status Distribution',
-      tagUsage: 'Tag Usage Frequency',
-      overdueAnalysis: 'Overdue Tasks Analysis',
-      overdueTasks: 'Overdue Tasks',
-      avgDaysOverdue: 'Average Days Overdue',
-      overdueRate: 'Overdue Rate',
-      highPriority: 'High Priority',
-      mediumPriority: 'Medium Priority',
-      lowPriority: 'Low Priority',
-      inProgress: 'In Progress',
-      todo: 'To Do',
-      avgSessionLength: 'Average Session Length',
-      breakTime: 'Break Time',
-      avgEfficiency: 'Average Efficiency',
+    "stats": {
+      "total": "Total",
+      "totalTasks": "Total Tasks",
+      "completed": "Completed",
+      "completedTasks": "Completed",
+      "pending": "In Progress",
+      "pendingTasks": "In Progress",
+      "active": "Active",
+      "activeHabits": "Active Habits",
+      "completionRate": "Completion Rate",
+      "average": "Average",
+      "trend": "Trend",
+      "distribution": "Distribution",
+      "analysis": "Analysis",
+      "sessions": "Sessions",
+      "totalSessions": "Total Sessions",
+      "completedSessions": "Completed Sessions",
+      "focusTime": "Focus Time",
+      "totalFocusTime": "Total Focus Time",
+      "efficiency": "Efficiency",
+      "streak": "Streak",
+      "averageStreak": "Average Streak",
+      "level": "Level",
+      "increase": "Increase from last period",
+      "decrease": "Decrease from last period",
+      "totalGoals": "Total Goals",
+      "completedGoals": "Completed",
+      "averageProgress": "Average Progress",
+      "onTrackGoals": "On Track",
+      "totalHabits": "Total Habits",
+      "completionTrend": "Completion Trend",
+      "priorityDistribution": "Priority Distribution",
+      "statusDistribution": "Status Distribution",
+      "tagUsage": "Tag Usage Frequency",
+      "overdueAnalysis": "Overdue Tasks Analysis",
+      "overdueTasks": "Overdue Tasks",
+      "avgDaysOverdue": "Average Days Overdue",
+      "overdueRate": "Overdue Rate",
+      "highPriority": "High Priority",
+      "mediumPriority": "Medium Priority",
+      "lowPriority": "Low Priority",
+      "inProgress": "In Progress",
+      "todo": "To Do",
+      "avgSessionLength": "Average Session Length",
+      "breakTime": "Break Time",
+      "avgEfficiency": "Average Efficiency"
     },
-
-    // Pomodoro statistics
-    pomodoro: {
-      focusTime: 'Focus Time',
-      averageSession: 'Average Session',
-      sessionStatus: 'Session Status',
-      efficiency: 'Efficiency Indicators',
-      completionRate: 'Completion Rate',
-      streakDays: 'Streak Days',
-      productivityScore: 'Productivity Score',
-      timeDistribution: 'Time Distribution',
-      sessionType: {
-        completed: 'Completed',
-        interrupted: 'Interrupted',
-        skipped: 'Skipped',
+    "pomodoro": {
+      "focusTime": "Focus Time",
+      "averageSession": "Average Session",
+      "sessionStatus": "Session Status",
+      "efficiency": "Efficiency Indicators",
+      "completionRate": "Completion Rate",
+      "streakDays": "Streak Days",
+      "productivityScore": "Productivity Score",
+      "timeDistribution": "Time Distribution",
+      "sessionType": {
+        "completed": "Completed",
+        "interrupted": "Interrupted",
+        "skipped": "Skipped"
+      }
+    },
+    "timeEfficiency": {
+      "title": "Time Efficiency Report",
+      "totalTime": "Total Time",
+      "effectiveTime": "Effective Time",
+      "efficiency": "Efficiency",
+      "averageSession": "Average Session",
+      "dailyTrend": "Daily Efficiency Trend",
+      "timeAllocation": "Time Allocation",
+      "efficiencyLevels": "Efficiency Levels Distribution",
+      "categories": {
+        "focusWork": "Focus Work",
+        "learning": "Learning",
+        "meeting": "Meetings",
+        "other": "Other"
       },
+      "levels": {
+        "high": "High Efficiency",
+        "medium": "Medium Efficiency",
+        "low": "Low Efficiency"
+      }
     },
-
-    // Time efficiency report
-    timeEfficiency: {
-      title: 'Time Efficiency Report',
-      totalTime: 'Total Time',
-      effectiveTime: 'Effective Time',
-      efficiency: 'Efficiency',
-      averageSession: 'Average Session',
-      dailyTrend: 'Daily Efficiency Trend',
-      timeAllocation: 'Time Allocation',
-      efficiencyLevels: 'Efficiency Levels Distribution',
-      categories: {
-        focusWork: 'Focus Work',
-        learning: 'Learning',
-        meeting: 'Meetings',
-        other: 'Other',
+    "tasks": {
+      "title": "Task Statistics Report",
+      "totalTasks": "Total Tasks",
+      "completedTasks": "Completed Tasks",
+      "pendingTasks": "Pending Tasks",
+      "completionRate": "Completion Rate",
+      "completionTrend": "Completion Trend",
+      "priorityDistribution": "Priority Distribution",
+      "statusDistribution": "Status Distribution",
+      "tagUsage": "Tag Usage Frequency",
+      "overdueAnalysis": "Overdue Task Analysis",
+      "overdueTasks": "Overdue Tasks",
+      "avgDaysOverdue": "Average Days Overdue",
+      "overdueRate": "Overdue Rate"
+    },
+    "productivity": {
+      "title": "Productivity Report",
+      "totalTasks": "Total Tasks",
+      "completedTasks": "Completed",
+      "completionRate": "Completion Rate",
+      "averageTime": "Average Time",
+      "trend": "Productivity Trend",
+      "insights": "Data Insights",
+      "recommendations": "Improvement Suggestions",
+      "noData": "No productivity data available"
+    },
+    "habits": {
+      "title": "Habits Tracking Report",
+      "totalHabits": "Total Habits",
+      "activeHabits": "Active Habits",
+      "averageStreak": "Average Streak",
+      "completionRate": "Completion Rate",
+      "completionTrend": "Habit Completion Trend",
+      "dayLabel": "Day {day}: {value}%",
+      "noData": "No habits data available"
+    },
+    "goals": {
+      "title": "Goals Completion Report",
+      "totalGoals": "Total Goals",
+      "completedGoals": "Completed",
+      "averageProgress": "Average Progress",
+      "onTrackGoals": "On Track",
+      "progressVisualization": "Goals Progress Visualization",
+      "noData": "No goals data available",
+      "sampleGoals": {
+        "learnNewSkill": "Learn New Skill",
+        "fitnessGoal": "Fitness Plan",
+        "readingGoal": "Reading Goal",
+        "projectDevelopment": "Project Development",
+        "socialImprovement": "Social Improvement"
+      }
+    }
+  },
+  "toast": {
+    "success": "Success",
+    "error": "Error",
+    "warning": "Warning",
+    "info": "Info",
+    "customToast": "Custom Toast",
+    "title": "Title",
+    "message": "Message",
+    "duration": "Duration",
+    "variant": "Variant",
+    "show": "Show",
+    "showCountdown": "Show Countdown",
+    "operationSuccess": "Operation completed successfully",
+    "operationError": "An error occurred during operation",
+    "operationWarning": "Please note the potential risks of this operation",
+    "informationMessage": "This is an information message",
+    "pleaseEnterMessage": "Please enter a message"
+  },
+  "profile": {
+    "title": "Profile",
+    "description": "View and edit your profile",
+    "editSocialAccounts": "Edit Social Accounts",
+    "editSocialAccountsDesc": "Connect your social accounts to your profile",
+    "loginHistory": "Login History",
+    "device": "Device",
+    "location": "Location",
+    "ipAddress": "IP Address",
+    "time": "Time",
+    "socialAccounts": "Social Accounts"
+  },
+  "notification": {
+    "title": "Notifications",
+    "viewAll": "View All Notifications",
+    "requestPermission": "Request Permission Modification",
+    "project": "Project",
+    "minAgo": "minutes ago",
+    "online": "Online",
+    "offline": "Offline",
+    "user": "User"
+  },
+  "task": {
+    "title": "Task Management",
+    "all": "All Tasks",
+    "create": "Create Task",
+    "edit": "Edit Task",
+    "delete": "Delete Task",
+    "confirmDelete": "Are you sure you want to delete this task?",
+    "nameRequired": "Task name is required",
+    "createTask": "Create Task",
+    "editTask": "Edit Task",
+    "allStatuses": "All Statuses",
+    "allPriorities": "All Priorities",
+    "resetFilter": "Reset Filter",
+    "applyFilter": "Apply Filter",
+    "detail": "Task Details",
+    "name": "Task Name",
+    "description": "Task Description",
+    "status": "Status",
+    "priority": "Priority",
+    "dueDate": "Due Date",
+    "reminderTime": "Reminder Time",
+    "tags": "Tags",
+    "attachments": "Attachments",
+    "selectDueDate": "Select due date",
+    "selectReminderTime": "Select reminder time",
+    "todo": "To Do",
+    "working": "In Progress",
+    "done": "Done",
+    "high": "High",
+    "medium": "Medium",
+    "low": "Low",
+    "addTag": "Add Tag",
+    "addAttachment": "Add Attachment",
+    "filter": "Filter",
+    "sort": "Sort",
+    "search": "Search Tasks",
+    "noTasks": "No tasks",
+    "createFirstTask": "Create your first task",
+    "estimatedTime": "Estimated Time",
+    "actualTime": "Actual Time",
+    "dependency": "Dependent Task",
+    "recurring": "Recurring Task",
+    "reminder": "Reminder",
+    "template": "Task Template",
+    "saveAsTemplate": "Save as Template",
+    "useTemplate": "Use Template",
+    "batchEdit": "Batch Edit",
+    "batchDelete": "Batch Delete",
+    "batchComplete": "Batch Complete",
+    "import": "Import Tasks",
+    "export": "Export Tasks",
+    "createSuccess": "Task created successfully",
+    "createFailed": "Task creation failed",
+    "updateSuccess": "Task updated successfully",
+    "updateFailed": "Task update failed",
+    "deleteSuccess": "Task deleted successfully",
+    "deleteFailed": "Task deletion failed"
+  },
+  "goal": {
+    "title": "Goal Management",
+    "all": "All Goals",
+    "create": "Create Goal",
+    "edit": "Edit Goal",
+    "view": "View Goal",
+    "delete": "Delete Goal",
+    "search": "Search Goals",
+    "filter": "Filter",
+    "titleField": "Goal Title",
+    "titlePlaceholder": "Please enter goal title",
+    "description": "Goal Description",
+    "descriptionPlaceholder": "Please describe your goal...",
+    "category": "Goal Category",
+    "selectCategory": "Select Category",
+    "priority": "Priority",
+    "status": "Status",
+    "progress": "Progress",
+    "startDate": "Start Date",
+    "selectStartDate": "Select start date",
+    "targetDate": "Target Date",
+    "selectTargetDate": "Select target date",
+    "completedDate": "Completed Date",
+    "parentGoal": "Parent Goal",
+    "noParentGoal": "No Parent Goal",
+    "draft": "Draft",
+    "planning": "Planning",
+    "active": "Active",
+    "paused": "Paused",
+    "completed": "Completed",
+    "cancelled": "Cancelled",
+    "allStatus": "All Status",
+    "high": "High",
+    "medium": "Medium",
+    "low": "Low",
+    "allPriorities": "All Priorities",
+    "personal": "Personal",
+    "career": "Career",
+    "health": "Health",
+    "education": "Education",
+    "finance": "Finance",
+    "relationship": "Relationship",
+    "hobby": "Hobby",
+    "other": "Other",
+    "allCategories": "All Categories",
+    "allGoals": "All Goals",
+    "topLevelGoals": "Top Level Goals",
+    "basicInfo": "Basic Information",
+    "subGoal": "Sub Goal",
+    "averageProgress": "Average Progress",
+    "totalGoals": "Total Goals",
+    "activeGoals": "Active",
+    "completedGoals": "Completed",
+    "milestones": "Milestones",
+    "addMilestone": "Add Milestone",
+    "editMilestone": "Edit Milestone",
+    "milestoneTitlePlaceholder": "Please enter milestone title",
+    "milestoneDescriptionPlaceholder": "Please describe this milestone...",
+    "order": "Order",
+    "isCompleted": "Completed",
+    "noMilestones": "No milestones",
+    "tasks": "Associated Tasks",
+    "associatedTasks": "Associated Tasks",
+    "associateTask": "Associate Task",
+    "dissociateTask": "Dissociate Task",
+    "searchTasks": "Search Tasks",
+    "searchTasksPlaceholder": "Search task name or description...",
+    "selectedTasks": "Selected {count} tasks",
+    "noAvailableTasks": "No available tasks",
+    "noTasks": "No associated tasks",
+    "associate": "Associate",
+    "reviews": "Goal Reviews",
+    "addReview": "Add Review",
+    "editReview": "Edit Review",
+    "reviewDate": "Review Date",
+    "reviewType": "Review Type",
+    "selectReviewType": "Select Review Type",
+    "reviewTypeOptions": {
+      "weekly": "Weekly Review",
+      "monthly": "Monthly Review",
+      "quarterly": "Quarterly Review",
+      "custom": "Custom Review"
+    },
+    "rating": "Rating",
+    "reviewContent": "Review Content",
+    "reviewContentPlaceholder": "Share your thoughts and feelings about goal progress...",
+    "lessonsLearned": "Lessons Learned",
+    "lessonsLearnedPlaceholder": "Record lessons learned from this goal...",
+    "nextSteps": "Next Steps",
+    "nextStepsPlaceholder": "Plan next actions to take...",
+    "noReviews": "No review records",
+    "createSuccess": "Goal created successfully",
+    "createError": "Goal creation failed",
+    "updateSuccess": "Goal updated successfully",
+    "updateError": "Goal update failed",
+    "deleteSuccess": "Goal deleted successfully",
+    "deleteError": "Goal deletion failed",
+    "deleteConfirm": "Are you sure you want to delete goal \"{title}\"?",
+    "loadError": "Failed to load goal",
+    "milestoneCreateSuccess": "Milestone created successfully",
+    "milestoneCreateError": "Milestone creation failed",
+    "milestoneUpdateSuccess": "Milestone updated successfully",
+    "milestoneUpdateError": "Milestone update failed",
+    "milestoneUpdated": "Milestone status updated",
+    "milestoneDeleted": "Milestone deleted",
+    "milestoneDeleteError": "Milestone deletion failed",
+    "deleteMilestoneConfirm": "Are you sure you want to delete this milestone?",
+    "reviewCreateSuccess": "Review created successfully",
+    "reviewCreateError": "Review creation failed",
+    "reviewUpdateSuccess": "Review updated successfully",
+    "reviewUpdateError": "Review update failed",
+    "reviewDeleted": "Review deleted",
+    "reviewDeleteError": "Review deletion failed",
+    "deleteReviewConfirm": "Are you sure you want to delete this review?",
+    "loadTasksError": "Failed to load tasks",
+    "tasksAssociated": "Associated {count} tasks",
+    "associateTasksError": "Failed to associate tasks",
+    "taskDissociated": "Task association cancelled",
+    "taskDissociateError": "Failed to cancel task association",
+    "dissociateTaskConfirm": "Are you sure you want to dissociate this task?",
+    "noGoals": "No goals yet, start creating your first goal!"
+  },
+  "file": {
+    "upload": "Upload File",
+    "uploadFiles": "Upload Files",
+    "selectedFiles": "Selected Files",
+    "uploadedFiles": "Uploaded Files",
+    "download": "Download File",
+    "downloadFile": "Download File",
+    "delete": "Delete File",
+    "deleteFile": "Delete File",
+    "selectFiles": "Select Files",
+    "dragAndDrop": "Drag and drop files here or click to select",
+    "maxFileSize": "Maximum file size",
+    "supportedFormats": "Supported formats",
+    "uploadSuccess": "File uploaded successfully",
+    "uploadFailed": "File upload failed",
+    "deleteSuccess": "File deleted successfully",
+    "deleteFailed": "File deletion failed",
+    "downloadFailed": "File download failed",
+    "chooseFile": "Choose File",
+    "noFileSelected": "No file selected"
+  },
+  "datetime": {
+    "weekdays": {
+      "sunday": "Sun",
+      "monday": "Mon",
+      "tuesday": "Tue",
+      "wednesday": "Wed",
+      "thursday": "Thu",
+      "friday": "Fri",
+      "saturday": "Sat"
+    },
+    "weekdaysShort": [
+      "Sun",
+      "Mon",
+      "Tue",
+      "Wed",
+      "Thu",
+      "Fri",
+      "Sat"
+    ]
+  },
+  "habits": {
+    "title": "Habit Tracking",
+    "all": "All Habits",
+    "create": "Create Habit",
+    "edit": "Edit Habit",
+    "delete": "Delete Habit",
+    "view": "View Details",
+    "confirmDelete": "Are you sure you want to delete this habit?",
+    "nameRequired": "Habit name is required",
+    "createHabit": "Create Habit",
+    "editHabit": "Edit Habit",
+    "detail": "Habit Details",
+    "name": "Habit Name",
+    "description": "Habit Description",
+    "category": "Category",
+    "frequencyDesc": "Frequency",
+    "startDate": "Start Date",
+    "endDate": "End Date",
+    "reminderTime": "Reminder Time",
+    "reminderType": "Reminder Type",
+    "reminderLocation": "Reminder Location",
+    "color": "Color",
+    "icon": "Icon",
+    "tags": "Tags",
+    "addTag": "Add Tag",
+    "complete": "Check In",
+    "completed": "Checked In",
+    "archive": "Archive",
+    "unarchive": "Unarchive",
+    "showArchived": "Show Archived",
+    "hideArchived": "Hide Archived",
+    "habits": "Habit List",
+    "myHabits": "My Habits",
+    "habitName": "Habit Name",
+    "habitDescription": "Habit Description",
+    "isArchived": "Archived",
+    "createdAt": "Created At",
+    "updatedAt": "Updated At",
+    "streakCount": "Current Streak",
+    "longestStreak": "Longest Streak",
+    "totalCompletions": "Total Completions",
+    "completionHistory": "Completion History",
+    "lastCompletedAt": "Last Completed At",
+    "incomplete": "Incomplete",
+    "inProgress": "In Progress",
+    "paused": "Paused",
+    "archived": "Archived",
+    "markAsCompleted": "Mark as Completed",
+    "markAsIncomplete": "Mark as Incomplete",
+    "addNote": "Add Note",
+    "viewHistory": "View History",
+    "archiveHabit": "Archive Habit",
+    "unarchiveHabit": "Unarchive Habit",
+    "create_title": "Create New Habit",
+    "create_success": "Habit created successfully",
+    "update_success": "Habit updated successfully",
+    "create_failed": "Habit creation failed",
+    "update_failed": "Habit update failed",
+    "delete_success": "Habit deleted successfully",
+    "delete_failed": "Habit deletion failed",
+    "check_success": "Check Success",
+    "uncheck_success": "Uncheck Success",
+    "habitCreated": "Habit created successfully",
+    "habitUpdated": "Habit updated successfully",
+    "habitDeleted": "Habit deleted successfully",
+    "nameMinLength": "Habit name must be at least 2 characters",
+    "nameMaxLength": "Habit name cannot exceed 50 characters",
+    "descriptionMaxLength": "Description cannot exceed 200 characters",
+    "categoryRequired": "Please select a category",
+    "frequencyRequired": "Please select a frequency",
+    "startDateRequired": "Please select a start date",
+    "invalidDateRange": "End date cannot be earlier than start date",
+    "noHabitsFound": "No habits found",
+    "noCompletionHistory": "No completion history",
+    "habitCompletedToday": "Completed today",
+    "habitNotCompletedToday": "Not completed today",
+    "streakBroken": "Streak broken",
+    "stats": {
+      "current_streak": "Current Streak",
+      "longest_streak": "Longest Streak",
+      "total": "Total Completed",
+      "completion_rate": "Completion Rate",
+      "last_completed": "Last Completed"
+    },
+    "categories": {
+      "health": "Health",
+      "fitness": "Fitness",
+      "study": "Study",
+      "work": "Work",
+      "lifestyle": "Lifestyle",
+      "hobby": "Hobby",
+      "social": "Social",
+      "personal": "Personal Development",
+      "finance": "Finance",
+      "mindfulness": "Mindfulness",
+      "creativity": "Creativity",
+      "other": "Other"
+    },
+    "frequency": {
+      "daily": "Daily",
+      "weekly": "Weekly",
+      "monthly": "Monthly",
+      "custom": "Custom"
+    },
+    "filter": {
+      "title": "Filter",
+      "category": "Category",
+      "frequency": "Frequency",
+      "all_categories": "All Categories",
+      "all_frequencies": "All Frequencies",
+      "show_archived": "Show Archived",
+      "apply": "Apply Filter",
+      "reset": "Reset Filter"
+    },
+    "sort": {
+      "title": "Sort",
+      "name_asc": "Name (A-Z)",
+      "name_desc": "Name (Z-A)",
+      "created_asc": "Created Date (Earliest)",
+      "created_desc": "Created Date (Latest)",
+      "streak_asc": "Streak Count (Lowest)",
+      "streak_desc": "Streak Count (Highest)"
+    },
+    "empty": {
+      "title": "No Habits",
+      "description": "Create your first habit to start building a better lifestyle",
+      "create": "Create Habit",
+      "create_first": "Create your first habit"
+    },
+    "form": {
+      "name": "Habit Name",
+      "name_placeholder": "Enter habit name",
+      "description": "Description",
+      "description_placeholder": "Enter habit description (optional)",
+      "category": "Category",
+      "frequency": "Frequency",
+      "days_of_week": "Days of Week",
+      "days_of_month": "Days of Month",
+      "start_date": "Start Date",
+      "start_date_placeholder": "Select start date",
+      "end_date": "End Date",
+      "end_date_placeholder": "Select end date",
+      "tags": "Tags",
+      "tags_placeholder": "Add tags",
+      "reminder_type": "Reminder Type",
+      "reminder_time": "Reminder Time",
+      "reminder_time_placeholder": "Select reminder time",
+      "reminder_location": "Reminder Location",
+      "reminder_location_placeholder": "Enter location",
+      "color": "Color",
+      "icon": "Icon",
+      "icon_placeholder": "Select icon"
+    },
+    "reminder_types": {
+      "none": "No Reminder",
+      "time": "Time Reminder",
+      "location": "Location Reminder"
+    }
+  },
+  "frequency": {
+    "daily": "Daily",
+    "weekly": "Weekly",
+    "monthly": "Monthly",
+    "daysOfWeek": {
+      "0": "Sunday",
+      "1": "Monday",
+      "2": "Tuesday",
+      "3": "Wednesday",
+      "4": "Thursday",
+      "5": "Friday",
+      "6": "Saturday"
+    },
+    "everyDay": "Every day",
+    "everyWeek": "Every week",
+    "everyMonth": "Every month",
+    "weekdays": "Weekdays",
+    "weekends": "Weekends",
+    "selectDays": "Select days",
+    "selectWeekdays": "Select weekdays",
+    "selectDaysOfMonth": "Select days of month"
+  },
+  "category": {
+    "health": "Health",
+    "fitness": "Fitness",
+    "study": "Study",
+    "work": "Work",
+    "lifestyle": "Lifestyle",
+    "hobby": "Hobby",
+    "social": "Social",
+    "personal": "Personal Development",
+    "finance": "Finance",
+    "mindfulness": "Mindfulness",
+    "creativity": "Creativity",
+    "other": "Other"
+  },
+  "reminder": {
+    "time": "Time Reminder",
+    "location": "Location Reminder",
+    "noReminder": "No Reminder",
+    "setReminder": "Set Reminder",
+    "reminderSet": "Reminder set",
+    "reminderCanceled": "Reminder canceled",
+    "reminderTitle": "Habit Reminder",
+    "reminderMessage": "Time to complete your habit: {habitName}",
+    "timeFormat": "HH:mm",
+    "dateFormat": "YYYY-MM-DD",
+    "datetimeFormat": "YYYY-MM-DD HH:mm"
+  },
+  "statistics": {
+    "title": "Statistics",
+    "overview": "Overview",
+    "todayStats": "Today's Stats",
+    "weeklyStats": "Weekly Stats",
+    "monthlyStats": "Monthly Stats",
+    "yearlyStats": "Yearly Stats",
+    "totalHabits": "Total Habits",
+    "activeHabits": "Active Habits",
+    "completedToday": "Completed Today",
+    "completionRate": "Completion Rate",
+    "averageStreak": "Average Streak",
+    "bestStreak": "Best Streak",
+    "completionTrend": "Completion Trend",
+    "categoryDistribution": "Category Distribution",
+    "weeklyPattern": "Weekly Pattern",
+    "monthlyProgress": "Monthly Progress",
+    "achievements": "Achievements",
+    "badges": "Badges",
+    "milestones": "Milestones"
+  },
+  "calendar": {
+    "today": "Today",
+    "month": "Month",
+    "week": "Week",
+    "day": "Day",
+    "agenda": "Agenda",
+    "months": {
+      "1": "January",
+      "2": "February",
+      "3": "March",
+      "4": "April",
+      "5": "May",
+      "6": "June",
+      "7": "July",
+      "8": "August",
+      "9": "September",
+      "10": "October",
+      "11": "November",
+      "12": "December"
+    },
+    "weekdaysShort": [
+      "Sun",
+      "Mon",
+      "Tue",
+      "Wed",
+      "Thu",
+      "Fri",
+      "Sat"
+    ],
+    "previousMonth": "Previous Month",
+    "nextMonth": "Next Month",
+    "goToToday": "Go to Today"
+  },
+  "settings": {
+    "title": "Settings",
+    "general": "General Settings",
+    "notifications": "Notification Settings",
+    "appearance": "Appearance Settings",
+    "data": "Data Management",
+    "about": "About",
+    "language": "Language",
+    "theme": "Theme",
+    "startOfWeek": "Start of Week",
+    "timeFormat": "Time Format",
+    "dateFormat": "Date Format",
+    "enableNotifications": "Enable Notifications",
+    "dailyReminder": "Daily Reminder",
+    "weeklyReport": "Weekly Report",
+    "achievementNotifications": "Achievement Notifications",
+    "light": "Light Mode",
+    "dark": "Dark Mode",
+    "system": "Follow System",
+    "exportData": "Export Data",
+    "importData": "Import Data",
+    "clearData": "Clear Data",
+    "backup": "Backup",
+    "restore": "Restore",
+    "confirmClearData": "Are you sure you want to clear all data? This action cannot be undone.",
+    "confirmDeleteHabit": "Are you sure you want to delete this habit?",
+    "dataCleared": "Data cleared",
+    "dataExported": "Data exported successfully",
+    "dataImported": "Data imported successfully"
+  },
+  "error": {
+    "networkError": "Network connection error",
+    "serverError": "Server error",
+    "unknownError": "Unknown error",
+    "validationError": "Validation failed",
+    "permissionDenied": "Permission denied",
+    "notFound": "Not found",
+    "timeout": "Request timeout",
+    "habitNotFound": "Habit not found",
+    "invalidDate": "Invalid date",
+    "invalidTime": "Invalid time",
+    "duplicateHabit": "Habit name already exists",
+    "cantDeleteCompletedHabit": "Cannot delete habit with completion history"
+  },
+  "success": {
+    "habitCompleted": "Habit completed!",
+    "streakIncreased": "Streak increased!",
+    "habitCreated": "Habit created successfully",
+    "habitUpdated": "Habit updated successfully",
+    "habitDeleted": "Habit deleted successfully",
+    "reminderSet": "Reminder set successfully",
+    "dataExported": "Data exported successfully",
+    "settingsSaved": "Settings saved successfully"
+  },
+  "time": {
+    "now": "Now",
+    "today": "Today",
+    "yesterday": "Yesterday",
+    "tomorrow": "Tomorrow",
+    "thisWeek": "This Week",
+    "thisMonth": "This Month",
+    "thisYear": "This Year",
+    "minutesAgo": "{minutes} minutes ago",
+    "hoursAgo": "{hours} hours ago",
+    "daysAgo": "{days} days ago",
+    "weeksAgo": "{weeks} weeks ago",
+    "monthsAgo": "{months} months ago",
+    "yearsAgo": "{years} years ago",
+    "days": "{count} days",
+    "weeks": "{count} weeks",
+    "months": "{count} months",
+    "years": "{count} years"
+  },
+  "units": {
+    "times": "times",
+    "days": "days",
+    "weeks": "weeks",
+    "months": "months",
+    "years": "years",
+    "percent": "%"
+  },
+  "empty": {
+    "noHabits": "No habits created yet",
+    "noCompletions": "No completion records yet",
+    "noReminders": "No reminders set",
+    "noData": "No data available",
+    "createFirstHabit": "Create your first habit",
+    "startTracking": "Start tracking your habits"
+  },
+  "navigation": {
+    "dashboard": "Dashboard",
+    "habits": "Habits",
+    "calendar": "Calendar",
+    "statistics": "Statistics",
+    "settings": "Settings",
+    "profile": "Profile"
+  },
+  "buttons": {
+    "getStarted": "Get Started",
+    "learnMore": "Learn More",
+    "tryAgain": "Try Again",
+    "goHome": "Go Home",
+    "viewDetails": "View Details",
+    "markComplete": "Mark Complete",
+    "skip": "Skip",
+    "done": "Done",
+    "close": "Close"
+  },
+  "placeholders": {
+    "searchHabits": "Search habits...",
+    "habitName": "Enter habit name",
+    "habitDescription": "Describe this habit...",
+    "addTag": "Add tag",
+    "selectCategory": "Select category",
+    "addNote": "Add note...",
+    "location": "Enter location"
+  },
+  "tags": {
+    "morning": "Morning",
+    "evening": "Evening",
+    "weekend": "Weekend",
+    "indoor": "Indoor",
+    "outdoor": "Outdoor",
+    "quick": "Quick",
+    "challenge": "Challenge",
+    "relaxing": "Relaxing",
+    "social": "Social",
+    "solo": "Solo",
+    "beginner": "Beginner",
+    "advanced": "Advanced"
+  },
+  "pomodoro": {
+    "title": "Pomodoro Timer",
+    "timer": {
+      "readyToStart": "Ready to start",
+      "focusTime": "Focus time",
+      "shortBreak": "Short break",
+      "longBreak": "Long break"
+    },
+    "settings": {
+      "title": "Pomodoro Settings",
+      "templates": "Template Management",
+      "activeTemplate": "Current Template",
+      "createTemplate": "Create Template",
+      "editTemplate": "Edit Template",
+      "newTemplate": "New Template",
+      "addTemplate": "Add Template",
+      "templateName": "Template Name",
+      "templateNamePlaceholder": "Enter template name",
+      "description": "Description",
+      "descriptionPlaceholder": "Enter template description",
+      "workDuration": "Work Duration",
+      "breakDuration": "Short Break Duration",
+      "longBreakDuration": "Long Break Duration",
+      "sessionsBeforeLongBreak": "Sessions Before Long Break",
+      "duration": "Work {work} minutes, break {break} minutes",
+      "autoStartBreaks": "Auto Start Breaks",
+      "autoStartBreaksDescription": "Automatically start break after work time ends",
+      "setAsDefault": "Set as Default Template",
+      "default": "Default",
+      "confirmDeleteTemplate": "Are you sure you want to delete this template?",
+      "focusMode": "Focus Mode",
+      "disableNotifications": "Disable Notifications",
+      "blockWebsites": "Block Websites",
+      "showProgressInTitle": "Show Progress in Title",
+      "notifications": "Notification Settings",
+      "enableNotifications": "Enable Notifications",
+      "notificationsDescription": "Show notification when session ends",
+      "enableSounds": "Enable Sounds",
+      "soundVolume": "Volume",
+      "soundNotifications": "Sound Notifications",
+      "soundNotificationsDescription": "Play notification sounds",
+      "fullscreenMode": "Fullscreen Mode",
+      "fullscreenModeDescription": "Enter fullscreen mode during focus"
+    },
+    "stats": {
+      "title": "Statistics Report",
+      "thisWeek": "This Week",
+      "thisMonth": "This Month",
+      "thisQuarter": "This Quarter",
+      "totalSessions": "Total Sessions",
+      "completedSessions": "Completed Sessions",
+      "totalFocusTime": "Total Focus Time",
+      "avgProductivity": "Average Productivity",
+      "dailySessions": "Daily Sessions",
+      "productivityTrend": "Productivity Trend",
+      "timeDistribution": "Time Distribution",
+      "workTime": "Work Time",
+      "breakTime": "Break Time",
+      "completionRate": "Completion Rate",
+      "of": "of",
+      "sessionsCompleted": "sessions completed",
+      "recentSessions": "Recent Sessions",
+      "date": "Date",
+      "task": "Task",
+      "duration": "Duration",
+      "status": "Status",
+      "productivity": "Productivity"
+    },
+    "status": {
+      "completed": "Completed",
+      "cancelled": "Cancelled",
+      "paused": "Paused",
+      "running": "Running",
+      "pending": "Pending"
+    },
+    "readyToStart": "Ready to start",
+    "focusTime": "Focus time",
+    "breakTime": "Break time",
+    "focusSession": "Focus session",
+    "workingOn": "Working on",
+    "remaining": "Remaining time",
+    "start": "Start",
+    "pause": "Pause",
+    "resume": "Resume",
+    "abort": "Cancel",
+    "completed": "Completed",
+    "focusModeOn": "Focus mode on",
+    "focusModeOff": "Focus mode off",
+    "todaySessions": "Today sessions",
+    "focusTimeTotal": "Focus time",
+    "quickActions": "Quick Actions",
+    "selectTask": "Select Task",
+    "selectTaskOptions": {
+      "button": "Select Task",
+      "noTasks": "No tasks",
+      "estimatedPomodoros": "Estimated {count} pomodoros",
+      "startWithoutTask": "Start without task"
+    },
+    "templates": "Templates",
+    "statistics": "Statistics",
+    "history": {
+      "title": "History",
+      "allStatuses": "All Status",
+      "totalSessions": "Total Sessions",
+      "completed": "Completed",
+      "totalTime": "Total Time",
+      "avgProductivity": "Average Productivity",
+      "sessions": "Session Records",
+      "showing": "Showing {start} - {end} of {total}",
+      "date": "Date",
+      "task": "Task",
+      "template": "Template",
+      "duration": "Duration",
+      "status": "Status",
+      "productivity": "Productivity",
+      "actions": "Actions",
+      "planned": "Planned",
+      "noSessions": "No session records",
+      "viewTask": "View Task"
+    },
+    "taskSelector": {
+      "title": "Select Task",
+      "noTasks": "No tasks",
+      "searchPlaceholder": "Search tasks...",
+      "createNew": "Create new task",
+      "withoutTask": "Without task"
+    },
+    "completeModal": {
+      "title": "Complete Session",
+      "message": "Congratulations on completing this pomodoro session!",
+      "duration": "Duration: {duration}",
+      "addNotes": "Add Notes",
+      "notesPlaceholder": "Record thoughts from this session...",
+      "markTaskComplete": "Mark task complete"
+    },
+    "complete": {
+      "duration": "Duration: {duration}",
+      "productivityRating": "Productivity Rating",
+      "rating": {
+        "poor": "Poor",
+        "fair": "Fair",
+        "good": "Good",
+        "veryGood": "Very Good",
+        "excellent": "Excellent"
       },
-      levels: {
-        high: 'High Efficiency',
-        medium: 'Medium Efficiency',
-        low: 'Low Efficiency',
+      "notes": "Session Notes",
+      "notesPlaceholder": "Record thoughts and gains from this session...",
+      "breakSuggestion": {
+        "title": "Suggest taking a break",
+        "message": "You have completed a focus session, suggest taking a 5-15 minute break to restore energy."
       },
+      "confirm": "Confirm Complete"
     },
-
-    // Task reports
-    tasks: {
-      title: 'Task Statistics Report',
-      totalTasks: 'Total Tasks',
-      completedTasks: 'Completed Tasks',
-      pendingTasks: 'Pending Tasks',
-      completionRate: 'Completion Rate',
-      completionTrend: 'Completion Trend',
-      priorityDistribution: 'Priority Distribution',
-      statusDistribution: 'Status Distribution',
-      tagUsage: 'Tag Usage Frequency',
-      overdueAnalysis: 'Overdue Task Analysis',
-      overdueTasks: 'Overdue Tasks',
-      avgDaysOverdue: 'Average Days Overdue',
-      overdueRate: 'Overdue Rate',
+    "cancelModal": {
+      "title": "Cancel Session",
+      "message": "Are you sure you want to cancel the current session?",
+      "reason": "Cancel Reason",
+      "reasonPlaceholder": "Please briefly describe the reason for cancellation...",
+      "confirm": "Confirm Cancel"
     },
-
-    // Productivity report
-    productivity: {
-      title: 'Productivity Report',
-      totalTasks: 'Total Tasks',
-      completedTasks: 'Completed',
-      completionRate: 'Completion Rate',
-      averageTime: 'Average Time',
-      trend: 'Productivity Trend',
-      insights: 'Data Insights',
-      recommendations: 'Improvement Suggestions',
-      noData: 'No productivity data available',
-    },
-
-    // Habits report
-    habits: {
-      title: 'Habits Tracking Report',
-      totalHabits: 'Total Habits',
-      activeHabits: 'Active Habits',
-      averageStreak: 'Average Streak',
-      completionRate: 'Completion Rate',
-      completionTrend: 'Habit Completion Trend',
-      dayLabel: 'Day {day}: {value}%',
-      noData: 'No habits data available',
-    },
-
-    // Goals report
-    goals: {
-      title: 'Goals Completion Report',
-      totalGoals: 'Total Goals',
-      completedGoals: 'Completed',
-      averageProgress: 'Average Progress',
-      onTrackGoals: 'On Track',
-      progressVisualization: 'Goals Progress Visualization',
-      noData: 'No goals data available',
-      // Sample goal names
-      sampleGoals: {
-        learnNewSkill: 'Learn New Skill',
-        fitnessGoal: 'Fitness Plan',
-        readingGoal: 'Reading Goal',
-        projectDevelopment: 'Project Development',
-        socialImprovement: 'Social Improvement',
+    "cancel": {
+      "timeSpent": "Time spent: {duration}",
+      "warning": {
+        "title": "Cancel session reminder",
+        "message": "Cancelling the session will lose current progress and will not be recorded as a completed pomodoro."
       },
-    },
-  },
-
-  // Toast notifications
-  toast: {
-    success: 'Success',
-    error: 'Error',
-    warning: 'Warning',
-    info: 'Info',
-    customToast: 'Custom Toast',
-    title: 'Title',
-    message: 'Message',
-    duration: 'Duration',
-    variant: 'Variant',
-    show: 'Show',
-    showCountdown: 'Show Countdown',
-    operationSuccess: 'Operation completed successfully',
-    operationError: 'An error occurred during operation',
-    operationWarning: 'Please note the potential risks of this operation',
-    informationMessage: 'This is an information message',
-    pleaseEnterMessage: 'Please enter a message',
-  },
-
-  // Profile page
-  profile: {
-    title: 'Profile',
-    description: 'View and edit your profile',
-    editSocialAccounts: 'Edit Social Accounts',
-    editSocialAccountsDesc: 'Connect your social accounts to your profile',
-
-    // Login history and device information
-    loginHistory: 'Login History',
-    device: 'Device',
-    location: 'Location',
-    ipAddress: 'IP Address',
-    time: 'Time',
-    socialAccounts: 'Social Accounts',
-  },
-
-  // Notifications
-  notification: {
-    title: 'Notifications',
-    viewAll: 'View All Notifications',
-    requestPermission: 'Request Permission Modification',
-    project: 'Project',
-    minAgo: 'minutes ago',
-    online: 'Online',
-    offline: 'Offline',
-    user: 'User',
-  },
-
-  // Task management
-  task: {
-    title: 'Task Management',
-    all: 'All Tasks',
-    create: 'Create Task',
-    edit: 'Edit Task',
-    delete: 'Delete Task',
-    confirmDelete: 'Are you sure you want to delete this task?',
-    nameRequired: 'Task name is required',
-    createTask: 'Create Task',
-    editTask: 'Edit Task',
-    allStatuses: 'All Statuses',
-    allPriorities: 'All Priorities',
-    resetFilter: 'Reset Filter',
-    applyFilter: 'Apply Filter',
-
-    // Task details
-    detail: 'Task Details',
-    name: 'Task Name',
-    description: 'Task Description',
-    status: 'Status',
-    priority: 'Priority',
-    dueDate: 'Due Date',
-    reminderTime: 'Reminder Time',
-    tags: 'Tags',
-    attachments: 'Attachments',
-
-    // Placeholders
-    selectDueDate: 'Select due date',
-    selectReminderTime: 'Select reminder time',
-
-    // Task status
-    todo: 'To Do',
-    working: 'In Progress',
-    done: 'Done',
-
-    // Priority
-    high: 'High',
-    medium: 'Medium',
-    low: 'Low',
-
-    // Actions
-    addTag: 'Add Tag',
-    addAttachment: 'Add Attachment',
-    filter: 'Filter',
-    sort: 'Sort',
-    search: 'Search Tasks',
-    noTasks: 'No tasks',
-    createFirstTask: 'Create your first task',
-
-    // Advanced features
-    estimatedTime: 'Estimated Time',
-    actualTime: 'Actual Time',
-    dependency: 'Dependent Task',
-    recurring: 'Recurring Task',
-    reminder: 'Reminder',
-    template: 'Task Template',
-    saveAsTemplate: 'Save as Template',
-    useTemplate: 'Use Template',
-    batchEdit: 'Batch Edit',
-    batchDelete: 'Batch Delete',
-    batchComplete: 'Batch Complete',
-    import: 'Import Tasks',
-    export: 'Export Tasks',
-
-    // Status changes
-    createSuccess: 'Task created successfully',
-    createFailed: 'Task creation failed',
-    updateSuccess: 'Task updated successfully',
-    updateFailed: 'Task update failed',
-    deleteSuccess: 'Task deleted successfully',
-    deleteFailed: 'Task deletion failed',
-  },
-
-  // Goal management
-  goal: {
-    // Basic information
-    title: 'Goal Management',
-    all: 'All Goals',
-    create: 'Create Goal',
-    edit: 'Edit Goal',
-    view: 'View Goal',
-    delete: 'Delete Goal',
-    search: 'Search Goals',
-    filter: 'Filter',
-
-    // Form fields
-    titleField: 'Goal Title',
-    titlePlaceholder: 'Please enter goal title',
-    description: 'Goal Description',
-    descriptionPlaceholder: 'Please describe your goal...',
-    category: 'Goal Category',
-    selectCategory: 'Select Category',
-    priority: 'Priority',
-    status: 'Status',
-    progress: 'Progress',
-    startDate: 'Start Date',
-    selectStartDate: 'Select start date',
-    targetDate: 'Target Date',
-    selectTargetDate: 'Select target date',
-    completedDate: 'Completed Date',
-    parentGoal: 'Parent Goal',
-    noParentGoal: 'No Parent Goal',
-
-    // Status
-    draft: 'Draft',
-    planning: 'Planning',
-    active: 'Active',
-    paused: 'Paused',
-    completed: 'Completed',
-    cancelled: 'Cancelled',
-    allStatus: 'All Status',
-
-    // Priority
-    high: 'High',
-    medium: 'Medium',
-    low: 'Low',
-    allPriorities: 'All Priorities',
-
-    // Categories
-    personal: 'Personal',
-    career: 'Career',
-    health: 'Health',
-    education: 'Education',
-    finance: 'Finance',
-    relationship: 'Relationship',
-    hobby: 'Hobby',
-    other: 'Other',
-    allCategories: 'All Categories',
-    allGoals: 'All Goals',
-    topLevelGoals: 'Top Level Goals',
-
-    // Basic info
-    basicInfo: 'Basic Information',
-    subGoal: 'Sub Goal',
-    averageProgress: 'Average Progress',
-    totalGoals: 'Total Goals',
-    activeGoals: 'Active',
-    completedGoals: 'Completed',
-
-    // Milestones
-    milestones: 'Milestones',
-    addMilestone: 'Add Milestone',
-    editMilestone: 'Edit Milestone',
-    milestoneTitlePlaceholder: 'Please enter milestone title',
-    milestoneDescriptionPlaceholder: 'Please describe this milestone...',
-    order: 'Order',
-    isCompleted: 'Completed',
-    noMilestones: 'No milestones',
-
-    // Task association
-    tasks: 'Associated Tasks',
-    associatedTasks: 'Associated Tasks',
-    associateTask: 'Associate Task',
-    dissociateTask: 'Dissociate Task',
-    searchTasks: 'Search Tasks',
-    searchTasksPlaceholder: 'Search task name or description...',
-    selectedTasks: 'Selected {count} tasks',
-    noAvailableTasks: 'No available tasks',
-    noTasks: 'No associated tasks',
-    associate: 'Associate',
-
-    // Reviews
-    reviews: 'Goal Reviews',
-    addReview: 'Add Review',
-    editReview: 'Edit Review',
-    reviewDate: 'Review Date',
-    reviewType: 'Review Type',
-    selectReviewType: 'Select Review Type',
-    reviewTypeOptions: {
-      weekly: 'Weekly Review',
-      monthly: 'Monthly Review',
-      quarterly: 'Quarterly Review',
-      custom: 'Custom Review',
-    },
-    rating: 'Rating',
-    reviewContent: 'Review Content',
-    reviewContentPlaceholder: 'Share your thoughts and feelings about goal progress...',
-    lessonsLearned: 'Lessons Learned',
-    lessonsLearnedPlaceholder: 'Record lessons learned from this goal...',
-    nextSteps: 'Next Steps',
-    nextStepsPlaceholder: 'Plan next actions to take...',
-    noReviews: 'No review records',
-
-    // Operation messages
-    createSuccess: 'Goal created successfully',
-    createError: 'Goal creation failed',
-    updateSuccess: 'Goal updated successfully',
-    updateError: 'Goal update failed',
-    deleteSuccess: 'Goal deleted successfully',
-    deleteError: 'Goal deletion failed',
-    deleteConfirm: 'Are you sure you want to delete goal "{title}"?',
-    loadError: 'Failed to load goal',
-
-    // Milestone operations
-    milestoneCreateSuccess: 'Milestone created successfully',
-    milestoneCreateError: 'Milestone creation failed',
-    milestoneUpdateSuccess: 'Milestone updated successfully',
-    milestoneUpdateError: 'Milestone update failed',
-    milestoneUpdated: 'Milestone status updated',
-    milestoneDeleted: 'Milestone deleted',
-    milestoneDeleteError: 'Milestone deletion failed',
-    deleteMilestoneConfirm: 'Are you sure you want to delete this milestone?',
-
-    // Review operations
-    reviewCreateSuccess: 'Review created successfully',
-    reviewCreateError: 'Review creation failed',
-    reviewUpdateSuccess: 'Review updated successfully',
-    reviewUpdateError: 'Review update failed',
-    reviewDeleted: 'Review deleted',
-    reviewDeleteError: 'Review deletion failed',
-    deleteReviewConfirm: 'Are you sure you want to delete this review?',
-
-    // Task association operations
-    loadTasksError: 'Failed to load tasks',
-    tasksAssociated: 'Associated {count} tasks',
-    associateTasksError: 'Failed to associate tasks',
-    taskDissociated: 'Task association cancelled',
-    taskDissociateError: 'Failed to cancel task association',
-    dissociateTaskConfirm: 'Are you sure you want to dissociate this task?',
-
-    // Other
-    noGoals: 'No goals yet, start creating your first goal!',
-  },
-
-  // File operations
-  file: {
-    upload: 'Upload File',
-    uploadFiles: 'Upload Files',
-    selectedFiles: 'Selected Files',
-    uploadedFiles: 'Uploaded Files',
-    download: 'Download File',
-    downloadFile: 'Download File',
-    delete: 'Delete File',
-    deleteFile: 'Delete File',
-    selectFiles: 'Select Files',
-    dragAndDrop: 'Drag and drop files here or click to select',
-    maxFileSize: 'Maximum file size',
-    supportedFormats: 'Supported formats',
-    uploadSuccess: 'File uploaded successfully',
-    uploadFailed: 'File upload failed',
-    deleteSuccess: 'File deleted successfully',
-    deleteFailed: 'File deletion failed',
-    downloadFailed: 'File download failed',
-    chooseFile: 'Choose File',
-    noFileSelected: 'No file selected',
-  },
-
-  // Date and time
-  datetime: {
-    weekdays: {
-      sunday: 'Sun',
-      monday: 'Mon',
-      tuesday: 'Tue',
-      wednesday: 'Wed',
-      thursday: 'Thu',
-      friday: 'Fri',
-      saturday: 'Sat',
-    },
-    weekdaysShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-  },
-
-  // Habit management
-  habits: {
-    title: 'Habit Tracking',
-    all: 'All Habits',
-    create: 'Create Habit',
-    edit: 'Edit Habit',
-    delete: 'Delete Habit',
-    view: 'View Details',
-    confirmDelete: 'Are you sure you want to delete this habit?',
-    nameRequired: 'Habit name is required',
-    createHabit: 'Create Habit',
-    editHabit: 'Edit Habit',
-    detail: 'Habit Details',
-
-    // Basic information
-    name: 'Habit Name',
-    description: 'Habit Description',
-    category: 'Category',
-    frequencyDesc: 'Frequency',
-    startDate: 'Start Date',
-    endDate: 'End Date',
-    reminderTime: 'Reminder Time',
-    reminderType: 'Reminder Type',
-    reminderLocation: 'Reminder Location',
-    color: 'Color',
-    icon: 'Icon',
-    tags: 'Tags',
-    addTag: 'Add Tag',
-
-    // Status and actions
-    complete: 'Check In',
-    completed: 'Checked In',
-    archive: 'Archive',
-    unarchive: 'Unarchive',
-    showArchived: 'Show Archived',
-    hideArchived: 'Hide Archived',
-
-    // Extended info
-    habits: 'Habit List',
-    myHabits: 'My Habits',
-    habitName: 'Habit Name',
-    habitDescription: 'Habit Description',
-    isArchived: 'Archived',
-    createdAt: 'Created At',
-    updatedAt: 'Updated At',
-
-    // Statistics
-    streakCount: 'Current Streak',
-    longestStreak: 'Longest Streak',
-    totalCompletions: 'Total Completions',
-    completionHistory: 'Completion History',
-    lastCompletedAt: 'Last Completed At',
-
-    // Status
-    incomplete: 'Incomplete',
-    inProgress: 'In Progress',
-    paused: 'Paused',
-    archived: 'Archived',
-
-    // Actions
-    markAsCompleted: 'Mark as Completed',
-    markAsIncomplete: 'Mark as Incomplete',
-    addNote: 'Add Note',
-    viewHistory: 'View History',
-    archiveHabit: 'Archive Habit',
-    unarchiveHabit: 'Unarchive Habit',
-
-    // Status changes
-    create_title: 'Create New Habit',
-    create_success: 'Habit created successfully',
-    update_success: 'Habit updated successfully',
-    create_failed: 'Habit creation failed',
-    update_failed: 'Habit update failed',
-    delete_success: 'Habit deleted successfully',
-    delete_failed: 'Habit deletion failed',
-    check_success: 'Check Success',
-    uncheck_success: 'Uncheck Success',
-    habitCreated: 'Habit created successfully',
-    habitUpdated: 'Habit updated successfully',
-    habitDeleted: 'Habit deleted successfully',
-
-    // Form validation
-    nameMinLength: 'Habit name must be at least 2 characters',
-    nameMaxLength: 'Habit name cannot exceed 50 characters',
-    descriptionMaxLength: 'Description cannot exceed 200 characters',
-    categoryRequired: 'Please select a category',
-    frequencyRequired: 'Please select a frequency',
-    startDateRequired: 'Please select a start date',
-    invalidDateRange: 'End date cannot be earlier than start date',
-
-    // Notifications
-    noHabitsFound: 'No habits found',
-    noCompletionHistory: 'No completion history',
-    habitCompletedToday: 'Completed today',
-    habitNotCompletedToday: 'Not completed today',
-    streakBroken: 'Streak broken',
-
-    // Statistics
-    stats: {
-      current_streak: 'Current Streak',
-      longest_streak: 'Longest Streak',
-      total: 'Total Completed',
-      completion_rate: 'Completion Rate',
-      last_completed: 'Last Completed',
-    },
-
-    // Categories
-    categories: {
-      health: 'Health',
-      fitness: 'Fitness',
-      study: 'Study',
-      work: 'Work',
-      lifestyle: 'Lifestyle',
-      hobby: 'Hobby',
-      social: 'Social',
-      personal: 'Personal Development',
-      finance: 'Finance',
-      mindfulness: 'Mindfulness',
-      creativity: 'Creativity',
-      other: 'Other',
-    },
-
-    // Frequency
-    frequency: {
-      daily: 'Daily',
-      weekly: 'Weekly',
-      monthly: 'Monthly',
-      custom: 'Custom',
-    },
-
-    // Filter and sort
-    filter: {
-      title: 'Filter',
-      category: 'Category',
-      frequency: 'Frequency',
-      all_categories: 'All Categories',
-      all_frequencies: 'All Frequencies',
-      show_archived: 'Show Archived',
-      apply: 'Apply Filter',
-      reset: 'Reset Filter',
-    },
-
-    sort: {
-      title: 'Sort',
-      name_asc: 'Name (A-Z)',
-      name_desc: 'Name (Z-A)',
-      created_asc: 'Created Date (Earliest)',
-      created_desc: 'Created Date (Latest)',
-      streak_asc: 'Streak Count (Lowest)',
-      streak_desc: 'Streak Count (Highest)',
-    },
-
-    // Empty states
-    empty: {
-      title: 'No Habits',
-      description: 'Create your first habit to start building a better lifestyle',
-      create: 'Create Habit',
-      create_first: 'Create your first habit',
-    },
-
-    // Forms
-    form: {
-      name: 'Habit Name',
-      name_placeholder: 'Enter habit name',
-      description: 'Description',
-      description_placeholder: 'Enter habit description (optional)',
-      category: 'Category',
-      frequency: 'Frequency',
-      days_of_week: 'Days of Week',
-      days_of_month: 'Days of Month',
-      start_date: 'Start Date',
-      start_date_placeholder: 'Select start date',
-      end_date: 'End Date',
-      end_date_placeholder: 'Select end date',
-      tags: 'Tags',
-      tags_placeholder: 'Add tags',
-      reminder_type: 'Reminder Type',
-      reminder_time: 'Reminder Time',
-      reminder_time_placeholder: 'Select reminder time',
-      reminder_location: 'Reminder Location',
-      reminder_location_placeholder: 'Enter location',
-      color: 'Color',
-      icon: 'Icon',
-      icon_placeholder: 'Select icon',
-    },
-
-    // Reminder types
-    reminder_types: {
-      none: 'No Reminder',
-      time: 'Time Reminder',
-      location: 'Location Reminder',
-    },
-  },
-
-  // Frequency related
-  frequency: {
-    daily: 'Daily',
-    weekly: 'Weekly',
-    monthly: 'Monthly',
-
-    // Days of week
-    daysOfWeek: {
-      0: 'Sunday',
-      1: 'Monday',
-      2: 'Tuesday',
-      3: 'Wednesday',
-      4: 'Thursday',
-      5: 'Friday',
-      6: 'Saturday',
-    },
-
-    // Frequency descriptions
-    everyDay: 'Every day',
-    everyWeek: 'Every week',
-    everyMonth: 'Every month',
-    weekdays: 'Weekdays',
-    weekends: 'Weekends',
-
-    // Frequency settings
-    selectDays: 'Select days',
-    selectWeekdays: 'Select weekdays',
-    selectDaysOfMonth: 'Select days of month',
-  },
-
-  // Categories
-  category: {
-    health: 'Health',
-    fitness: 'Fitness',
-    study: 'Study',
-    work: 'Work',
-    lifestyle: 'Lifestyle',
-    hobby: 'Hobby',
-    social: 'Social',
-    personal: 'Personal Development',
-    finance: 'Finance',
-    mindfulness: 'Mindfulness',
-    creativity: 'Creativity',
-    other: 'Other',
-  },
-
-  // Reminder related
-  reminder: {
-    time: 'Time Reminder',
-    location: 'Location Reminder',
-    noReminder: 'No Reminder',
-    setReminder: 'Set Reminder',
-    reminderSet: 'Reminder set',
-    reminderCanceled: 'Reminder canceled',
-    reminderTitle: 'Habit Reminder',
-    reminderMessage: 'Time to complete your habit: {habitName}',
-
-    // Time expressions
-    timeFormat: 'HH:mm',
-    dateFormat: 'YYYY-MM-DD',
-    datetimeFormat: 'YYYY-MM-DD HH:mm',
-  },
-
-  // Statistics page
-  statistics: {
-    title: 'Statistics',
-    overview: 'Overview',
-    todayStats: "Today's Stats",
-    weeklyStats: 'Weekly Stats',
-    monthlyStats: 'Monthly Stats',
-    yearlyStats: 'Yearly Stats',
-
-    // Statistics metrics
-    totalHabits: 'Total Habits',
-    activeHabits: 'Active Habits',
-    completedToday: 'Completed Today',
-    completionRate: 'Completion Rate',
-    averageStreak: 'Average Streak',
-    bestStreak: 'Best Streak',
-
-    // Charts
-    completionTrend: 'Completion Trend',
-    categoryDistribution: 'Category Distribution',
-    weeklyPattern: 'Weekly Pattern',
-    monthlyProgress: 'Monthly Progress',
-
-    // Achievements
-    achievements: 'Achievements',
-    badges: 'Badges',
-    milestones: 'Milestones',
-  },
-
-  // Calendar related
-  calendar: {
-    today: 'Today',
-    month: 'Month',
-    week: 'Week',
-    day: 'Day',
-    agenda: 'Agenda',
-
-    // Months
-    months: {
-      1: 'January',
-      2: 'February',
-      3: 'March',
-      4: 'April',
-      5: 'May',
-      6: 'June',
-      7: 'July',
-      8: 'August',
-      9: 'September',
-      10: 'October',
-      11: 'November',
-      12: 'December',
-    },
-
-    // Weekdays short
-    weekdaysShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-
-    // Navigation
-    previousMonth: 'Previous Month',
-    nextMonth: 'Next Month',
-    goToToday: 'Go to Today',
-  },
-
-  // Settings page
-  settings: {
-    title: 'Settings',
-    general: 'General Settings',
-    notifications: 'Notification Settings',
-    appearance: 'Appearance Settings',
-    data: 'Data Management',
-    about: 'About',
-
-    // General settings
-    language: 'Language',
-    theme: 'Theme',
-    startOfWeek: 'Start of Week',
-    timeFormat: 'Time Format',
-    dateFormat: 'Date Format',
-
-    // Notification settings
-    enableNotifications: 'Enable Notifications',
-    dailyReminder: 'Daily Reminder',
-    weeklyReport: 'Weekly Report',
-    achievementNotifications: 'Achievement Notifications',
-
-    // Themes
-    light: 'Light Mode',
-    dark: 'Dark Mode',
-    system: 'Follow System',
-
-    // Data management
-    exportData: 'Export Data',
-    importData: 'Import Data',
-    clearData: 'Clear Data',
-    backup: 'Backup',
-    restore: 'Restore',
-
-    // Confirmation dialogs
-    confirmClearData: 'Are you sure you want to clear all data? This action cannot be undone.',
-    confirmDeleteHabit: 'Are you sure you want to delete this habit?',
-    dataCleared: 'Data cleared',
-    dataExported: 'Data exported successfully',
-    dataImported: 'Data imported successfully',
-  },
-
-  // Error messages
-  error: {
-    networkError: 'Network connection error',
-    serverError: 'Server error',
-    unknownError: 'Unknown error',
-    validationError: 'Validation failed',
-    permissionDenied: 'Permission denied',
-    notFound: 'Not found',
-    timeout: 'Request timeout',
-
-    // Specific errors
-    habitNotFound: 'Habit not found',
-    invalidDate: 'Invalid date',
-    invalidTime: 'Invalid time',
-    duplicateHabit: 'Habit name already exists',
-    cantDeleteCompletedHabit: 'Cannot delete habit with completion history',
-  },
-
-  // Success messages
-  success: {
-    habitCompleted: 'Habit completed!',
-    streakIncreased: 'Streak increased!',
-    habitCreated: 'Habit created successfully',
-    habitUpdated: 'Habit updated successfully',
-    habitDeleted: 'Habit deleted successfully',
-    reminderSet: 'Reminder set successfully',
-    dataExported: 'Data exported successfully',
-    settingsSaved: 'Settings saved successfully',
-  },
-
-  // Time related
-  time: {
-    now: 'Now',
-    today: 'Today',
-    yesterday: 'Yesterday',
-    tomorrow: 'Tomorrow',
-    thisWeek: 'This Week',
-    thisMonth: 'This Month',
-    thisYear: 'This Year',
-
-    // Relative time
-    minutesAgo: '{minutes} minutes ago',
-    hoursAgo: '{hours} hours ago',
-    daysAgo: '{days} days ago',
-    weeksAgo: '{weeks} weeks ago',
-    monthsAgo: '{months} months ago',
-    yearsAgo: '{years} years ago',
-
-    // Duration
-    days: '{count} days',
-    weeks: '{count} weeks',
-    months: '{count} months',
-    years: '{count} years',
-  },
-
-  // Units
-  units: {
-    times: 'times',
-    days: 'days',
-    weeks: 'weeks',
-    months: 'months',
-    years: 'years',
-    percent: '%',
-  },
-
-  // Empty states
-  empty: {
-    noHabits: 'No habits created yet',
-    noCompletions: 'No completion records yet',
-    noReminders: 'No reminders set',
-    noData: 'No data available',
-    createFirstHabit: 'Create your first habit',
-    startTracking: 'Start tracking your habits',
-  },
-
-  // Navigation
-  navigation: {
-    dashboard: 'Dashboard',
-    habits: 'Habits',
-    calendar: 'Calendar',
-    statistics: 'Statistics',
-    settings: 'Settings',
-    profile: 'Profile',
-  },
-
-  // Button text
-  buttons: {
-    getStarted: 'Get Started',
-    learnMore: 'Learn More',
-    tryAgain: 'Try Again',
-    goHome: 'Go Home',
-    viewDetails: 'View Details',
-    markComplete: 'Mark Complete',
-    skip: 'Skip',
-    done: 'Done',
-    close: 'Close',
-  },
-
-  // Placeholder text
-  placeholders: {
-    searchHabits: 'Search habits...',
-    habitName: 'Enter habit name',
-    habitDescription: 'Describe this habit...',
-    addTag: 'Add tag',
-    selectCategory: 'Select category',
-    addNote: 'Add note...',
-    location: 'Enter location',
-  },
-
-  // Tags
-  tags: {
-    morning: 'Morning',
-    evening: 'Evening',
-    weekend: 'Weekend',
-    indoor: 'Indoor',
-    outdoor: 'Outdoor',
-    quick: 'Quick',
-    challenge: 'Challenge',
-    relaxing: 'Relaxing',
-    social: 'Social',
-    solo: 'Solo',
-    beginner: 'Beginner',
-    advanced: 'Advanced',
-  },
-
-  // Pomodoro
-  pomodoro: {
-    title: 'Pomodoro Timer',
-    timer: {
-      readyToStart: 'Ready to start',
-      focusTime: 'Focus time',
-      shortBreak: 'Short break',
-      longBreak: 'Long break',
-    },
-    settings: {
-      title: 'Pomodoro Settings',
-      templates: 'Template Management',
-      activeTemplate: 'Current Template',
-      createTemplate: 'Create Template',
-      editTemplate: 'Edit Template',
-      newTemplate: 'New Template',
-      addTemplate: 'Add Template',
-      templateName: 'Template Name',
-      templateNamePlaceholder: 'Enter template name',
-      description: 'Description',
-      descriptionPlaceholder: 'Enter template description',
-      workDuration: 'Work Duration',
-      breakDuration: 'Short Break Duration',
-      longBreakDuration: 'Long Break Duration',
-      sessionsBeforeLongBreak: 'Sessions Before Long Break',
-      duration: 'Work {work} minutes, break {break} minutes',
-      autoStartBreaks: 'Auto Start Breaks',
-      autoStartBreaksDescription: 'Automatically start break after work time ends',
-      setAsDefault: 'Set as Default Template',
-      default: 'Default',
-      confirmDeleteTemplate: 'Are you sure you want to delete this template?',
-      focusMode: 'Focus Mode',
-      disableNotifications: 'Disable Notifications',
-      blockWebsites: 'Block Websites',
-      showProgressInTitle: 'Show Progress in Title',
-      notifications: 'Notification Settings',
-      enableNotifications: 'Enable Notifications',
-      notificationsDescription: 'Show notification when session ends',
-      enableSounds: 'Enable Sounds',
-      soundVolume: 'Volume',
-      soundNotifications: 'Sound Notifications',
-      soundNotificationsDescription: 'Play notification sounds',
-      fullscreenMode: 'Fullscreen Mode',
-      fullscreenModeDescription: 'Enter fullscreen mode during focus',
-    },
-    stats: {
-      title: 'Statistics Report',
-      thisWeek: 'This Week',
-      thisMonth: 'This Month',
-      thisQuarter: 'This Quarter',
-      totalSessions: 'Total Sessions',
-      completedSessions: 'Completed Sessions',
-      totalFocusTime: 'Total Focus Time',
-      avgProductivity: 'Average Productivity',
-      dailySessions: 'Daily Sessions',
-      productivityTrend: 'Productivity Trend',
-      timeDistribution: 'Time Distribution',
-      workTime: 'Work Time',
-      breakTime: 'Break Time',
-      completionRate: 'Completion Rate',
-      of: 'of',
-      sessionsCompleted: 'sessions completed',
-      recentSessions: 'Recent Sessions',
-      date: 'Date',
-      task: 'Task',
-      duration: 'Duration',
-      status: 'Status',
-      productivity: 'Productivity',
-    },
-    // Session status
-    status: {
-      completed: 'Completed',
-      cancelled: 'Cancelled',
-      paused: 'Paused',
-      running: 'Running',
-      pending: 'Pending',
-    },
-    // Timer status
-    readyToStart: 'Ready to start',
-    focusTime: 'Focus time',
-    breakTime: 'Break time',
-    focusSession: 'Focus session',
-    workingOn: 'Working on',
-    remaining: 'Remaining time',
-
-    // Button operations
-    start: 'Start',
-    pause: 'Pause',
-    resume: 'Resume',
-    abort: 'Cancel',
-    completed: 'Completed',
-
-    // Mode switching
-    focusModeOn: 'Focus mode on',
-    focusModeOff: 'Focus mode off',
-
-    // Statistics
-    todaySessions: 'Today sessions',
-    focusTimeTotal: 'Focus time',
-
-    // Quick actions
-    quickActions: 'Quick Actions',
-    selectTask: 'Select Task',
-    selectTaskOptions: {
-      button: 'Select Task',
-      noTasks: 'No tasks',
-      estimatedPomodoros: 'Estimated {count} pomodoros',
-      startWithoutTask: 'Start without task',
-    },
-    templates: 'Templates',
-    statistics: 'Statistics',
-
-    // History page
-    history: {
-      title: 'History',
-      allStatuses: 'All Status',
-      totalSessions: 'Total Sessions',
-      completed: 'Completed',
-      totalTime: 'Total Time',
-      avgProductivity: 'Average Productivity',
-      sessions: 'Session Records',
-      showing: 'Showing {start} - {end} of {total}',
-      date: 'Date',
-      task: 'Task',
-      template: 'Template',
-      duration: 'Duration',
-      status: 'Status',
-      productivity: 'Productivity',
-      actions: 'Actions',
-      planned: 'Planned',
-      noSessions: 'No session records',
-      viewTask: 'View Task',
-    },
-
-    // Task selector dialog
-    taskSelector: {
-      title: 'Select Task',
-      noTasks: 'No tasks',
-      searchPlaceholder: 'Search tasks...',
-      createNew: 'Create new task',
-      withoutTask: 'Without task',
-    },
-
-    // Complete session dialog
-    completeModal: {
-      title: 'Complete Session',
-      message: 'Congratulations on completing this pomodoro session!',
-      duration: 'Duration: {duration}',
-      addNotes: 'Add Notes',
-      notesPlaceholder: 'Record thoughts from this session...',
-      markTaskComplete: 'Mark task complete',
-    },
-
-    // Session completion related
-    complete: {
-      duration: 'Duration: {duration}',
-      productivityRating: 'Productivity Rating',
-      rating: {
-        poor: 'Poor',
-        fair: 'Fair',
-        good: 'Good',
-        veryGood: 'Very Good',
-        excellent: 'Excellent',
+      "reason": "Cancel Reason",
+      "selectReason": "Please select cancel reason",
+      "reasons": {
+        "interruption": "External interruption",
+        "urgentTask": "Urgent task",
+        "feelingUnwell": "Feeling unwell",
+        "distraction": "Distraction",
+        "other": "Other reason"
       },
-      notes: 'Session Notes',
-      notesPlaceholder: 'Record thoughts and gains from this session...',
-      breakSuggestion: {
-        title: 'Suggest taking a break',
-        message:
-          'You have completed a focus session, suggest taking a 5-15 minute break to restore energy.',
+      "notes": "Notes",
+      "notesPlaceholder": "Please describe the reason for cancellation in detail...",
+      "confirm": "Confirm Cancel"
+    }
+  },
+  "tasks": {
+    "status": {
+      "todo": "To Do",
+      "in_progress": "In Progress",
+      "working": "Working",
+      "done": "Done",
+      "completed": "Completed",
+      "pending": "Pending"
+    }
+  },
+  "taskCalendar": {
+    "title": "Task Calendar",
+    "todayView": "Today",
+    "weekView": "Week",
+    "monthView": "Month",
+    "today": "Today",
+    "noTime": "No time",
+    "moreTasks": "more tasks",
+    "weekdays": {
+      "monday": "Mon",
+      "tuesday": "Tue",
+      "wednesday": "Wed",
+      "thursday": "Thu",
+      "friday": "Fri",
+      "saturday": "Sat",
+      "sunday": "Sun"
+    }
+  },
+  "dashboard": {
+    "welcomeMessage": "Today is {date}, let's efficiently complete today's goals!",
+    "todayTasks": "Today's Tasks",
+    "todayHabits": "Today's Habits",
+    "activeGoals": "Active Goals",
+    "pomodoroTimer": "Pomodoro Timer",
+    "todayStats": "Today's Statistics",
+    "more": "More",
+    "noTasks": "No tasks",
+    "noHabits": "No habits",
+    "noGoals": "No goals",
+    "taskCompleted": "Completed",
+    "markComplete": "Mark Complete",
+    "consecutiveDays": "{count} days in a row",
+    "goalTarget": "Goal: {target}",
+    "focusTime": "Focus Time",
+    "shortBreak": "Short Break",
+    "longBreak": "Long Break",
+    "readyToStart": "Ready to Start",
+    "pause": "Pause",
+    "start": "Start",
+    "reset": "Reset",
+    "completedTasks": "Completed Tasks",
+    "completedHabits": "Completed Habits",
+    "pomodoroSessions": "Pomodoro Sessions",
+    "avgGoalProgress": "Avg Goal Progress",
+    "highPriority": "High Priority",
+    "mediumPriority": "Medium Priority",
+    "lowPriority": "Low Priority",
+    "normalPriority": "Normal",
+    "daily": "Daily",
+    "weekly": "Weekly",
+    "monthly": "Monthly",
+    "custom": "Custom",
+    "notSet": "Not set",
+    "dueDate": "Due: {date}"
+  },
+  "security": {
+    "title": "Security Settings",
+    "description": "Manage your account security settings, including password, two-factor authentication, and active sessions",
+    "changePassword": "Change Password",
+    "currentPassword": "Current Password",
+    "newPassword": "New Password",
+    "confirmNewPassword": "Confirm New Password",
+    "updatePassword": "Update Password",
+    "passwordUpdated": "Password updated successfully",
+    "currentPasswordIncorrect": "Current password is incorrect",
+    "userNotFound": "User not found",
+    "processing": "Processing...",
+    "twoFactorAuth": "Two-Factor Authentication",
+    "twoFactorAuthDesc": "Enable two-factor authentication for your account to enhance security",
+    "enabled": "Enabled",
+    "disabled": "Disabled",
+    "activeSessions": "Active Sessions",
+    "device": "Device",
+    "location": "Location",
+    "ipAddress": "IP Address",
+    "lastActive": "Last Active",
+    "action": "Action",
+    "current": "Current",
+    "terminate": "Terminate"
+  },
+  "legal": {
+    "termsOfService": "Terms of Service",
+    "privacyPolicy": "Privacy Policy",
+    "lastUpdated": "Last Updated",
+    "agreeToTerms": "I have read and agree to the",
+    "agreeToPrivacy": "and",
+    "agreeToTermsAndPrivacy": "I have read and agree to the",
+    "and": "and",
+    "contact": {
+      "title": "Contact Us",
+      "content": "If you have any questions or suggestions about this document, please contact us:",
+      "email": "Email",
+      "address": "Address",
+      "addressValue": "Chaoyang District Technology Park, Beijing, China"
+    },
+    "terms": {
+      "acceptance": {
+        "title": "1. Acceptance of Terms",
+        "content": "By accessing and using the Bingo Todo service, you agree to be bound by these Terms of Service. If you do not agree to any part of these terms, you may not use our service."
       },
-      confirm: 'Confirm Complete',
-    },
-
-    // Cancel session dialog
-    cancelModal: {
-      title: 'Cancel Session',
-      message: 'Are you sure you want to cancel the current session?',
-      reason: 'Cancel Reason',
-      reasonPlaceholder: 'Please briefly describe the reason for cancellation...',
-      confirm: 'Confirm Cancel',
-    },
-
-    // Cancel session related
-    cancel: {
-      timeSpent: 'Time spent: {duration}',
-      warning: {
-        title: 'Cancel session reminder',
-        message:
-          'Cancelling the session will lose current progress and will not be recorded as a completed pomodoro.',
+      "description": {
+        "title": "2. Service Description",
+        "content": "Bingo Todo is a comprehensive productivity application designed to help users manage tasks, track habits, and achieve goals. Our services include but are not limited to:",
+        "features": {
+          "taskManagement": "Task creation, editing, and management",
+          "habitTracking": "Habit tracking and progress monitoring",
+          "pomodoroTimer": "Focus time management and Pomodoro timer features",
+          "goalSetting": "Goal setting and progress tracking",
+          "progressReports": "Progress reports and data analytics"
+        }
       },
-      reason: 'Cancel Reason',
-      selectReason: 'Please select cancel reason',
-      reasons: {
-        interruption: 'External interruption',
-        urgentTask: 'Urgent task',
-        feelingUnwell: 'Feeling unwell',
-        distraction: 'Distraction',
-        other: 'Other reason',
+      "userAccount": {
+        "title": "3. User Accounts",
+        "content": "To use our service, you need to create an account. You are responsible for:",
+        "requirements": {
+          "accurateInfo": "Providing accurate, complete, and current registration information",
+          "securePassword": "Maintaining the security and confidentiality of your password",
+          "confidentiality": "Being responsible for all activities that occur under your account"
+        }
       },
-      notes: 'Notes',
-      notesPlaceholder: 'Please describe the reason for cancellation in detail...',
-      confirm: 'Confirm Cancel',
-    },
-  },
-
-  // Task related (for tasks.status.* keys)
-  tasks: {
-    status: {
-      todo: 'To Do',
-      in_progress: 'In Progress',
-      working: 'Working',
-      done: 'Done',
-      completed: 'Completed',
-      pending: 'Pending',
-    },
-  },
-
-  // Task Calendar
-  taskCalendar: {
-    title: 'Task Calendar',
-    todayView: 'Today',
-    weekView: 'Week',
-    monthView: 'Month',
-    today: 'Today',
-    noTime: 'No time',
-    moreTasks: 'more tasks',
-    weekdays: {
-      monday: 'Mon',
-      tuesday: 'Tue',
-      wednesday: 'Wed',
-      thursday: 'Thu',
-      friday: 'Fri',
-      saturday: 'Sat',
-      sunday: 'Sun',
-    },
-  },
-
-  // Dashboard
-  dashboard: {
-    // Welcome section
-    welcomeMessage: "Today is {date}, let's efficiently complete today's goals!",
-
-    // Section headers
-    todayTasks: "Today's Tasks",
-    todayHabits: "Today's Habits",
-    activeGoals: 'Active Goals',
-    pomodoroTimer: 'Pomodoro Timer',
-    todayStats: "Today's Statistics",
-
-    // Common actions
-    more: 'More',
-    noTasks: 'No tasks',
-    noHabits: 'No habits',
-    noGoals: 'No goals',
-
-    // Task related
-    taskCompleted: 'Completed',
-    markComplete: 'Mark Complete',
-
-    // Habit related
-    consecutiveDays: '{count} days in a row',
-    goalTarget: 'Goal: {target}',
-
-    // Pomodoro states
-    focusTime: 'Focus Time',
-    shortBreak: 'Short Break',
-    longBreak: 'Long Break',
-    readyToStart: 'Ready to Start',
-    pause: 'Pause',
-    start: 'Start',
-    reset: 'Reset',
-
-    // Statistics
-    completedTasks: 'Completed Tasks',
-    completedHabits: 'Completed Habits',
-    pomodoroSessions: 'Pomodoro Sessions',
-    avgGoalProgress: 'Avg Goal Progress',
-
-    // Priority levels
-    highPriority: 'High Priority',
-    mediumPriority: 'Medium Priority',
-    lowPriority: 'Low Priority',
-    normalPriority: 'Normal',
-
-    // Frequency types
-    daily: 'Daily',
-    weekly: 'Weekly',
-    monthly: 'Monthly',
-    custom: 'Custom',
-
-    // Date related
-    notSet: 'Not set',
-    dueDate: 'Due: {date}',
-  },
-
-  // Security settings
-  security: {
-    title: 'Security Settings',
-    description:
-      'Manage your account security settings, including password, two-factor authentication, and active sessions',
-
-    // Password change
-    changePassword: 'Change Password',
-    currentPassword: 'Current Password',
-    newPassword: 'New Password',
-    confirmNewPassword: 'Confirm New Password',
-    updatePassword: 'Update Password',
-    passwordUpdated: 'Password updated successfully',
-    currentPasswordIncorrect: 'Current password is incorrect',
-    userNotFound: 'User not found',
-    processing: 'Processing...',
-
-    // Two-factor authentication
-    twoFactorAuth: 'Two-Factor Authentication',
-    twoFactorAuthDesc: 'Enable two-factor authentication for your account to enhance security',
-    enabled: 'Enabled',
-    disabled: 'Disabled',
-
-    // Active sessions
-    activeSessions: 'Active Sessions',
-    device: 'Device',
-    location: 'Location',
-    ipAddress: 'IP Address',
-    lastActive: 'Last Active',
-    action: 'Action',
-    current: 'Current',
-    terminate: 'Terminate',
-  },
-
-  // Legal documents
-  legal: {
-    termsOfService: 'Terms of Service',
-    privacyPolicy: 'Privacy Policy',
-    lastUpdated: 'Last Updated',
-    agreeToTerms: 'I have read and agree to the',
-    agreeToPrivacy: 'and',
-    agreeToTermsAndPrivacy: 'I have read and agree to the',
-    and: 'and',
-
-    // Contact information
-    contact: {
-      title: 'Contact Us',
-      content: 'If you have any questions or suggestions about this document, please contact us:',
-      email: 'Email',
-      address: 'Address',
-      addressValue: 'Chaoyang District Technology Park, Beijing, China',
-    },
-
-    // Terms of Service
-    terms: {
-      acceptance: {
-        title: '1. Acceptance of Terms',
-        content:
-          'By accessing and using the Bingo Todo service, you agree to be bound by these Terms of Service. If you do not agree to any part of these terms, you may not use our service.',
+      "userConduct": {
+        "title": "4. User Conduct",
+        "content": "You agree not to use our service for the following activities:",
+        "prohibited": {
+          "illegalActivities": "Any illegal or unauthorized purposes",
+          "harmfulContent": "Distributing harmful, defamatory, or offensive content",
+          "systemInterference": "Interfering with or disrupting the operation of the service",
+          "unauthorizedAccess": "Unauthorized access to other users' accounts or data"
+        }
       },
-      description: {
-        title: '2. Service Description',
-        content:
-          'Bingo Todo is a comprehensive productivity application designed to help users manage tasks, track habits, and achieve goals. Our services include but are not limited to:',
-        features: {
-          taskManagement: 'Task creation, editing, and management',
-          habitTracking: 'Habit tracking and progress monitoring',
-          pomodoroTimer: 'Focus time management and Pomodoro timer features',
-          goalSetting: 'Goal setting and progress tracking',
-          progressReports: 'Progress reports and data analytics',
+      "intellectualProperty": {
+        "title": "5. Intellectual Property",
+        "content": "All rights, title, and interest in and to the service and its original content, features, and functionality are owned by Bingo Todo and its licensors. The service is protected by copyright, trademark, and other laws."
+      },
+      "termination": {
+        "title": "6. Termination",
+        "content": "We may terminate or suspend your account and access to the service at any time for any reason, including but not limited to violation of these Terms of Service."
+      },
+      "disclaimers": {
+        "title": "7. Disclaimers",
+        "content": "The service is provided \"as is\" without any express or implied warranties. We do not guarantee that the service will meet your requirements or be uninterrupted."
+      },
+      "changes": {
+        "title": "8. Changes to Terms",
+        "content": "We reserve the right to modify these terms at any time. Significant changes will be communicated to users through appropriate means. Continued use of the service constitutes acceptance of the modified terms."
+      }
+    },
+    "privacy": {
+      "introduction": {
+        "title": "1. Introduction",
+        "content": "This Privacy Policy describes how we collect, use, and protect the information you provide when using the Bingo Todo service. We are committed to protecting your privacy and data security."
+      },
+      "dataCollection": {
+        "title": "2. Information Collection",
+        "content": "We collect the following types of information to provide and improve our services:",
+        "personalInfo": {
+          "title": "Personal Information",
+          "name": "Name and username",
+          "email": "Email address",
+          "password": "Encrypted password information",
+          "profile": "Profile information"
         },
-      },
-      userAccount: {
-        title: '3. User Accounts',
-        content: 'To use our service, you need to create an account. You are responsible for:',
-        requirements: {
-          accurateInfo: 'Providing accurate, complete, and current registration information',
-          securePassword: 'Maintaining the security and confidentiality of your password',
-          confidentiality: 'Being responsible for all activities that occur under your account',
+        "usageData": {
+          "title": "Usage Data",
+          "tasks": "Task and project data",
+          "habits": "Habit tracking information",
+          "goals": "Goal and progress data",
+          "sessions": "Usage sessions and preference settings"
         },
+        "technicalData": {
+          "title": "Technical Data",
+          "ip": "IP address and device identifiers",
+          "browser": "Browser type and version",
+          "device": "Device information and operating system",
+          "logs": "Access logs and usage statistics"
+        }
       },
-      userConduct: {
-        title: '4. User Conduct',
-        content: 'You agree not to use our service for the following activities:',
-        prohibited: {
-          illegalActivities: 'Any illegal or unauthorized purposes',
-          harmfulContent: 'Distributing harmful, defamatory, or offensive content',
-          systemInterference: 'Interfering with or disrupting the operation of the service',
-          unauthorizedAccess: "Unauthorized access to other users' accounts or data",
-        },
+      "dataUse": {
+        "title": "3. Information Use",
+        "content": "We use the collected information for the following purposes:",
+        "purposes": {
+          "serviceProvision": "Providing, maintaining, and improving our services",
+          "improvement": "Analyzing usage patterns to enhance user experience",
+          "communication": "Communicating with you about service-related matters",
+          "support": "Providing customer support and technical assistance",
+          "legal": "Complying with legal obligations and protecting legitimate interests"
+        }
       },
-      intellectualProperty: {
-        title: '5. Intellectual Property',
-        content:
-          'All rights, title, and interest in and to the service and its original content, features, and functionality are owned by Bingo Todo and its licensors. The service is protected by copyright, trademark, and other laws.',
+      "dataSharing": {
+        "title": "4. Information Sharing",
+        "content": "We do not sell, trade, or rent your personal information to third parties. We only share information in the following circumstances:",
+        "exceptions": {
+          "consent": "With your explicit consent",
+          "legal": "To comply with legal requirements or court orders",
+          "protection": "To protect our rights, property, or safety",
+          "business": "In the event of business transfer or merger"
+        }
       },
-      termination: {
-        title: '6. Termination',
-        content:
-          'We may terminate or suspend your account and access to the service at any time for any reason, including but not limited to violation of these Terms of Service.',
+      "dataSecurity": {
+        "title": "5. Data Security",
+        "content": "We implement industry-standard security measures to protect your personal information:",
+        "measures": {
+          "encryption": "Data transmission and storage encryption",
+          "access": "Strict access controls and authentication",
+          "monitoring": "Regular security monitoring and vulnerability assessments",
+          "updates": "Timely security updates and patches"
+        }
       },
-      disclaimers: {
-        title: '7. Disclaimers',
-        content:
-          'The service is provided "as is" without any express or implied warranties. We do not guarantee that the service will meet your requirements or be uninterrupted.',
+      "userRights": {
+        "title": "6. User Rights",
+        "content": "You have the following rights regarding your personal data:",
+        "rights": {
+          "access": "Access your personal data",
+          "correction": "Correct inaccurate information",
+          "deletion": "Delete your personal data",
+          "portability": "Data portability",
+          "objection": "Object to certain data processing activities"
+        }
       },
-      changes: {
-        title: '8. Changes to Terms',
-        content:
-          'We reserve the right to modify these terms at any time. Significant changes will be communicated to users through appropriate means. Continued use of the service constitutes acceptance of the modified terms.',
+      "cookies": {
+        "title": "7. Cookies and Tracking Technologies",
+        "content": "We use cookies and similar technologies to improve your experience:",
+        "types": {
+          "essential": "Essential functional cookies",
+          "functional": "Enhancement functional cookies",
+          "analytics": "Analytics and performance cookies"
+        }
       },
-    },
-
-    // Privacy Policy
-    privacy: {
-      introduction: {
-        title: '1. Introduction',
-        content:
-          'This Privacy Policy describes how we collect, use, and protect the information you provide when using the Bingo Todo service. We are committed to protecting your privacy and data security.',
+      "dataRetention": {
+        "title": "8. Data Retention",
+        "content": "We retain your personal information only for as long as necessary to achieve the purposes of collection or to meet legal requirements."
       },
-      dataCollection: {
-        title: '2. Information Collection',
-        content:
-          'We collect the following types of information to provide and improve our services:',
-        personalInfo: {
-          title: 'Personal Information',
-          name: 'Name and username',
-          email: 'Email address',
-          password: 'Encrypted password information',
-          profile: 'Profile information',
-        },
-        usageData: {
-          title: 'Usage Data',
-          tasks: 'Task and project data',
-          habits: 'Habit tracking information',
-          goals: 'Goal and progress data',
-          sessions: 'Usage sessions and preference settings',
-        },
-        technicalData: {
-          title: 'Technical Data',
-          ip: 'IP address and device identifiers',
-          browser: 'Browser type and version',
-          device: 'Device information and operating system',
-          logs: 'Access logs and usage statistics',
-        },
+      "changes": {
+        "title": "9. Policy Changes",
+        "content": "We may update this Privacy Policy from time to time. Significant changes will be posted on our website."
       },
-      dataUse: {
-        title: '3. Information Use',
-        content: 'We use the collected information for the following purposes:',
-        purposes: {
-          serviceProvision: 'Providing, maintaining, and improving our services',
-          improvement: 'Analyzing usage patterns to enhance user experience',
-          communication: 'Communicating with you about service-related matters',
-          support: 'Providing customer support and technical assistance',
-          legal: 'Complying with legal obligations and protecting legitimate interests',
-        },
-      },
-      dataSharing: {
-        title: '4. Information Sharing',
-        content:
-          'We do not sell, trade, or rent your personal information to third parties. We only share information in the following circumstances:',
-        exceptions: {
-          consent: 'With your explicit consent',
-          legal: 'To comply with legal requirements or court orders',
-          protection: 'To protect our rights, property, or safety',
-          business: 'In the event of business transfer or merger',
-        },
-      },
-      dataSecurity: {
-        title: '5. Data Security',
-        content:
-          'We implement industry-standard security measures to protect your personal information:',
-        measures: {
-          encryption: 'Data transmission and storage encryption',
-          access: 'Strict access controls and authentication',
-          monitoring: 'Regular security monitoring and vulnerability assessments',
-          updates: 'Timely security updates and patches',
-        },
-      },
-      userRights: {
-        title: '6. User Rights',
-        content: 'You have the following rights regarding your personal data:',
-        rights: {
-          access: 'Access your personal data',
-          correction: 'Correct inaccurate information',
-          deletion: 'Delete your personal data',
-          portability: 'Data portability',
-          objection: 'Object to certain data processing activities',
-        },
-      },
-      cookies: {
-        title: '7. Cookies and Tracking Technologies',
-        content: 'We use cookies and similar technologies to improve your experience:',
-        types: {
-          essential: 'Essential functional cookies',
-          functional: 'Enhancement functional cookies',
-          analytics: 'Analytics and performance cookies',
-        },
-      },
-      dataRetention: {
-        title: '8. Data Retention',
-        content:
-          'We retain your personal information only for as long as necessary to achieve the purposes of collection or to meet legal requirements.',
-      },
-      changes: {
-        title: '9. Policy Changes',
-        content:
-          'We may update this Privacy Policy from time to time. Significant changes will be posted on our website.',
-      },
-      contact: {
-        content: 'If you have any questions about this Privacy Policy, please contact us:',
-      },
-    },
+      "contact": {
+        "content": "If you have any questions about this Privacy Policy, please contact us:"
+      }
+    }
   },
-  
-  // Password strength related
-  password: {
-    veryWeak: 'Very Weak',
-    weak: 'Weak',
-    medium: 'Medium',
-    strong: 'Strong',
-    veryStrong: 'Very Strong',
-    unknown: 'Unknown Strength',
-    tooShort: 'Password is too short, at least {length} characters required',
-    tooWeak: 'Password is too weak',
-    requiresNumber: 'Password must contain at least one number',
-    requiresCase: 'Password must contain both uppercase and lowercase letters',
-    requiresSpecial: 'Password must contain at least one special character',
-    noRepeats: 'Password cannot contain repeating characters',
-    crackTime: 'It would take approximately {time} to crack',
-  },
+  "password": {
+    "veryWeak": "Very Weak",
+    "weak": "Weak",
+    "medium": "Medium",
+    "strong": "Strong",
+    "veryStrong": "Very Strong",
+    "unknown": "Unknown Strength",
+    "tooShort": "Password is too short, at least {length} characters required",
+    "tooWeak": "Password is too weak",
+    "requiresNumber": "Password must contain at least one number",
+    "requiresCase": "Password must contain both uppercase and lowercase letters",
+    "requiresSpecial": "Password must contain at least one special character",
+    "noRepeats": "Password cannot contain repeating characters",
+    "crackTime": "It would take approximately {time} to crack"
+  }
 }
