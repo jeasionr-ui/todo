@@ -249,7 +249,7 @@
             <svg class="w-8 h-8 text-gray-400 dark:text-gray-500 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            <p class="text-sm font-medium text-gray-700 dark:text-gray-300">{{ $t('pomodoro.history') }}</p>
+            <p class="text-sm font-medium text-gray-700 dark:text-gray-300">{{ $t('pomodoro.history.title') }}</p>
           </button>
         </div>
       </div>
