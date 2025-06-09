@@ -72,8 +72,14 @@ backend/
 │   │   └── auth_api.js      # 用户认证 API
 │   ├── file/                # 文件相关路由
 │   │   └── file_api.js      # 文件上传/下载 API
+│   ├── goal/                # 目标相关路由
+│   │   └── goal_api.js      # 目标管理 API
 │   ├── habit/               # 习惯相关路由
 │   │   └── habit_api.js     # 习惯管理 API
+│   ├── pomodoro/            # 番茄钟相关路由
+│   │   └── pomodoro_api.js  # 番茄钟 API
+│   ├── report/              # 报表相关路由
+│   │   └── report_api.js    # 报表分析 API
 │   ├── task/                # 任务相关路由
 │   │   └── task_api.js      # 任务管理 API
 │   └── user/                # 用户相关路由
@@ -83,9 +89,15 @@ backend/
 │   │   └── auth_biz.js      # 登录/注册/权限验证
 │   ├── file/                # 文件业务逻辑
 │   │   └── file_biz.js      # 文件处理/验证
+│   ├── goal/                # 目标业务逻辑
+│   │   └── goal_biz.js      # 目标管理/里程碑/回顾
 │   ├── habit/               # 习惯业务逻辑
 │   │   ├── habit_biz.js     # 习惯管理
 │   │   └── habit_biz_functions.js # 习惯统计/计算
+│   ├── pomodoro/            # 番茄钟业务逻辑
+│   │   └── pomodoro_biz.js  # 番茄钟管理/统计
+│   ├── report/              # 报表业务逻辑
+│   │   └── report_biz.js    # 数据分析/报表生成
 │   ├── task/                # 任务业务逻辑
 │   │   └── task_biz.js      # 任务管理/状态变更
 │   └── user/                # 用户业务逻辑
@@ -95,9 +107,15 @@ backend/
 │   ├── exec_api.js          # 通用数据库操作
 │   ├── file/                # 文件数据操作
 │   │   └── file_db.js       # 文件信息存储
+│   ├── goal/                # 目标数据操作
+│   │   └── goal_db.js       # 目标CRUD/里程碑/回顾
 │   ├── habit/               # 习惯数据操作
 │   │   ├── habit_db.js      # 习惯CRUD操作
 │   │   └── habit_db_functions.js # 习惯查询函数
+│   ├── pomodoro/            # 番茄钟数据操作
+│   │   └── pomodoro_db.js   # 番茄钟CRUD/统计
+│   ├── report/              # 报表数据操作
+│   │   └── report_db.js     # 数据统计/分析查询
 │   ├── task/                # 任务数据操作
 │   │   └── task_db.js       # 任务CRUD操作
 │   └── user/                # 用户数据操作
@@ -105,8 +123,14 @@ backend/
 ├── dto/                     # 数据传输对象
 │   ├── file/                # 文件传输对象
 │   │   └── FileDTO.js       # 文件信息DTO
+│   ├── goal/                # 目标传输对象
+│   │   └── GoalDTO.js       # 目标/里程碑/回顾DTO
 │   ├── habit/               # 习惯传输对象
 │   │   └── HabitDTO.js      # 习惯信息DTO
+│   ├── pomodoro/            # 番茄钟传输对象
+│   │   └── PomodoroDTO.js   # 番茄钟模板/会话/统计DTO
+│   ├── report/              # 报表传输对象
+│   │   └── ReportDTO.js     # 报表数据DTO
 │   ├── todo/                # 任务传输对象
 │   │   └── TodoDTO.js       # 任务信息DTO
 │   └── user/                # 用户传输对象
@@ -115,8 +139,12 @@ backend/
 │   ├── UserType.js          # 用户类型定义
 │   ├── file/                # 文件实体
 │   │   └── FileType.js      # 文件类型定义
+│   ├── goal/                # 目标实体
+│   │   └── GoalType.js      # 目标/里程碑/回顾类型定义
 │   ├── habit/               # 习惯实体
 │   │   └── HabitType.js     # 习惯类型定义
+│   ├── pomodoro/            # 番茄钟实体
+│   │   └── PomodoroType.js  # 番茄钟类型定义
 │   └── todo/                # 任务实体
 │       └── TodoType.js      # 任务类型定义
 ├── uploads/                 # 文件上传目录
