@@ -4,6 +4,10 @@ English | [中文](./README.md)
 
 A modern ToDo project management system based on Vue 3 and Node.js, designed to help users efficiently manage tasks, habits, and goals.
 
+![alt text](image-2.png)
+
+![alt text](image-3.png)
+
 ## ⚠️ Important Notes
 
 ### 🚧 Development Status

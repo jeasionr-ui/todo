@@ -4,6 +4,10 @@
 
 一个基于 Vue 3 和 Node.js 的现代化 ToDo 项目管理系统，旨在帮助用户高效管理任务、习惯和目标。
 
+![alt text](image.png)
+
+![alt text](image-4.png)
+
 ## ⚠️ 重要注意事项
 
 ### 🚧 开发状态
