@@ -424,6 +424,37 @@ const dbConfig = {
 
 ## 🚀 部署指南
 
+### 本地构建
+
+#### 构建生产版本
+```bash
+# 构建应用（推荐）
+npm run build
+
+# 简单构建（仅复制文件）
+npm run build:simple
+
+# 清理构建文件
+npm run clean
+```
+
+构建完成后，`dist/` 目录包含：
+- 所有源代码文件
+- 生产环境依赖
+- 启动脚本 `start.sh`
+
+#### 运行生产版本
+```bash
+# 方式1：使用 npm
+cd dist && npm start
+
+# 方式2：使用启动脚本
+cd dist && ./start.sh
+
+# 方式3：直接运行
+npm run start:prod
+```
+
 ### 环境变量配置
 ```bash
 # .env 文件
@@ -456,44 +487,65 @@ pm2 restart todo-backend
 ```
 
 ### Docker 部署
-```dockerfile
-# Dockerfile
-FROM node:16-alpine
 
-WORKDIR /app
+#### 单独构建
+```bash
+# 构建镜像
+docker build -t todo-backend .
 
-COPY package*.json ./
-RUN npm ci --only=production
-
-COPY . .
-
-EXPOSE 3000
-
-CMD ["npm", "start"]
+# 运行容器
+docker run -d \
+  --name todo-backend \
+  -p 3000:3000 \
+  -e NODE_ENV=production \
+  -e DB_HOST=mysql \
+  -e DB_USER=root \
+  -e DB_PASSWORD=rootpassword \
+  -e DB_NAME=todo_db \
+  todo-backend
 ```
 
+#### Docker Compose
 ```yaml
 # docker-compose.yml
 version: '3.8'
 services:
   backend:
-    build: .
+    build: 
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "3000:3000"
     environment:
       - NODE_ENV=production
       - DB_HOST=mysql
+      - DB_USER=root
+      - DB_PASSWORD=rootpassword
+      - DB_NAME=todo_db
     depends_on:
-      - mysql
+      mysql:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000/api/health', (res) => process.exit(res.statusCode === 200 ? 0 : 1))"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
   
   mysql:
     image: mysql:8.0
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword
       MYSQL_DATABASE: todo_db
+      MYSQL_CHARACTER_SET_SERVER: utf8mb4
+      MYSQL_COLLATION_SERVER: utf8mb4_unicode_ci
     volumes:
       - mysql_data:/var/lib/mysql
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
 volumes:
   mysql_data:
