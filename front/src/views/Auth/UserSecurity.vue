@@ -21,14 +21,23 @@
               <!-- 当前密码 -->
               <div>
                 <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
-                  {{ $t('security.currentPassword') }}
+                  {{ $t('security.currentPassword') }} <span class="text-red-500">*</span>
                 </label>
                 <div class="relative">
                   <input
                     v-model="passwordForm.currentPassword"
                     :type="showCurrentPassword ? 'text' : 'password'"
-                    class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent py-2.5 pl-4 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
+                    :class="[
+                      'dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border bg-transparent py-2.5 pl-4 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:outline-hidden focus:ring-3 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30',
+                      errors.currentPassword 
+                        ? 'border-red-300 focus:border-red-300 focus:ring-red-500/10 dark:border-red-600 dark:focus:border-red-800' 
+                        : 'border-gray-300 focus:border-brand-300 focus:ring-brand-500/10 dark:border-gray-700 dark:focus:border-brand-800'
+                    ]"
+                    @blur="validateCurrentPassword"
                   />
+                  <p v-if="errors.currentPassword" class="mt-1 text-xs text-red-500">
+                    {{ errors.currentPassword }}
+                  </p>
                   <span
                     @click="showCurrentPassword = !showCurrentPassword"
                     class="absolute z-30 text-gray-500 -translate-y-1/2 cursor-pointer right-4 top-1/2 dark:text-gray-400"
@@ -72,14 +81,46 @@
               <!-- 新密码 -->
               <div>
                 <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
-                  {{ $t('security.newPassword') }}
+                  {{ $t('security.newPassword') }} <span class="text-red-500">*</span>
                 </label>
                 <div class="relative">
                   <input
                     v-model="passwordForm.newPassword"
                     :type="showNewPassword ? 'text' : 'password'"
-                    class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent py-2.5 pl-4 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
+                    :class="[
+                      'dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border bg-transparent py-2.5 pl-4 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:outline-hidden focus:ring-3 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30',
+                      errors.newPassword 
+                        ? 'border-red-300 focus:border-red-300 focus:ring-red-500/10 dark:border-red-600 dark:focus:border-red-800' 
+                        : 'border-gray-300 focus:border-brand-300 focus:ring-brand-500/10 dark:border-gray-700 dark:focus:border-brand-800'
+                    ]"
+                    @input="checkPasswordStrength"
+                    @blur="validateNewPassword"
                   />
+                  <p v-if="errors.newPassword" class="mt-1 text-xs text-red-500">
+                    {{ errors.newPassword }}
+                  </p>
+                  <!-- 密码强度指示器 -->
+                  <div v-if="passwordForm.newPassword && !errors.newPassword" class="mt-1">
+                    <div class="flex gap-1 mb-1">
+                      <div 
+                        v-for="n in 4" 
+                        :key="n"
+                        :class="[
+                          'h-1 flex-1 rounded-full',
+                          n <= passwordStrength.score ? getPasswordStrengthColor(passwordStrength.score) : 'bg-gray-200 dark:bg-gray-700'
+                        ]"
+                      ></div>
+                    </div>
+                    <p :class="[
+                      'text-xs',
+                      getPasswordStrengthTextColor(passwordStrength.score)
+                    ]">
+                      {{ $t(passwordStrength.strengthKey) }}
+                      <span v-if="passwordStrength.score >= 2" class="text-xs text-gray-500 ml-1">
+                        ({{ $t('password.crackTime', { time: passwordStrength.crackTimeDisplay }) }})
+                      </span>
+                    </p>
+                  </div>
                   <span
                     @click="showNewPassword = !showNewPassword"
                     class="absolute z-30 text-gray-500 -translate-y-1/2 cursor-pointer right-4 top-1/2 dark:text-gray-400"
@@ -123,14 +164,23 @@
               <!-- 确认新密码 -->
               <div>
                 <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
-                  {{ $t('security.confirmNewPassword') }}
+                  {{ $t('security.confirmNewPassword') }} <span class="text-red-500">*</span>
                 </label>
                 <div class="relative">
                   <input
                     v-model="passwordForm.confirmPassword"
                     :type="showConfirmPassword ? 'text' : 'password'"
-                    class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent py-2.5 pl-4 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
+                    :class="[
+                      'dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border bg-transparent py-2.5 pl-4 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:outline-hidden focus:ring-3 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30',
+                      errors.confirmPassword 
+                        ? 'border-red-300 focus:border-red-300 focus:ring-red-500/10 dark:border-red-600 dark:focus:border-red-800' 
+                        : 'border-gray-300 focus:border-brand-300 focus:ring-brand-500/10 dark:border-gray-700 dark:focus:border-brand-800'
+                    ]"
+                    @blur="validateConfirmPassword"
                   />
+                  <p v-if="errors.confirmPassword" class="mt-1 text-xs text-red-500">
+                    {{ errors.confirmPassword }}
+                  </p>
                   <span
                     @click="showConfirmPassword = !showConfirmPassword"
                     class="absolute z-30 text-gray-500 -translate-y-1/2 cursor-pointer right-4 top-1/2 dark:text-gray-400"
@@ -172,41 +222,30 @@
               </div>
             </div>
 
+            <!-- 表单状态消息 -->
+            <div class="mt-4">
+              <div v-if="formSuccess" class="p-2 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-900 dark:text-green-100">
+                <span class="font-medium">{{ $t('common.success') }}</span> - {{ $t('security.passwordUpdated') }}
+              </div>
+              <div v-if="errors.form" class="p-2 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-900 dark:text-red-100">
+                <span class="font-medium">{{ $t('common.failed') }}</span> - {{ errors.form }}
+              </div>
+            </div>
+            
             <div class="flex justify-end mt-8">
               <button
                 type="submit"
-                class="flex justify-center rounded-lg bg-brand-500 px-4 py-2.5 text-sm font-medium text-white hover:bg-brand-600"
+                :disabled="isSubmitting"
+                class="flex items-center justify-center rounded-lg bg-brand-500 px-4 py-2.5 text-sm font-medium text-white hover:bg-brand-600 disabled:bg-brand-300 disabled:cursor-not-allowed"
               >
-                {{ $t('security.updatePassword') }}
+                <svg v-if="isSubmitting" class="w-4 h-4 mr-2 -ml-1 text-white animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                {{ isSubmitting ? $t('common.processing') : $t('security.updatePassword') }}
               </button>
             </div>
           </form>
-        </div>
-      </div>
-
-      <!-- 两步验证 -->
-      <div class="lg:col-span-3">
-        <div class="p-5 mb-6 border border-gray-200 rounded-2xl dark:border-gray-800 lg:p-6">
-          <div class="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
-            <div>
-              <h4 class="text-lg font-semibold text-gray-800 dark:text-white/90 lg:mb-6">
-                {{ $t('security.twoFactorAuth') }}
-              </h4>
-              <p class="text-sm text-gray-500 dark:text-gray-400">
-                {{ $t('security.twoFactorAuthDesc') }}
-              </p>
-            </div>
-
-            <div class="flex items-center">
-              <span class="mr-3 text-sm font-medium text-gray-700 dark:text-gray-400">
-                {{ twoFactorEnabled ? $t('security.enabled') : $t('security.disabled') }}
-              </span>
-              <label class="relative inline-flex items-center cursor-pointer">
-                <input type="checkbox" v-model="twoFactorEnabled" class="sr-only peer" @change="toggleTwoFactor" />
-                <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-brand-300 dark:peer-focus:ring-brand-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-brand-500"></div>
-              </label>
-            </div>
-          </div>
         </div>
       </div>
 
@@ -283,6 +322,7 @@ import { useI18n } from '@/i18n'
 import AdminLayout from '@/components/layout/AdminLayout.vue'
 import PageBreadcrumb from '@/components/common/PageBreadcrumb.vue'
 import { userService } from '@/services/userService'
+import { validatePassword } from '@/utils/passwordValidator'
 
 const { t } = useI18n()
 
@@ -298,8 +338,27 @@ const showCurrentPassword = ref(false)
 const showNewPassword = ref(false)
 const showConfirmPassword = ref(false)
 
+// 表单错误信息
+const errors = ref({
+  currentPassword: '',
+  newPassword: '',
+  confirmPassword: '',
+  form: ''
+})
+
+// 表单处理状态
+const isSubmitting = ref(false)
+const formSuccess = ref(false)
+
 // 两步验证状态
 const twoFactorEnabled = ref(false)
+
+// 密码强度
+const passwordStrength = ref({
+  score: 0,
+  strengthKey: 'password.veryWeak',
+  crackTimeDisplay: ''
+})
 
 // 活动会话
 const activeSessions = ref([
@@ -358,35 +417,92 @@ onMounted(async () => {
 })
 
 /**
+ * 验证当前密码
+ */
+const validateCurrentPassword = () => {
+  if (!passwordForm.value.currentPassword) {
+    errors.value.currentPassword = t('user.passwordRequired')
+    return false
+  }
+  errors.value.currentPassword = ''
+  return true
+}
+
+/**
+ * 验证新密码
+ */
+const validateNewPassword = () => {
+  if (!passwordForm.value.newPassword) {
+    errors.value.newPassword = t('user.passwordRequired')
+    return false
+  }
+  
+  // 使用密码验证工具进行复杂度验证
+  const passwordValidation = validatePassword(passwordForm.value.newPassword)
+  
+  if (!passwordValidation.isValid) {
+    // 如果有具体的警告信息，优先显示
+    if (passwordValidation.feedback.warning) {
+      errors.value.newPassword = passwordValidation.feedback.warning
+    } else if (!passwordValidation.rules.hasMinLength) {
+      errors.value.newPassword = t('password.tooShort', { length: 8 })
+    } else if (!passwordValidation.rules.hasNumber) {
+      errors.value.newPassword = t('password.requiresNumber')
+    } else if (!passwordValidation.rules.hasLowerCase || !passwordValidation.rules.hasUpperCase) {
+      errors.value.newPassword = t('password.requiresCase')
+    } else if (!passwordValidation.rules.hasSpecialChar) {
+      errors.value.newPassword = t('password.requiresSpecial')
+    } else if (!passwordValidation.rules.hasNoRepeatingChars) {
+      errors.value.newPassword = t('password.noRepeats')
+    } else {
+      errors.value.newPassword = t('password.tooWeak')
+    }
+    return false
+  }
+  
+  errors.value.newPassword = ''
+  return true
+}
+
+/**
+ * 验证确认密码
+ */
+const validateConfirmPassword = () => {
+  if (!passwordForm.value.confirmPassword) {
+    errors.value.confirmPassword = t('user.passwordRequired')
+    return false
+  }
+  
+  if (passwordForm.value.newPassword !== passwordForm.value.confirmPassword) {
+    errors.value.confirmPassword = t('auth.passwordNotMatch')
+    return false
+  }
+  
+  errors.value.confirmPassword = ''
+  return true
+}
+
+/**
  * 修改密码
  */
 const changePassword = async () => {
   // 表单验证
-  if (!passwordForm.value.currentPassword) {
-    alert(t('user.passwordRequired'))
+  const isCurrentPasswordValid = validateCurrentPassword()
+  const isNewPasswordValid = validateNewPassword()
+  const isConfirmPasswordValid = validateConfirmPassword()
+  
+  if (!isCurrentPasswordValid || !isNewPasswordValid || !isConfirmPasswordValid) {
     return
   }
   
-  if (!passwordForm.value.newPassword) {
-    alert(t('user.passwordRequired'))
-    return
-  }
-  
-  if (passwordForm.value.newPassword.length < 6) {
-    alert(t('user.passwordTooShort'))
-    return
-  }
-  
-  if (passwordForm.value.newPassword !== passwordForm.value.confirmPassword) {
-    alert(t('auth.passwordNotMatch'))
-    return
-  }
+  errors.value.form = ''
   
   const currentUser = userService.getCurrentUser()
   if (!currentUser) {
     return
   }
   
+  isSubmitting.value = true
   try {
     const success = await userService.changePassword(
       passwordForm.value.currentPassword,
@@ -394,19 +510,50 @@ const changePassword = async () => {
     )
     
     if (success) {
-      alert(t('common.success'))
+      formSuccess.value = true
+      errors.value.form = ''
       // 重置表单
       passwordForm.value = {
         currentPassword: '',
         newPassword: '',
         confirmPassword: ''
       }
+      // 3秒后隐藏成功消息
+      setTimeout(() => {
+        formSuccess.value = false
+      }, 3000)
     } else {
-      alert(t('common.failed'))
+      formSuccess.value = false
+      errors.value.form = t('common.failed')
     }
-  } catch (error) {
+  } catch (error: any) {
     console.error('修改密码失败', error)
-    alert(t('common.failed'))
+    formSuccess.value = false
+    
+    // 处理特定的错误信息
+    if (error.response) {
+      const statusCode = error.response.status
+      const errorData = error.response.data
+      
+      if (statusCode === 400 && errorData.error === 'Current password is incorrect') {
+        // 当前密码错误
+        errors.value.currentPassword = t('security.currentPasswordIncorrect') || '当前密码不正确'
+      } else if (statusCode === 404) {
+        // 用户不存在
+        errors.value.form = t('security.userNotFound') || '用户不存在或已被删除'
+      } else {
+        // 其他服务器响应错误
+        errors.value.form = errorData.error || t('common.failed')
+      }
+    } else if (error.request) {
+      // 请求发出但未收到响应
+      errors.value.form = t('common.networkError') || '网络错误，请检查连接后重试'
+    } else {
+      // 其他错误
+      errors.value.form = t('common.failed')
+    }
+  } finally {
+    isSubmitting.value = false
   }
 }
 
@@ -424,18 +571,33 @@ const toggleTwoFactor = async () => {
       twoFactorEnabled.value
     )
     
-    if (success) {
-      alert(t('common.success'))
-    } else {
+    if (!success) {
       // 如果失败，恢复原来的状态
       twoFactorEnabled.value = !twoFactorEnabled.value
-      alert(t('common.failed'))
+      // 使用更友好的通知方式，这里我们暂时通过添加一个临时的错误消息
+      const statusMessage = document.createElement('div')
+      statusMessage.className = 'p-2 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-900 dark:text-red-100 fixed top-4 right-4 z-50'
+      statusMessage.textContent = t('common.failed')
+      document.body.appendChild(statusMessage)
+      setTimeout(() => statusMessage.remove(), 3000)
+    } else {
+      // 成功消息
+      const statusMessage = document.createElement('div')
+      statusMessage.className = 'p-2 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-900 dark:text-green-100 fixed top-4 right-4 z-50'
+      statusMessage.textContent = t('common.success')
+      document.body.appendChild(statusMessage)
+      setTimeout(() => statusMessage.remove(), 3000)
     }
   } catch (error) {
     console.error('切换两步验证失败', error)
     // 如果出错，恢复原来的状态
     twoFactorEnabled.value = !twoFactorEnabled.value
-    alert(t('common.failed'))
+    // 使用更友好的通知方式
+    const statusMessage = document.createElement('div')
+    statusMessage.className = 'p-2 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-900 dark:text-red-100 fixed top-4 right-4 z-50'
+    statusMessage.textContent = t('common.failed')
+    document.body.appendChild(statusMessage)
+    setTimeout(() => statusMessage.remove(), 3000)
   }
 }
 
@@ -446,7 +608,74 @@ const terminateSession = (index: number) => {
   // 在实际应用中，这里应该调用API来终止会话
   // 这里只是模拟终止会话的效果
   activeSessions.value.splice(index, 1)
-  alert(t('common.success'))
+  
+  // 显示临时成功消息
+  const statusMessage = document.createElement('div')
+  statusMessage.className = 'p-2 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-900 dark:text-green-100 fixed top-4 right-4 z-50'
+  statusMessage.textContent = t('common.success')
+  document.body.appendChild(statusMessage)
+  setTimeout(() => statusMessage.remove(), 3000)
+}
+
+/**
+ * 检查密码强度
+ */
+const checkPasswordStrength = () => {
+  if (!passwordForm.value.newPassword) {
+    passwordStrength.value = {
+      score: 0,
+      strengthKey: 'password.veryWeak',
+      crackTimeDisplay: ''
+    }
+    return
+  }
+  
+  const result = validatePassword(passwordForm.value.newPassword)
+  passwordStrength.value = {
+    score: result.score,
+    strengthKey: result.strengthKey,
+    crackTimeDisplay: result.crackTimeDisplay
+  }
+}
+
+/**
+ * 获取密码强度对应的颜色
+ */
+const getPasswordStrengthColor = (score: number): string => {
+  switch (score) {
+    case 0:
+      return 'bg-red-500' // 非常弱
+    case 1:
+      return 'bg-orange-500' // 弱
+    case 2:
+      return 'bg-yellow-500' // 中等
+    case 3:
+      return 'bg-blue-500' // 强
+    case 4:
+      return 'bg-green-500' // 非常强
+    default:
+      return 'bg-gray-300'
+  }
+}
+
+/**
+ * 获取密码强度文本颜色
+ */
+const getPasswordStrengthTextColor = (score: number): string => {
+  switch (score) {
+    case 0:
+      return 'text-red-600 dark:text-red-400' // 非常弱
+    case 1:
+      return 'text-orange-600 dark:text-orange-400' // 弱
+    case 2:
+      return 'text-yellow-600 dark:text-yellow-400' // 中等
+    case 3:
+      return 'text-blue-600 dark:text-blue-400' // 强
+    case 4:
+      return 'text-green-600 dark:text-green-400' // 非常强
+    default:
+      return 'text-gray-500 dark:text-gray-400'
+  }
 }
 
 /**

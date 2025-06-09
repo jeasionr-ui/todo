@@ -1,5 +1,6 @@
 import express from 'express';
-import { getAllUsers, getUserById, createUser, updateUser, deleteUser } from '../../biz/user/user_biz.js';
+import { getAllUsers, getUserById, createUser, updateUser, deleteUser, changeUserPassword } from '../../biz/user/user_biz.js';
+import { verifyToken } from '../../middleware/auth_middleware.js';
 
 const router = express.Router();
 
@@ -51,6 +52,37 @@ router.delete('/:id', async (req, res) => {
     res.json({ id: req.params.id });
   } catch (err) {
     res.status(500).json({ error: err.message });
+  }
+});
+
+// 修改密码
+router.put('/:id/password', verifyToken, async (req, res) => {
+  try {
+    const { currentPassword, newPassword } = req.body;
+    
+    // 验证请求的有效性
+    if (!currentPassword || !newPassword) {
+      return res.status(400).json({ error: 'Current password and new password are required' });
+    }
+    
+    // 验证用户是否有权更改此密码（只有自己或管理员可以更改）
+    if (req.user.id !== req.params.id && req.user.role !== 'admin') {
+      return res.status(403).json({ error: 'Not authorized to change this password' });
+    }
+    
+    await changeUserPassword(req.params.id, currentPassword, newPassword);
+    res.json({ success: true, message: 'Password updated successfully' });
+  } catch (err) {
+    if (err.message === 'User not found') {
+      res.status(404).json({ error: 'User not found' });
+    } else if (err.message === 'Current password is incorrect') {
+      res.status(400).json({ error: 'Current password is incorrect' });
+    } else if (err.message.includes('Password')) {
+      // 处理密码复杂性错误
+      res.status(400).json({ error: err.message, code: 'PASSWORD_COMPLEXITY' });
+    } else {
+      res.status(500).json({ error: err.message });
+    }
   }
 });
 

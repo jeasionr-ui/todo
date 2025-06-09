@@ -20,6 +20,7 @@ export default {
     done: '完成',
     skip: '跳过',
     saving: '保存中...',
+    processing: '处理中...',
 
     // 状态
     loading: '加载中...',
@@ -28,6 +29,7 @@ export default {
     error: '操作失败',
     warning: '警告',
     info: '提示',
+    networkError: '网络连接错误，请检查连接后重试',
 
     // 导航
     home: '首页',
@@ -1487,6 +1489,10 @@ export default {
     newPassword: '新密码',
     confirmNewPassword: '确认新密码',
     updatePassword: '更新密码',
+    passwordUpdated: '密码已成功更新',
+    currentPasswordIncorrect: '当前密码不正确',
+    userNotFound: '用户不存在或已被删除',
+    processing: '处理中...',
 
     // Two-factor authentication
     twoFactorAuth: '两步验证',
@@ -1672,5 +1678,22 @@ export default {
         content: '如果您对此隐私政策有任何疑问，请联系我们：'
       }
     }
+  },
+  
+  // 密码强度相关
+  password: {
+    veryWeak: '非常弱',
+    weak: '弱',
+    medium: '中等',
+    strong: '强',
+    veryStrong: '非常强',
+    unknown: '未知强度',
+    tooShort: '密码太短，至少需要{length}个字符',
+    tooWeak: '密码强度太弱',
+    requiresNumber: '密码必须包含至少一个数字',
+    requiresCase: '密码必须包含大小写字母',
+    requiresSpecial: '密码必须包含至少一个特殊字符',
+    noRepeats: '密码不能包含连续重复的字符',
+    crackTime: '破解时间大约需要{time}',
   },
 }

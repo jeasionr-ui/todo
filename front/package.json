@@ -41,7 +41,8 @@
     "vue-router": "^4.5.0",
     "vue3-apexcharts": "^1.8.0",
     "vuedraggable": "^4.1.0",
-    "vuevectormap": "^2.0.1"
+    "vuevectormap": "^2.0.1",
+    "zxcvbn": "^4.4.2"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.0.0",

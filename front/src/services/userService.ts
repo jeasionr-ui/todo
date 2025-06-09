@@ -91,8 +91,9 @@ export const userService = {
         headers: token ? { Authorization: `Bearer ${token}` } : {}
       })
       return true
-    } catch {
-      return false
+    } catch (error) {
+      // 不再吞掉错误，而是将其抛出以便调用方能够处理特定错误类型
+      throw error
     }
   },
 
