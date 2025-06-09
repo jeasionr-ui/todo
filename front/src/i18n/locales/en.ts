@@ -56,7 +56,6 @@ export default {
     page: 'Page',
     of: 'of',
     perPage: 'Per page',
-    saving: 'Saving...',
 
     // App info
     appDescription: 'Bingo ToDo - Your personal task and habit management tool',
